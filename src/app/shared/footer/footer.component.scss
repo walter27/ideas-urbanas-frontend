@@ -1,0 +1,39 @@
+.footer {
+    background: #076DCD 0% 0% no-repeat padding-box;
+}
+
+.footer1 {
+    background: #004587 0% 0% no-repeat padding-box;
+}
+
+.footer-text{
+    font: 10pt 'Noto Sans TC';
+}
+
+.ides-footer-icons-mobile{
+    width: 30px;
+}
+
+
+@media screen and (max-width: 575px) {
+
+    .social-footer{
+        margin-left: 30%;
+        margin-bottom: 1em;
+    }
+    .ides-dropdown-footer{
+        border: 1px solid #FFFFFF !important;
+        border-radius: 9px !important;
+        color: #FFFFFF !important;
+        height: 25px;
+        font-size: 10pt;
+        padding: 0 7px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+
+    .social-footer{
+        margin-top: 1em;
+    }
+}

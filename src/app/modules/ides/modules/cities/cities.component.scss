@@ -1,0 +1,342 @@
+.Ambato {
+    background: transparent url(../../../../../assets/cities/AMBATO.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;   
+}
+.Ibarra {
+    background: transparent url(../../../../../assets/cities/IBARRA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
+}
+.Manta {
+    background: transparent url(../../../../../assets/cities/MANTA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
+}
+.Orellana {
+    background: transparent url(../../../../../assets/cities/ORELLANA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
+}
+.Portoviejo {
+    background: transparent url(../../../../../assets/cities/PORTOVIEJO.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
+}
+.Riobamba {
+    background: transparent url(../../../../../assets/cities/RIOBAMBA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
+}
+
+.header-city{
+    height: 900px;
+    margin-left: -85px !important;
+    margin-right: -85px !important;
+    background-size: cover;
+}
+
+.ides-text-white{
+    color: #FFFFFF !important;
+}
+
+.ides-text-white > a{
+    color: #FFFFFF !important;
+    text-decoration: underline;;
+}
+
+.city-shield{
+    width: 220px;
+    height: 220px;
+}
+.city-img{
+    height: 65px;
+}
+
+.activity{
+    font: 16px/30px 'Noto Sans TC' !important;
+}
+
+.activity-value{
+    font: 20px/33px 'Noto Sans TC' !important;
+}
+
+.activity-value > span{
+    font: 14px/20px 'Noto Sans TC' !important;
+}
+
+/* moviles vertical*/
+@media screen and (max-width: 575px) {
+    .ides-card-city{
+        margin-top: 1.5em !important;
+    }
+    .header-city {
+        height: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        background-size: cover;
+    }
+    .city-backgroud{
+        position: relative !important;
+        padding-left: 0 !important;
+        z-index: 1 !important;
+    }
+    .index-city{
+        position: relative !important;
+    }
+    .header-city-logo{
+        display: none !important;
+    }
+    .research-img {
+        height: 2.5em;
+        width: 3em;
+        margin-bottom: 5px;
+    }
+    .city-img{
+        height: 45px;
+    }
+    .activity{
+        font: 10px 'Noto Sans TC' !important;
+    }
+    .activity-value{
+        font: 10px 'Noto Sans TC' !important;
+    }
+    .ides-city-p {
+        padding: 0 1em !important;
+        margin-right: -50px !important;
+    }
+    .ides-city-details{
+        background-color:rgba(0,0,0,0.3) !important;
+        margin: 0 !important;
+    }
+    .city-ides-subtitle{
+        font: 18px "Noto Sans TC" !important;
+    }
+    .city-resume{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .city-activities{
+        padding-left: 1em !important;
+    }
+}
+
+/* moviles horizontal*/
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .header-city {
+        height: 100%;
+        margin-left: -35px !important;
+        margin-right: -35px !important;
+        background-size: cover;
+    }
+    .city-backgroud{
+        z-index: 1 !important;
+    }
+}
+
+/* tabletas */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .ides-card-city{
+        margin-top: 2em !important;
+    }
+    .header-city {
+        height: 100%;
+        margin-left: 0.1em !important;
+        margin-right: 0px !important;
+        background-size: cover;
+    }
+    .city-backgroud{
+        position: relative !important;
+        padding-left: 0 !important;
+        z-index: 1 !important;
+    }
+    .index-city{
+        position: relative !important;
+    }
+    .header-city-logo{
+        display: none !important;
+    }
+    .research-img {
+        height: 2.5em;
+        width: 3em;
+        margin-top: 5.5em;
+    }
+    .ides-city-p {
+        padding: 0 !important;
+        margin-right: -43px !important;
+    }
+    .ides-city-details{
+        background-color:rgba(0,0,0,0.3) !important;
+        margin: 0 1em !important;
+    }
+}
+
+/* normal */
+@media screen and (min-width: 992px) and (max-width: 1199.98px){
+    .ides-card-city{
+        margin-top: 2em !important;
+    }
+    .header-city {
+        height: 100%;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        background-size: cover;
+    }
+    .city-backgroud{
+        position: relative !important;
+        padding-left: 0 !important;
+        z-index: 1 !important;
+    }
+    .index-city{
+        position: relative !important;
+    }
+    .header-city-logo{
+        display: none !important;
+    }
+    .research-img {
+        height: 3em;
+        width: 3.5em;
+        margin-top: 3.5em;
+    }
+    .ides-city-p {
+        padding: 0 !important;
+        margin-right: -65px !important;
+    }
+    .ides-city-details{
+        background-color:rgba(0,0,0,0.3) !important;
+        margin: 0 1em !important;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1280px) {
+    .ides-card-city{
+        margin-top: 0 !important;
+    }
+    .header-city {
+        height: 760px;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        background-size: cover;
+    }
+    .city-backgroud{
+        position: relative !important;
+        padding-left: 0 !important;
+        z-index: 1 !important;
+        height: min-content !important;
+    }
+    .index-city{
+        position: relative !important;
+        height: 760px !important;
+    }
+    .header-city-logo{
+        display: none !important;
+    }
+    .research-img {
+        height: 3em;
+        width: 3.5em;
+        margin-top: 3.5em;
+    }
+    .ides-city-p {
+        padding: 0 !important;
+        margin-right: -35px !important;
+    }
+    .ides-city-details{
+        background-color:rgba(0,0,0,0.3) !important;
+        margin: 0 1em !important;
+    }
+} 
+   
+/* pantallas grandes */
+@media screen and (min-width: 1281px) and (max-width: 1499.98px) {
+    body { font-size: 17px; }
+    .header-city{
+        height: 840px;
+        margin-left: -85px !important;
+        margin-right: -85px !important;
+        background-size: cover;
+    }
+    .index-city{
+        height: 840px !important;
+    }
+}
+
+@media screen and (min-width: 1500px ) and (max-width: 1599.98px ){
+    body { font-size: 17px; }
+    .header-city{
+        height: 830px;
+        margin-left: -85px !important;
+        margin-right: -85px !important;
+        background-size: cover;
+    }
+    .index-city{
+        height: 820px !important;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    body { font-size: 17px; }
+    .header-city{
+        height: 930px;
+        margin-left: -85px !important;
+        margin-right: -85px !important;
+        background-size: cover;
+    }
+    .index-city{
+        height: 930px !important;
+    }
+}
+
+.city-backgroud{
+    position: absolute;
+    top: 0;
+    padding-right: 0 !important;
+    background-size: cover;
+    height: auto;
+    z-index: 9998;
+}
+
+.header-city-logo{
+    height: 120px;
+    background: transparent linear-gradient(125deg, #FFFFFF 0%, #FFFFFF 42%, #FFFFFF 100%) 0% 0% no-repeat padding-box !important;
+    opacity: 0.8;
+}
+
+.index-city{
+    position: absolute;
+    right: 0;
+}
+
+.ides-height-85{
+    height: 100;
+}
+
+.ides-nube {
+    background: transparent linear-gradient(327deg, #076DCDF2 0%, #001F99 47%, #043767CC 100%) 0% 0% no-repeat padding-box !important;
+    opacity: 0.8;
+}
+
+.ides-city-details{
+    background-color:rgba(0,0,0,0.3) !important;
+    margin: 1em 2em;
+    /*border: 1px solid #707070;*/
+}
+
+p.indicators{
+    font: 10px/20px 'Noto Sans TC' !important;
+    margin-bottom: -10px !important;
+}
+
+span.indicators{
+    font: 8px/15px 'Noto Sans TC' !important;
+    color: #BFBFBF;
+}
+
+.ides-city-p{
+    padding: 1.5em 5em;
+}
+
+.ides-pt-5{
+    padding-top: 4.5rem !important;
+}
+
+.cloud-background-city{
+    background: transparent url(../../../../../assets/nube/nube-ciudades-1.png) 50% 50% no-repeat padding-box; height: 100%;
+    background-size: cover;
+}
+
+.tag-cloud-city{
+    margin-top: 4rem !important;
+}
+
+ .city-index > div > div > div.ng-star-inserted{
+    height: 685px !important;
+}
+

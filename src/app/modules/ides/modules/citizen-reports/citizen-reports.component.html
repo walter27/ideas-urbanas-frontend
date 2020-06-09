@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-12">
+        <h2 class="subtitle ides-text-blue pt-1" translate>citizen reports</h2>
+    </div>
+    <div class="col-12">
+        <p translate>citizen reports description</p>
+    </div>
+    <!-- <div class="col-12 mb-4">
+        <button type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
+            Regístrate para ser colaborador
+        </button>
+    </div> -->
+    <div class="col-12">
+        <div class="row mb-4" *ngFor="let item of (resultReports$ | async)?.data">
+            <div class="col-12 col-sm-12 col-md-4" style="height: 250px;">
+                <div class="ides-height-100">
+                    <img style="width: 100%;max-height: 100%" [src]="item.image_route" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-8" style="height: 250px;">
+                <app-ides-citizen-reports-card [item]="item"></app-ides-citizen-reports-card>
+            </div>
+        </div>
+    </div>
+</div>

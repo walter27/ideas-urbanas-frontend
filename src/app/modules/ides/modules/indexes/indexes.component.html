@@ -1,0 +1,32 @@
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="ides-card pl-0 pr-0">
+            <app-ides-index [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true"
+                [variableSelected]="v" [activeCities]='cities'>
+            </app-ides-index>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 ides-text-blue mb-4">
+        <div class="ides-card">
+            <h2 class="text-center ides-text-index-title mb-5" translate>Definiciones</h2>
+            <div class="row m-4">
+                <div class="col-md-12 col-lg-6" *ngFor="let c of resultClasification?.data">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3 align-items-center justify-content-center">
+                            <img width="110" height="110" [src]="c.image_route" class="ides-def-icons" />
+                            <h4 class="text-center">{{c.name}}</h4>
+                        </div>
+                        <div class="col-sm-12 col-md-9 mb-5">
+                            <p class="ides-text-custom text-justify ides-text-index-subtitle">
+                                {{c.description}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

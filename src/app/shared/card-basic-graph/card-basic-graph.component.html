@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-12 ides-text-blue">
+        <h2 class="ml-4">{{ getTitle() }}</h2>
+    </div>
+    <div class="col-12 ml-4">
+        <p class="ides-text-custom text-justify mr-4">
+            {{ variableSelected?.description | slice:0:320 }}
+            <span *ngIf="variableSelected?.description?.length > 320">...</span>
+        </p>
+    </div>
+    <div class="col-12" *ngIf="resultData?.length; else Nothing">
+        <!-- <div class="col-12">
+            <div class="row mb-4">
+                <div class="col-auto" *ngIf="showDropCities">
+                    <app-ides-dropdown (checkItem)="onCheckItemCity($event)" [items]="cities" [title]="'cities'">
+                    </app-ides-dropdown>
+                </div>
+                <div class="col-auto" *ngIf="showDropYears">
+                    <app-ides-dropdown (checkItem)="onCheckItemYear($event)" [items]="years" [title]="'years'">
+                    </app-ides-dropdown>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-12 mb-4">
+            <div style="display: block;">
+                <canvas *ngIf="!loading && lineChartData.length > 0" id="{{variableSelected.name}}" baseChart
+                    width="3600" [datasets]="lineChartData" [labels]="lineChartLabels"
+                    [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+                    [chartType]="lineChartType" [plugins]="lineChartPlugins" [ngClass]="lineChartData.length > 10 ? 'chart-size-plus' : 'chart-size'"></canvas>
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="col custom-slider" *ngIf="showDropYears">
+                <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [(highValue)]="highValue"
+                    [options]="options"></ng5-slider>
+            </div>
+        </div>
+        <div class="col-12">
+            <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name"
+                (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?.name"
+                [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+            </app-ides-download>
+        </div>
+    </div>
+    <ng-template #Nothing>
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                <span translate>nothing</span>
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,14 @@
+
+.content {
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+  }
+  .less {
+    max-height: 91px;
+  }
+  
+  .ides-height-auto{
+      height: auto;
+      min-height: 100%;
+  }

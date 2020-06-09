@@ -1,0 +1,35 @@
+<div class="row mt-3">
+    <div class="col-3">
+        <label translate>color.green</label>
+    </div>
+    <div class="col-4">
+        <label for="max1" translate>max</label>
+        <input id="max1" (input)="onInput($event, 0, 0)" [value]="value[0][0]" name="max_value1" placeholder="max value" type="number" class="form-control">
+    </div>
+    <div class="col-3">
+        <label for="point1" translate>point</label>
+        <input id="point1" (input)="onInput($event, 0, 1)" [value]="value[0][1]" name="point_value1" placeholder="points" type="number" class="form-control">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-3">
+        <label translate>color.yellow</label>
+    </div>
+    <div class="col-4">
+        <label for="max2" translate>max</label>
+        <input id="max2" (input)="onInput($event, 1, 0)" [value]="value[1][0]" name="max_value2" placeholder="max value" type="number" class="form-control">
+    </div>
+    <div class="col-3">
+        <label for="point2" translate>point</label>
+        <input id="point2" (input)="onInput($event, 1, 1)" [value]="value[1][1]" name="point_value2" placeholder="points" type="number" class="form-control">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-3">
+        <label translate>color.red</label>
+    </div>
+    <div class="col-4">
+        <label for="point3" translate>point</label>
+        <input id="point3" (input)="onInput($event, 2, 0)" [value]="value[2][0]" name="point_value3" placeholder="points" type="number" class="form-control">
+    </div>
+</div>

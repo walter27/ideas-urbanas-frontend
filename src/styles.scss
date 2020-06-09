@@ -1,0 +1,609 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/*@font-face {
+    font-family: 'FontAwesome';
+    font-display: swap;
+    src: url(../node_modules/font-awesome/fonts/fontawesome-webfont.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }*/
+
+@import '~ika.jvectormap/jquery-jvectormap-1.2.2.css';
+@import './assets/styles/ventor-map.scss';
+body {
+    font-family: 'Noto Sans TC', sans-serif !important;
+    background-color: #FAFAFA!important;
+}
+
+h1,
+.h1 {
+    font: 50px 'Noto Sans TC' !important;
+}
+
+h2,
+.h2 {
+    font: 22px 'Noto Sans TC' !important;
+}
+
+h3,
+.h3 {
+    font: 20px 'Noto Sans TC' !important;
+}
+
+h4,
+.h4 {
+    font: 15px 'Noto Sans TC' !important;
+}
+
+h5,
+.h5 {
+    font: 12px 'Noto Sans TC' !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+div.ides-card {
+    box-shadow: 0px 3px 6px #00000033;
+    border-radius: 15px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    padding: 15px;
+}
+
+app-ides-card-clasification>div.ides-card:hover {
+    background: transparent linear-gradient(154deg, #FFD782 0%, #F5A700 43%, #F5A700 100%) 0% 0% no-repeat padding-box;
+}
+
+.ides-text-blue {
+    color: #076DCD!important;
+}
+
+.ides-text-icon {
+    color: white!important;
+}
+
+//icono del circulo
+.ides-icon-circle {
+    height: 22px;
+    width: 22px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.img {
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-left: 3px;
+}
+
+.ides-text-white {
+    color: #ffffff!important;
+}
+
+a.ides-text-white:hover {
+    color: #F8A901!important;
+}
+
+.ides-text-yellow {
+    color: #F8A901!important;
+}
+
+.ides-text-blue-dark {
+    color: #004587!important;
+}
+
+.ides-dropdown {
+    border: 1px solid #076DCD !important;
+    border-radius: 9px !important;
+    width: 70px;
+    height: 40;
+}
+
+.ides-dropdown:hover {
+    color: #F8A901!important;
+    border: 1px solid #F8A901 !important;
+}
+
+.social>fa:hover {
+    color: #F8A901!important;
+}
+
+.ides-btn-yellow {
+    border: 1px solid #076DCD!important;
+    border-radius: 25px!important;
+    background-color: #F8A901 !important;
+}
+
+.dropdown-menu {
+    background-color: #076DCD!important;
+    border: none!important;
+    box-shadow: 0px 6px 12px #0000004D;
+}
+
+.dropdown-item {
+    color: #FFFFFF!important;
+}
+
+.dropdown-item:hover {
+    color: #000000!important;
+}
+
+.nav-item {
+    color: #076DCD!important;
+    font: 16px 'Noto Sans TC';
+}
+
+.nav-item:hover {
+    color: #F8A901!important;
+}
+
+.nav-item-categories {
+    color: #076DCD!important;
+    font: 14px 'Noto Sans TC';
+    margin-bottom: 1rem !important;
+}
+
+.nav-item-categories:hover {
+    color: #F8A901!important;
+}
+
+.nav-item-active {
+    color: white!important;
+    border-radius: 15px;
+    width: 35%;
+    padding: 8px;
+    background-color: #f8ac08;
+    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+}
+
+.nav-item-active:hover {
+    color: white!important;
+}
+
+
+/* Let's get this party started */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #e1e1e1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #b3b3b3;
+}
+
+.ides-badge-color-list-data {
+    background-color: #B5DFFF;
+}
+
+.ides-badge {
+    border-radius: 50%;
+}
+
+.ides-item-data {
+    background: #E7F0F7 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    margin-bottom: 8px;
+    color: #004587;
+}
+
+.ides-card-border-radius-0 {
+    border: 4px solid #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.ides-height-100 {
+    height: 100%!important;
+}
+
+a:hover {
+    text-decoration: none!important;
+}
+
+.dropdown-menu {
+    width: max-content !important;
+}
+
+.ides-text-default {
+    font: 16px/30px 'Noto Sans TC';
+}
+
+.ides-text-custom {
+    font: 14px 'Noto Sans TC';
+    color: black;
+}
+
+.ides-text-black {
+    color: black;
+}
+
+.map-width {
+    width: 1350px;
+}
+
+.subtitle {
+    font: 30px 'Noto Sans TC' !important;
+    padding-top: 2em !important;
+}
+
+@media screen and (max-width: 550px) {
+    .hide-logo-header {
+        width: 350px;
+    }
+    .ml-7 {
+        margin-left: 1rem !important;
+    }
+    .subtitle {
+        font: 20px "Noto Sans TC" !important;
+        padding-top: 1em !important;
+        padding-left: 0px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hide-logo-header {
+        width: 250px;
+    }
+    .ml-7 {
+        margin-left: 1rem !important;
+    }
+}
+
+
+/*.nav-item-root:hover {
+    color: #F8A901 !important;
+}*/
+
+.points-block {
+    z-index: 1 !important;
+    /*text-align: center;*/
+}
+
+.points-block:hover {
+    color: #F8A901 !important;
+}
+
+.social:hover {
+    color: #F8A901 !important;
+}
+
+.login:hover {
+    color: #F8A901 !important;
+}
+
+.ml-7 {
+    margin-left: 7rem !important;
+}
+
+.btn-accordion {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ides-mr-5 {
+    margin-right: 3rem !important;
+}
+
+
+/* moviles vertical*/
+
+@media screen and (max-width: 575px) {
+    body {
+        font-size: 14px;
+    }
+    .container-fluid {
+        padding-right: 0 !important;
+    }
+    .nav-item-categories {
+        font: 12px 'Noto Sans TC';
+        margin-bottom: 0.5rem !important;
+    }
+    h2,
+    .h2 {
+        font: 16px "Noto Sans TC" !important;
+    }
+    .ides-text-custom {
+        font: 10px "Noto Sans TC";
+    }
+    .ides-mr-5 {
+        margin-right: 0rem !important;
+        padding-right: 1.1em !important;
+        padding-left: 1.1em !important;
+    }
+    .chart-size {
+        max-height: 250px !important;
+    }
+    .chart-size-plus {
+        max-height: 450px !important;
+    }
+    .chart-index-size {
+        height: 300px !important;
+    }
+    .chart-index-size-plus {
+        height: 400px !important;
+    }
+    .ides-origins {
+        font: 14px "Noto Sans TC" !important;
+    }
+    .ides-header {
+        z-index: 900;
+        background-color: #ffffff;
+        padding-bottom: 1.5rem!important;
+    }
+    .ides-text-index-title {
+        font: 15pt "Noto Sans TC" !important;
+    }
+    .ides-text-index-subtitle {
+        font: 10pt "Noto Sans TC" !important;
+    }
+}
+
+
+/* moviles horizontal*/
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+    .ides-mr-5 {
+        margin-right: 0rem !important;
+        padding-right: 1.1em !important;
+        padding-left: 1.1em !important;
+    }
+    .nav-item-categories {
+        font: 12px 'Noto Sans TC';
+        margin-bottom: 0.5rem !important;
+    }
+    .chart-size {
+        height: 250px !important;
+    }
+    .chart-size-plus {
+        max-height: 450px !important;
+    }
+    .ides-header {
+        z-index: 900;
+        background-color: #ffffff;
+        padding-bottom: 1.5rem!important;
+    }
+}
+
+
+/* tabletas */
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    body {
+        font-size: 15px;
+    }
+    .ides-mr-5 {
+        margin-right: 0rem !important;
+        padding-right: 1.1em !important;
+        padding-left: 1.1em !important;
+    }
+    .nav-item-categories {
+        font: 12px 'Noto Sans TC';
+        margin-bottom: 0.5rem !important;
+    }
+    .chart-size {
+        height: 250px !important;
+    }
+    .chart-size-plus {
+        max-height: 330px !important;
+    }
+    .ides-header {
+        z-index: 900;
+        background-color: #ffffff;
+        padding-bottom: 1.5rem!important;
+    }
+}
+
+
+/* normal */
+
+@media screen and (min-width: 992px) and (max-width: 1280px) {
+    body {
+        font-size: 15px;
+    }
+    .ides-mr-5 {
+        margin-right: 0rem !important;
+        padding-right: 3em !important;
+        padding-left: 1.1em !important;
+    }
+    .nav-item-categories {
+        font: 13px 'Noto Sans TC';
+        margin-bottom: 0.5rem !important;
+    }
+    .chart-size {
+        height: 300px !important;
+    }
+    .chart-size-plus {
+        max-height: 350px !important;
+    }
+    .chart-index-size {
+        height: 400px !important;
+    }
+    .chart-index-size-plus {
+        max-height: 500px !important;
+    }
+    .nav-item {
+        color: #076DCD !important;
+        font: 15px "Noto Sans TC" !important;
+    }
+    .ides-header {
+        z-index: 900;
+        background-color: #ffffff;
+        padding-bottom: 0.5rem!important;
+    }
+}
+
+
+/* pantallas grandes */
+
+@media screen and (min-width: 1281px) {
+    body {
+        font-size: 17px;
+    }
+    .chart-size {
+        height: 400px !important;
+    }
+    .chart-size-plus {
+        max-height: 400px !important;
+    }
+    .chart-index-size {
+        height: 600px !important;
+    }
+    .chart-index-size-plus {
+        max-height: 600px !important;
+    }
+    .ides-header {
+        z-index: 900;
+        background-color: #ffffff;
+        padding-bottom: 1.5rem!important;
+    }
+}
+
+.ides-dropdown-menu {
+    height: 30px !important;
+    line-height: 1 !important;
+}
+
+.fa-ides-2x {
+    font-size: 23px !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+    background-color: #F8A901 !important;
+}
+
+.ng5-slider .ng5-slider-pointer:hover {
+    background-color: #076DCD !important;
+}
+
+.ng5-slider .ng5-slider-selection {
+    background-color: #F8A901 !important;
+}
+
+.ng5-slider .ng5-slider-selection:hover {
+    background-color: #076DCD !important;
+}
+
+.ng5-slider .ng5-slider-bubble {
+    color: #076DCD !important;
+}
+
+.research-img {
+    height: 5em;
+    width: 6.5em;
+    margin-top: 1.5em;
+}
+
+.logo-link:hover {
+    opacity: 0.5;
+}
+
+.ides-dropdown-download {
+    border: none !important;
+}
+
+.ides-dropdown-download:hover {
+    border: none !important;
+}
+
+.custom-slider .ng5-slider .ng5-slider-bar {
+    height: 2px;
+}
+
+.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-value {
+    padding-bottom: 7px;
+}
+
+.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-high {
+    padding-bottom: 7px;
+    padding-right: 0px;
+}
+
+.ng5-slider-span.ng5-slider-bubble.ng5-slider-limit.ng5-slider-floor {
+    padding-bottom: 7px;
+}
+
+.ng5-slider-span.ng5-slider-bubble.ng5-slider-limit.ng5-slider-ceil {
+    padding-bottom: 7px;
+    padding-right: 0px;
+}
+
+.ng5-slider-span.ng5-slider-pointer.ng5-slider-pointer-min {
+    width: 24px;
+    height: 24px;
+    top: -9px;
+}
+
+.ng5-slider-span.ng5-slider-pointer.ng5-slider-pointer-max {
+    width: 24px;
+    height: 24px;
+    top: -9px;
+}
+
+.ng5-slider .ng5-slider-pointer:after {
+    top: 9px!important;
+    left: 9px!important;
+    width: 5px!important;
+    height: 5px!important;
+}
+
+#chartjs-tooltip {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9) 0% 0% no-repeat padding-box;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 3px;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    pointer-events: none;
+    -webkit-transform: translate(-50%, -110%);
+    transform: translate(-50%, -110%);
+    padding: 10px!important;
+    z-index: 1000;
+    width: auto;
+    min-width: 300px;
+}
+
+.chartjs-tooltip-key {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50px;
+}
+
+.chartjs-tooltip-key1 {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50px;
+    opacity: 0;
+}
+
+//covid-19
+.select2 {
+    border: red solid;
+    border-radius: 15%;
+    background-color: green;
+}

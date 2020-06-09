@@ -1,0 +1,29 @@
+.align-items-center {
+    display: flex; 
+    align-items: bottom;  /*Aligns vertically center */
+    justify-content: center; /*Aligns horizontally center */
+  }
+
+.ides-ml-clasificaions{
+  margin-left: 0.5rem !important;
+}
+
+@media screen and (max-width: 575px) {
+  .submenu-tematic{
+    font: 16px 'Noto Sans TC' !important;
+  }
+  .ides-ml-clasificaions{
+    margin-left: -5px !important;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .submenu-tematic{
+    font: 22px 'Noto Sans TC' !important;
+  }
+}
+
+.ides-thematic-description{
+  font: 13px 'Noto Sans TC', sans-serif;
+  font-weight: normal;
+}

@@ -1,0 +1,60 @@
+.clasification-selected {
+    background: transparent linear-gradient(154deg, #076DCD 0%, #001F99 43%, #043767 100%) 0% 0% no-repeat padding-box;
+    color: white;
+}
+
+.img-clasification{
+    height: 55px;
+    width: 55px;
+}
+
+@media screen and (max-width: 575px) {
+    .img-clasification{
+        height: 35px;
+        width: 35px;
+        margin-top: 0rem !important;
+    }
+    .text-clasification{
+        margin-top: 0rem !important;
+        padding: 0 !important;
+        text-align: left;
+    }
+    .text-clasification > h3{
+        font-size: 10px !important;
+    }
+    .clasification-selected {
+        padding: 5px !important;
+    }
+    .ides-card-clasification{
+        padding: 10px 5px !important;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px){
+    .img-clasification{
+        height: 45px;
+        width: 45px;
+    }
+    .text-clasification{
+        margin-top: 0.5rem !important;
+        text-align: left;
+    }
+    .text-clasification > h3{
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .img-clasification{
+        height: 55px;
+        width: 55px;
+    }
+    .text-clasification{
+        margin-top: 0.5rem !important;
+        text-align: left;
+    }
+    .text-clasification > h3{
+        font-size: 14px !important;
+    }
+}
+

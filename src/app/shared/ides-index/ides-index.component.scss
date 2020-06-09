@@ -1,0 +1,23 @@
+@media screen and (max-width: 991px){
+    .canvas-index-width{
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199.98px){
+    .canvas-index-width{
+        width: 60% !important;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1499.98px){
+    .canvas-index-width{
+        width: 60% !important;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .canvas-index-width{
+        width: 50% !important;
+    }
+}

@@ -1,0 +1,34 @@
+div ul.nav li {
+    margin-right: 30px;
+}
+
+.login{
+    margin-bottom: 4px;
+}
+
+.menu-mobile{
+    position: absolute;
+    background: white;
+    right: 0;
+    width: 260px;
+    border: 1px #076DCD solid;
+}
+
+.list-menu-mobile{
+    border-bottom: 0;
+    padding: 0.45rem 1.25rem;
+}
+
+.ides-navbar-toggler-mobile{
+    border: none !important;
+}
+
+.ides-navbar-toggler-mobile > fa{
+    font-size: 2.25rem;
+}
+.ides-navbar-toggler-mobile > fa:hover{
+    color: #076DCD !important;
+}
+.ides-navbar-toggler-mobile > fa:active{
+    color: #076DCD !important;
+}

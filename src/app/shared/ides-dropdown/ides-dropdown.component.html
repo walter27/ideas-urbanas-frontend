@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <button class="btn ides-dropdown dropdown-toggle ides-text-blue" type="button" id="dropdownMenuButton"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="ides-mr-80 font-weight-bold" translate>{{ title }}</span>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a (click)="onCheckItem(i.id)" class="dropdown-item " *ngFor="let i of items">
+      {{ i.name }}
+      <span class="float-right" *ngIf="i.check && selectable">
+        <i-feather name="check"></i-feather>
+      </span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="row ides-ml-clasificaions cursor-pointer" (window:scroll)="onWindowScroll($event)">
+    <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )?.data"
+        class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl mb-2 ides-mr-5">
+        <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
+        </app-ides-card-clasification>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <nav class="navbar">
+            <div class="navbar-collapse" id="navbarResponsiveThematic">
+                <ul class="nav font-weight-bold">
+                    <li (click)="onSelectVariable(i)" class="nav-item-categories"
+                        *ngFor="let i of ( resultVariables$ | async )?.data">
+                        <app-ides-tab-item [active]="i._id === variableSelected._id" [item]="i"></app-ides-tab-item>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="row mb-4" *ngIf="variableSelected">
+    <div class="col-12">
+        <div class="ides-card">
+            <div *ngIf="resultData?.length; else Nothing" class="row pt-3 pb-3">
+                <div class="col-lg-12 col-xl-12 ides-height-100">
+                    <div class="row">
+                        <div class="col-12 ides-text-blue">
+                            <h2 class="submenu-tematic ml-2">{{ variableSelected?.name }}</h2>
+                        </div>
+                        <div class="col-12" *ngIf="variableSelected?.chart_type.split(' ')[0] === 'stacked'">
+                            <div class="row mb-2">
+                                <div class="col-auto">
+                                    <app-ides-dropdown [selectable]="false" (checkItem)="onCheckYear($event)"
+                                        [items]="years" [title]="yearSelected">
+                                    </app-ides-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12 mb-4">
+                            <div style="display: block;">
+                                <canvas *ngIf="!loading && lineChartData.length > 0" id="{{variableSelected?._id}}"
+                                    baseChart width="3600" [datasets]="lineChartData" [labels]="lineChartLabels"
+                                    [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+                                    [chartType]="lineChartType" [plugins]="lineChartPlugins"
+                                    style="min-height: 180px;" [ngClass]="lineChartData.length > 10 ? 'chart-size-plus' : 'chart-size'"></canvas>
+                            </div>
+                            <div class="col custom-slider" style="width: 100%; float: right;"
+                                *ngIf="variableSelected.chart_type.split(' ')[0] !== 'stacked'">
+                                <ng5-slider (userChange)="sliderChange($event)" [(value)]="value"
+                                    [(highValue)]="highValue" [options]="options"></ng5-slider>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-none d-md-none d-lg-block">
+                            <div class="p-4 m-4 ides-thematic-description">
+                                <p>{{variableSelected?.description}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-8 col-sm-12"  *ngIf="variableSelected.chart_type.split(' ')[0] !== 'stacked'">
+                            <div class="col custom-slider" style="width: 100%; float: right;">
+                                <ng5-slider (userChange)="sliderChange($event)" [(value)]="value"
+                                    [(highValue)]="highValue" [options]="options"></ng5-slider>
+                            </div>
+                        </div> -->
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                            <div class="col" style="width: 100%; float: right;">
+                                <app-ides-download [origins]="variableSelected?.origins"
+                                    [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)"
+                                    [idElement]="variableSelected?._id"
+                                    [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+                                </app-ides-download>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ng-template #Nothing>
+                <div class="col-12">
+                    <div class="alert alert-warning mb-0" role="alert">
+                        <span translate>nothing</span>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,213 @@
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 mb-4">
+
+                <div *ngIf="step == 1" class="ides-card-home bg-banner-home">
+                    <!-- <div class="row justify-content-center ideas-cities" *ngIf="loadMapp">
+                        <div class="col-auto">
+                            <div class="position-absolute points-block" [ngClass]="c.class" *ngFor="let c of cities">
+                                <div [style.visibility]="c.hidden ? 'hidden' : 'visible'" class="label-point"
+                                    [ngClass]="'cursor-pointer'" (click)="onClickCity(c.id)">
+                                    {{ c.title }}
+                                </div>
+                                <div class="point-o cursor-pointer justify-content-center mr-5"
+                                    (click)="onClickCity(c.id)"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ideas-video">
+                        <img class="img-fluid" [src]="currentMapp" (load)="loadImg()" />
+                    </div>
+
+                    <div class="ideas-mapa-movil">
+                        <h2 class="ides-text-yellow home-title">Nuestras ciudades están evolucionando</h2>
+                        <h3 class="ides-text-blue home-subtitle">Selecciona una ciudad para compartir tus ideas</h3>
+                        <img class="img-fluid" src="../../../../../assets/mapa/mapa_movil.png" (load)="loadImg()" />
+                    </div> -->
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
+                            <h2 class="ides-text-yellow home-title" translate>our_cities</h2>
+                            <h4 translate>our_cities_description</h4>
+                        </div>
+                        <div class="col-12 col-md-12 col-md-8 col-lg-4 col-xl-4">
+                            <div vectormap [mapHeight]="mapHeight" [mapName]="mapName" [seriesData]="seriesData" [markersData]="markersData" [mapOptions]="mapOptions" (markerClick)="onMarkerClick($event)"></div>
+                        </div>
+                        <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 d-none d-md-none d-lg-block">
+                            <div class="row pt-4 pr-2">
+                                <div class="col-12 col-md-12 col-md-12 col-lg-12 col-xl-6 pt-4">
+                                    <div class="ides-card-header ides-height-100">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p class="ides-card-header-title" translate>Temáticas de desarrollo
+                                                    </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p class="ides-card-header-desc" translate>Anaiza la evolución de las ciudades intermediaspor tema.
+                                                    </p>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <a class="btn ides-btn-blue-back float-left" type="button" [routerLink]="['/thematic']">
+                                                        <span class="ides-mr-80" translate>Ver
+                                                            más</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12 col-md-12 col-lg-12 col-xl-6 pt-4">
+                                    <div class="ides-card-header ides-height-100">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p class="ides-card-header-title" translate>Índice de desarrollo urbano
+                                                    </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p class="ides-card-header-desc" translate>Compara el desempeño de tu ciudad con otras ciudades
+                                                    </p>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <a class="btn ides-btn-blue-back float-left" type="button" [routerLink]="['/indexes']">
+                                                        <span class="ides-mr-80" translate>Ver
+                                                            más</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ides-card-home ides-card-home-steps" *ngIf="step == 2">
+                    <div class="container mt-4 mb-4 pt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <div class="circulo mr-3"></div>
+                                <div class="circulo-o mr-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ml-4 mr-4 mb-5">
+                        <div class="col text-center ides-text-yellow">
+                            <h5 class="font-weight-subtitle-home">
+                                ¿Qué idea tienes de {{selectCity.title}}?
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-6 ">
+                            <form #ftag="ngForm" id="ftag">
+                                <div class="input-group mb-3 input-group-lg">
+                                    <input type="text" class="form-control ides-text-blue ides-input-tag" placeholder="" aria-label="" [(ngModel)]="newTag" aria-describedby="button-addon2" [ngModelOptions]="{standalone: true}" (keydown.enter)="onAddTag(newTag, 'positive')">
+                                    <div class=" input-group-append">
+                                        <button class="btn ides-btn-yellow-tag" type="button" id="button-addon2" (click)="onAddTag(newTag, 'positive')">Enviar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 logo-contactos-tag">
+                            <div class="text-center">
+                                <img class="img-fluid" style="max-height: 200px;" [src]="'assets/logos/arte-formulario-nube-web.png'" />
+                            </div>
+                        </div>
+                        <div class="text-uppercase font-weight-bold ides-text-blue-dark text-center mt-4">
+                            <button class="btn ides-btn-blue-back btn-lg mr-5" type="button" (click)="step = 1">
+                                <span class="ides-mr-80 font-weight-bold" translate>Regresar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ides-card-home ides-card-home-steps" *ngIf="step == 3">
+                    <div class="container mt-4 mb-4 pt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <div class="circulo-o mr-3"></div>
+                                <div class="circulo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center ides-text-yellow">
+                            <h5 class="font-weight-subtitle-home">
+                                La percepción general de {{selectCity.title}} es:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center cloud-background mt-4">
+                        <!-- <angular-tag-cloud [config]="options" [data]="tagsData" class="mt-4 mb-4 tag-cloud-mt">
+                        </angular-tag-cloud> -->
+
+                        <!-- <section tagcloud id="tag-cloud-wrapper" [idElement]="'tag-cloud-wrapper'" [data]="dataTagCloud" [width]="500" [height]="270" [maxFont]="96">
+                        </section> -->
+
+                        <section id="tag-cloud-wrapper" class="mt-4">
+                        </section>
+
+                    </div>
+                    <div class="text-uppercase font-weight-bold ides-text-blue-dark text-center mt-4 pt-4">
+                        <button class="btn ides-btn-blue-back btn-lg mr-5" type="button" (click)="step = 1">
+                            <span class="ides-mr-80 font-weight-bold" translate>Regresar</span>
+                        </button>
+                        <button class="btn ides-btn-yellow-more btn-lg" type="button" (click)="goToCity(selectCity.id)" *ngIf="selectCity.hasPage">
+                            <span class="ides-mr-80 font-weight-bold" translate>Ver más</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="subtitle ides-text-blue pb-2 pl-4" translate>Analiza las ciudades por tema</div>
+
+        <app-ides-thematic></app-ides-thematic>
+        <div class="row">
+            <div class="col-xl-7 col-lg-12">
+                <div class="ides-card ides-height-100 pl-0 pr-0">
+                    <div class="col-12 p-3">
+                        <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'>
+                        </app-ides-index>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-xl-5 about-us">
+                <div class="ides-card ides-height-100">
+                    <div class="col-12 p-3">
+                        <div class="row">
+                            <div class="col-12 ides-text-blue mb-4">
+                                <h2 translate>about us</h2>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <p class="ides-text-custom text-justify" translate>about us description
+                                </p>
+                                <p class="ides-text-custom text-justify" translate>about us description complement
+                                </p>
+                                <p class="ides-text-custom text-justify" translate>about us help
+                                </p>
+                                <p class="ides-text-custom text-justify" translate>about us contact
+                                </p>
+                            </div>
+                            <div class="col-12 text-center mb-4">
+                                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold ides-add-information" translate>about us add information
+                                    <i-feather name="arrow-up"></i-feather>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <div class="text-center">
+                                    <img width="150" [src]="'assets/logos/icono contactos-01.png'" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
