@@ -15,15 +15,12 @@
                 <input [(ngModel)]="textSearch" class="form-control" type="text" placeholder="search...">
             </div>
             <div class="col-2">
-                <button (click)="search.emit(textSearch)" type="button" class="btn btn-info"
-                    translate>button.search</button>
+                <button (click)="search.emit(textSearch)" type="button" class="btn btn-info" translate>button.search</button>
             </div>
         </div>
         <div *ngIf="(items?.totalDocs > 0)" class="row">
             <div class="col-auto">
-                {{ (items?.currentPage) * amountToShow + 1 }} -
-                {{ getMinValue( (items?.currentPage) * amountToShow + amountToShow, items?.totalDocs ) }} <span
-                    translate>of</span> {{ items?.totalDocs }} <span translate>total</span>
+                {{ (items?.currentPage) * amountToShow + 1 }} - {{ getMinValue( (items?.currentPage) * amountToShow + amountToShow, items?.totalDocs ) }} <span translate>of</span> {{ items?.totalDocs }} <span translate>total</span>
             </div>
         </div>
         <div class="row">
@@ -32,9 +29,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th width="{{c.width}}" *ngFor="let c of columns" (click)="onSortBy(c)" style="cursor: pointer;"> <span
-                                        [ngClass]="c.ascending != 'undefine' ? (c.ascending == true  ? 'ides-datatable-column-up': 'ides-datatable-column-down') : ''"
-                                        translate>fieldForm.{{ c.name }}</span></th>
+                                <th width="{{c.width}}" *ngFor="let c of columns" (click)="onSortBy(c)" style="cursor: pointer;"> <span [ngClass]="c.ascending != 'undefine' ? (c.ascending == true  ? 'ides-datatable-column-up': 'ides-datatable-column-down') : ''" translate>fieldForm.{{ c.name }}</span></th>
                                 <th translate>column_actions</th>
                             </tr>
                         </thead>
@@ -53,39 +48,33 @@
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <span tooltip="Rango" placement="top"
-                                                                class="badge badge-success">0
+                                                            <span tooltip="Rango" placement="top" class="badge badge-success">0
                                                                 - {{ i[c.prop][0][0] }}</span>
                                                         </div>
                                                         <div class="col-6">
-                                                            <span tooltip="Puntos" placement="top"
-                                                                class="badge badge-success">{{ i[c.prop][0][1] }}</span>
+                                                            <span tooltip="Puntos" placement="top" class="badge badge-success">{{ i[c.prop][0][1] }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <span tooltip="Rango" placement="top"
-                                                                class="badge badge-warning">{{ i[c.prop][0][0] + 1 }} -
+                                                            <span tooltip="Rango" placement="top" class="badge badge-warning">{{ i[c.prop][0][0] + 1 }} -
                                                                 {{ i[c.prop][1][0] }}</span>
                                                         </div>
                                                         <div class="col-6">
-                                                            <span tooltip="Puntos" placement="top"
-                                                                class="badge badge-warning">{{ i[c.prop][1][1] }}</span>
+                                                            <span tooltip="Puntos" placement="top" class="badge badge-warning">{{ i[c.prop][1][1] }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <span tooltip="Rango" placement="top"
-                                                                class="badge badge-danger">+
+                                                            <span tooltip="Rango" placement="top" class="badge badge-danger">+
                                                                 {{ i[c.prop][1][0] + 1 }}</span>
                                                         </div>
                                                         <div class="col-6">
-                                                            <span tooltip="Puntos" placement="top"
-                                                                class="badge badge-danger">{{ i[c.prop][2][0] }}</span>
+                                                            <span tooltip="Puntos" placement="top" class="badge badge-danger">{{ i[c.prop][2][0] }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,11 +86,9 @@
                                     </div>
                                 </td>
                                 <td class="action">
-                                    <i-feather *ngIf="showAdd && !i.hideDelete" (click)="onEdit(i)"
-                                        class="icon-action icon-action-edit" name="edit">
+                                    <i-feather *ngIf="showAdd && !i.hideDelete" (click)="onEdit(i)" class="icon-action icon-action-edit" name="edit">
                                     </i-feather>
-                                    <i-feather *ngIf="!i.hideDelete" (click)="onConfirmDelete(i)"
-                                        class="icon-action icon-action-delete" name="trash-2">
+                                    <i-feather *ngIf="!i.hideDelete" (click)="onConfirmDelete(i)" class="icon-action icon-action-delete" name="trash-2">
                                     </i-feather>
                                 </td>
                             </tr>
@@ -117,24 +104,18 @@
         </div>
         <nav *ngIf="items?.totalDocs > 0" aria-label="Page navigation example">
             <ul class="pagination">
-                <li (click)="onChangePage(items?.currentPage - 1, items?.currentPage, items?.totalPages)"
-                    class="page-item cursor-pointer" [ngClass]="{ 'disabled': items?.currentPage === 0 }">
+                <li (click)="onChangePage(items?.currentPage - 1, items?.currentPage, items?.totalPages)" class="page-item cursor-pointer" [ngClass]="{ 'disabled': items?.currentPage === 0 }">
                     <span class="page-link" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </span>
                 </li>
-                <li class="page-item"
-                    [ngClass]="{'active' : items?.currentPage === p, 'cursor-pointer': items?.currentPage !== p}"
-                    (click)="onChangePage(p, items?.currentPage, items?.totalPages)"
-                    *ngFor="let p of getPagination(items?.currentPage, items?.totalPages, items?.totalDocs)">
+                <li class="page-item" [ngClass]="{'active' : items?.currentPage === p, 'cursor-pointer': items?.currentPage !== p}" (click)="onChangePage(p, items?.currentPage, items?.totalPages)" *ngFor="let p of getPagination(items?.currentPage, items?.totalPages, items?.totalDocs)">
                     <span class="page-link">
                         {{ p + 1 }}
                         <span class="sr-only">(current)</span>
                     </span>
                 </li>
-                <li (click)="onChangePage(items?.currentPage + 1, items?.currentPage, items?.totalPages)"
-                    class="page-item cursor-pointer"
-                    [ngClass]="{ 'disabled': items?.currentPage === items?.totalPages - 1 }">
+                <li (click)="onChangePage(items?.currentPage + 1, items?.currentPage, items?.totalPages)" class="page-item cursor-pointer" [ngClass]="{ 'disabled': items?.currentPage === items?.totalPages - 1 }">
                     <span class="page-link" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </span>
@@ -144,8 +125,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -165,13 +145,11 @@
     </div>
 </div>
 
-<div *ngIf="showAdd" class="modal fade" id="addEditModal" tabindex="-1" role="dialog"
-    aria-labelledby="addEditModalLabel" aria-hidden="true">
+<div *ngIf="showAdd" class="modal fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="addEditModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" class="text-uppercase"> <span
-                        translate>actions.{{action}} </span> <span translate>models.{{ model }}</span></h5>
+                <h5 class="modal-title" id="exampleModalLabel" class="text-uppercase"> <span translate>actions.{{action}} </span> <span translate>models.{{ model }}</span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -183,50 +161,40 @@
                             <label [for]="f.id" class="col-form-label" translate>fieldForm.{{f.label}} <span>
                                     {{f?.required ? ' (*)' : ''}}</span></label>
                             <div [ngSwitch]="f.type">
-                                <textarea *ngSwitchCase="'text_area'" [formControlName]="f.formControlName"
-                                    class="form-control" [attr.id]="f.id"></textarea>
-                                <select *ngSwitchCase="'select'" [formControlName]="f.formControlName"
-                                    class="form-control" [attr.id]="f.id">
+                                <textarea *ngSwitchCase="'text_area'" [formControlName]="f.formControlName" class="form-control" [attr.id]="f.id"></textarea>
+                                <select *ngSwitchCase="'select'" [formControlName]="f.formControlName" class="form-control" [attr.id]="f.id">
                                     <option [ngValue]="o.id" *ngFor="let o of f.options">{{ o.text | uppercase }}
                                     </option>
                                 </select>
-                                <select multiple *ngSwitchCase="'select_multiple'" [formControlName]="f.formControlName"
-                                    class="form-control" [attr.id]="f.id">
+                                <select multiple *ngSwitchCase="'select_multiple'" [formControlName]="f.formControlName" class="form-control" [attr.id]="f.id">
                                     <option [ngValue]="o.id" *ngFor="let o of f.options">{{ o.text | uppercase }}
                                     </option>
                                 </select>
                                 <div class="custom-file" *ngSwitchCase="'file'">
-                                    <input (change)="onChangeFile(f.id,$event)" type="file" class="custom-file-input"
-                                        [attr.id]="f.id" required>
-                                    <label class="custom-file-label"
-                                        [attr.for]="f.id">{{ f.value ? (f.value | slice:0:40) + '...' : 'Seleccionar archivo' }}</label>
+                                    <input (change)="onChangeFile(f.id,$event)" type="file" class="custom-file-input" [attr.id]="f.id" required>
+                                    <label class="custom-file-label" [attr.for]="f.id">{{ f.value ? (f.value | slice:0:40) + '...' : 'Seleccionar archivo' }}</label>
                                     <!-- <input (change)="onChangeFile(f.id,$event)"
                                     [formControlName]="f.formControlName" [attr.type]="f.type" class="form-control-file"
                                     [attr.id]="f.id" /> -->
                                 </div>
 
                                 <div *ngSwitchCase="'switch'" class="custom-control custom-switch">
-                                    <input [formControlName]="f.formControlName" type="checkbox"
-                                        class="custom-control-input" [attr.id]="f.id">
+                                    <input [formControlName]="f.formControlName" type="checkbox" class="custom-control-input" [attr.id]="f.id">
                                     <label class="custom-control-label" [for]="f.id"></label>
                                 </div>
                                 <div *ngSwitchCase="'configs'">
                                     <app-ides-configs-indicator [formControlName]="f.formControlName">
                                     </app-ides-configs-indicator>
                                 </div>
-                                <input *ngSwitchCase="'color_picker'" [(colorPicker)]="color" [style.background]="color"
-                                    [attr.id]="f.id" (colorPickerChange)="cpInputChange(f.id,$event)" [value]="color"
-                                    [cpOutputFormat]="'rgba'" />
-                                <input *ngSwitchDefault [formControlName]="f.formControlName" [attr.type]="f.type"
-                                    class="form-control" [attr.id]="f.id">
+                                <input *ngSwitchCase="'color_picker'" [(colorPicker)]="color" [style.background]="color" [attr.id]="f.id" (colorPickerChange)="cpInputChange(f.id,$event)" [value]="color" [cpOutputFormat]="'rgba'" />
+                                <input *ngSwitchDefault [formControlName]="f.formControlName" [attr.type]="f.type" class="form-control" [attr.id]="f.id">
                             </div>
                         </ng-container>
                     </div>
-                    <span>(*) Campos obligatorios</span>
+                    <span>(****) Campos obligatorios</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        translate>button.cancel</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" translate>button.cancel</button>
                     <button [disabled]="!addEditForm.valid" type="submit" class="btn btn-primary"><span
                             translate>button.{{action}}</span></button>
                 </div>

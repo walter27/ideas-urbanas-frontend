@@ -22,7 +22,7 @@ export class VariableComponent implements OnInit {
   model = 'Variable';
   filters: Filters = {
     page: 0,
-    limit: 10,
+    limit: 30,
     ascending: true,
     sort: '_id'
   };
@@ -120,7 +120,7 @@ export class VariableComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.listVariable();
     this.listClasification();
     this.listOrigin();
@@ -128,16 +128,18 @@ export class VariableComponent implements OnInit {
   }
 
   listVariable() {
+    console.log('FILTROOOOOOssssssssssssssss', this.filters);
+
     this.result$ = this.variableService.listVariables(this.filters);
   }
 
   listClasification() {
     this.filters.sort = 'name';
-    this.clasificationService.listClasification(this.filters).subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'id_Clasification' ) {
+    this.clasificationService.listClasification(this.filters).subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Clasification') {
           el.options = [];
-          data.data.forEach( p => {
+          data.data.forEach(p => {
             el.options.push({
               id: p._id,
               text: p.name
@@ -145,15 +147,15 @@ export class VariableComponent implements OnInit {
           });
         }
       });
-    } );
+    });
   }
 
   listOrigin() {
-    this.originService.listOrigins(this.filters).subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'origins' ) {
+    this.originService.listOrigins(this.filters).subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'origins') {
           el.options = [];
-          data.data.forEach( p => {
+          data.data.forEach(p => {
             el.options.push({
               id: p._id,
               text: p.name
@@ -161,15 +163,15 @@ export class VariableComponent implements OnInit {
           });
         }
       });
-    } );
+    });
   }
 
   listCharts() {
-    this.chartsService.listCharts().subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'chart_type' ) {
+    this.chartsService.listCharts().subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'chart_type') {
           el.options = [];
-          data.charts.forEach( p => {
+          data.charts.forEach(p => {
             el.options.push({
               id: p,
               text: p
@@ -182,8 +184,8 @@ export class VariableComponent implements OnInit {
 
   onSubmit(event) {
     if (this.addEditForm.valid) {
-      if ( event.action === 'add' ) {
-        this.variableService.addVariable( this.addEditForm.value ).subscribe(data => {
+      if (event.action === 'add') {
+        this.variableService.addVariable(this.addEditForm.value).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' adicionado correctamente.');
@@ -219,8 +221,8 @@ export class VariableComponent implements OnInit {
     this.listVariable();
   }
 
-  onChangeFile(event){
-    
+  onChangeFile(event) {
+
   }
 
 }

@@ -33,9 +33,15 @@ export class VariableService {
   }
 
   listVariables(filters: Filters): Observable<ResultList<Variable>> {
+    console.log('FILTROOOOOOOO',filters);
+    
     const filtersB = this.utilsService.buildFilters(filters);
+    console.log(filtersB);
+    
     return this.httpClient.get<ResponseApi<ResultList<Variable>>>(this.serverUrl + this.urlVariable + filtersB).pipe(
       map(data => {
+        console.log(data.results);
+        
         return data.results;
       })
     );
