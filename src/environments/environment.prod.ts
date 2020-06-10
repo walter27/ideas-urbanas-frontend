@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   env: 'prod',
-  serverUrl: 'http://miserver:3000/',
+  serverUrl: 'https://ideas-urbanas-api.herokuapp.com/',
   stage: 'dev/',
   auth: {
     base: 'auth/',
