@@ -96,6 +96,9 @@ export class DataService {
   }
 
   addData(profile) {
+
+    console.log(profile);
+    
     return this.httpClient.post(this.serverUrl + this.urlData, profile, httpOptions);
   }
 

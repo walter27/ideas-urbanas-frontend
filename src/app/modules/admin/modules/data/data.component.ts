@@ -33,6 +33,7 @@ export class DataComponent implements OnInit {
     { name: 'year', prop: 'year' },
     { name: 'canton', prop: 'obj_Canton.name' },
     { name: 'variable', prop: 'obj_Variable.name' },
+    { name: 'date', prop: 'date' }
   ];
   fields: FieldsForm[] = [
     {
@@ -54,6 +55,13 @@ export class DataComponent implements OnInit {
       type: 'number',
       id: 'year',
       formControlName: 'year',
+      required: true
+    },
+    {
+      label: 'date',
+      type: 'date',
+      id: 'date',
+      formControlName: 'date',
       required: true
     },
     {
@@ -83,6 +91,8 @@ export class DataComponent implements OnInit {
     year: new FormControl('', [Validators.required]),
     id_Canton: new FormControl('', [Validators.required]),
     id_Variable: new FormControl('', [Validators.required]),
+    date: new FormControl('', [Validators.required]),
+
   });
 
   private readonly notifier: NotifierService;
@@ -99,7 +109,7 @@ export class DataComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.listVariable();
     this.listCanton();
     this.listData();
@@ -110,11 +120,11 @@ export class DataComponent implements OnInit {
   }
 
   listVariable() {
-    this.variableService.listVariables(this.filters).subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'id_Variable' ) {
+    this.variableService.listVariables(this.filters).subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Variable') {
           el.options = [];
-          data.data.forEach( p => {
+          data.data.forEach(p => {
             el.options.push({
               id: p._id,
               text: p.name
@@ -131,11 +141,11 @@ export class DataComponent implements OnInit {
       limit: 1000,
       ascending: true,
       sort: '_id'
-    }, 'Canton').subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'id_Canton' ) {
+    }, 'Canton').subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Canton') {
           el.options = [];
-          data.data.forEach( p => {
+          data.data.forEach(p => {
             el.options.push({
               id: p._id,
               text: p.name
@@ -148,8 +158,8 @@ export class DataComponent implements OnInit {
 
   onSubmit(event) {
     if (this.addEditForm.valid) {
-      if ( event.action === 'add' ) {
-        this.dataService.addData( this.addEditForm.value ).subscribe(data => {
+      if (event.action === 'add') {
+        this.dataService.addData(this.addEditForm.value).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' adicionado correctamente.');
@@ -191,8 +201,8 @@ export class DataComponent implements OnInit {
     this.listData();
   }
 
-  onChangeFile(event){
-    
+  onChangeFile(event) {
+
   }
 
   onSortBy(event) {

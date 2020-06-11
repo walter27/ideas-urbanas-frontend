@@ -9,4 +9,5 @@ export interface Variable {
     year: string;
     obj_Parroquia: Region;
     obj_Variable: Variable;
+    date: Date;
 }

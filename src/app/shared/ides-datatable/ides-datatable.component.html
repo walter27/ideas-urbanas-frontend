@@ -160,7 +160,9 @@
                         <ng-container>
                             <label [for]="f.id" class="col-form-label" translate>fieldForm.{{f.label}} <span>
                                     {{f?.required ? ' (*)' : ''}}</span></label>
+
                             <div [ngSwitch]="f.type">
+
                                 <textarea *ngSwitchCase="'text_area'" [formControlName]="f.formControlName" class="form-control" [attr.id]="f.id"></textarea>
                                 <select *ngSwitchCase="'select'" [formControlName]="f.formControlName" class="form-control" [attr.id]="f.id">
                                     <option [ngValue]="o.id" *ngFor="let o of f.options">{{ o.text | uppercase }}
