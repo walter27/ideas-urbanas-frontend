@@ -48,25 +48,6 @@ export class CovidComponent implements OnInit {
 
 
 
-
-
-
-
-    this.data3 = {
-      labels: ['January'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [65]
-        }
-      ]
-    };
-
-    console.log(this.data3);
-
-
     setTimeout(() => {
 
       this.covidBarChart = {
