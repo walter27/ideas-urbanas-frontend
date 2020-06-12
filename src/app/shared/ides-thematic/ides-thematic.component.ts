@@ -565,7 +565,8 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
 
-    this.subscription = this.dataService.listDatasPublic({ page: 0, limit: 1000, ascending: true, sort: 'obj_Canton.name' },
+    this.subscription = this.dataService.listDatasPublic(
+      { page: 0, limit: 1000, ascending: true, sort: 'obj_Canton.name' },
       idVariable).subscribe(data => {
         this.loading = false;
         this.resultData = data.data;
@@ -584,6 +585,9 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   }
 
   onSelectVariable(variable) {
+
+    console.log(variable);
+    
     this.variableSelected = variable;
     sessionStorage.setItem('variableSelectedName', this.variableSelected.name);
     sessionStorage.setItem('variableSelectedLabel', this.variableSelected.label);

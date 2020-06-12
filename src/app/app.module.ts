@@ -13,10 +13,11 @@ import {
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthInterceptorService } from './core/interceptors/auth-interceptor.service';
 import { HttpGetInterceptorService } from './core/interceptors/http-get-interceptor.service';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ChartsModule } from 'ng2-charts';
+import { AngularFontAwesomeModule } from 'angular-font-awesome'; import { ChartsModule } from 'ng2-charts';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartModule } from 'primeng/chart';
+
 
 export function tokenGetter() {
   return sessionStorage.getItem('token');
@@ -79,6 +80,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     NotifierModule.withConfig(customNotifierOptions),
+    ChartModule,
     ChartsModule,
     BrowserModule,
     BrowserAnimationsModule,
