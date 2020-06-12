@@ -56,8 +56,6 @@ export class CovidComponent implements OnInit {
       };
       console.log(this.covidBarChart);
 
-
-
     }, 2000);
 
 
