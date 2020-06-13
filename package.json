@@ -9,8 +9,8 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "release": "ng build --prod --aot=true --build-optimizer=true",
-        "build:prod": "ng build --prod --aot=true --build-optimizer=true",
-        "heroku-postbuild": "npm run build:prod"
+        "postinstall": "ng build --aot -prod",
+        "heroku-postbuild": "ng build --aot -prod"
     },
     "private": true,
     "dependencies": {
