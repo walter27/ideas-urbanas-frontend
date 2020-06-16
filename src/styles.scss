@@ -133,12 +133,24 @@ a.ides-text-white:hover {
 }
 
 .nav-item {
-    color: #076DCD!important;
-    font: 16px 'Noto Sans TC';
+    background-color: #fff;
+    display: inline-block;
+    color: #0045ba;
+    font-family: Arial;
+    text-decoration: none;
 }
 
 .nav-item:hover {
-    color: #F8A901!important;
+    box-shadow: 0px 10px 14px -7px #9ba2a3;
+    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
+    background-color: #fbba2e;
+    border-radius: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 0.4rem;
 }
 
 .nav-item-categories {
@@ -152,16 +164,23 @@ a.ides-text-white:hover {
 }
 
 .nav-item-active {
-    color: white!important;
-    border-radius: 15px;
-    width: 35%;
-    padding: 8px;
-    background-color: #f8ac08;
-    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 10px 14px -7px #9ba2a3;
+    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
+    background-color: #fbba2e;
+    border-radius: 40px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 0.4rem;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #8a8a8a;
 }
 
 .nav-item-active:hover {
-    color: white!important;
+    background: linear-gradient(to bottom, #f8ac09 5%, #fbba2e 100%);
+    background-color: #f8ac09;
 }
 
 
@@ -599,34 +618,4 @@ a:hover {
     margin-right: 10px;
     border-radius: 50px;
     opacity: 0;
-}
-
-//covid-19
-.select-covid {
-    border-radius: 40px;
-    background-color: #f8ac08;
-    width: 200px;
-    height: 50px;
-    color: white;
-    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
-    text-align: center;
-}
-
-.select-covid-box {
-    background-color: white;
-    color: black;
-    border-radius: 40px;
-}
-
-.btn-covid {
-    border-radius: 40px;
-    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
-    background-color: #f8ac08;
-    color: white;
-    width: 100px;
-    height: 50px;
-}
-
-.container-covid {
-    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
 }

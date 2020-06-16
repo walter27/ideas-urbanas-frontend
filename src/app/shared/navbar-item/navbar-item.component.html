@@ -1,21 +1,17 @@
 <div *appAllowMenuItem="item">
     <div [ngSwitch]="item.type">
         <div *ngSwitchCase="'text'">
-            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url"
-                class="nav-item cursor-pointer text-none nav-item-root" (click)="hideMenu()"
-                translate>{{ item.title }}</a>
+            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url" class=" nav-item " (click)="hideMenu()" translate>{{ item.title }}</a>
         </div>
         <div *ngSwitchDefault>
             <div class="dropdown">
-                <a [routerLinkActive]="['nav-item-active']" class="nav-item cursor-pointer text-none"
-                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="nav-item-root" translate>{{ item.title }}</span>
-                    <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left"
-                        aria-labelledby="dropdownMenuButton">
+                <a [routerLinkActive]="['nav-item-active']" class="nav-item text-none" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span translate>{{ item.title }}</span>
+                    <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
                         <div class="" *ngFor="let o of item.options | slice:0:item.amountToShow">
-                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class="dropdown-item" href="#"
-                                (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
+                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class="dropdown-item" href="#" (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
                         </div>
+
                         <div *ngIf="item.options.length > item.amountToShow" class="text-center">
                             <a (click)="onClickShowMore($event)" class="dropdown-item">
                                 <fa class="cursor-pointer" [name]="'angle-double-down'"></fa>

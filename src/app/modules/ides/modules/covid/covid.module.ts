@@ -6,6 +6,9 @@ import { CovidComponent } from './covid.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartModule } from 'primeng/chart';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { MultiSelectModule } from 'primeng/multiselect';
+
 
 
 
@@ -16,10 +19,12 @@ import { ChartModule } from 'primeng/chart';
     CommonModule,
     CovidRoutingModule,
     //BrowserModule,
-   // BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     SharedModule,
     TranslateModule,
-    ChartModule
+    ChartModule,
+    HighchartsChartModule,
+    MultiSelectModule
 
   ]
 })

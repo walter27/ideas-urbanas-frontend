@@ -30,9 +30,9 @@
         <div class="navbar-collapse mt-3">
             <div class="row">
 
-                <div class="mx-auto">
-                    <ul class="nav ml-auto">
-                        <li class="nav-item mb-2 ml-5 mr-0" *ngFor="let i of items">
+                <div>
+                    <ul class="nav">
+                        <li *ngFor="let i of items">
                             <app-navbar-item (showMore)="showMore.emit($event)" [item]="i"></app-navbar-item>
                         </li>
                     </ul>

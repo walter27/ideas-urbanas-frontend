@@ -17,6 +17,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome'; import { Charts
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'primeng/chart';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 
 export function tokenGetter() {
@@ -82,6 +84,7 @@ export function createTranslateLoader(http: HttpClient) {
     NotifierModule.withConfig(customNotifierOptions),
     ChartModule,
     ChartsModule,
+    HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,

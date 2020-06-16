@@ -1,7 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ClasificationService } from '../../../../core/services/clasification.service';
 import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
+import * as Highcharts from 'highcharts';
+import HC_exporting from 'highcharts/modules/exporting';
+import HC_export from 'highcharts/modules/export-data';
+import { SelectItem } from 'primeng/api';
+
+
+
+interface City {
+  name: string;
+
+}
+
 
 
 
@@ -29,6 +41,28 @@ export class CovidComponent implements OnInit {
 
   data3: any;
 
+  data6: any;
+  dataHigcharts: any = [];
+
+  //highcharts = Highcharts;
+  chartOptions: any = {};
+  chartOptions6: any = {};
+
+  highcharts: any;
+
+  cities: City[];
+
+
+  selectedCities: City[];
+
+
+
+
+
+
+
+
+
   constructor(private resultClasification: ClasificationService, private variableService: VariableService, private dataService: DataService) {
     this.clasification = this.resultClasification.listClasification(this.filters).subscribe((data) => {
 
@@ -41,12 +75,12 @@ export class CovidComponent implements OnInit {
         }
 
       }
-
       // console.log(data.data[0]);
 
     });
 
 
+    //HIGCHARTS
 
     setTimeout(() => {
 
@@ -54,12 +88,37 @@ export class CovidComponent implements OnInit {
         labels: this.label,
         datasets: this.data2
       };
-      console.log(this.covidBarChart);
+
+      this.highcharts = Highcharts;
+      HC_exporting(Highcharts);
+      HC_export(Highcharts);
+      this.chartOptions6 = {
+        chart: {
+          type: "column"
+        },
+        title: {
+          text: "Casos confirmados de covid"
+        },
+        xAxis: {
+          categories: this.label
+        },
+        yAxis: {
+          title: {
+            text: "Casos Confirmados"
+          }
+        },
+        series: this.dataHigcharts
+      };
+
+
+
 
     }, 2000);
 
+    console.log(this.data2);
 
-
+    //console.log(this.);
+    this.cities = this.data2;
 
 
   }
@@ -84,24 +143,24 @@ export class CovidComponent implements OnInit {
 
     this.data = await dataService.listDatasPublic(this.filters, id).subscribe((data) => {
 
-      //let dataSets: { label: string, data: Array, fill: boolean, borderColor: string };
-
-
-
-
-
 
       for (const dataCovid of data.data) {
         //console.log(dataCovid);
         let dataSets = {
-          label: dataCovid.obj_Canton.name,
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [Number(dataCovid.value)]
+          name: dataCovid.obj_Canton.name,
+
+
+        };
+
+        let dataCovi = {
+          data: [Number(dataCovid.value)],
+          name: dataCovid.obj_Canton.name
+
 
         };
         this.label.push(String(dataCovid.year));
         this.data2.push(dataSets);
+        this.dataHigcharts.push(dataCovi);
 
         //  console.log(dataSets);
 
@@ -109,7 +168,6 @@ export class CovidComponent implements OnInit {
         // console.log(data2);
       }
 
-      // console.log(this.data2);
 
 
     });
