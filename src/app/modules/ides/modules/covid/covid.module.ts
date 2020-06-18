@@ -18,8 +18,6 @@ import { MultiSelectModule } from 'primeng/multiselect';
   imports: [
     CommonModule,
     CovidRoutingModule,
-    //BrowserModule,
-    // BrowserAnimationsModule,
     SharedModule,
     TranslateModule,
     ChartModule,

@@ -1,16 +1,25 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClasificationService } from '../../../../core/services/clasification.service';
 import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
 import * as Highcharts from 'highcharts';
+import * as Highcharts2 from 'highcharts/highmaps';
+
 import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
-import { SelectItem } from 'primeng/api';
+
+//map
+//import catones from '../../../../../assets/geojson/json';
+
+const catones: any = require('../../../../../assets/geojson/geojson_cantones.json');
+
+
 
 
 
 interface City {
   name: string;
+  id: string;
 
 }
 
@@ -52,8 +61,26 @@ export class CovidComponent implements OnInit {
 
   cities: City[];
 
-
   selectedCities: City[];
+
+
+  //Mapa
+  dataMapa: any[] = [];
+
+
+
+
+
+  chart;
+  chartCallback;
+  title = 'app';
+  updateFromInput = false;
+  Highcharts = Highcharts2;
+  chartConstructor = 'mapChart';
+  chartOptionsMap: any = {};
+
+
+
 
 
 
@@ -65,6 +92,7 @@ export class CovidComponent implements OnInit {
 
   constructor(private resultClasification: ClasificationService, private variableService: VariableService, private dataService: DataService) {
     this.clasification = this.resultClasification.listClasification(this.filters).subscribe((data) => {
+
 
 
       for (const clasification of data.data) {
@@ -115,10 +143,70 @@ export class CovidComponent implements OnInit {
 
     }, 2000);
 
-    console.log(this.data2);
+    console.log(this.dataMapa);
 
-    //console.log(this.);
     this.cities = this.data2;
+
+
+    setTimeout(() => {
+
+
+
+      this.chartOptionsMap = {
+        chart: {
+          map: catones
+        },
+        title: {
+          text: 'Ecuador'
+        },
+        mapNavigation: {
+          enabled: true,
+          buttonOptions: {
+            alignTo: 'spacingBox'
+          }
+        },
+        colorAxis: {
+          tickPixelInterval: 30,
+          minColor: '#ffeda0',
+          maxColor: '#bd0026'
+        },
+        series: [{
+          data: this.dataMapa,
+          keys: ['id', 'value'],
+          joinBy: 'id',
+          name: 'Casos confirmados',
+          states: {
+            hover: {
+              color: '#a4edba'
+            }
+          },
+          dataLabels: {
+            enabled: true,
+            format: '{point.properties.name}'
+          }
+        }]
+      };
+
+    }, 2000);
+
+
+    const self = this;
+
+    this.chartCallback = chart => {
+      self.chart = chart;
+    };
+
+    HC_exporting(Highcharts2);
+    HC_export(Highcharts2);
+
+
+
+
+
+
+
+
+
 
 
   }
@@ -148,6 +236,7 @@ export class CovidComponent implements OnInit {
         //console.log(dataCovid);
         let dataSets = {
           name: dataCovid.obj_Canton.name,
+          id: dataCovid.obj_Canton.code
 
 
         };
@@ -158,6 +247,14 @@ export class CovidComponent implements OnInit {
 
 
         };
+
+
+        let dataMap: [string, number] = [
+          dataCovid.obj_Canton.code,
+          Number(dataCovid.value)
+        ];
+
+        this.dataMapa.push(dataMap);
         this.label.push(String(dataCovid.year));
         this.data2.push(dataSets);
         this.dataHigcharts.push(dataCovi);
@@ -176,6 +273,10 @@ export class CovidComponent implements OnInit {
 
 
 
+
+
   }
+
+
 
 }
