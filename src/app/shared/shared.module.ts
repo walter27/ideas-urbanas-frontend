@@ -30,6 +30,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { VectormapDirective } from './directives/vector-map';
 import { TagcloudDirective } from './directives/tag-cloud';
+import { CardBasicGraphCovidComponent } from './card-basic-graph-covid/card-basic-graph-covid.component';
+import { CardBasicMapCovidComponent } from './card-basic-map-covid/card-basic-map-covid.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -54,7 +56,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     IdesDownloadComponent,
     IdesConfigsIndicatorComponent,
     VectormapDirective,
-    TagcloudDirective
+    TagcloudDirective,
+    CardBasicGraphCovidComponent,
+    CardBasicMapCovidComponent
   ],
   exports: [
     HeaderComponent,
