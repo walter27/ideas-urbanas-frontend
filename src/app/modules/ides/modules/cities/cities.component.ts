@@ -124,6 +124,11 @@ export class CitiesComponent implements OnInit {
     this.resultVariables = null;
     this.variableService.getVariablesByClasification(this.clasificationSelected._id).pipe(
       map(resp => {
+
+        console.log('Perro');
+        
+        console.log(resp);
+        
         return resp;
       })
     ).subscribe(resp => {

@@ -18,6 +18,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'primeng/chart';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -79,6 +80,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     NotifierModule.withConfig(customNotifierOptions),

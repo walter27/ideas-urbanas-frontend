@@ -8,6 +8,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ChartModule } from 'primeng/chart';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+import { SliderModule } from 'primeng/slider';
+
+import { Ng5SliderModule } from 'ng5-slider';
+
+
 
 
 
@@ -22,7 +29,12 @@ import { MultiSelectModule } from 'primeng/multiselect';
     TranslateModule,
     ChartModule,
     HighchartsChartModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    SliderModule,
+    Ng5SliderModule
 
   ]
 })

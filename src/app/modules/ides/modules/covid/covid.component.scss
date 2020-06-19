@@ -40,20 +40,19 @@
 
 :host ::ng-deep.ui-multiselect {
     border-radius: 14px;
-    background: rgb(3, 105, 255);
-    background: linear-gradient(0deg, rgba(3, 105, 255, 1) 26%, rgba(6, 76, 195, 1) 55%);
-    width: 9rem;
+    background: white;
+    border-color: rgba(6, 76, 195, 1);
+    width: 11rem;
 }
 
 :host::ng-deep.ui-multiselect .ui-multiselect-trigger {
     border-radius: 14px;
-    background: rgb(3, 105, 255);
-    background: linear-gradient(0deg, rgba(3, 105, 255, 1) 26%, rgba(6, 76, 195, 1) 55%);
-    color: white;
+    background: white;
+    color: rgba(6, 76, 195, 1);
 }
 
 :host::ng-deep.ui-multiselect .ui-multiselect-label {
-    color: white;
+    color: rgba(6, 76, 195, 1);
 }
 
 :host::ng-deep.ui-multiselect .ui-multiselect-panel {
@@ -65,4 +64,39 @@
 .highcharts {
     border: solid 1px;
     border-radius: 5px;
+}
+
+.haighmap {
+    background: gray;
+}
+
+//dropdown
+:host ::ng-deep.ui-dropdown {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+}
+
+:host ::ng-deep.ui-dropdown-clearable:hov {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px
+}
+
+:host ::ng-deep.ui-dropdown-label {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-trigger {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+}
+
+:host ::ng-deep.ui-dropdown {
+    color: white;
 }

@@ -13,9 +13,24 @@
     <div class="container container-covid">
 
         <div class="row p-5">
-            <div class="col-12">
+
+            <div class="col-md-6">
                 <h2>Respuestas urbanas al covid-19</h2>
+
+
+            </div>
+
+            <div class=" col-md-6 text-right pt-2">
+
+                <p-multiSelect [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Select cities'" [showHeader]=false (onChange)="getSelects()" name="selectedCantons"></p-multiSelect>
+
+            </div>
+            <div class="col-12">
                 <p>Casos muertes y recuperados en la ciudad del Ecuador</p>
+            </div>
+
+            <div class="col-md-12 p-3">
+                <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [options]="options"></ng5-slider>
             </div>
             <div class="col-6 ">
 
@@ -23,19 +38,17 @@
                 </highcharts-chart>
 
 
-                <!--     <div class=" text-right pt-2">
-
-                    <p-multiSelect [options]="cities" formControlName="selectedCities" optionLabel="name" [defaultLabel]="'Select cities'" [showHeader]=false></p-multiSelect>
-
-                </div>-->
-
-
             </div>
 
 
-            <div class="col-6 ">
+            <div class="col-6">
                 <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
                 </highcharts-chart>
+            </div>
+
+            <div class="col-md-12 text-right pt-3">
+                <p-dropdown [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Select variable'" (onChange)="getSelectVariable()"></p-dropdown>
+
             </div>
         </div>
 
