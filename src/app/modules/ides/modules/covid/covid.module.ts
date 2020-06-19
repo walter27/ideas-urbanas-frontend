@@ -9,10 +9,10 @@ import { ChartModule } from 'primeng/chart';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
 import { SliderModule } from 'primeng/slider';
-
 import { Ng5SliderModule } from 'ng5-slider';
+//import {DropdownModule} from 'primeng/dropdown';
+
 
 
 
@@ -32,9 +32,9 @@ import { Ng5SliderModule } from 'ng5-slider';
     MultiSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    DropdownModule,
     SliderModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+   // DropdownModule
 
   ]
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterContentChecked, AfterViewChecked, AfterContentInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClasificationService } from '../../../../core/services/clasification.service';
 import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
@@ -19,6 +19,7 @@ import { Variable } from 'src/app/core/models/variable.model';
 const catones: any = require('../../../../../assets/geojson/geojson_cantones.json');
 
 import { Options, LabelType } from 'ng5-slider';
+import { Data } from '@angular/router';
 
 
 
@@ -38,9 +39,9 @@ interface City {
   templateUrl: './covid.component.html',
   styleUrls: ['./covid.component.scss']
 })
-export class CovidComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked, AfterViewChecked, OnDestroy {
+export class CovidComponent implements OnInit {
 
-
+  idClasification: string;
   model = 'Canton';
   filters = {
     page: 0,
@@ -55,7 +56,11 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
   varibales2: Variable[];
   selectVariable: Variable;
 
+  selectDate: number;
+
   dates: Date[] = [];
+
+  dateString: string[] = [];
 
 
 
@@ -103,6 +108,7 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
   Highcharts = Highcharts2;
   chartConstructor = 'mapChart';
   chartOptionsMap: any = {};
+  updateDemo: boolean;
 
 
 
@@ -129,14 +135,22 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
     private dataService: DataService,
     private regionService: RegionService) {
 
-
+    this.updateDemo = false;
     this.getCantons();
-    this.clasification = this.resultClasification.listClasification(this.filters).subscribe((data) => {
+    this.getClasification();
 
+  }
+
+
+  getClasification() {
+
+    this.resultClasification.listClasification(this.filters).subscribe((data) => {
+
+      let idClasification;
       for (const clasification of data.data) {
         if (clasification.name === "Corona Virus") {
-          // console.log(clasification._id);
-          this.getIdVaribale(variableService, dataService, clasification._id);
+
+          //console.log(this.idClasification);
           this.getVariables(clasification._id);
 
 
@@ -144,82 +158,9 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
 
       }
 
+
+
     });
-
-
-
-
-
-
-
-
-
-
-    // console.log(this.dataMapa);
-
-    this.cities = this.data2;
-
-
-    setTimeout(() => {
-
-
-
-      this.chartOptionsMap = {
-        chart: {
-          map: catones
-        },
-        title: {
-          text: 'Ecuador'
-        },
-        mapNavigation: {
-          enabled: true,
-          buttonOptions: {
-            alignTo: 'spacingBox'
-          }
-        },
-        colorAxis: {
-          tickPixelInterval: 30,
-          minColor: '#ffeda0',
-          maxColor: '#bd0026'
-        },
-        series: [{
-          data: this.dataMapa,
-          keys: ['id', 'value'],
-          joinBy: 'id',
-          name: 'Casos confirmados',
-          states: {
-            hover: {
-              color: '#a4edba'
-            }
-          },
-          dataLabels: {
-            enabled: true,
-            format: '{point.properties.name}'
-          }
-        }]
-      };
-
-    }, 2000);
-
-
-    const self = this;
-
-    this.chartCallback = chart => {
-      self.chart = chart;
-    };
-
-    HC_exporting(Highcharts2);
-    HC_export(Highcharts2);
-
-
-
-
-
-
-
-
-
-
 
 
   }
@@ -234,7 +175,6 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
   getCantons() {
 
     this.regionService.listRegionsPublic(this.filters, this.model).subscribe((data) => {
-
       this.cantons = data.data;
     });
 
@@ -245,181 +185,31 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
 
     this.variableService.getVariablesByClasification(idClasification).subscribe((data) => {
       this.varibales2 = data.data;
+      this.selectVariable = this.varibales2[0];
+      this.getDatesVaribale(this.selectVariable);
 
     });
 
   }
 
-  getSelects() {
 
-    console.log(this.selectedCantons);
-
-
-  }
-
-  getSelectVariable() {
-
-    console.log(this.selectVariable._id);
-    this.getData(this.selectVariable._id);
-
-  }
-
-  getData(idSelectVariable: string) {
-
-    this.dataService.listDatasPublic(this.filters, idSelectVariable).subscribe((data) => {
-      console.log(data);
-
-      for (const dataCovid of data.data) {
-
-        let dataCovi = {
-          data: [Number(dataCovid.value)],
-          name: dataCovid.obj_Canton.name
+  getDatesVaribale(varibable: Variable) {
 
 
-        };
+    let dataCovid = [];
+    const dateRanges = [];
+    this.dataService.listDatasPublic(this.filters, varibable._id).subscribe((data) => {
 
-
-        let dataMap: [string, number] = [
-          dataCovid.obj_Canton.code,
-          Number(dataCovid.value)
-        ];
-
-        this.dataHigcharts.push(dataCovi);
-        this.dataMapa.push(dataMap);
-
-
+      dataCovid = data.data;
+      for (const info of dataCovid) {
+        dateRanges.push(info.date);
       }
 
-    });
-
-  }
-
-
-
-
-
-
-
-
-
-
-  async getIdVaribale(variableService: VariableService, dataservice: DataService, id: string) {
-
-    this.varibales = await variableService.getVariablesByClasification(id).subscribe((data) => {
-      this.getDataVaribale(dataservice, data.data[0]._id);
-
-    });
-
-  }
-
-  async getDataVaribale(dataService: DataService, id: string) {
-
-    this.data = await dataService.listDatasPublic(this.filters, id).subscribe((data) => {
-
-
-      for (const dataCovid of data.data) {
-
-
-
-        //console.log(dataCovid);
-        let dataSets = {
-          name: dataCovid.obj_Canton.name,
-          id: dataCovid.obj_Canton.code
-
-
-        };
-
-        let dataCovi = {
-          data: [Number(dataCovid.value)],
-          name: dataCovid.obj_Canton.name
-
-
-        };
-
-
-        let dataMap: [string, number] = [
-          dataCovid.obj_Canton.code,
-          Number(dataCovid.value)
-        ];
-
-
-        this.rangeValues.push(dataCovid.date);
-
-
-        this.dataMapa.push(dataMap);
-        this.label.push(String(dataCovid.year));
-        this.data2.push(dataSets);
-        this.dataHigcharts.push(dataCovi);
-
-        //  console.log(dataSets);
-
-
-      }
-
-      // console.log(this.rangeValues);
+      this.rangeValues = dateRanges;
       this.createDateRange();
-      this.graficarHigcharts();
-
+      this.getData(varibable._id);
 
     });
-
-
-
-
-
-
-
-  }
-
-
-
-  graficarHigcharts() {
-
-
-    let dates: Date[] = [];
-    for (const date of this.dateRange) {
-      let date2: Date = date.toDateString();
-      dates.push(date2);
-    }
-
-    console.log(dates);
-    console.log(this.dataHigcharts);
-    console.log(this.label);
-
-
-
-    //HIGCHARTS
-
-    setTimeout(() => {
-
-      this.highcharts = Highcharts;
-      HC_exporting(Highcharts);
-      HC_export(Highcharts);
-      this.chartOptions6 = {
-        chart: {
-          type: "column"
-        },
-        title: {
-          text: "Casos confirmados de covid"
-        },
-        xAxis: {
-          categories: dates
-        },
-        crosshair: true,
-        yAxis: {
-          title: {
-            text: "Casos Confirmados"
-          }
-        },
-        series: this.dataHigcharts
-      };
-
-
-
-
-    }, 2000);
-
-
 
 
 
@@ -442,15 +232,10 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
       let year = date.getUTCFullYear();
       let month = date.getUTCMonth();
       let dateStr = new Date(year, month, day);
-      //console.log(dateStr);
 
       dates.push(dateStr);
 
     }
-
-
-    // console.log('Perro', dates);
-
 
     this.loadDate(dates);
 
@@ -461,21 +246,9 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
   loadDate(dates: Date[]) {
 
 
-    //let dateRange: Date[] = [];
-
     this.dateRange = dates.sort((a, index) => {
-      return a - index
+      return a.getTime() - index.getTime();
     });
-
-    console.log('Perro', this.dateRange);
-
-
-    // console.log(dateRange);
-
-
-    this.value = this.dateRange[0].getTime();
-    // console.log(this.value);
-
 
     this.options = {
 
@@ -488,35 +261,292 @@ export class CovidComponent implements OnInit, OnChanges, AfterContentInit, Afte
     };
 
 
-
   }
 
-  sliderChange(e) {
+  getData(idSelectVariable: string) {
 
-    let values: number[] = [];
-    this.dateRange.map((date: Date) => {
+    this.dataService.listDatasPublic(this.filters, idSelectVariable).subscribe((data) => {
 
-      if (date <= new Date(e.value)) {
-        let value: number = date.getTime();
-        values.push(value);
+      let datesString = [];
+
+      if (!this.selectDate) {
+        this.selectDate = this.dateRange[0].getTime();
+        let selectDate = new Date(this.selectDate).toDateString();
+        datesString.push(selectDate);
+        this.dateString = datesString;
       }
+
+      let dataHigcharts = [];
+      let dataHighmap = [];
+
+      for (const dataCovid of data.data) {
+
+
+        let date: Date = new Date(dataCovid.date);
+        let day = date.getUTCDate();
+        let year = date.getUTCFullYear();
+        let month = date.getUTCMonth();
+        let dateStr = new Date(year, month, day).getTime();
+
+
+        if (this.selectDate === dateStr) {
+
+
+          // console.log(dataCovid);
+
+
+          let dataCovi = {
+            data: [Number(dataCovid.value)],
+            name: dataCovid.obj_Canton.name
+
+
+          };
+
+
+          let dataMap: [string, number] = [
+            dataCovid.obj_Canton.code,
+            Number(dataCovid.value)
+          ];
+
+
+
+          dataHigcharts.push(dataCovi);
+          dataHighmap.push(dataMap);
+
+
+
+        }
+
+
+      }
+
+      /*let selectCantos = ;
+      let dataSmall = [...dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 1);
+      console.log('ALTO', topValues);*/
+
+      if (!this.selectedCantons) {
+
+        let cantonSelectInicial = [];
+
+        for (const dataHih of dataHigcharts) {
+
+
+
+          for (const canton of this.cantons) {
+            if (canton.name === dataHih.name) {
+
+
+              cantonSelectInicial.push(canton);
+
+
+            }
+
+          }
+
+        }
+
+        this.selectedCantons = cantonSelectInicial;
+
+
+
+      }
+
+      if (this.selectedCantons) {
+
+        let dataHighchartsFinal = [];
+        let dataHighmapFinal = [];
+
+        for (const dataCovidHighcharts of dataHigcharts) {
+
+          for (const canton of this.selectedCantons) {
+
+            if (canton.name === dataCovidHighcharts.name) {
+
+              dataHighchartsFinal.push(dataCovidHighcharts);
+
+
+            }
+
+          }
+
+        }
+
+
+        for (const dataCovidHighmap of dataHighmap) {
+
+
+          for (const canton of this.selectedCantons) {
+
+
+            if (canton.code === dataCovidHighmap[0]) {
+
+
+              dataHighmapFinal.push(dataCovidHighmap);
+
+
+            }
+
+          }
+
+        }
+
+        this.dataHigcharts = dataHighchartsFinal;
+        this.dataMapa = dataHighmapFinal;
+      }
+
+      this.graficarHigcharts();
+      this.graficHighmap();
+
+
+
     });
 
+  }
 
-    let dates: Date[] = [];
-    for (const dateNumber of values) {
 
-      let date: Date = new Date(dateNumber).toDateString();
-      dates.push(date);
-      console.log(date);
+  getSelectVariable() {
 
-    }
-
-    this.dates = dates;
-
-    console.log(this.dates);
+    this.getDatesVaribale(this.selectVariable);
 
   }
+
+
+  getSelects() {
+
+    this.getData(this.selectVariable._id);
+
+
+  }
+  sliderChange(e) {
+    //console.log(e.value);
+
+    let datesString = [];
+    this.selectDate = e.value;
+    let selectDate = new Date(this.selectDate).toDateString();
+    datesString.push(selectDate);
+    this.dateString = datesString;
+
+    this.getData(this.selectVariable._id);
+    // console.log(this.selectDate);
+
+    //OBTAIN DATE RANGE 
+    /* let values: number[] = [];
+     this.dateRange.map((date: Date) => {
+   
+       if (date <= new Date(e.value)) {
+         let value: number = date.getTime();
+         values.push(value);
+       }
+   
+     });
+   
+   
+     let dates: Date[] = [];
+     for (const dateNumber of values) {
+   
+       let date: Date = new Date(dateNumber);
+       dates.push(date);
+       console.log(date);
+   
+     }
+   
+     this.dates = dates;
+   
+    // console.log(this.dates);*/
+
+  }
+
+
+
+
+  graficarHigcharts() {
+
+    // console.log(this.dataHigcharts);
+    // console.log(this.dateString);
+
+    //HIGCHARTS
+
+
+
+    this.highcharts = Highcharts;
+    HC_exporting(Highcharts);
+    HC_export(Highcharts);
+    this.chartOptions6 = {
+      chart: {
+        type: "column"
+      },
+      title: {
+        text: "Casos confirmados de covid"
+      },
+      xAxis: {
+        categories: this.dateString
+      },
+      yAxis: {
+        title: {
+          text: "Casos Confirmados"
+        }
+      },
+      series: this.dataHigcharts
+    };
+
+    this.updateDemo = true;
+
+
+  }
+
+  graficHighmap() {
+
+    //console.log(this.dataMapa);
+
+    this.chartOptionsMap = {
+      chart: {
+        map: catones
+      },
+      title: {
+        text: 'Ecuador'
+      },
+      mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+          alignTo: 'spacingBox'
+        }
+      },
+      colorAxis: {
+        tickPixelInterval: 30,
+        minColor: '#ffeda0',
+        maxColor: '#bd0026'
+      },
+      series: [{
+        data: this.dataMapa,
+        keys: ['id', 'value'],
+        joinBy: 'id',
+        name: 'Casos confirmados',
+        states: {
+          hover: {
+            color: '#a4edba'
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          format: '{point.properties.name}'
+        }
+      }]
+    };
+
+    const self = this;
+
+    this.chartCallback = chart => {
+      self.chart = chart;
+    };
+
+    HC_exporting(Highcharts2);
+    HC_export(Highcharts2);
+
+
+  }
+
+
+
 
 
 
