@@ -4,11 +4,15 @@ import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
 import * as Highcharts from 'highcharts';
 import * as Highcharts2 from 'highcharts/highmaps';
+import * as Highcharts3 from 'highcharts';
+
 
 import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
 
 import { NgForm, FormGroup } from '@angular/forms';
+import more from 'highcharts/highcharts-more';
+
 
 //map
 //import catones from '../../../../../assets/geojson/json';
@@ -20,10 +24,18 @@ const catones: any = require('../../../../../assets/geojson/geojson_cantones.jso
 
 import { Options, LabelType } from 'ng5-slider';
 import { Data } from '@angular/router';
+import { COLORS } from '../../../../core/const/colors.data';
+
+import Streamgraph from 'highcharts/modules/streamgraph';
 
 
+import Stock from 'highcharts/modules/stock';
+import { stringify } from 'querystring';
+//import Wheel from '../plugins/wheel-event';
 
 
+Stock(Highcharts);
+//Wheel(Highcharts);
 
 interface City {
   name: string;
@@ -61,7 +73,12 @@ export class CovidComponent implements OnInit {
   dates: Date[] = [];
 
   dateString: string[] = [];
+  dateStringAll: string[] = [];
 
+
+  Streamgraph: any;
+  chartOptionsStreamgraph: any = {};
+  chartConstructor2 = 'streamgraph';
 
 
 
@@ -82,12 +99,16 @@ export class CovidComponent implements OnInit {
 
   data6: any;
   dataHigcharts: any = [];
+  dataStreamGraphFinal: any = [];
+
 
   //highcharts = Highcharts;
   chartOptions: any = {};
   chartOptions6: any = {};
 
   highcharts: any;
+  highcharts3: any;
+
 
   cities: City[];
 
@@ -105,7 +126,7 @@ export class CovidComponent implements OnInit {
   chartCallback;
   title = 'app';
   updateFromInput = false;
-  Highcharts = Highcharts2;
+  Highcharts: any;
   chartConstructor = 'mapChart';
   chartOptionsMap: any = {};
   updateDemo: boolean;
@@ -126,6 +147,8 @@ export class CovidComponent implements OnInit {
   };
 
 
+  more: any;
+
 
 
 
@@ -135,9 +158,14 @@ export class CovidComponent implements OnInit {
     private dataService: DataService,
     private regionService: RegionService) {
 
+    this.highcharts3 = Highcharts3;
+    Streamgraph(Highcharts3);
+    this.Highcharts = Highcharts2;
     this.updateDemo = false;
     this.getCantons();
     this.getClasification();
+
+
 
   }
 
@@ -208,6 +236,7 @@ export class CovidComponent implements OnInit {
       this.rangeValues = dateRanges;
       this.createDateRange();
       this.getData(varibable._id);
+      this.getDataStreamgraph(varibable._id);
 
     });
 
@@ -261,7 +290,11 @@ export class CovidComponent implements OnInit {
     };
 
 
+
+
   }
+
+
 
   getData(idSelectVariable: string) {
 
@@ -274,10 +307,30 @@ export class CovidComponent implements OnInit {
         let selectDate = new Date(this.selectDate).toDateString();
         datesString.push(selectDate);
         this.dateString = datesString;
+
       }
+
+
+      let datesStringFinal = [];
+      datesStringFinal.push('');
+
+      for (const dateString of this.dateRange) {
+
+        let dateStringFinal = dateString.getTime();
+        let selectDate = new Date(dateStringFinal).toDateString();
+        datesStringFinal.push(selectDate);
+        this.dateStringAll = datesStringFinal;
+
+
+
+      }
+
+
 
       let dataHigcharts = [];
       let dataHighmap = [];
+      let dataStreangraph = [];
+
 
       for (const dataCovid of data.data) {
 
@@ -288,11 +341,20 @@ export class CovidComponent implements OnInit {
         let month = date.getUTCMonth();
         let dateStr = new Date(year, month, day).getTime();
 
+        let dataCovid2 = {
+          data: [Number(dataCovid.value)],
+          name: dataCovid.obj_Canton.name
+
+
+        };
+
+        dataStreangraph.push(dataCovid2);
+
+        //  console.log(dataCovid);
 
         if (this.selectDate === dateStr) {
 
 
-          // console.log(dataCovid);
 
 
           let dataCovi = {
@@ -319,6 +381,9 @@ export class CovidComponent implements OnInit {
 
 
       }
+
+      // console.log(this.dataStreamGraph);
+
 
       /*let selectCantos = ;
       let dataSmall = [...dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 1);
@@ -392,16 +457,212 @@ export class CovidComponent implements OnInit {
 
         this.dataHigcharts = dataHighchartsFinal;
         this.dataMapa = dataHighmapFinal;
+
       }
+
 
       this.graficarHigcharts();
       this.graficHighmap();
 
 
 
+
     });
 
   }
+
+
+  getDataStreamgraph(idSelectVariable: string) {
+
+    let datesStringFinal = [];
+    let dataStreamGraph = [];
+    let dataStreamGraphCopy = [];
+    datesStringFinal.push('');
+
+    for (const dateString of this.dateRange) {
+
+      let dateStringFinal = dateString.getTime();
+      let selectDate = new Date(dateStringFinal).toDateString();
+      datesStringFinal.push(selectDate);
+      this.dateStringAll = datesStringFinal;
+
+
+
+    }
+    //console.log(this.cantons);
+
+
+
+    this.dataService.listDatasPublic(this.filters, idSelectVariable).subscribe((data) => {
+
+
+
+
+
+
+      // console.log(dateStr);
+
+      for (const dataCovid of data.data) {
+
+
+
+
+        let dataStregraph = {
+          name: '',
+          data: [],
+          date: []
+        };
+
+        dataStregraph.name = dataCovid.obj_Canton.name;
+
+        /* const userExists = dataStreamGraph.some(user => user.name = dataStregraph.name);
+         if (userExists) {
+           console.log(dataStregraph);
+           // dataStreamGraphCopy.push(dataStregraph);
+ 
+         } else {
+ 
+           /*for (const dataRepeat of dataStreamGraph) {
+             for (let index = 0; index < dataRepeat.date.length; index++) {
+ 
+               if (dataStregraph.date[index] === dataRepeat.date[index]) {
+                 dataRepeat.data[index].push(dataStregraph.data[index]);
+ 
+               }
+ 
+             }
+             // console.log(dataRepeat);
+ 
+           }*/
+
+        // }
+
+        /* if (!userExists) {
+           console.log(dataStregraph);
+ 
+         }*/
+
+
+
+
+        let date: Date = new Date(dataCovid.date);
+        let day = date.getUTCDate();
+        let year = date.getUTCFullYear();
+        let month = date.getUTCMonth();
+        let dateStr = new Date(year, month, day).toDateString();
+
+        for (const dateRange of this.dateStringAll) {
+
+
+          if (dateRange === dateStr) {
+
+            dataStregraph.data.push(Number(dataCovid.value));
+            dataStregraph.date.push(dateStr);
+
+          } else {
+            dataStregraph.data.push(0);
+            dataStregraph.date.push(dateRange);
+
+          }
+
+
+        }
+
+        // console.log(dataStregraph);
+
+        if (!dataStreamGraph.some(user => user.name === dataStregraph.name)) {
+
+          dataStreamGraphCopy.push(dataStregraph);
+
+        } else {
+
+          for (let i = 0; i < dataStreamGraphCopy.length; i++) {
+
+            if (dataStreamGraphCopy[i].name === dataStregraph.name) {
+              //console.log(dataStreamGraphCopy[i], i);
+              // console.log(Object.assign({}, dataStreamGraphCopy[i], dataStregraph));
+
+              for (let j = 0; j < dataStreamGraphCopy[i].data.length; j++) {
+
+                //dataStreamGraphCopy[i].data[j];
+
+                if (dataStregraph.data[j] !== 0) {
+                  // console.log(dataStregraph.data[j]);
+                  // console.log(dataStreamGraphCopy[i].data[j], j);
+                  dataStreamGraphCopy[i].data[j] = dataStregraph.data[j];
+
+
+                }
+
+
+
+
+
+
+              }
+
+            }
+            // console.log(dataStreamGraphCopy[i].date[j]);
+            // console.log(dataStregraph.data[j],j);
+
+
+
+
+
+            // }
+
+
+
+
+          }
+          //console.log(dataStregraph);
+
+
+        }
+
+        dataStreamGraph.push(dataStregraph);
+
+
+      }
+
+      this.dataStreamGraphFinal = dataStreamGraphCopy;
+
+      this.createStreamgraph();
+
+
+      // console.log(dataStreamGraphCopy);
+
+      //console.log(dataStreamGraphCopy);
+
+
+
+
+      /*for (const dataStreamgraph of dataStreamGraph) {
+        for (const dateDataStreamgraph of dataStreamgraph.date) {
+          for (const dateRange of this.dateStringAll) {
+
+            if (dateDataStreamgraph !== dateRange ) {
+              dataStreamgraph.data.push(0);
+
+            }
+          }
+
+
+
+        }
+
+       // console.log(dataStreamgraph);
+
+
+      }*/
+
+
+
+
+    });
+  }
+
+
 
 
   getSelectVariable() {
@@ -461,22 +722,23 @@ export class CovidComponent implements OnInit {
 
   graficarHigcharts() {
 
-    // console.log(this.dataHigcharts);
+    //console.log(this.dataHigcharts);
     // console.log(this.dateString);
 
     //HIGCHARTS
 
 
-
     this.highcharts = Highcharts;
+
     HC_exporting(Highcharts);
     HC_export(Highcharts);
+    // Streamgraph(Highcharts);
     this.chartOptions6 = {
       chart: {
         type: "column"
       },
       title: {
-        text: "Casos confirmados de covid"
+        text: "Casos confirmados de covid-19"
       },
       xAxis: {
         categories: this.dateString
@@ -486,7 +748,14 @@ export class CovidComponent implements OnInit {
           text: "Casos Confirmados"
         }
       },
-      series: this.dataHigcharts
+      series: this.dataHigcharts,
+      colorAxis: {
+        minColor: '#c6e48b',
+        maxColor: '#196127',
+        min: 1,
+        max: 6,
+        gridLineWidth: 0
+      }
     };
 
     this.updateDemo = true;
@@ -544,6 +813,73 @@ export class CovidComponent implements OnInit {
 
 
   }
+
+
+  createStreamgraph() {
+
+    const colors = Highcharts.getOptions().colors;
+    console.log(this.dataStreamGraphFinal);
+
+
+    this.chartOptionsStreamgraph = {
+      chart: {
+
+        type: "streamgraph",
+        zoomType: 'x'
+
+      },
+      title: {
+        text: "Casos confirmados de covid-19"
+      },
+      xAxis: {
+        maxPadding: 0,
+        type: 'category',
+        crosshair: true,
+        categories: this.dateStringAll,
+        labels: {
+          align: 'left',
+          reserveSpace: false,
+          rotation: 270
+        },
+        lineWidth: 0,
+        margin: 20,
+        tickWidth: 0
+      },
+      yAxis: {
+        visible: false,
+        startOnTick: false,
+        endOnTick: false
+      },
+      legend: {
+        enabled: false
+      },
+
+      plotOptions: {
+        series: {
+          label: {
+            minFontSize: 5,
+            maxFontSize: 15,
+            style: {
+              color: 'rgba(255,255,255,0.75)'
+            }
+          }
+        }
+      },
+
+      series: this.dataStreamGraphFinal,
+      exporting: {
+        sourceWidth: 800,
+        sourceHeight: 600
+      }
+    };
+
+
+    //.xAxis[0].setExtremes('1924 Chamonix', '1928 St. Moritz');
+
+
+
+  }
+
 
 
 

@@ -61,7 +61,7 @@ app-ides-card-clasification>div.ides-card:hover {
 }
 
 .ides-text-icon {
-    color: white!important;
+    color: blue important;
 }
 
 //icono del circulo
@@ -97,15 +97,12 @@ a.ides-text-white:hover {
 }
 
 .ides-dropdown {
-    border: 1px solid #076DCD !important;
-    border-radius: 9px !important;
     width: 70px;
-    height: 40;
+    height: 40px;
 }
 
 .ides-dropdown:hover {
     color: #F8A901!important;
-    border: 1px solid #F8A901 !important;
 }
 
 .social>fa:hover {

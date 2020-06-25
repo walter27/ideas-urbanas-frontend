@@ -46,9 +46,14 @@
                 </highcharts-chart>
             </div>
 
-            <div class="col-md-12 text-right pt-3">
-                <!-- <p-dropdown [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Select variable'" (onChange)="getSelectVariable()"></p-dropdown>-->
+            <!-- <div class="col-md-12 text-right pt-3">
+                <p-dropdown [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Select variable'" (onChange)="getSelectVariable()"></p-dropdown>
 
+            </div>-->
+
+            <div class="col-md-12 pt-3">
+                <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts">
+                </highcharts-chart>
             </div>
         </div>
 
