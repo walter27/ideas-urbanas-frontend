@@ -17,6 +17,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ChartsModule } from 'ng2-charts';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function tokenGetter() {
   return sessionStorage.getItem('token');
@@ -78,11 +80,13 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     NotifierModule.withConfig(customNotifierOptions),
     ChartsModule,
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    AngularSvgIconModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

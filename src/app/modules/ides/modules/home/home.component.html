@@ -2,31 +2,73 @@
     <div class="col-12">
         <div class="row">
             <div class="col-12 mb-4">
-
-                <div *ngIf="step == 1" class="ides-card-home bg-banner-home">
-                    <!-- <div class="row justify-content-center ideas-cities" *ngIf="loadMapp">
-                        <div class="col-auto">
-                            <div class="position-absolute points-block" [ngClass]="c.class" *ngFor="let c of cities">
-                                <div [style.visibility]="c.hidden ? 'hidden' : 'visible'" class="label-point"
-                                    [ngClass]="'cursor-pointer'" (click)="onClickCity(c.id)">
-                                    {{ c.title }}
-                                </div>
-                                <div class="point-o cursor-pointer justify-content-center mr-5"
-                                    (click)="onClickCity(c.id)"></div>
-                            </div>
+                <div *ngIf="step == 1">
+                    <ngb-carousel>
+                      <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper" class="ides-card-home bg-banner-carousel-1">
+                          <div class="row">
+                              <div class="col-2">
+                              </div>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
+                                  <h2 class="ides-text-white home-title" translate>our_cities</h2>
+                                  <h4 class="ides-text-white" translate>our_cities_description</h4>
+                                  <div class="text-center">
+                                    <a class="myButton float-left" type="button" [routerLink]="['/thematic']">
+                                      <span class="ides-mr-80" translate>click_here</span>
+                                    </a>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 ">
+                                <svg-icon src="assets/home/mapa-final.svg" [svgStyle]="{ 'width.px':500, 'height.px':650}" ></svg-icon>
+                              </div>
+                          </div>
                         </div>
-                    </div>
-
-                    <div class="ideas-video">
-                        <img class="img-fluid" [src]="currentMapp" (load)="loadImg()" />
-                    </div>
-
-                    <div class="ideas-mapa-movil">
-                        <h2 class="ides-text-yellow home-title">Nuestras ciudades están evolucionando</h2>
-                        <h3 class="ides-text-blue home-subtitle">Selecciona una ciudad para compartir tus ideas</h3>
-                        <img class="img-fluid" src="../../../../../assets/mapa/mapa_movil.png" (load)="loadImg()" />
-                    </div> -->
-                    <div class="row">
+                      </ng-template>
+                      <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper"  class="ides-card-home bg-banner-carousel-2">
+                          <div class="row">
+                            <div class="col-2">
+                            </div>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
+                                  <h2 class="ides-text-white home-title" translate>response_covid</h2>
+                                  <h4 class="ides-text-white" translate>response_covid_description</h4>
+                                  <div class="text-center">
+                                    <a class="myButton float-left" type="button" [routerLink]="['/covid']">
+                                        <span class="ides-mr-80" translate>click_here</span>
+                                    </a>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4">
+                                  <svg-icon src="assets/home/coronavirus.svg" [svgStyle]="{ 'width.px':500, 'height.px': 500}" ></svg-icon>
+                              </div>
+                              <div class="col-2">
+                              </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper" class="ides-card-home bg-banner-carousel-3">
+                          <div class="row">
+                            <div class="col-2">
+                            </div>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
+                                  <h2 class="ides-text-white home-title" translate>compare_cities</h2>
+                                  <div class="text-center">
+                                    <a class=" myButton float-left" type="button" [routerLink]="['/thematic']">
+                                      <span class="ides-mr-80" translate>click_here</span>
+                                    </a>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4">
+                                  <svg-icon src="assets/home/ciudades-comparacion.svg"  [svgStyle]="{ 'width.px':500, 'height.px': 550}" ></svg-icon>
+                              </div>
+                              <div class="col-2">
+                              </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </ngb-carousel>
+                    <!-- <div class="row">
                         <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
                             <h2 class="ides-text-yellow home-title" translate>our_cities</h2>
                             <h4 translate>our_cities_description</h4>
@@ -82,9 +124,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-
                 <div class="ides-card-home ides-card-home-steps" *ngIf="step == 2">
                     <div class="container mt-4 mb-4 pt-4">
                         <div class="row justify-content-center">
@@ -161,19 +202,20 @@
                         </button>
                     </div>
                 </div>
-
             </div>
+
         </div>
-
-        <div class="subtitle ides-text-blue pb-2 pl-4" translate>Analiza las ciudades por tema</div>
-
-        <app-ides-thematic></app-ides-thematic>
+        <div class="text-center pb-2 pl-4" translate>statistical_charts</div>
+        <div class="text-center subtitle pb-2 pl-4" translate>analyse_topics</div>
+        <div>
+          <app-ides-thematic>
+          </app-ides-thematic>
+        </div>
         <div class="row">
             <div class="col-xl-7 col-lg-12">
                 <div class="ides-card ides-height-100 pl-0 pr-0">
                     <div class="col-12 p-3">
-                        <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'>
-                        </app-ides-index>
+                        <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'></app-ides-index>
                     </div>
                 </div>
             </div>

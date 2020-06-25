@@ -59,7 +59,7 @@
   "email_invalid": "Invalid Email",
   "hello": "Hello",
   "home": "Home",
-  "cities": "Cities",
+  "cities": "Your City",
   "thematics": "Themes",
   "indexes": "City Index",
   "citizen reports": "Citizen Reports",
@@ -103,5 +103,11 @@
   "todas": "All",
   "academica": "Academic",
   "our_cities": "Our cities are evolving",
-  "our_cities_description" : "Select a city to share your ideas"
+  "our_cities_description" : "Select a city to view data and statistics",
+  "response_covid": "Urban response to Covid-19",
+  "click_here": "Click here for more ►",
+  "compare_cities": "Compare the development of two cities",
+  "analyse_topics": "Analyze cities by theme",
+  "statistical_charts": "Statistical charts",
+  "response_covid_description": "Data and statistics from covid-19 in the medium-sized cities of Ecuador"
 }

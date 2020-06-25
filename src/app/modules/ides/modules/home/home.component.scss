@@ -35,7 +35,7 @@ ul.step li{
 }
 
 .fa-ides{
-    display: contents !important; 
+    display: contents !important;
     color: #F8A901 !important;
 }
 
@@ -74,7 +74,7 @@ ul.step li{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     float: left;
     border: 10px solid rgb(181, 223, 255, 0.3);
-    margin-left: 40%;   
+    margin-left: 40%;
 }
 
 .points-block:hover .label-point{
@@ -146,7 +146,7 @@ div.ides-card-home {
 @media screen and (max-width: 375.98px) {
     .font-weight-title-home{
         font-size: 3rem !important;
-    }    
+    }
     .font-weight-subtitle-home{
         font-size: 20pt !important;
     }
@@ -177,7 +177,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(181, 223, 255, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -198,7 +198,7 @@ div.ides-card-home {
      .ides-add-information{
          font-size: 12px !important;
      }
-    
+
     .home-title{
         font: 22px "Noto Sans TC" !important;
         font-weight: bold !important;
@@ -215,13 +215,13 @@ div.ides-card-home {
         background-size: cover;
     }
 
-      
+
 }
 /*ok*/
 @media screen and (min-width: 376px) and (max-width: 575.98px) {
     .font-weight-title-home{
         font-size: 3rem !important;
-    }    
+    }
     .font-weight-subtitle-home{
         font-size: 20pt !important;
     }
@@ -252,7 +252,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(181, 223, 255, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -273,7 +273,7 @@ div.ides-card-home {
     .ides-add-information{
         font-size: 12px !important;
     }
-    
+
     .home-title{
         font: 22px "Noto Sans TC" !important;
         font-weight: bold !important;
@@ -288,15 +288,16 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 0% 70% no-repeat padding-box;
         background-size: cover;
-    }      
+    }
+
 }
 
-/* moviles horizontal*/ 
+/* moviles horizontal*/
 /*ok*/
 @media screen and (min-width: 576px) and (max-width: 699.99px) {
     .font-weight-title-home{
         font-size: 3rem !important;
-    }  
+    }
     .font-weight-subtitle-home{
         font-size: 20pt !important;
     }
@@ -314,7 +315,7 @@ div.ides-card-home {
     }
     .logo-contactos-tag{
         margin-top: 3rem !important;
-    } 
+    }
 
     .label-point {
         color: #000000 !important;
@@ -331,13 +332,13 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(181, 223, 255, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
         border: 7px solid rgb(248, 169, 1, 0.5);
     }
-    
+
     .tag-cloud-mt{
         margin-top: 5em !important;
     }
@@ -356,14 +357,14 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 0% 70% no-repeat padding-box !important;
         background-size: cover;
-    }      
+    }
 
 }
 /*ok*/
 @media screen and (min-width: 700px) and (max-width: 767.98px) {
     .font-weight-title-home{
         font-size: 3rem !important;
-    }  
+    }
     .font-weight-subtitle-home{
         font-size: 22pt !important;
     }
@@ -381,7 +382,7 @@ div.ides-card-home {
     }
     .logo-contactos-tag{
         margin-top: 3rem !important;
-    } 
+    }
 
     .label-point {
         color: #000000 !important;
@@ -398,7 +399,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(181, 223, 255, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -422,10 +423,10 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 0% 70% no-repeat padding-box !important;
         background-size: cover;
-    }      
-    
+    }
+
 }
- 
+
 /* tablets */
 /*ok*/
 @media screen and (min-width: 768px) and (max-width: 991.98px) {
@@ -456,7 +457,7 @@ div.ides-card-home {
         letter-spacing: 0;
         margin-bottom: 0 !important;
         text-align: center;
-    } 
+    }
     .ideas-video{
         display: block;
     }
@@ -493,10 +494,10 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 0% no-repeat padding-box !important;
         background-size: cover;
-    }      
+    }
 
 }
-/* tablets horizontales*/ 
+/* tablets horizontales*/
 /*ok*/
 @media screen and (min-width: 992px) and (max-width: 1199.98px) {
     .ideas-video{
@@ -523,7 +524,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -541,7 +542,7 @@ div.ides-card-home {
     .tag-cloud-mt{
         margin-top: 7em !important;
     }
-    
+
     .home-title{
         font: 24px "Noto Sans TC" !important;
         font-weight: bold !important;
@@ -556,10 +557,10 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 100% no-repeat padding-box !important;
         background-size: cover;
-    }      
+    }
 
 }
-  
+
 /* normal */
 /*ok*/
 @media screen and (min-width: 1200px ) and (max-width: 1299.98px ) {
@@ -587,7 +588,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -620,7 +621,7 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 100% no-repeat padding-box !important;
         background-size: cover;
-    }  
+    }
 
 }
 /*ok*/
@@ -649,7 +650,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -683,7 +684,7 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 100% no-repeat padding-box !important;
         background-size: cover;
-    }  
+    }
 
 }
 /*ok*/
@@ -712,7 +713,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -745,7 +746,7 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 100% no-repeat padding-box !important;
         background-size: cover;
-    }  
+    }
 
 }
 
@@ -772,7 +773,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -805,7 +806,7 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 100% no-repeat padding-box !important;
         background-size: cover;
-    }  
+    }
 
 }
 /*ok*/
@@ -831,7 +832,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -864,7 +865,7 @@ div.ides-card-home {
     .bg-banner-home{
         background: transparent url(../../../../../assets/home/bg.png) 50% 100% no-repeat padding-box !important;
         background-size: cover;
-    }  
+    }
 
 }
 
@@ -891,7 +892,7 @@ div.ides-card-home {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         float: left;
         border: 7px solid rgba(7, 109, 205, 0.3);
-        margin-left: 30%; 
+        margin-left: 30%;
     }
     .points-block:hover .point-o{
         background: #F8A901 0% 0% no-repeat padding-box;
@@ -944,6 +945,19 @@ div.ides-card-home {
     background: transparent url(../../../../../assets/home/bg.png) 0% 70% no-repeat padding-box;
     background-size: cover;
 }
+.bg-banner-carousel-1{
+    background: transparent url(../../../../../assets/home/bg1.png) 0% 100% no-repeat padding-box;
+    background-size: cover;
+}
+.bg-banner-carousel-2{
+    background: transparent url(../../../../../assets/home/bg2.png) 0% 100% no-repeat padding-box;
+    background-size: cover;
+}
+
+.bg-banner-carousel-3{
+    background: transparent url(../../../../../assets/home/bg3.png) 0% 100% no-repeat padding-box;
+    background-size: cover;
+}
 
 .ides-card-header{
     box-shadow: 0px 3px 6px #00000033;
@@ -959,4 +973,28 @@ div.ides-card-home {
 .ides-card-header-desc{
     font: 12px "Noto Sans TC" !important;
     color: #BFBFBF !important;
+}
+
+.myButton {
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color:#ffffff;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:#666666 !important;
+    font-family:Arial !important;
+    font-size:15px;
+    padding: 10px 17px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff ;
+}
+my-Button>.myButton:hover {
+  background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color:#f6f6f6;
+}
+myButton-1>.myButton:active {
+    position: relative;
+    top: 1px;
 }

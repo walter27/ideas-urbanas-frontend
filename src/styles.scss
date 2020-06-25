@@ -47,9 +47,9 @@ h5,
 
 div.ides-card {
     box-shadow: 0px 3px 6px #00000033;
-    border-radius: 15px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    padding: 15px;
+    border-radius: 10px;
+    background:#ffffff 0% 0% no-repeat padding-box;
+    padding: 5px;
 }
 
 app-ides-card-clasification>div.ides-card:hover {
@@ -57,6 +57,9 @@ app-ides-card-clasification>div.ides-card:hover {
 }
 
 .ides-text-blue {
+    color: #076DCD!important;
+}
+.ides-text-white {
     color: #076DCD!important;
 }
 
@@ -81,7 +84,7 @@ app-ides-card-clasification>div.ides-card:hover {
 }
 
 .ides-text-white {
-    color: #ffffff!important;
+    color: #FFFFFF!important;
 }
 
 a.ides-text-white:hover {
@@ -94,6 +97,10 @@ a.ides-text-white:hover {
 
 .ides-text-blue-dark {
     color: #004587!important;
+}
+
+.ides-text-blue-light  {
+    color: #189cff!important;
 }
 
 .ides-dropdown {
@@ -152,7 +159,7 @@ a.ides-text-white:hover {
 }
 
 .nav-item-active {
-    color: white!important;
+    color: blue!important;
     border-radius: 15px;
     width: 35%;
     padding: 8px;
@@ -625,4 +632,16 @@ a:hover {
     color: white;
     width: 100px;
     height: 50px;
+}
+
+
+ngb-carousel {
+    width: inherit;
+    height: 50%;
+    //height: inherit;
+}
+
+ngb-carousel img {
+    width: 100%;
+    outline: none;
 }

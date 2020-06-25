@@ -7,6 +7,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 import {FormsModule} from '@angular/forms';
 import { IconsModule } from 'src/app/icons/icons.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [HomeComponent],
@@ -17,7 +20,10 @@ import { IconsModule } from 'src/app/icons/icons.module';
     TagCloudModule,
     FormsModule,
     IconsModule,
-    TranslateModule
-  ]
+    TranslateModule,
+    AngularSvgIconModule,
+    NgbModule
+  ],
+
 })
 export class HomeModule { }

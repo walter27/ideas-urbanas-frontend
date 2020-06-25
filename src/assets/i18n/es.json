@@ -78,10 +78,10 @@
   "email_invalid": "Correo inválido",
   "hello": "Hola",
   "home": "Inicio",
-  "cities": "Ciudades",
-  "thematics": "Temática",
-  "indexes": "Índice",
-  "citizen reports": "Reportes Ciudadanos",
+  "cities": "Tu ciudad",
+  "thematics": "Explora temas",
+  "indexes": "Compara ciudades",
+  "citizen reports": "Reportes ciudadanos",
   "Did you forget your password?": "¿Se le olvidó la contraseña?",
   "Back to login": "Volver al login",
   "column_actions": "Acciones",
@@ -117,5 +117,12 @@
   "index description": "Conoce el desempeño de tu ciudad en el tema de tu interés y compara con otras ciudades similares",
   "citizen reports description": "Transformamos los datos en conocimiento a través de reportes analíticos de cada ciudad o de un conjunto de ciudades.",
   "our_cities": "Nuestras ciudades están evolucionando",
-  "our_cities_description" : "Selecciona una ciudad para compartir tus ideas"
+  "our_cities_description" : "Selecciona una ciudad para ver datos y estadísticas",
+  "response_covid": "Respuestas urbanas al Covid-19",
+  "click_here": "Ver más ►",
+  "compare_cities": "Compara el desarrollo de dos ciudades",
+  "analyse_topics": "Analizar las ciudades por tema",
+  "statistical_charts": "Gráficos Estadísticos",
+  "response_covid_description": "Datos y estadísticas de covid-19 en las ciudades medianas de Ecuador" 
+
 }
