@@ -13,12 +13,18 @@ import {
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthInterceptorService } from './core/interceptors/auth-interceptor.service';
 import { HttpGetInterceptorService } from './core/interceptors/http-get-interceptor.service';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ChartsModule } from 'ng2-charts';
+import { AngularFontAwesomeModule } from 'angular-font-awesome'; import { ChartsModule } from 'ng2-charts';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ChartModule } from 'primeng/chart';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 export function tokenGetter() {
   return sessionStorage.getItem('token');
@@ -78,11 +84,15 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
     NotifierModule.withConfig(customNotifierOptions),
+    ChartModule,
     ChartsModule,
+    HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,

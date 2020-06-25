@@ -5,6 +5,8 @@ import { ModulesRoutingModule } from './modules-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AgWordCloudModule } from 'angular4-word-cloud';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [ModulesComponent],
@@ -13,7 +15,9 @@ import { AgWordCloudModule } from 'angular4-word-cloud';
     ModulesRoutingModule,
     SharedModule,
     NgxSpinnerModule,
-    AgWordCloudModule
+    AgWordCloudModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ModulesModule { }

@@ -87,6 +87,9 @@ export class CitiesComponent implements OnInit {
         this.listCategories();
       });
     });
+
+    console.log(this.tagsData);
+    
   }
 
   getClasifications() {
@@ -121,6 +124,11 @@ export class CitiesComponent implements OnInit {
     this.resultVariables = null;
     this.variableService.getVariablesByClasification(this.clasificationSelected._id).pipe(
       map(resp => {
+
+        console.log('Perro');
+        
+        console.log(resp);
+        
         return resp;
       })
     ).subscribe(resp => {
@@ -147,6 +155,9 @@ export class CitiesComponent implements OnInit {
     this.getVariables();
   }
 
+
+
+
   listTags(cityId) {
     const classTags = ['#F8A901', '#076DCD', '#B5DFFF'];
     this.tagsService.getTagsByCantByType(cityId).pipe(
@@ -161,6 +172,7 @@ export class CitiesComponent implements OnInit {
           size: el.count, //el.count > 10 ? 10 : el.count,
         });
       });
+      console.log(this.tagsData);
       this.newTagCloud();
     });
   }
