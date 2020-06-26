@@ -48,7 +48,7 @@ h5,
 div.ides-card {
     box-shadow: 0px 3px 6px #00000033;
     border-radius: 10px;
-    background:#ffffff 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
     padding: 5px;
 }
 
@@ -59,22 +59,28 @@ app-ides-card-clasification>div.ides-card:hover {
 .ides-text-blue {
     color: #076DCD!important;
 }
+
 .ides-text-white {
     color: #076DCD!important;
 }
 
 .ides-text-icon {
-    color: blue important;
+    background-color: white important;
+    color: white;
 }
 
 //icono del circulo
 .ides-icon-circle {
     height: 22px;
     width: 22px;
-    background-color: blue;
+    background-color: white;
     border-radius: 50%;
     display: inline-block;
     text-align: center;
+}
+
+.icon-b {
+    background-color: white;
 }
 
 .img {
@@ -99,7 +105,7 @@ a.ides-text-white:hover {
     color: #004587!important;
 }
 
-.ides-text-blue-light  {
+.ides-text-blue-light {
     color: #189cff!important;
 }
 
@@ -137,7 +143,6 @@ a.ides-text-white:hover {
 }
 
 .nav-item {
-    background-color: #fff;
     display: inline-block;
     color: #0045ba;
     font-family: Arial;
@@ -145,16 +150,10 @@ a.ides-text-white:hover {
 }
 
 .nav-item:hover {
-    box-shadow: 0px 10px 14px -7px #9ba2a3;
-    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
-    background-color: #fbba2e;
-    border-radius: 40px;
     display: inline-block;
     color: #ffffff;
     font-family: Arial;
-    font-size: 16px;
     text-decoration: none;
-    padding: 0.4rem;
 }
 
 .nav-item-categories {
@@ -168,45 +167,28 @@ a.ides-text-white:hover {
 }
 
 .nav-item-active {
-<<<<<<< HEAD
     color: blue!important;
-    border-radius: 15px;
-    width: 35%;
-    padding: 8px;
-    background-color: #f8ac08;
-    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
-=======
-    box-shadow: 0px 10px 14px -7px #9ba2a3;
-    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
-    background-color: #fbba2e;
-    border-radius: 40px;
     display: inline-block;
     cursor: pointer;
-    color: #ffffff;
     font-family: Arial;
-    font-size: 16px;
-    padding: 0.4rem;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #8a8a8a;
->>>>>>> 47e5a5998710375f6705eb20e62df12a8007164e
+    border-bottom: solid white;
 }
 
 .nav-item-active:hover {
-    background: linear-gradient(to bottom, #f8ac09 5%, #fbba2e 100%);
-    background-color: #f8ac09;
+    border-bottom: solid white;
 }
 
 
 /* Let's get this party started */
 
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
     width: 6px;
 }
 
 
 /* Track */
 
-::-webkit-scrollbar-track {
+ ::-webkit-scrollbar-track {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background-color: #e1e1e1;
@@ -215,7 +197,7 @@ a.ides-text-white:hover {
 
 /* Handle */
 
-::-webkit-scrollbar-thumb {
+ ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: #b3b3b3;
@@ -301,8 +283,8 @@ a:hover {
 
 
 /*.nav-item-root:hover {
-    color: #F8A901 !important;
-}*/
+      color: #F8A901 !important;
+  }*/
 
 .points-block {
     z-index: 1 !important;
@@ -658,7 +640,6 @@ a:hover {
     width: 100px;
     height: 50px;
 }
-
 
 ngb-carousel {
     width: inherit;

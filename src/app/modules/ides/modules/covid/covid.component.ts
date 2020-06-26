@@ -11,7 +11,10 @@ import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
 
 import { NgForm, FormGroup } from '@angular/forms';
-import more from 'highcharts/highcharts-more';
+
+
+import Color_Axis from 'highcharts/modules/coloraxis';
+import * as Legend from '../../../../../assets/js/legend/legend.js';
 
 
 //map
@@ -133,11 +136,6 @@ export class CovidComponent implements OnInit {
 
 
 
-  cursormin;
-  cursormax;
-  cursornum;
-  cursor;
-
 
   dateRange: Date[];
   value: number;
@@ -147,7 +145,6 @@ export class CovidComponent implements OnInit {
   };
 
 
-  more: any;
 
 
 
@@ -160,6 +157,8 @@ export class CovidComponent implements OnInit {
 
     this.highcharts3 = Highcharts3;
     Streamgraph(Highcharts3);
+    // this.highcharts = Highcharts;
+
     this.Highcharts = Highcharts2;
     this.updateDemo = false;
     this.getCantons();
@@ -728,37 +727,81 @@ export class CovidComponent implements OnInit {
     //HIGCHARTS
 
 
+    function dataSorting() {
+      let series = this.series;
+
+      for (let i = 0; i < this.series[0].points.length; i++) {
+        let pointsPos = [];
+        let pointsGroup = [];
+
+        series.forEach((series, j) => {
+          let point = series.points[i]
+          if (series.visible) {
+            let args = point.shapeArgs;
+            pointsGroup.push(series.points[i]);
+            pointsPos.push({
+              transX: args.x
+            });
+          }
+        });
+
+        pointsGroup.sort((a, b) => {
+          return b.y - a.y
+        }).forEach((point, index) => {
+          point.graphic.attr({
+            x: pointsPos[index].transX
+          });
+        });
+      }
+    }
+
     this.highcharts = Highcharts;
+
 
     HC_exporting(Highcharts);
     HC_export(Highcharts);
+    Color_Axis(Highcharts);
     // Streamgraph(Highcharts);
+    //Legend(Highcharts);
     this.chartOptions6 = {
       chart: {
-        type: "column"
+        type: "column",
+        events: {
+          redraw: dataSorting,
+          load: dataSorting,
+
+
+        },
       },
       title: {
         text: "Casos confirmados de covid-19"
       },
       xAxis: {
-        categories: this.dateString
+        categories: this.dateString,
+
+      },
+      colorAxis: {
+
+        minColor: '#ffeda0',
+        maxColor: '#bd0026',
+        showInLegend: false
+
       },
       yAxis: {
         title: {
           text: "Casos Confirmados"
         }
       },
-      series: this.dataHigcharts,
-      colorAxis: {
-        minColor: '#c6e48b',
-        maxColor: '#196127',
-        min: 1,
-        max: 6,
-        gridLineWidth: 0
-      }
+      /*legend: {
+        enabled: false
+      },*/
+      series: this.dataHigcharts
+
     };
 
     this.updateDemo = true;
+
+    // colorsLegend(Highcharts);
 
 
   }
@@ -769,7 +812,15 @@ export class CovidComponent implements OnInit {
 
     this.chartOptionsMap = {
       chart: {
-        map: catones
+        map: catones,
+        events: {
+          load: function () {
+            setTimeout(() => {
+              this.mapZoom(0.7, -2, 2);
+            }, 0);
+
+          }
+        }
       },
       title: {
         text: 'Ecuador'
@@ -797,7 +848,11 @@ export class CovidComponent implements OnInit {
         },
         dataLabels: {
           enabled: true,
-          format: '{point.properties.name}'
+          format: '{point.properties.name}',
+          style:
+          {
+            font: 'normal 1px Verdana, sans-serif'
+          }
         }
       }]
     };

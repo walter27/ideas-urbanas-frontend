@@ -1,41 +1,39 @@
 <div *appAllowMenuItem="item">
     <div [ngSwitch]="item.type">
         <div *ngSwitchCase="'text'">
-            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url"
-                class="nav-item cursor-pointer text-none nav-item-root text-white" (click)="hideMenu()"
-                translate>{{ item.title }}</a>
+            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url" class="nav-item cursor-pointer text-none nav-item-root text-white" (click)="hideMenu()" translate>{{ item.title }}</a>
         </div>
         <div *ngSwitchDefault>
             <div class="dropdown">
-                <a [routerLinkActive]="['nav-item-active']" class="nav-item cursor-pointer text-none"
-                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a [routerLinkActive]="['nav-item-active']" class="nav-item cursor-pointer text-none" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="nav-item-root text-white" translate>{{ item.title }}</span>
-                    <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left"
-                        aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
                         <div class="text-white" *ngFor="let o of item.options | slice:0:item.amountToShow">
-                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class="dropdown-item" href="#"
-                                (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
+                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class="dropdown-item" href="#" (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
                         </div>
                         <div *ngIf="item.options.length > item.amountToShow" class="text-center text-whiteol">
 
 
-            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url" class=" nav-item " (click)="hideMenu()" translate>{{ item.title }}</a>
-        </div>
-        <div *ngSwitchDefault>
-            <div class="dropdown">
-                <a [routerLinkActive]="['nav-item-active']" class="nav-item text-none" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span translate>{{ item.title }}</span>
-                    <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
-                        <div class="" *ngFor="let o of item.options | slice:0:item.amountToShow">
-                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class="dropdown-item" href="#" (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
+                            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url" class=" nav-item " (click)="hideMenu()" translate>{{ item.title }}</a>
                         </div>
+                        <div *ngSwitchDefault>
+                            <div class="dropdown">
+                                <a [routerLinkActive]="['nav-item-active']" class="nav-item text-none" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span translate>{{ item.title }}</span>
+                                    <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
+                                        <div class="" *ngFor="let o of item.options | slice:0:item.amountToShow">
+                                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class="dropdown-item" href="#" (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
+                                        </div>
 
-                        <div *ngIf="item.options.length > item.amountToShow" class="text-center">
->>>>>>> 47e5a5998710375f6705eb20e62df12a8007164e
-                            <a (click)="onClickShowMore($event)" class="dropdown-item">
-                                <fa class="cursor-pointer" [name]="'angle-double-down'"></fa>
-                                <!-- --<span translate>show more</span>-- -->
-                            </a>
+                                        <div *ngIf="item.options.length > item.amountToShow" class="text-center">
+                                            <a (click)="onClickShowMore($event)" class="dropdown-item">
+                                                <fa class="cursor-pointer" [name]="'angle-double-down'"></fa>
+                                                <!-- --<span translate>show more</span>-- -->
+                                            </a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </a>
