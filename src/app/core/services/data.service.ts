@@ -12,7 +12,7 @@ import { Data } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 @Injectable({
@@ -27,7 +27,7 @@ export class DataService {
   constructor(
     private httpClient: HttpClient,
     private utilsService: UtilsService
-    ) {
+  ) {
 
   }
 
@@ -35,11 +35,11 @@ export class DataService {
     const body = {
       cities: null
     };
-    if ( idCity ) {
+    if (idCity) {
       body.cities = [idCity];
     }
     return this.httpClient.post<ResponseApi<any>>(this.serverUrl + 'api/' + this.urlDataIndexes, body).pipe(
-      map( data => {
+      map(data => {
         return data.results.data;
       })
     );
@@ -49,20 +49,20 @@ export class DataService {
   listDatasPublic(filters: Filters, id_Variable?, cities?): Observable<ResultList<Data>> {
 
     //console.log(cities);
-    
+
     const filtersB = this.utilsService.buildFilters(filters);
     const body = {
       id_Variable,
       cities: null,
     };
 
-    if ( cities ) {
-      body.cities = cities.filter( (c) => {
-        if ( c.check ) {
+    if (cities) {
+      body.cities = cities.filter((c) => {
+        if (c.check) {
           return true;
         }
         return false;
-      }).map( c => c.id );
+      }).map(c => c.id);
     }
     return this.httpClient.post<ResponseApi<ResultList<Data>>>(this.serverUrl + 'api/' + this.urlData + filtersB, body).pipe(
       map(data => {
@@ -83,13 +83,13 @@ export class DataService {
       search
     };
 
-    if ( cities ) {
-      body.cities = cities.filter( (c) => {
-        if ( c.check ) {
+    if (cities) {
+      body.cities = cities.filter((c) => {
+        if (c.check) {
           return true;
         }
         return false;
-      }).map( c => c.id );
+      }).map(c => c.id);
     }
     return this.httpClient.post<ResponseApi<ResultList<Data>>>(this.serverUrl + this.urlData + '/filter/' + filtersB, body).pipe(
       map(data => {
@@ -98,10 +98,12 @@ export class DataService {
     );
   }
 
-  addData(profile) {
+  getData() {
+    return this.httpClient.get(`${this.serverUrl}getCSV/datos/data`, httpOptions);
+  }
 
-    console.log(profile);
-    
+  addData(profile) {
+    //console.log('PERRO', profile);
     return this.httpClient.post(this.serverUrl + this.urlData, profile, httpOptions);
   }
 
@@ -122,22 +124,22 @@ export class DataService {
       years: null
     };
 
-    if ( cities ) {
-      body.cities = cities.filter( (c) => {
-        if ( c.check ) {
+    if (cities) {
+      body.cities = cities.filter((c) => {
+        if (c.check) {
           return true;
         }
         return false;
-      }).map( c => c.id );
+      }).map(c => c.id);
     }
 
-    if ( years ) {
-      body.years = years.filter( c => {
-        if ( c.check ) {
+    if (years) {
+      body.years = years.filter(c => {
+        if (c.check) {
           return true;
         }
         return false;
-      }).map( c => c.id );
+      }).map(c => c.id);
     }
 
     const headers = new HttpHeaders();

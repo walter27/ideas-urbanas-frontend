@@ -11,7 +11,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SliderModule } from 'primeng/slider';
 import { Ng5SliderModule } from 'ng5-slider';
-//import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -34,7 +34,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     ReactiveFormsModule,
     SliderModule,
     Ng5SliderModule,
-   // DropdownModule
+    DropdownModule
 
   ]
 })
