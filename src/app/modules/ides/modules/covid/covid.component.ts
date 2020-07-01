@@ -26,20 +26,12 @@ import { Variable } from 'src/app/core/models/variable.model';
 const catones: any = require('../../../../../assets/geojson/cantones.json');
 
 import { Options, LabelType } from 'ng5-slider';
-import { Data } from '@angular/router';
-import { COLORS } from '../../../../core/const/colors.data';
 
 import Streamgraph from 'highcharts/modules/streamgraph';
+import Series_Label from 'highcharts/modules/series-label';
 
 
-import Stock from 'highcharts/modules/stock';
-import { stringify } from 'querystring';
-import { AlignCenter } from 'angular-feather/icons';
-//import Wheel from '../plugins/wheel-event';
 
-
-Stock(Highcharts);
-//Wheel(Highcharts);
 
 interface City {
   name: string;
@@ -83,7 +75,8 @@ export class CovidComponent implements OnInit {
   Streamgraph: any;
   chartOptionsStreamgraph: any = {};
   chartConstructor2 = 'streamgraph';
-  dateStreamgraph: number;
+  minStreamgraph: number;
+  maxStreamgraph: number;
 
 
 
@@ -159,14 +152,27 @@ export class CovidComponent implements OnInit {
     private dataService: DataService,
     private regionService: RegionService) {
 
+    /*this.highcharts = Highcharts;
+    HC_exporting(Highcharts);
+    HC_export(Highcharts);
+    Color_Axis(this.highcharts);*/
+
+    /* this.Highcharts = Highcharts2;
+HC_exporting(Highcharts2);
+HC_export(Highcharts2);*/
+
     this.highcharts3 = Highcharts3;
-    Streamgraph(Highcharts3);
-    Color_Axis(Highcharts3);
+    Color_Axis(this.highcharts3);
+    Streamgraph(this.highcharts3);
+    HC_exporting(this.highcharts3);
+    HC_export(this.highcharts3);
+    Series_Label(this.highcharts3);
 
-    // this.highcharts = Highcharts;
-    this.dateStreamgraph = 1;
 
-    this.Highcharts = Highcharts2;
+
+
+
+
     this.updateDemo = false;
     this.getCantons();
     this.getClasification();
@@ -231,8 +237,6 @@ export class CovidComponent implements OnInit {
 
 
     for (const data of dataCovid) {
-
-      //console.log(date[0]);
 
       let dataF = {
         description: 'Datos confirmados del covid-19',
@@ -344,7 +348,7 @@ export class CovidComponent implements OnInit {
 
 
     let dataCovid = [];
-    const dateRanges = [];
+    let dateRanges = [];
     this.dataService.listDatasPublic(this.filters, varibable._id).subscribe((data) => {
 
       dataCovid = data.data;
@@ -431,7 +435,6 @@ export class CovidComponent implements OnInit {
 
       }
 
-
       let datesStringFinal = [];
       datesStringFinal.push('');
 
@@ -440,11 +443,8 @@ export class CovidComponent implements OnInit {
         let dateStringFinal = dateString.getTime();
         let selectDate = new Date(dateStringFinal).toDateString();
         datesStringFinal.push(selectDate);
-        this.dateStringAll = datesStringFinal;
-
-
-
       }
+      this.dateStringAll = datesStringFinal;
 
 
 
@@ -605,31 +605,19 @@ export class CovidComponent implements OnInit {
       let dateStringFinal = dateString.getTime();
       let selectDate = new Date(dateStringFinal).toDateString();
       datesStringFinal.push(selectDate);
-      this.dateStringAll = datesStringFinal;
-
-
-
+    }
+    this.dateStringAll = datesStringFinal;
+    if (this.selectDate === this.dateRange[0].getTime()) {
+      this.minStreamgraph = 0;
+      this.maxStreamgraph = this.dateRange.length;
     }
 
-    //console.log('Numeros', this.dateStringAll);
 
-    //console.log(this.cantons);
-
-
+    console.log(this.selectDate);
 
     this.dataService.listDatasPublic(this.filters, idSelectVariable).subscribe((data) => {
 
-
-
-
-
-
-      // console.log(dateStr);
-
       for (const dataCovid of data.data) {
-
-
-
 
         let dataStregraph = {
           name: '',
@@ -639,36 +627,6 @@ export class CovidComponent implements OnInit {
         };
 
         dataStregraph.name = dataCovid.obj_Canton.name;
-
-        /* const userExists = dataStreamGraph.some(user => user.name = dataStregraph.name);
-         if (userExists) {
-           console.log(dataStregraph);
-           // dataStreamGraphCopy.push(dataStregraph);
- 
-         } else {
- 
-           /*for (const dataRepeat of dataStreamGraph) {
-             for (let index = 0; index < dataRepeat.date.length; index++) {
- 
-               if (dataStregraph.date[index] === dataRepeat.date[index]) {
-                 dataRepeat.data[index].push(dataStregraph.data[index]);
- 
-               }
- 
-             }
-             // console.log(dataRepeat);
- 
-           }*/
-
-        // }
-
-        /* if (!userExists) {
-           console.log(dataStregraph);
- 
-         }*/
-
-
-
 
         let date: Date = new Date(dataCovid.date);
         let day = date.getUTCDate();
@@ -697,7 +655,7 @@ export class CovidComponent implements OnInit {
 
         // console.log(dataStregraph);
 
-        if (!dataStreamGraph.some(user => user.name === dataStregraph.name)) {
+        if (!dataStreamGraph.some(dataStreamgraph => dataStreamgraph.name === dataStregraph.name)) {
 
           dataStreamGraphCopy.push(dataStregraph);
 
@@ -721,71 +679,41 @@ export class CovidComponent implements OnInit {
 
                 }
 
-
-
-
-
-
               }
 
             }
-            // console.log(dataStreamGraphCopy[i].date[j]);
-            // console.log(dataStregraph.data[j],j);
-
-
-
-
-
-            // }
-
-
-
 
           }
-          //console.log(dataStregraph);
-
 
         }
+
+        //console.log(dataStregraph);
+        //console.log(dataStreamGraphCopy);
 
         dataStreamGraph.push(dataStregraph);
 
 
       }
 
-      this.dataStreamGraphFinal = dataStreamGraphCopy;
+      if (this.selectedCantons) {
 
-      this.createStreamgraph();
+        let dataStreamGraphCanton = [];
 
-
-      // console.log(dataStreamGraphCopy);
-
-      //console.log(dataStreamGraphCopy);
+        for (const selectCanton of this.selectedCantons) {
 
 
+          for (const dataStreamgraphCanton of dataStreamGraphCopy) {
+            if (selectCanton.name === dataStreamgraphCanton.name) {
 
-
-      /*for (const dataStreamgraph of dataStreamGraph) {
-        for (const dateDataStreamgraph of dataStreamgraph.date) {
-          for (const dateRange of this.dateStringAll) {
-
-            if (dateDataStreamgraph !== dateRange ) {
-              dataStreamgraph.data.push(0);
+              dataStreamGraphCanton.push(dataStreamgraphCanton);
 
             }
+
           }
-
-
-
         }
-
-       // console.log(dataStreamgraph);
-
-
-      }*/
-
-
-
-
+        this.dataStreamGraphFinal = dataStreamGraphCanton;
+        this.createStreamgraph();
+      }
     });
   }
 
@@ -801,12 +729,13 @@ export class CovidComponent implements OnInit {
 
   getSelects() {
 
+
     this.getData(this.selectVariable._id);
+    this.getDataStreamgraph(this.selectVariable._id);
 
 
   }
   sliderChange(e) {
-    console.log(e);
 
     let datesString = [];
     this.selectDate = e.value;
@@ -818,13 +747,25 @@ export class CovidComponent implements OnInit {
 
     for (let index = 0; index < this.dateRange.length; index++) {
 
-      if (this.dateRange[index].getTime() === e.value) {
-        console.log(this.dateRange[index].getTime(), index + 1);
-        this.dateStreamgraph = index + 1;
-        console.log(this.dateStreamgraph);
-        this.getDataStreamgraph(this.selectVariable._id);
 
+
+      if (this.dateRange[index].getTime() === e.value) {
+
+        if (index + 1 === 1) {
+          this.minStreamgraph = 0;
+          this.maxStreamgraph = this.dateRange.length;
+          this.getDataStreamgraph(this.selectVariable._id);
+
+        } else {
+          console.log(this.dateRange[index].getTime(), index + 1);
+          this.minStreamgraph = index + 1;
+          this.maxStreamgraph = index + 1;
+          //console.log(this.dateStreamgraph);
+          this.getDataStreamgraph(this.selectVariable._id);
+
+        }
       }
+
 
     }
     // console.log(this.selectDate);
@@ -860,19 +801,6 @@ export class CovidComponent implements OnInit {
 
 
   graficarHigcharts() {
-
-    console.log(this.dataHigcharts);
-    // console.log(this.dateString);
-
-    //HIGCHARTS
-
-
-    this.highcharts = Highcharts;
-
-
-    HC_exporting(Highcharts);
-    HC_export(Highcharts);
-    Color_Axis(Highcharts);
 
     this.chartOptions6 = {
       chart: {
@@ -997,8 +925,7 @@ export class CovidComponent implements OnInit {
       self.chart = chart;
     };
 
-    HC_exporting(Highcharts2);
-    HC_export(Highcharts2);
+
 
 
   }
@@ -1006,20 +933,16 @@ export class CovidComponent implements OnInit {
 
   createStreamgraph() {
 
-    const colors = Highcharts.getOptions().colors;
-
-    // console.log('Letras', this.dataStreamGraphFinal);
-
     this.chartOptionsStreamgraph = {
       chart: {
 
         type: "streamgraph",
-        zoomType: 'x',
-        events: {
-          afterSetExtremes: function () {
-            console.log(this.getExtremes());
-          }
-        }
+        //zoomType: 'x',
+        /* events: {
+           afterSetExtremes: function () {
+             console.log(this.getExtremes());
+           }
+         }*/
 
       },
       title: {
@@ -1028,8 +951,8 @@ export class CovidComponent implements OnInit {
       xAxis: {
         maxPadding: 0,
         type: 'categories',
-        min: this.dateStreamgraph,
-        max: this.dateStreamgraph,
+        min: this.minStreamgraph,
+        max: this.maxStreamgraph,
         crosshair: true,
         categories: this.dateStringAll,
         labels: {
@@ -1040,7 +963,7 @@ export class CovidComponent implements OnInit {
         lineWidth: 0,
         margin: 20,
         tickWidth: 0,
-        events: {
+        /*events: {
           setExtremes: function (e) {
 
 
@@ -1052,7 +975,7 @@ export class CovidComponent implements OnInit {
           afterSetExtremes: function () {
             console.log(this.getExtremes());
           }
-        },
+        },*/
 
       },
       colorAxis: {
@@ -1070,20 +993,9 @@ export class CovidComponent implements OnInit {
         enabled: false
       },
 
-      plotOptions: {
-        series: {
-          label: {
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: {
-              color: 'rgba(255,255,255,0.75)'
-            }
-          }
-        }
-      },
-
       series: this.dataStreamGraphFinal,
     };
+    this.updateDemo = true;
 
 
 
