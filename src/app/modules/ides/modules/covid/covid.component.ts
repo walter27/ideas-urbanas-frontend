@@ -123,7 +123,7 @@ export class CovidComponent implements OnInit {
   chartCallback;
   title = 'app';
   updateFromInput = false;
-  Highcharts: any;
+  highcharts2: any;
   chartConstructor = 'mapChart';
   chartOptionsMap: any = {};
   updateDemo: boolean;
@@ -152,14 +152,17 @@ export class CovidComponent implements OnInit {
     private dataService: DataService,
     private regionService: RegionService) {
 
-    /*this.highcharts = Highcharts;
-    HC_exporting(Highcharts);
-    HC_export(Highcharts);
-    Color_Axis(this.highcharts);*/
+    this.highcharts = Highcharts;
+    HC_exporting(this.highcharts);
+    HC_export(this.highcharts);
+    Color_Axis(this.highcharts);
 
-    /* this.Highcharts = Highcharts2;
-HC_exporting(Highcharts2);
-HC_export(Highcharts2);*/
+    setTimeout(() => {
+      this.highcharts2 = Highcharts2;
+      HC_exporting(this.highcharts2);
+      HC_export(this.highcharts2);
+    }, 1000);
+
 
     this.highcharts3 = Highcharts3;
     Color_Axis(this.highcharts3);
@@ -361,7 +364,10 @@ HC_export(Highcharts2);*/
       this.rangeValues = dateRanges;
       this.createDateRange();
       this.getData(varibable._id);
-      this.getDataStreamgraph(varibable._id);
+      //CARGAR INICLAMENTE LOS CANTONES 
+      setTimeout(() => {
+        this.getDataStreamgraph(varibable._id);
+      }, 1);
 
     });
 
@@ -608,16 +614,20 @@ HC_export(Highcharts2);*/
     }
     this.dateStringAll = datesStringFinal;
     if (this.selectDate === this.dateRange[0].getTime()) {
+      //console.log(this.selectDate);
       this.minStreamgraph = 0;
       this.maxStreamgraph = this.dateRange.length;
     }
 
 
-    console.log(this.selectDate);
+    //console.log(this.selectDate);
 
     this.dataService.listDatasPublic(this.filters, idSelectVariable).subscribe((data) => {
 
       for (const dataCovid of data.data) {
+
+        // console.log(dataCovid);
+
 
         let dataStregraph = {
           name: '',
@@ -694,7 +704,6 @@ HC_export(Highcharts2);*/
 
 
       }
-
       if (this.selectedCantons) {
 
         let dataStreamGraphCanton = [];
@@ -877,10 +886,7 @@ HC_export(Highcharts2);*/
         map: catones,
         events: {
           load: function () {
-            setTimeout(() => {
-              this.mapZoom(0.7, -2, 2);
-            }, 0);
-
+            this.mapZoom(0.7, -2, 2);
           }
         }
       },
@@ -935,7 +941,6 @@ HC_export(Highcharts2);*/
 
     this.chartOptionsStreamgraph = {
       chart: {
-
         type: "streamgraph",
         //zoomType: 'x',
         /* events: {
@@ -995,10 +1000,6 @@ HC_export(Highcharts2);*/
 
       series: this.dataStreamGraphFinal,
     };
-    this.updateDemo = true;
-
-
-
   }
 
 

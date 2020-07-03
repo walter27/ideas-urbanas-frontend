@@ -20,9 +20,14 @@
 
             </div>
 
-            <div class=" col-md-6 text-right pt-2">
+            <div class=" col-md-3 text-right mt-2">
 
-                <p-multiSelect [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Select cities'" [showHeader]=false (onChange)="getSelects()" name="selectedCantons"></p-multiSelect>
+                <p-multiSelect class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Select cities'" [showHeader]=true (onChange)="getSelects()" name="selectedCantons">
+                </p-multiSelect>
+
+            </div>
+            <div class="col-md-3 text-right mt-2">
+                <p-dropdown class="block" [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Select variable'" (onChange)="getSelectVariable()"></p-dropdown>
 
             </div>
             <div class="col-12">
@@ -34,26 +39,21 @@
             </div>
             <div class="col-6 ">
 
-                <!--  <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions6" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
-                </highcharts-chart>-->
+                <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions6" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
+                </highcharts-chart>
 
 
             </div>
 
 
             <div class="col-6">
-                <!-- <highcharts-chart class="animated fadeIn" [oneToOne]=true id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
-                </highcharts-chart>-->
-            </div>
-
-            <div class="col-md-12 text-right pt-3">
-                <p-dropdown [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Select variable'" (onChange)="getSelectVariable()"></p-dropdown>
-
+                <highcharts-chart class="animated fadeIn" [oneToOne]=true id="container" [Highcharts]="highcharts2" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
+                </highcharts-chart>
             </div>
 
             <div class="col-md-12 pt-3">
-                <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
-                </highcharts-chart>
+                <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
+                </highcharts-chart>F
             </div>
         </div>
 
@@ -71,24 +71,22 @@
 </div>
 
 <div class="row mb-5">
-    <div class="col-12 text-center ">
 
-        <h3>
-            Línea de tiempo
-
-        </h3>
-
-        <p>Casos, muertes y recuperados en la ciudades del Ecuador</p>
-    </div>
-
-    <div class="container container-covid text-center">
-
-        <p>Líneade tiempo</p>
+    <div class="que-hacen-ciudades col-12 mt-5">
+        <div class="container">
+            <app-card-basic-graph-timeline>
+            </app-card-basic-graph-timeline>
+            <div class="container hide-scroll text-right">
+                .
+            </div>
+        </div>
     </div>
 
 
-    <div class="col-12 text-center">
-        <p>Que hacen las ciudades para enfrentar el covid-19</p>
+
+
+    <div class="container text-center mt-5">
+        <app-card-basic-news></app-card-basic-news>
     </div>
 
     <div class="container">

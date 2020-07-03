@@ -32,6 +32,10 @@ import { VectormapDirective } from './directives/vector-map';
 import { TagcloudDirective } from './directives/tag-cloud';
 import { CardBasicGraphCovidComponent } from './card-basic-graph-covid/card-basic-graph-covid.component';
 import { CardBasicMapCovidComponent } from './card-basic-map-covid/card-basic-map-covid.component';
+import { CardBasicGraphTimelineComponent } from './card-basic-graph-timeline/card-basic-graph-timeline.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { CardBasicNewsComponent } from './card-basic-news/card-basic-news.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,7 +62,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     VectormapDirective,
     TagcloudDirective,
     CardBasicGraphCovidComponent,
-    CardBasicMapCovidComponent
+    CardBasicMapCovidComponent,
+    CardBasicGraphTimelineComponent,
+    CardBasicNewsComponent
   ],
   exports: [
     HeaderComponent,
@@ -76,11 +82,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     IdesConfigsIndicatorComponent,
     TranslateModule,
     VectormapDirective,
-    TagcloudDirective],
+    TagcloudDirective,
+    CardBasicGraphCovidComponent,
+    CardBasicMapCovidComponent,
+    CardBasicGraphTimelineComponent,
+    CardBasicNewsComponent
+  ],
   imports: [
     CommonModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule,
+    HighchartsChartModule,
     IconsModule,
     RouterModule,
     ChartsModule,
@@ -88,6 +100,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExportAsModule,
     Ng5SliderModule,
     TooltipModule,
+    NgbModule,
     ColorPickerModule,
     TranslateModule.forChild({
       loader: {

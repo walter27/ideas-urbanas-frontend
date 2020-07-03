@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CovidRoutingModule } from './covid-routing.module';
 import { CovidComponent } from './covid.component';
-import { SharedModule } from '../../../../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartModule } from 'primeng/chart';
 import { HighchartsChartModule } from 'highcharts-angular';
