@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   serverUrl: 'https://ideas-urbanas-api.herokuapp.com/',
+  //serverUrl: 'http://localhost:3000/',
+
   stage: 'dev/',
   auth: {
     base: 'auth/',

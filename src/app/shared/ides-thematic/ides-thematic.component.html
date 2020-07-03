@@ -1,11 +1,29 @@
-<div class="row ides-ml-clasificaions cursor-pointer" (window:scroll)="onWindowScroll($event)">
+<div class="row ides-ml-clasificaions cursor-pointer">
     <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )?.data"
-        class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl mb-2 ides-mr-5">
+        class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl mb-3 ides-mr-5">
         <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
         </app-ides-card-clasification>
     </div>
 </div>
-<div class="row">
+
+<div class="row mb-4 ides-ml-charts">
+<!--   <div class="col-12">
+    <div class="dropdown ides-ml-clasificaions">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+        <span class="cursor-pointer" translate>choose_options</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <ul class="">
+            <li (click)="onSelectVariable(i)" class="nav-item-categories"
+                *ngFor="let i of ( resultVariables$ | async )?.data">
+                <app-ides-tab-item [active]="i._id === variableSelected._id" [item]="i">
+                </app-ides-tab-item>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+
     <div class="col-12">
         <nav class="navbar">
             <div class="navbar-collapse" id="navbarResponsiveThematic">
@@ -18,8 +36,10 @@
             </div>
         </nav>
     </div>
+
 </div>
-<div class="row mb-4" *ngIf="variableSelected">
+
+<div class="row mb-4 ides-ml-charts" *ngIf="variableSelected">
     <div class="col-12">
         <div class="ides-card">
             <div *ngIf="resultData?.length; else Nothing" class="row pt-3 pb-3">
@@ -30,7 +50,7 @@
                         </div>
                         <div class="col-12" *ngIf="variableSelected?.chart_type.split(' ')[0] === 'stacked'">
                             <div class="row mb-2">
-                                <div class="col-auto">
+                                <div class="ides-ml-charts">
                                     <app-ides-dropdown [selectable]="false" (checkItem)="onCheckYear($event)"
                                         [items]="years" [title]="yearSelected">
                                     </app-ides-dropdown>

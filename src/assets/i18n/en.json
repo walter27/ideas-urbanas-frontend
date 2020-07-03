@@ -109,5 +109,6 @@
   "compare_cities": "Compare the development of two cities",
   "analyse_topics": "Analyze cities by theme",
   "statistical_charts": "Statistical charts",
-  "response_covid_description": "Data and statistics from covid-19 in the medium-sized cities of Ecuador"
+  "response_covid_description": "Data and statistics from covid-19 in the medium-sized cities of Ecuador",
+  "choose_options":"Options" 
 }

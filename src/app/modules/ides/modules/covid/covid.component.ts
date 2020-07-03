@@ -193,7 +193,10 @@ export class CovidComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    elem.style.setProperty("background-color", '#189cff');
+    elem.classList.add("sticky-top");
+    elem.classList.remove("fixed-top");
 
   }
 
@@ -518,27 +521,27 @@ export class CovidComponent implements OnInit {
          if (userExists) {
            console.log(dataStregraph);
            // dataStreamGraphCopy.push(dataStregraph);
- 
+
          } else {
- 
+
            /*for (const dataRepeat of dataStreamGraph) {
              for (let index = 0; index < dataRepeat.date.length; index++) {
- 
+
                if (dataStregraph.date[index] === dataRepeat.date[index]) {
                  dataRepeat.data[index].push(dataStregraph.data[index]);
- 
+
                }
- 
+
              }
              // console.log(dataRepeat);
- 
+
            }*/
 
         // }
 
         /* if (!userExists) {
            console.log(dataStregraph);
- 
+
          }*/
 
 
@@ -689,29 +692,29 @@ export class CovidComponent implements OnInit {
     this.getData(this.selectVariable._id);
     // console.log(this.selectDate);
 
-    //OBTAIN DATE RANGE 
+    //OBTAIN DATE RANGE
     /* let values: number[] = [];
      this.dateRange.map((date: Date) => {
-   
+
        if (date <= new Date(e.value)) {
          let value: number = date.getTime();
          values.push(value);
        }
-   
+
      });
-   
-   
+
+
      let dates: Date[] = [];
      for (const dateNumber of values) {
-   
+
        let date: Date = new Date(dateNumber);
        dates.push(date);
        console.log(date);
-   
+
      }
-   
+
      this.dates = dates;
-   
+
     // console.log(this.dates);*/
 
   }

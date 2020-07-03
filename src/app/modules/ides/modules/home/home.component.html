@@ -3,67 +3,76 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <div *ngIf="step == 1">
-                    <ngb-carousel>
-                      <ng-template ngbSlide>
-                        <div class="picsum-img-wrapper" class="ides-card-home bg-banner-carousel-1">
+                    <ngb-carousel [showNavigationArrows]="true"
+                    interval="6000">
+                      <ng-template  ngbSlide>
+                        <div class="picsum-img-wrapper" class="bg-banner-carousel-1">
                           <div class="row">
-                              <div class="col-2">
-                              </div>
-                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
-                                  <h2 class="ides-text-white home-title" translate>our_cities</h2>
-                                  <h4 class="ides-text-white" translate>our_cities_description</h4>
-                                  <div class="text-center">
-                                    <a class="myButton float-left" type="button" [routerLink]="['/thematic']">
-                                      <span class="ides-mr-80" translate>click_here</span>
-                                    </a>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 ides-header-block" >
+                                <div class="animate__animated animate__bounce" >
+                                  <div class="ides-text-white ides-home-title" translate>our_cities</div>
+                                </div>
+                                  <div class="ides-text-white ides-home-subtitle" translate>our_cities_description</div>
+                                  <div class="text-center btn-space" >
+                                    <div class="animate__animated animate__rubberBand" >
+                                      <a class="myButton float-left"  type="button" [routerLink]="['/thematic']">
+                                        <span class="ides-mr-80 cursor-pointer"  translate>click_here</span>
+                                      </a>
+                                    </div>
                                   </div>
                               </div>
-                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 ">
-                                <svg-icon src="assets/home/mapa-final.svg" [svgStyle]="{ 'width.px':500, 'height.px':650}" ></svg-icon>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4"  >
+                                <svg-icon src="assets/home/mapa-final.svg" [svgStyle]="{ 'width.px':700, 'height.px':725}" ></svg-icon>
                               </div>
                           </div>
                         </div>
                       </ng-template>
                       <ng-template ngbSlide>
-                        <div class="picsum-img-wrapper"  class="ides-card-home bg-banner-carousel-2">
+                        <div class="picsum-img-wrapper" class="bg-banner-carousel-2">
                           <div class="row">
-                            <div class="col-2">
-                            </div>
-                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
-                                  <h2 class="ides-text-white home-title" translate>response_covid</h2>
-                                  <h4 class="ides-text-white" translate>response_covid_description</h4>
-                                  <div class="text-center">
-                                    <a class="myButton float-left" type="button" [routerLink]="['/covid']">
-                                        <span class="ides-mr-80" translate>click_here</span>
-                                    </a>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 ides-header-block" >
+                                <div id="test" class="animate__animated animate__bounce">
+                                  <div class="ides-text-white ides-home-title "  translate>response_covid</div>
+                                </div>
+                                  <div class="home-subtitle">
+                                    <div class="ides-text-white ides-home-subtitle" translate>response_covid_description</div>
+                                  </div>
+                                  <div class="text-center btn-space">
+                                    <div class="animate__animated animate__rubberBand">
+                                      <a class="myButton float-left" type="button" [routerLink]="['/covid']">
+                                          <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
+                                      </a>
+                                    </div>
                                   </div>
                               </div>
                               <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4">
-                                  <svg-icon src="assets/home/coronavirus.svg" [svgStyle]="{ 'width.px':500, 'height.px': 500}" ></svg-icon>
-                              </div>
-                              <div class="col-2">
+                                  <svg-icon src="assets/home/coronavirus.svg" [svgStyle]="{ 'width.px':600, 'height.px':600}" ></svg-icon>
                               </div>
                           </div>
                         </div>
                       </ng-template>
                       <ng-template ngbSlide>
-                        <div class="picsum-img-wrapper" class="ides-card-home bg-banner-carousel-3">
+                        <div class="picsum-img-wrapper" class="bg-banner-carousel-3" >
                           <div class="row">
-                            <div class="col-2">
-                            </div>
-                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
-                                  <h2 class="ides-text-white home-title" translate>compare_cities</h2>
-                                  <div class="text-center">
-                                    <a class=" myButton float-left" type="button" [routerLink]="['/thematic']">
-                                      <span class="ides-mr-80" translate>click_here</span>
-                                    </a>
+                              <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 ides-header-block">
+                                <div class="animate__animated animate__bounce">
+                                  <div class="ides-text-white ides-home-title" translate>compare_cities</div>
+                                </div>
+                                  <div class="home-subtitle">
+                                    <div class="ides-text-white ides-home-subtitle" translate></div>
+                                  </div>
+                                  <div class="text-center btn-space">
+                                    <div class="animate__animated animate__rubberBand" >
+                                      <a class=" myButton float-left" type="button" [routerLink]="['/thematic']">
+                                        <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
+                                      </a>
+                                    </div>
                                   </div>
                               </div>
                               <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4">
-                                  <svg-icon src="assets/home/ciudades-comparacion.svg"  [svgStyle]="{ 'width.px':500, 'height.px': 550}" ></svg-icon>
+                                  <svg-icon src="assets/home/ciudades-comparacion.svg"  [svgStyle]="{ 'width.px':700, 'height.px':550}" ></svg-icon>
                               </div>
-                              <div class="col-2">
-                              </div>
+
                           </div>
                         </div>
                       </ng-template>
@@ -205,51 +214,66 @@
             </div>
 
         </div>
-        <div class="text-center pb-2 pl-4" translate>statistical_charts</div>
-        <div class="text-center subtitle pb-2 pl-4" translate>analyse_topics</div>
-        <div>
-          <app-ides-thematic>
-          </app-ides-thematic>
+        <div class="row mb-4 ides-ml-analyse_topics">
+          <div class="col-12">
+            <div class="text-center text pb-2 pl-4" translate>statistical_charts</div>
+            <div class="text-center subtitle pb-2 pl-4" translate>analyse_topics</div>
+            <app-ides-thematic>
+            </app-ides-thematic>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-xl-7 col-lg-12">
-                <div class="ides-card ides-height-100 pl-0 pr-0">
-                    <div class="col-12 p-3">
-                        <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'></app-ides-index>
-                    </div>
-                </div>
+
+      <div class="row mb-4" >
+        <div class="col-12 ides-height-100-about-us">
+          <div class="col-12">
+            <div class="ides-margin-about-us">
+              <div class="animate__animated animate__headShake">
+                <div class="text-center ides-text-about-us ides-text-white subtitle" translate>about us</div>
+              </div>
             </div>
-            <div class="col-lg-12 col-xl-5 about-us">
-                <div class="ides-card ides-height-100">
-                    <div class="col-12 p-3">
-                        <div class="row">
-                            <div class="col-12 ides-text-blue mb-4">
-                                <h2 translate>about us</h2>
-                            </div>
-                            <div class="col-12 mb-4">
-                                <p class="ides-text-custom text-justify" translate>about us description
-                                </p>
-                                <p class="ides-text-custom text-justify" translate>about us description complement
-                                </p>
-                                <p class="ides-text-custom text-justify" translate>about us help
-                                </p>
-                                <p class="ides-text-custom text-justify" translate>about us contact
-                                </p>
-                            </div>
-                            <div class="col-12 text-center mb-4">
-                                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold ides-add-information" translate>about us add information
-                                    <i-feather name="arrow-up"></i-feather>
-                                </a>
-                            </div>
-                            <div class="col-12">
-                                <div class="text-center">
-                                    <img width="150" [src]="'assets/logos/icono contactos-01.png'" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-xl-6 col-lg-12" >
+          <div class=" ides-height-100 pl-0 pr-0">
+            <div class="col-12 p-2">
+                        <!-- <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'></app-ides-index> -->
+              <ngx-tweet tweetId="1278357859496009729"></ngx-tweet>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-xl-6 about-us">
+          <div class="ides-card ides-height-100">
+            <div class="col-12 p-3">
+              <div class="row">
+                <div class="col-12 ides-text-blue mb-4">
+                  <svg-icon src="assets/home/quienes-somos.svg" [svgStyle]="{ 'width.px':550, 'height.px':300}" ></svg-icon>
+                </div>
+                <div class="col-12 mb-4">
+                  <div class="ides-little-tittle-text-about-us text-center" translate>title-about-us</div>
+                </div>
+                <div class="col-12 mb-4">
+                  <p class="ides-little-text-about-us text-justify" translate>about us description</p>
+                  <p class="ides-little-text-about-us text-justify" translate>about us description complement</p>
+                  <p class="ides-little-text-about-us text-justify" translate>about us help</p>
+                  <p class="ides-little-text-about-us text-justify" translate>about us contact</p>
+                </div>
+                <div class="row">
+                  <div class="col-12 mb-4">
+                    <div class="text-center">
+                      <img width="100" [src]="'assets/logos/icono contactos-01.png'" />
+                    </div>
+                  </div>
+                  <div class="col-12 mb-4">
+                    <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold ides-add-information" translate>about us add information</a>
+                                  <!-- <i-feather name="arrow-up"></i-feather> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 </div>

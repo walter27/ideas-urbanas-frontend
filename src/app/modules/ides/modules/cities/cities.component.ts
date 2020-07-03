@@ -75,6 +75,10 @@ export class CitiesComponent implements OnInit {
   }
 
   ngOnInit() {
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    elem.style.setProperty("background-color", '#189cff');
+    elem.classList.add("sticky-top");
+    elem.classList.remove("fixed-top");
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.idCity = params.city;
@@ -89,7 +93,7 @@ export class CitiesComponent implements OnInit {
     });
 
     console.log(this.tagsData);
-    
+
   }
 
   getClasifications() {
@@ -126,9 +130,9 @@ export class CitiesComponent implements OnInit {
       map(resp => {
 
         console.log('Perro');
-        
+
         console.log(resp);
-        
+
         return resp;
       })
     ).subscribe(resp => {
