@@ -214,7 +214,10 @@ export class CovidComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    elem.style.setProperty("background-color", '#189cff');
+    elem.classList.add("sticky-top");
+    elem.classList.remove("fixed-top");
 
   }
 
@@ -622,7 +625,7 @@ export class CovidComponent implements OnInit {
     }
 
 
-   // this.graficarHigcharts();
+    this.graficarHigcharts();
     this.graficHighmap();
 
 
@@ -814,29 +817,29 @@ export class CovidComponent implements OnInit {
     }
     // console.log(this.selectDate);
 
-    //OBTAIN DATE RANGE 
+    //OBTAIN DATE RANGE
     /* let values: number[] = [];
      this.dateRange.map((date: Date) => {
-   
+
        if (date <= new Date(e.value)) {
          let value: number = date.getTime();
          values.push(value);
        }
-   
+
      });
-   
-   
+
+
      let dates: Date[] = [];
      for (const dateNumber of values) {
-   
+
        let date: Date = new Date(dateNumber);
        dates.push(date);
        console.log(date);
-   
+
      }
-   
+
      this.dates = dates;
-   
+
     // console.log(this.dates);*/
 
   }

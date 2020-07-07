@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -8,6 +11,31 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  // @HostListener('window:hashchange', ['$event'] locationHashChanged($event)){
+  //   if (location.hash === "#home") {
+  //       console.log("Cambio");
+  //   }
+  // }
+  //@HostListener('window:hashchange', ['$event'] )
+
+
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    let pos = window.pageYOffset;
+    //let location= window.location.href;
+  //   let loc=window.location.hash;
+  //   if(location==='#/home'){
+  //     if (pos > 20) {
+  //       elem.style.setProperty("background-color", '#189cff');
+  //
+  //      } //else {
+  //     //     elem.style.setProperty("background-color", 'transparent');
+  //     // }
+  //
+  // }
+
+}
 
   @Input() items: any[];
   @Input() language: any;
@@ -28,9 +56,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService
-  ) { }
+  ) { console.log(window.location.href);}
 
   ngOnInit() {
+
   }
 
   isAuthenticated() {

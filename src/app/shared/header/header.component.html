@@ -1,17 +1,15 @@
-<nav class="navbar navbar-expand-xl navbar-light mat-menu-content static-top pr-md-5 pl-md-5 ides-header">
+<nav id="navbarMenu" class="navbar navbar-expand-xl fixed-top mat-menu-content  ">
     <div class="d-sm-block d-md-none">
         <div class="row">
-            <div class="col-10 col-sm-11">
+            <div class="col-8 col-sm-11">
                 <a routerLink="/" class="navbar-brand ml-1 logo-link">
-
-                    <img id="header-logo" class="ide-logo-headerh" src="assets/logos/logo.svg" width="250px" alt="">
-
+                    <img id="header-logo" class="ide-logo-headerh" src="assets/logos/logo-blanco.svg" width="300px" alt="">
                 </a>
             </div>
-            <div class="col-2 col-sm-1">
+            <div class="col-4 col-sm-1">
                 <button class="navbar-toggler mt-2 ides-navbar-toggler-mobile" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <fa class="cursor-pointer ides-text-white" [name]="'bars'"></fa>
-                </button>
+          <fa class="cursor-pointer ides-text-white" [name]="'bars'"></fa>
+        </button>
                 <div class="collapse navbar-collapse mt-3 menu-mobile" id="navbarResponsive">
                     <ul class="nav ml-auto list-group list-group-flush">
                         <li class="list-group-item list-menu-mobile" *ngFor="let i of items">
@@ -23,55 +21,86 @@
         </div>
     </div>
 
-
-    <a routerLink="/" class="navbar-brand ml-1 logo-link d-none d-sm-none d-md-block">
-        <img id="header-logo" class="hide-logo-header" src="assets/logos/logo.svg" width="250px" alt="">
-    </a>
-    <div class="w-100 d-none d-sm-none d-md-block mr-5">
-
-
-        <div class="navbar-collapse mt-3 float-right">
-            <div class="row">
-
-                <div>
-                    <ul class="nav">
-                        <li *ngFor="let i of items" class="mr-5">
-                            <app-navbar-item (showMore)="showMore.emit($event)" [item]="i"></app-navbar-item>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div *ngFor="let i of icons" class="col-auto ">
+    <div class="row">
+        <div class="col-2">
+            <a routerLink="/" class="navbar-brand ml-1 logo-link d-none d-sm-none d-md-block">
+                <img id="header-logo" class="" src="assets/logos/logo-blanco.svg" height="80px" width="200px" alt="">
+            </a>
+        </div>
+        <div class="col-7">
+            <div class="w-100 d-none d-sm-none d-md-block mr-4 navbar-collapse mt-2">
+                <ul class="nav ides-navbar-items">
+                    <li *ngFor="let i of items" class="mr-4">
+                        <app-navbar-item (showMore)="showMore.emit($event)" [item]="i"></app-navbar-item>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="navbar-collapse d-sm-none d-md-block">
+                <div *ngFor="let i of icons" class="ides-navbar-items-buttom">
                     <a target="_blank" [attr.href]="i.link" class="social ">
                         <fa class="cursor-pointer ides-text-icon" [name]="i.name"></fa>
                     </a>
                 </div>
-
-                <div class="col-auto  login" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
-                    <div *ngSwitchCase="true" class="ides-text-blue" style="font-size: 16px;">
+                <div class="dropdown text-white" class="text-white">
+                    <button class="btn ides-dropdown dropdown-toggle ides-text-white ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="ides-mr-80 font-weight-bold text-white">{{ language | uppercase }}</span>
+          </button>
+                    <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="dropdownMenuButton">
+                        <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">Esp</a>
+                        <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">Eng</a>
+                    </div>
+                </div>
+                <div class="login ides-navbar-items-buttom" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
+                    <div *ngSwitchCase="true" class="ides-text-blue" style="font-size: 10px;">
                         <span translate>hello</span>, {{ getName() }}
                         <i-feather (click)="logout()" class="cursor-pointer" name="log-out"></i-feather>
                     </div>
-
                     <a *ngSwitchDefault routerLink="/auth/login">
                         <fa class="cursor-pointer ides-text-icon social" name="user"></fa>
                         <!--   <img width="20" height="16" class="img" [src]="overLogin ? 'assets/ICONOS/user-admin-naranja.png' : 'assets/ICONOS/user-admin.png'" />-->
                     </a>
-
                 </div>
-
-                <div class="dropdown text-white" class="ml-auto mx-auto text-white">
-                    <button class="btn ides-dropdown dropdown-toggle ides-text-white ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="ides-mr-80 font-weight-bold text-white">{{ language | uppercase }}</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="dropdownMenuButton">
-                        <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">ES</a>
-                        <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">EN</a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 </nav>
+
+<!-- <div class="w-100 d-none d-sm-none d-md-block mr-5">
+      <div class="navbar-collapse mt-2 ">
+        <div class="row"> -->
+<!-- <div>
+            <ul class="nav">
+              <li *ngFor="let i of items" class="mr-5">
+                <app-navbar-item (showMore)="showMore.emit($event)" [item]="i"></app-navbar-item>
+              </li>
+            </ul>
+          </div> -->
+<!-- <div *ngFor="let i of icons" class="col-auto ">
+                  <a target="_blank" [attr.href]="i.link" class="social ">
+                    <fa class="cursor-pointer ides-text-icon" [name]="i.name"></fa>
+                  </a>
+                </div> -->
+
+<!-- <div class="col-auto  login" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
+                  <div *ngSwitchCase="true" class="ides-text-blue" style="font-size: 16px;">
+                    <span translate>hello</span>, {{ getName() }}
+                      <i-feather (click)="logout()" class="cursor-pointer" name="log-out"></i-feather>
+                  </div>
+                  <a *ngSwitchDefault routerLink="/auth/login">
+                    <fa class="cursor-pointer ides-text-icon social" name="user"></fa>
+                        <!- <img width="20" height="16" class="img" [src]="overLogin ? 'assets/ICONOS/user-admin-naranja.png' : 'assets/ICONOS/user-admin.png'" />-->
+<!-- </a>
+                </div>  -->
+
+<!-- <div class="dropdown text-white" class="ml-auto mx-auto text-white">
+                    <button class="btn ides-dropdown dropdown-toggle ides-text-white ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="ides-mr-80 font-weight-bold text-white">{{ language | uppercase }}</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="dropdownMenuButton">
+                        <a (click)="onSetLanguage('esp')" class="dropdown-item cursor-pointer">Esp</a>
+                        <a (click)="onSetLanguage('eng')" class="dropdown-item cursor-pointer">Eng</a>
+                    </div>
+                </div>
+            </div> -->

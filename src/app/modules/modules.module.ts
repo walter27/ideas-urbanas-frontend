@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AgWordCloudModule } from 'angular4-word-cloud';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgxSpinnerModule,
     AgWordCloudModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //BrowserAnimationsModule
   ]
 })
 export class ModulesModule { }

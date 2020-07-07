@@ -123,6 +123,7 @@
   "compare_cities": "Compara el desarrollo de dos ciudades",
   "analyse_topics": "Analizar las ciudades por tema",
   "statistical_charts": "Gráficos Estadísticos",
-  "response_covid_description": "Datos y estadísticas de covid-19 en las ciudades medianas de Ecuador" 
-
+  "response_covid_description": "Datos y estadísticas de covid-19 en las ciudades medianas de Ecuador",
+  "choose_options": "Desplegar menú",
+  "title-about-us": "Laboratorio de Ideas Urbanas"
 }

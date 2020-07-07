@@ -9,11 +9,13 @@ import {FormsModule} from '@angular/forms';
 import { IconsModule } from 'src/app/icons/icons.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxTweetModule } from "ngx-tweet";
 
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
+    NgxTweetModule,
     CommonModule,
     HomeRoutingModule,
     SharedModule,

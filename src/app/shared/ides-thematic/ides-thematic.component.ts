@@ -335,11 +335,13 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     private regionService: RegionService,
     private chartService: ChartsService,
     private utilsService: UtilsService,
-    private router: Router
+    private router: Router,
+
   ) {
   }
 
   ngOnInit() {
+
     sessionStorage.clear();
 
     if (this.router.url != '/home')
@@ -380,7 +382,9 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
         return resp;
       })
     );
+
   }
+
 
   getVariables() {
     this.resultVariables$ = this.variableService.getVariablesByClasification(this.clasificationSelected._id).pipe(

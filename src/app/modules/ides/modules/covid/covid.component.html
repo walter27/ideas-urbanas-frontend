@@ -39,25 +39,23 @@
             </div>
             <div class="col-6 ">
 
-                <!-- <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts"
-                    [options]="chartOptions6" style="width: 100%; height: 400px; display: block;"
-                    class="highcharts animated fadeIn">
-                </highcharts-chart>-->
+                <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions6" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
+                </highcharts-chart>
 
-                <app-card-basic-graph-covid [dates]="dateString" [data]="dataHigcharts"></app-card-basic-graph-covid>
+                <!-- <app-card-basic-graph-covid [dates]="dateString" [data]="dataHigcharts"></app-card-basic-graph-covid>-->
 
 
             </div>
 
 
             <div class="col-6">
-                <!-- <highcharts-chart class="animated fadeIn" [oneToOne]=true id="container" [Highcharts]="highcharts2" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
-                </highcharts-chart>-->
+                <highcharts-chart class="animated fadeIn" [oneToOne]=true id="container" [Highcharts]="highcharts2" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
+                </highcharts-chart>
             </div>
 
             <div class="col-md-12 pt-3">
-                <!-- <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
-                </highcharts-chart>-->
+                <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
+                </highcharts-chart>
             </div>
         </div>
 
