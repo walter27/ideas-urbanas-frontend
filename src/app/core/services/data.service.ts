@@ -99,7 +99,7 @@ export class DataService {
   }
 
   getData() {
-    return this.httpClient.get(`${this.serverUrl}getCSV/datos/data`, httpOptions);
+    return this.httpClient.get(`${this.serverUrl}getCSV/datos/muertos`, httpOptions);
   }
 
   addData(profile) {

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import * as Highcharts from 'highcharts';
+import HC_exporting from 'highcharts/modules/exporting';
+import HC_export from 'highcharts/modules/export-data';
+import Color_Axis from 'highcharts/modules/coloraxis';
+
 
 @Component({
   selector: 'app-card-basic-graph-covid',
@@ -7,9 +12,96 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardBasicGraphCovidComponent implements OnInit {
 
-  constructor() { }
+  highcharts: any;
+  updateDemo: boolean;
+  chartOptions: any = {};
 
-  ngOnInit() {
+  @Input() dates: any[];
+  @Input() data: any[];
+
+
+
+  constructor() {
+
+    this.updateDemo = false;
+    this.highcharts = Highcharts;
+    HC_exporting(this.highcharts);
+    HC_export(this.highcharts);
+    Color_Axis(this.highcharts);
+
+    console.log(this.dates);
+
   }
 
+  ngOnInit() {
+
+    this.createBarChart();
+  }
+
+  createBarChart() {
+
+
+    this.chartOptions = {
+      chart: {
+        type: "column",
+        animation: true,
+
+      },
+      title: {
+        text: "Casos confirmados de covid-19"
+      },
+      xAxis: {
+        categories: this.dates,
+
+      },
+      colorAxis: {
+
+        minColor: '#ffeda0',
+        maxColor: '#bd0026',
+
+      },
+      yAxis: {
+        title: {
+          text: "Casos Confirmados"
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        enabled: true,
+        crosshairs: true
+      },
+      plotOptions: {
+        series: {
+          dataLabels: {
+            useHTML: true,
+            formatter: function () {
+              var styleStr = 'color:black; transform:rotate(270deg)';
+              return (
+                '<div style="' + styleStr + '">' +
+                '&nbsp;' + this.series.name +
+                '</div>'
+              );
+            },
+            enabled: true,
+            inside: true,
+            y: -20,
+            //rotation: 270,
+            //format: '{y}%',
+            //style: {
+            fontSize: '0.75em',
+            //  textShadow: false,
+            //}
+          }
+
+        }
+      },
+      series: this.data
+
+    };
+
+    this.updateDemo = true;
+
+  }
 }

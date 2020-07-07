@@ -570,6 +570,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       idVariable).subscribe(data => {
         this.loading = false;
         this.resultData = data.data;
+        console.log(this.resultData);
         this.getYearsAndCities();
         this.loadData();
       }, err => {
@@ -587,7 +588,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   onSelectVariable(variable) {
 
     console.log(variable);
-    
+
     this.variableSelected = variable;
     sessionStorage.setItem('variableSelectedName', this.variableSelected.name);
     sessionStorage.setItem('variableSelectedLabel', this.variableSelected.label);
