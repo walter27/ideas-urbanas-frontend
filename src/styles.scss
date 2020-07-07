@@ -12,7 +12,6 @@
 @import '~ika.jvectormap/jquery-jvectormap-1.2.2.css';
 @import './assets/styles/ventor-map.scss';
 //@import '~animate.css/animate.min';
-
 body {
     font-family: 'Work Sans', sans-serif, sans-serif !important;
     background-color: #FAFAFA!important;
@@ -246,15 +245,12 @@ a.ides-text-white:hover {
     height: 100%!important;
 }
 
-.ides-height-100-about-us{
-  height: 100%!important;
-  box-shadow: 0px 3px 6px #00000029;
-  background: #189cff 100% 100% no-repeat padding-box;
-  margin-top: 1rem !important;
+.ides-height-100-about-us {
+    height: 100%!important;
+    box-shadow: 0px 3px 6px #00000029;
+    background: #189cff 100% 100% no-repeat padding-box;
+    margin-top: 1rem !important;
 }
-
-
-
 
 a:hover {
     text-decoration: none!important;
@@ -282,14 +278,14 @@ a:hover {
 }
 
 .subtitle {
-    font: 45px 'Noto Sans TC',sans-serif !important;
+    font: 45px 'Noto Sans TC', sans-serif !important;
     padding-top: 0.5em !important;
     color: #010C39;
     font-weight: bold !important;
 }
 
-.text{
-    font-family: 20px 'Karla',sans-serif !important;
+.text {
+    font-family: 20px 'Karla', sans-serif !important;
     color: #787878;
     font-weight: bold !important;
 }
@@ -394,7 +390,7 @@ a:hover {
         font: 14px "Noto Sans TC" !important;
     }
     .ides-header {
-        z-index:900;
+        z-index: 900;
         background-color: transparent;
         padding-bottom: 3rem!important;
     }
@@ -683,8 +679,12 @@ a:hover {
     //height: inherit;
 }
 
+.ides-ml-analyse_topics {
+    margin-top: 10rem !important;
+}
 
-.ides-ml-analyse_topics{
-  margin-top: 10rem !important;
-
+//HIGCHARTS
+.highcharts {
+    border: solid 1px;
+    border-radius: 20px;
 }

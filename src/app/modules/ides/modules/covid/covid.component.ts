@@ -2,45 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ClasificationService } from '../../../../core/services/clasification.service';
 import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
-import * as Highcharts from 'highcharts';
-import * as Highcharts2 from 'highcharts/highmaps';
-import * as Highcharts3 from 'highcharts';
-
-
-import HC_exporting from 'highcharts/modules/exporting';
-import HC_export from 'highcharts/modules/export-data';
-
-import { NgForm, FormGroup } from '@angular/forms';
-
-
-import Color_Axis from 'highcharts/modules/coloraxis';
-import * as Legend from '../../../../../assets/js/legend/legend.js';
-
-
-//map
-//import catones from '../../../../../assets/geojson/json';
 import { RegionService } from '../../../../core/services/region.service';
 import { Region } from 'src/app/core/models/regions.model';
 import { Variable } from 'src/app/core/models/variable.model';
-
-const catones: any = require('../../../../../assets/geojson/cantones.json');
-
 import { Options, LabelType } from 'ng5-slider';
-
-import Streamgraph from 'highcharts/modules/streamgraph';
-import Series_Label from 'highcharts/modules/series-label';
-import { Data } from '@angular/router';
-
-
-
-
-interface City {
-  name: string;
-  id: string;
-
-}
-
-
 
 
 @Component({
@@ -48,9 +13,9 @@ interface City {
   templateUrl: './covid.component.html',
   styleUrls: ['./covid.component.scss']
 })
+
 export class CovidComponent implements OnInit {
 
-  idClasification: string;
   model = 'Canton';
   filters = {
     page: 0,
@@ -58,7 +23,6 @@ export class CovidComponent implements OnInit {
     ascending: true,
     sort: 'name'
   };
-
   cantons: Region[];
   selectedCantons: Region[];
 
@@ -66,71 +30,18 @@ export class CovidComponent implements OnInit {
   selectVariable: Variable;
 
   selectDate: number;
-
-  dates: Date[] = [];
-
   dateString: string[] = [];
   dateStringAll: string[] = [];
+  dataMapa: any = [];
+  dataFinal: any = [];
 
-
-  Streamgraph: any;
-  chartOptionsStreamgraph: any = {};
-  chartConstructor2 = 'streamgraph';
   minStreamgraph: number;
   maxStreamgraph: number;
 
-
-
   rangeValues: any = [];
 
-  clasification: any = [];
-
-  varibales: any = [];
-  data: any = [];
-
-  label: any = [];
-  data2: any = [];
-
-  covidBarChart: any;
-
-  data3: any;
-
-  data6: any;
   dataHigcharts: any = [];
   dataStreamGraphFinal: any = [];
-
-
-  //highcharts = Highcharts;
-  chartOptions: any = {};
-  chartOptions6: any = {};
-
-  highcharts: any;
-  highcharts3: any;
-
-
-  cities: City[];
-
-  selectedCities: City[];
-
-
-  //Mapa
-  dataMapa: any[] = [];
-
-
-  form: FormGroup;
-
-
-  chart;
-  chartCallback;
-  title = 'app';
-  updateFromInput = false;
-  highcharts2: any;
-  chartConstructor = 'mapChart';
-  chartOptionsMap: any = {};
-  updateDemo: boolean;
-
-
-
 
   dateRange: Date[];
   value: number;
@@ -140,54 +51,14 @@ export class CovidComponent implements OnInit {
   };
 
 
-
-  dataCovid: any = [];
-  dataFinal: any = [];
-  dataPrueba: any = [];
-
-
-  public resultData: Data;
-
-
-
-
   constructor(private resultClasification: ClasificationService,
     private variableService: VariableService,
     private dataService: DataService,
     private regionService: RegionService) {
 
-    this.highcharts = Highcharts;
-    HC_exporting(this.highcharts);
-    HC_export(this.highcharts);
-    Color_Axis(this.highcharts);
-
-    setTimeout(() => {
-      this.highcharts2 = Highcharts2;
-      HC_exporting(this.highcharts2);
-      HC_export(this.highcharts2);
-    }, 1000);
-
-
-    this.highcharts3 = Highcharts3;
-    Color_Axis(this.highcharts3);
-    Streamgraph(this.highcharts3);
-    HC_exporting(this.highcharts3);
-    HC_export(this.highcharts3);
-    Series_Label(this.highcharts3);
-
-
-
-
-
-
-    this.updateDemo = false;
     this.getCantons();
     this.getClasification();
-
-
-
   }
-
 
 
   getClasification() {
@@ -201,12 +72,9 @@ export class CovidComponent implements OnInit {
           //console.log(this.idClasification);
           this.getVariables(clasification._id);
 
-
         }
 
       }
-
-
 
     });
 
@@ -218,6 +86,7 @@ export class CovidComponent implements OnInit {
     elem.style.setProperty("background-color", '#189cff');
     elem.classList.add("sticky-top");
     elem.classList.remove("fixed-top");
+
 
   }
 
@@ -341,15 +210,6 @@ export class CovidComponent implements OnInit {
       }, 6000);
 
     }
-
-
-
-
-
-
-
-
-
   }
 
 
@@ -488,7 +348,7 @@ export class CovidComponent implements OnInit {
 
     let dataCovidlocal = localStorage.getItem('covid');
 
-   // console.log(JSON.parse(dataCovidlocal));
+    // console.log(JSON.parse(dataCovidlocal));
 
 
 
@@ -541,12 +401,6 @@ export class CovidComponent implements OnInit {
 
 
     }
-
-
-
-
-
-    // console.log(this.dataStreamGraph);
 
 
     /*let selectCantos = ;
@@ -623,14 +477,6 @@ export class CovidComponent implements OnInit {
       this.dataMapa = dataHighmapFinal;
 
     }
-
-
-    this.graficarHigcharts();
-    this.graficHighmap();
-
-
-
-
 
   }
 
@@ -759,7 +605,6 @@ export class CovidComponent implements OnInit {
         }
       }
       this.dataStreamGraphFinal = dataStreamGraphCanton;
-      this.createStreamgraph();
     }
 
   }
@@ -782,6 +627,7 @@ export class CovidComponent implements OnInit {
 
 
   }
+
   sliderChange(e) {
 
     let datesString = [];
@@ -843,206 +689,6 @@ export class CovidComponent implements OnInit {
     // console.log(this.dates);*/
 
   }
-
-
-
-
-  graficarHigcharts() {
-
-    this.chartOptions6 = {
-      chart: {
-        type: "column",
-        animation: true,
-
-      },
-      title: {
-        text: "Casos confirmados de covid-19"
-      },
-      xAxis: {
-        categories: this.dateString,
-
-      },
-      colorAxis: {
-
-        minColor: '#ffeda0',
-        maxColor: '#bd0026',
-
-      },
-      yAxis: {
-        title: {
-          text: "Casos Confirmados"
-        }
-      },
-      legend: {
-        enabled: false
-      },
-      tooltip: {
-        enabled: true,
-        crosshairs: true
-      },
-      plotOptions: {
-        series: {
-          dataLabels: {
-            useHTML: true,
-            formatter: function () {
-              var styleStr = 'color:black; transform:rotate(270deg)';
-              return (
-                '<div style="' + styleStr + '">' +
-                '&nbsp;' + this.series.name +
-                '</div>'
-              );
-            },
-            enabled: true,
-            inside: true,
-            y: -20,
-            //rotation: 270,
-            //format: '{y}%',
-            //style: {
-            fontSize: '0.75em',
-            //  textShadow: false,
-            //}
-          }
-
-        }
-      },
-      series: this.dataHigcharts
-
-    };
-
-    this.updateDemo = true;
-
-    // colorsLegend(Highcharts);
-
-
-  }
-
-  graficHighmap() {
-
-    //console.log(this.dataMapa);
-
-    this.chartOptionsMap = {
-      chart: {
-        map: catones,
-        animation: true,
-        events: {
-          load: function () {
-            this.mapZoom(0.7, -2, 2);
-          }
-        }
-      },
-      title: {
-        text: 'Ecuador'
-      },
-      mapNavigation: {
-        enabled: true,
-        buttonOptions: {
-          alignTo: 'spacingBox'
-        }
-      },
-      colorAxis: {
-        tickPixelInterval: 30,
-        minColor: '#ffeda0',
-        maxColor: '#bd0026'
-      },
-      series: [{
-        data: this.dataMapa,
-        keys: ['id', 'value'],
-        joinBy: 'id',
-        name: 'Casos confirmados',
-        states: {
-          hover: {
-            color: '#a4edba'
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          format: '{point.properties.name}',
-          style:
-          {
-            font: 'normal 1px Verdana, sans-serif'
-          }
-        }
-      }]
-    };
-
-    const self = this;
-
-    this.chartCallback = chart => {
-      self.chart = chart;
-    };
-
-
-
-
-  }
-
-
-  createStreamgraph() {
-
-    this.chartOptionsStreamgraph = {
-      chart: {
-        type: "streamgraph",
-        animation: true
-        //zoomType: 'x',
-        /* events: {
-           afterSetExtremes: function () {
-             console.log(this.getExtremes());
-           }
-         }*/
-
-      },
-      title: {
-        text: "Casos confirmados de covid-19"
-      },
-      xAxis: {
-        maxPadding: 0,
-        type: 'categories',
-        min: this.minStreamgraph,
-        max: this.maxStreamgraph,
-        crosshair: true,
-        categories: this.dateStringAll,
-        labels: {
-          align: 'left',
-          reserveSpace: false,
-          rotation: 270
-        },
-        lineWidth: 0,
-        margin: 20,
-        tickWidth: 0,
-        /*events: {
-          setExtremes: function (e) {
-
-
-            console.log(e);
-
-
-          },
-
-          afterSetExtremes: function () {
-            console.log(this.getExtremes());
-          }
-        },*/
-
-      },
-      colorAxis: {
-
-        minColor: '#ffeda0',
-        maxColor: '#bd0026',
-
-      },
-      yAxis: {
-        visible: false,
-        startOnTick: false,
-        endOnTick: false
-      },
-      legend: {
-        enabled: false
-      },
-
-      series: this.dataStreamGraphFinal,
-    };
-  }
-
 
 }
 

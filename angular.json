@@ -42,8 +42,7 @@
                             "node_modules/tether/dist/js/tether.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
                             "node_modules/angular4-word-cloud/d3.min.js",
-                            "node_modules/chart.js/dist/Chart.js",
-                            "src/assets/js/legend/legend.js"
+                            "node_modules/chart.js/dist/Chart.js"
                         ]
                     },
                     "configurations": {
