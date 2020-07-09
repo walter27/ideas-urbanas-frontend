@@ -66,6 +66,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   myChart: Chart;
   years: ItemDropdown[] = [];
   cities: ItemDropdown[] = [];
+  citiesSelected: ItemDropdown[] = [];
   yearSelected = '';
 
   downloadOptions: ItemDropdown[] = [
@@ -426,6 +427,180 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     }
   }
 
+  getSelectCities() {
+    //console.log(this.citiesSelected);
+    this.loadData2();
+
+  }
+
+  getVariableSelected() {
+    //console.log(this.variableSelected);
+    this.onSelectVariable(this.variableSelected);
+    //this.loadData2();
+
+  }
+
+  loadData2() {
+    this.lineChartData = [];
+    this.lineChartLabels = [];
+
+    //console.log(this.citiesSelected);
+
+
+    this.lineChartLabels = this.years.filter(y => { if (y.check) { return true; } return false; }).map(y => y.name);
+
+    if (this.lineChartType === CharType.lineal || this.lineChartType === CharType.bar) {
+      if (this.variableSelected.chart_type.split(' ')[0] === 'stacked') {
+
+        this.lineChartOptions.scales.xAxes[0].scaleLabel.labelString = 'Ciudades';
+        this.lineChartOptions.scales.yAxes[0].scaleLabel.labelString = sessionStorage.getItem('variableSelectedLabel') == '' ? 'Cantidad' : sessionStorage.getItem('variableSelectedLabel');
+
+        this.lineChartOptions.scales.xAxes[0].stacked = true;
+        this.lineChartOptions.scales.yAxes[0].stacked = true;
+        this.lineChartOptions.hover = { mode: "label" };
+
+        this.lineChartLabels = [];
+        this.lineChartColors = [{ backgroundColor: '#004587' }, { backgroundColor: '#076DCD' }, { backgroundColor: '#FFDA20' },
+        { backgroundColor: '#F8A901' }, { backgroundColor: '#1BD4D4' }, { backgroundColor: '#AAD6FF' },
+        { backgroundColor: '#8F8F8F' }, { backgroundColor: '#BFBFBF' }, { backgroundColor: '#E3E3E3' }];
+
+        Object.keys(this.resultData[0].value).forEach(k => {
+          this.lineChartData.push(
+            {
+              label: capitalizeFirst(k),
+              data: Array<Chart.ChartPoint>(),
+              stack: 'a',
+            }
+          );
+        });
+
+        this.resultData.forEach(d => {
+
+          if (d.year.toString() === this.yearSelected) {
+
+            //console.log(formatLabel(d.obj_Canton.name));
+
+            this.citiesSelected.forEach(c => {
+              // console.log(c.name);
+
+              if (formatLabel(d.obj_Canton.name) === c.name) {
+                this.lineChartLabels.push(formatLabel(d.obj_Canton.name));
+
+                Object.keys(d.value).forEach((k, idx) => {
+                  this.lineChartData[idx].data.push(d.value[k]);
+                });
+
+              }
+
+            });
+
+
+
+
+          }
+
+
+
+        });
+        /* console.log(this.lineChartLabels);
+         this.citiesSelected.forEach(d => {
+           console.log(d.name);
+ 
+         });*/
+
+
+
+      } else {
+        this.lineChartOptions.scales.xAxes[0].stacked = false;
+        this.lineChartOptions.scales.yAxes[0].stacked = false;
+
+        this.lineChartOptions.scales.xAxes[0].scaleLabel.labelString = 'Año';
+        this.lineChartOptions.scales.yAxes[0].scaleLabel.labelString = sessionStorage.getItem('variableSelectedLabel') == '' ? 'Cantidad' : sessionStorage.getItem('variableSelectedLabel');
+        this.lineChartOptions.hover = { mode: "dataset" };
+
+        // lineal
+        this.citiesSelected.forEach((c, idx) => {
+          const ch = JSON.parse(sessionStorage.getItem('citiesHidden'));
+          if (c.check) {
+            let color = c.color || '';
+            let colorStrong = this.getColorStrong(c.color) || '';
+
+            this.lineChartColors.push({
+              backgroundColor: color
+            });
+            sessionStorage.setItem(c.name.toLowerCase(), color);
+            let hidden = false;
+            if (ch && ch.indexOf(c.name) !== -1) {
+              hidden = true;
+            }
+            this.lineChartData.push(
+              {
+                label: formatLabel(c.name),
+                data: Array<Chart.ChartPoint>(),
+                fill: false,
+                borderColor: colorStrong,
+                pointBorderColor: color,
+                pointBackgroundColor: 'white',
+                pointRadius: 2,
+                borderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBackgroundColor: colorStrong,
+                pointHoverBorderWidth: 1,
+                hoverRadius: 8,
+                pointHoverBorderColor: 'white',
+                hoverBorderColor: colorStrong,
+                hoverBorderWidth: 4,
+                hoverBackgroundColor: colorStrong,
+                backgroundColor: color,
+                hidden
+              }
+            );
+            this.lineChartLabels.forEach(y => {
+              this.lineChartData[this.lineChartData.length - 1].data.push(null);
+              this.resultData.forEach(d => {
+                if (d.obj_Canton._id === c.id && d.year.toString() === y) {
+                  this.lineChartData[
+                    this.lineChartData.length - 1].data[this.lineChartData[this.lineChartData.length - 1].data.length - 1]
+                    = { x: d.description, y: d.value };
+                }
+              });
+            });
+          }
+        });
+
+      }
+    } else {
+      this.citiesSelected.forEach(c => {
+        if (c.check) {
+          this.lineChartData.push(
+            {
+              label: formatLabel(c.name),
+              data: [],
+              fill: false
+            }
+          );
+          this.lineChartLabels.forEach(y => {
+            this.lineChartData[this.lineChartData.length - 1].data.push(null);
+            this.resultData.forEach(d => {
+              if (d.obj_Canton._id === c.id && d.year.toString() === y) {
+                this.lineChartData[
+                  this.lineChartData.length - 1].data[this.lineChartData[this.lineChartData.length - 1].data.length - 1]
+                  = d.value.electricidad;
+              }
+            });
+          });
+        }
+      });
+    }
+  }
+
+
+
+
+
+
+
+
   loadData() {
     this.lineChartData = [];
     this.lineChartLabels = [];
@@ -574,9 +749,14 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       idVariable).subscribe(data => {
         this.loading = false;
         this.resultData = data.data;
-        console.log(this.resultData);
         this.getYearsAndCities();
-        this.loadData();
+        if (this.citiesSelected.length === 0) {
+          this.citiesSelected.push(this.cities[0]);
+          this.loadData2();
+        }
+        this.loadData2();
+
+        //this.loadData();
       }, err => {
         this.loading = false;
       });
@@ -591,8 +771,6 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
 
   onSelectVariable(variable) {
 
-    console.log(variable);
-
     this.variableSelected = variable;
     sessionStorage.setItem('variableSelectedName', this.variableSelected.name);
     sessionStorage.setItem('variableSelectedLabel', this.variableSelected.label);
@@ -602,15 +780,17 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   }
 
   onCheckItemCity(e) {
-    const idx = this.cities.findIndex(c => c.id === e);
-    this.cities[idx].check = !this.cities[idx].check;
-    this.loadData();
+    const idx = this.citiesSelected.findIndex(c => c.id === e);
+    this.citiesSelected[idx].check = !this.citiesSelected[idx].check;
+    this.loadData2();
+    //this.loadData();
   }
 
   onCheckItemYear(e) {
     const idx = this.years.findIndex(c => c.id === e);
     this.years[idx].check = !this.years[idx].check;
-    this.loadData();
+    this.loadData2();
+    //this.loadData();
   }
 
   downloadCanvas(event, typeDownload) {
@@ -655,7 +835,8 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
         this.years[idx].check = true;
       }
     }
-    this.loadData();
+    this.loadData2();
+    //this.loadData();
   }
 
   onDownloadCSV(event) {
@@ -669,7 +850,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     const date = new Date();
 
     this.dataService.downloadCSV({ page: 0, limit: 10000, ascending: true, sort: 'obj_Canton.name' },
-      idVariable, this.cities, this.years).subscribe(data => {
+      idVariable, this.citiesSelected, this.years).subscribe(data => {
         const parsedResponse = data;
         const blob = new Blob([parsedResponse], { type: 'text/csv' });
         const url = window.URL.createObjectURL(blob);
@@ -689,7 +870,8 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
 
   onCheckYear(e) {
     this.yearSelected = e;
-    this.loadData();
+    this.loadData2();
+    //this.loadData();
   }
 
   ngOnDestroy() {

@@ -1,9 +1,8 @@
-
-  <div class="ides-card text-center ides-height-100 row ides-card-clasification" [ngClass]="{ 'clasification-selected' : selected }" (mouseover)='over = true' (mouseout)='over = false'>
-      <div class="col-4 pl-0">
-          <img class="img-clasification" [src]="selected || over ? clasification.image_active_route : clasification.image_route" />
-      </div>
-      <div  class="col-8 text-clasification" [ngClass]="{ 'ides-text-blue-white': !selected && !over, 'ides-text-white': over}">
-          <h3 translate>{{ clasification.name }}</h3>
-      </div>
-  </div>
+<div class="ides-card text-center ides-height-100 row ides-card-clasification" [ngClass]="{ 'clasification-selected' : selected }" (mouseover)='over = true' (mouseout)='over = false'>
+    <div class="col-4 pl-0">
+        <img class="img-clasification" [src]="selected || over ? clasification.image_active_route : clasification.image_route" />
+    </div>
+    <div class="col-8 text-clasification" [ngClass]="{ 'ides-text-blue-white': !selected && !over, 'ides-text-white': over}">
+        <h3 translate>{{ clasification.name }}</h3>
+    </div>
+</div>

@@ -99,6 +99,11 @@
     color: white;
 }
 
+:host ::ng-deep.ui-dropdown .ui-dropdown-panel {
+    background-color: white;
+    border-radius: 14px;
+}
+
 .tooltip {
     word-spacing: 100vw;
     margin: auto;

@@ -37,6 +37,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { CardBasicNewsComponent } from './card-basic-news/card-basic-news.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardBasicStreamgraphComponent } from './card-basic-streamgraph/card-basic-streamgraph.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { IdesOriginComponent } from './ides-origin/ides-origin.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicMapCovidComponent,
     CardBasicGraphTimelineComponent,
     CardBasicNewsComponent,
-    CardBasicStreamgraphComponent
+    CardBasicStreamgraphComponent,
+    IdesOriginComponent
   ],
   exports: [
     HeaderComponent,
@@ -105,6 +109,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TooltipModule,
     NgbModule,
     ColorPickerModule,
+    DropdownModule,
+    MultiSelectModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
