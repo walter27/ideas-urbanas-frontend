@@ -4969,7 +4969,7 @@ h4.subtitulo-internas {
     font-size: 16px;
     padding: 10px 21px;
     text-decoration: none;
-    text-shadow: 0px 1px 0px #8a8a8a;
+    text-shadow: none;
     margin-bottom: 40px;
 }
 
@@ -5042,4 +5042,19 @@ h4.titulo-noti {
 p.parrafo-noti {
     padding: 30px;
     line-height: 1.5;
+}
+.myButtonleermas[_ngcontent-bsa-c13] {
+    box-shadow: 0px 10px 14px -7px #9ba2a3;
+    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
+    background-color: #fbba2e;
+    border-radius: 15px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 10px 21px;
+    text-decoration: none;
+    text-shadow: none; 
+    margin-bottom: 40px;
 }

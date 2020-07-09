@@ -50,8 +50,8 @@
 
 :host::ng-deep.ui-multiselect .ui-multiselect-trigger {
     border-radius: 14px;
-    background: white;
-    color: rgba(6, 76, 195, 1);
+    background: #ffffff00;
+    color: #064cc3;
 }
 
 :host::ng-deep.ui-multiselect .ui-multiselect-label {
@@ -67,8 +67,14 @@
 :host ::ng-deep.ui-dropdown {
     border-radius: 14px;
     background: white;
-    border-color: rgba(6, 76, 195, 1);
-    width: 11rem;
+    border-color: #064cc3;
+    width: 12rem;
+}
+:host ::ng-deep.ui-dropdown:hover {
+    border-radius: 14px;
+    background: white;
+    border-color: #064cc3;
+    width: 12rem;
 }
 
 :host ::ng-deep.ui-dropdown-clearable {
@@ -78,17 +84,17 @@
 }
 
 :host ::ng-deep.ui-dropdown-label {
-    background-color: white;
-    border-color: rgba(6, 76, 195, 1);
-    border-radius: 15px;
-    color: rgba(6, 76, 195, 1);
+    background-color: #ffffff00;
+    border-color: #064cc3;
+    /* border-radius: 15px; */
+    color: #064cc3;
 }
 
 :host ::ng-deep.ui-dropdown .ui-dropdown-trigger {
-    background-color: white;
-    border-color: rgba(6, 76, 195, 1);
+    background-color: #ffffff00;
+    border-color: #064cc3;
     border-radius: 15px;
-    color: rgba(6, 76, 195, 1);
+    color: #064cc3;
 }
 
 :host ::ng-deep.ui-dropdown .ui-dropdown-panel {
