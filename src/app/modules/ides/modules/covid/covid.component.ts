@@ -61,7 +61,7 @@ export class CovidComponent implements OnInit {
     private regionService: RegionService) {
 
     this.getCantons();
-    //this.getClasification();
+    this.getClasification();
   }
 
 
@@ -112,7 +112,7 @@ export class CovidComponent implements OnInit {
       this.cantons = data.data;
       //console.log(this.cantons);
 
-      let dataCovid: any;
+     /* let dataCovid: any;
       this.dataService.getData().subscribe((data1) => {
         dataCovid = data1;
 
@@ -120,7 +120,7 @@ export class CovidComponent implements OnInit {
 
         this.saveDataCovid(this.cantons, dataCovid);
 
-      });
+      });*/
 
 
     });

@@ -67,11 +67,17 @@
 
 
 
-            <div *ngIf="resultData?.length; else Nothing" class="row pt-3 pb-3">
+            <div *ngIf="resultData?.length; else Nothing" class="row">
                 <div class="col-lg-12 col-xl-12 ides-height-100">
                     <div class="row">
                         <div class="col-12 ides-text-blue">
-                            <h2 class="submenu-tematic ml-2">{{ variableSelected?.name }}</h2>
+                            <h2 class="submenu-tematic ">{{ variableSelected?.name }}</h2>
+                        </div>
+
+                        <div class="col-md-12 d-none d-md-none d-lg-block">
+                            <div class="ides-thematic-description">
+                                <p>{{variableSelected?.description}}</p>
+                            </div>
                         </div>
                         <div class="col-12" *ngIf="variableSelected?.chart_type.split(' ')[0] === 'stacked'">
                             <div class="row mb-2">
@@ -81,7 +87,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-12 mb-4">
+                        <div class="col-lg-12 col-md-12 mb-4">
                             <div style="display: block;">
                                 <canvas *ngIf="!loading && lineChartData.length > 0" id="{{variableSelected?._id}}" baseChart width="3600" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
                                     [plugins]="lineChartPlugins" style="min-height: 180px;" [ngClass]="lineChartData.length > 10 ? 'chart-size-plus' : 'chart-size'"></canvas>
@@ -90,18 +96,14 @@
                                 <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
                             </div>
                         </div>
-                        <div class="col-md-4 d-none d-md-none d-lg-block">
-                            <div class="p-4 m-4 ides-thematic-description">
-                                <p>{{variableSelected?.description}}</p>
-                            </div>
-                        </div>
+
                         <!-- <div class="col-md-8 col-sm-12"  *ngIf="variableSelected.chart_type.split(' ')[0] !== 'stacked'">
                             <div class="col custom-slider" style="width: 100%; float: right;">
                                 <ng5-slider (userChange)="sliderChange($event)" [(value)]="value"
                                     [(highValue)]="highValue" [options]="options"></ng5-slider>
                             </div>
                         </div> -->
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="col" style="width: 100%; float: right;">
 
                                 <app-ides-origin [origins]="variableSelected?.origins"></app-ides-origin>
