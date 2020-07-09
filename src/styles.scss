@@ -12,7 +12,6 @@
 @import '~ika.jvectormap/jquery-jvectormap-1.2.2.css';
 @import './assets/styles/ventor-map.scss';
 //@import '~animate.css/animate.min';
-
 body {
     font-family: 'Work Sans', sans-serif, sans-serif !important;
     background-color: #FAFAFA!important;
@@ -48,9 +47,16 @@ h5,
 }
 
 div.ides-card {
-    box-shadow: 0px 3px 6px #00000033;
+    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
     border-radius: 10px;
-    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 0px solid #000000;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    -webkit-box-shadow: 0px 0px 49px -7px rgba(199, 199, 207, 1);
+    -moz-box-shadow: 0px 0px 49px -7px rgba(199, 199, 207, 1);
+    box-shadow: 0px 0px 49px -7px rgba(199, 199, 207, 1);
     padding: 5px;
 }
 
@@ -246,15 +252,12 @@ a.ides-text-white:hover {
     height: 100%!important;
 }
 
-.ides-height-100-about-us{
-  height: 100%!important;
-  box-shadow: 0px 3px 6px #00000029;
-  background: #189cff 100% 100% no-repeat padding-box;
-  margin-top: 1rem !important;
+.ides-height-100-about-us {
+    height: 100%!important;
+    box-shadow: 0px 3px 6px #00000029;
+    background: #189cff 100% 100% no-repeat padding-box;
+    margin-top: 1rem !important;
 }
-
-
-
 
 a:hover {
     text-decoration: none!important;
@@ -282,14 +285,14 @@ a:hover {
 }
 
 .subtitle {
-    font: 45px 'Noto Sans TC',sans-serif !important;
+    font: 45px 'Noto Sans TC', sans-serif !important;
     padding-top: 0.5em !important;
     color: #010C39;
     font-weight: bold !important;
 }
 
-.text{
-    font-family: 20px 'Karla',sans-serif !important;
+.text {
+    font-family: 20px 'Karla', sans-serif !important;
     color: #787878;
     font-weight: bold !important;
 }
@@ -394,7 +397,7 @@ a:hover {
         font: 14px "Noto Sans TC" !important;
     }
     .ides-header {
-        z-index:900;
+        z-index: 900;
         background-color: transparent;
         padding-bottom: 3rem!important;
     }
@@ -683,46 +686,33 @@ a:hover {
     //height: inherit;
 }
 
+.ides-ml-analyse_topics {
+    margin-top: 2rem !important;
+}
 
-.ides-ml-analyse_topics{
-  margin-top: 10rem !important;
-
+//HIGCHARTS
+.highcharts {
+    border: solid 1px;
+    border-radius: 20px;
 }
 .col-md-4 {
     flex: 0 0 15%;
     max-width: 15%;
 }
-.footer1[_ngcontent-yco-c3] {
-    background: #00877c 0% 0% no-repeat padding-box;
+.containerr {
+    background-color: #fff;
+    margin-top: -159px;
+    z-index: 5px;
 }
-div.ides-card {
-    box-shadow: 0px 3px 6px #00000033;
-    border-radius: 10px;
-    background: #ffffff 0% 0% no-repeat padding-box;
-    padding: 5px;
-    max-width: 600px;
+svg#ey5l34nrcb0a1 {
+    margin-top: 5%;
+    margin-left: -15%;
 }
-.footer[_ngcontent-xjw-c3] {
-    background: #076DCD 0% 0% no-repeat padding-box;
-    padding-top: 17px;
-    padding-bottom: 17px;
+svg#eewkypfaedpm1 {
+    margin-top: 2%;
+    margin-left: -1%;
 }
-.ides-navbar-items[_ngcontent-rdr-c2] {
-    padding: 1.5rem 1.25rem;
-    margin-left: 3rem;
-}
-.myButtonleermas[_ngcontent-bsa-c13] {
-    box-shadow: 0px 10px 14px -7px #9ba2a3;
-    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
-    background-color: #fbba2e;
-    border-radius: 15px;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 16px;
-    padding: 10px 21px;
-    text-decoration: none;
-    text-shadow: none; 
-    margin-bottom: 40px;
+svg#eay5tc9b44eu1 {
+    margin-top: 10%;
+    margin-left: -25%;
 }

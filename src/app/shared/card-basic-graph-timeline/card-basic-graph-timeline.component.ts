@@ -28,6 +28,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
 
   createTimeLine() {
 
+
     this.chartOptions = {
 
       chart: {

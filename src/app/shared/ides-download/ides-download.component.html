@@ -1,25 +1,24 @@
-<div class="row align-items-center pr-3 pl-3">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-uppercase ides-text-blue ides-origins">
-      <!-- <button data-toggle="popover"
+<div class="row pr-3 pl-3">
+    <!--<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-uppercase ides-text-blue ides-origins">
+      <button data-toggle="popover"
         class="btn ides-dropdown ides-text-blue" type="button">
         <span class="ides-mr-80 font-weight-bold" translate>data sources</span>
-      </button> -->
+      </button> 
       {{ getOrigins() }}
-    </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-right text-uppercase ides-text-blue-dark pr-0 download-data d-none d-sm-none d-md-block">
+    </div>-->
+    <div class="col-md-12 text-right text-uppercase ides-text-blue-dark pr-0 download-data d-none d-sm-none d-md-block">
         <div class="dropdown">
-            <button class="btn ides-dropdown dropdown-toggle ides-text-blue ides-dropdown-download pr-1" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn ides-dropdown dropdown-toggle ides-text-blue ides-dropdown-download pr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="ides-mr-80 text-uppercase" translate>download data</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <ng-container *ngFor="let i of downloadOptions">
-                <a (click)="downloadCanvas($event, i.id)" class="dropdown-item cursor-pointer" *ngIf="!i.hidden">
+                <ng-container *ngFor="let i of downloadOptions">
+                    <a (click)="downloadCanvas($event, i.id)" class="dropdown-item cursor-pointer" *ngIf="!i.hidden">
                   {{ i.name }}
                 </a>
-              </ng-container> 
+                </ng-container>
             </div>
-          </div>
+        </div>
         <!-- <a href="#" (click)="downloadCanvas($event)">Descargar Datos</a>
         <i-feather name="arrow-down"></i-feather> -->
     </div>

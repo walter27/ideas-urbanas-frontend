@@ -1,38 +1,103 @@
 .align-items-center {
     display: flex;
-    align-items: bottom;  /*Aligns vertically center */
-    justify-content: center; /*Aligns horizontally center */
-  }
-
-.ides-ml-clasificaions{
-  margin-top: 2rem !important;
-  margin-left: 12rem !important;
-  margin-right: 9rem !important;
+    align-items: bottom;
+    /*Aligns vertically center */
+    justify-content: center;
+    /*Aligns horizontally center */
 }
 
-.ides-ml-charts{
-  margin-top: 4rem !important;
-  margin-left: 8rem !important;
-  margin-right: 8rem !important;
+.ides-ml-clasificaions {
+    margin-top: 2rem !important;
+    margin-left: 12rem !important;
+    margin-right: 9rem !important;
+}
+
+.ides-ml-charts {
+    margin-top: 2rem !important;
+    margin-left: 8rem !important;
+    margin-right: 8rem !important;
 }
 
 @media screen and (max-width: 575px) {
-  .submenu-tematic{
-    font: 16px 'Noto Sans TC' !important;
-  }
-  .ides-ml-clasificaions{
-    margin-left: 5rem !important;
-    margin-right: 3rem !important;
-  }
+    .submenu-tematic {
+        font: 16px 'Noto Sans TC' !important;
+    }
+    .ides-ml-clasificaions {
+        margin-left: 5rem !important;
+        margin-right: 3rem !important;
+    }
 }
 
 @media screen and (min-width: 576px) {
-  .submenu-tematic{
-    font: 22px 'Noto Sans TC' !important;
-  }
+    .submenu-tematic {
+        font: 22px 'Noto Sans TC' !important;
+    }
 }
 
-.ides-thematic-description{
-  font: 13px 'Noto Sans TC', sans-serif;
-  font-weight: normal;
+.ides-thematic-description {
+    font: 13px 'Noto Sans TC', sans-serif;
+    font-weight: normal;
+}
+
+//PRIMENG
+//multiselect
+:host ::ng-deep.ui-multiselect {
+    border-radius: 14px;
+    background: white;
+    border-color: rgba(6, 76, 195, 1);
+    width: 11rem;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: #ffffff00;
+    color: #064cc3;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-label {
+    color: rgba(6, 76, 195, 1);
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel {
+    background-color: white;
+    border-radius: 14px;
+}
+
+//dropdown
+:host ::ng-deep.ui-dropdown {
+    border-radius: 14px;
+    background: white;
+    border-color: #064cc3;
+    width: 12rem;
+}
+:host ::ng-deep.ui-dropdown:hover {
+    border-radius: 14px;
+    background: white;
+    border-color: #064cc3;
+    width: 12rem;
+}
+
+:host ::ng-deep.ui-dropdown-clearable {
+    background-color: rgba(6, 76, 195, 1);
+    border-color: rgba(6, 76, 195, 1);
+    border-radius: 15px
+}
+
+:host ::ng-deep.ui-dropdown-label {
+    background-color: #ffffff00;
+    border-color: #064cc3;
+    /* border-radius: 15px; */
+    color: #064cc3;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-trigger {
+    background-color: #ffffff00;
+    border-color: #064cc3;
+    border-radius: 15px;
+    color: #064cc3;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-panel {
+    background-color: white;
+    border-radius: 14px;
 }

@@ -68,12 +68,6 @@
     border-radius: 14px;
 }
 
-//HIGCHARTS
-.highcharts {
-    border: solid 1px;
-    border-radius: 5px;
-}
-
 .haighmap {
     background: gray;
 }
@@ -103,6 +97,11 @@
     border-color: #F5A700;
     border-radius: 15px;
     color: white;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-panel {
+    background-color: white;
+    border-radius: 14px;
 }
 
 .tooltip {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
@@ -10,14 +10,14 @@ import Color_Axis from 'highcharts/modules/coloraxis';
   templateUrl: './card-basic-graph-covid.component.html',
   styleUrls: ['./card-basic-graph-covid.component.scss']
 })
-export class CardBasicGraphCovidComponent implements OnInit {
+export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
   highcharts: any;
   updateDemo: boolean;
   chartOptions: any = {};
 
-  @Input() dates: any[];
-  @Input() data: any[];
+  @Input("dates") dates: any[];
+  @Input("data") data: any[];
 
 
 
@@ -29,13 +29,17 @@ export class CardBasicGraphCovidComponent implements OnInit {
     HC_export(this.highcharts);
     Color_Axis(this.highcharts);
 
-    console.log(this.dates);
 
   }
 
   ngOnInit() {
+  }
 
-    this.createBarChart();
+  ngOnChanges(changes) {
+    if (changes['dates'] && this.dates) {
+      this.createBarChart();
+
+    }
   }
 
   createBarChart() {
@@ -45,6 +49,9 @@ export class CardBasicGraphCovidComponent implements OnInit {
       chart: {
         type: "column",
         animation: true,
+        borderColor: '#000000',
+        borderRadius: 20,
+        borderWidth: 1,
 
       },
       title: {
