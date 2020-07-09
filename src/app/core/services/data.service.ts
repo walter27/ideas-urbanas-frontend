@@ -49,7 +49,6 @@ export class DataService {
   listDatasPublic(filters: Filters, id_Variable?, cities?): Observable<ResultList<Data>> {
 
     //console.log(cities);
-
     const filtersB = this.utilsService.buildFilters(filters);
     const body = {
       id_Variable,
@@ -99,11 +98,10 @@ export class DataService {
   }
 
   getData() {
-    return this.httpClient.get(`${this.serverUrl}getCSV/datos/muertos`, httpOptions);
+    return this.httpClient.get(`${this.serverUrl}getCSV/datos/confirmados`, httpOptions);
   }
 
   addData(profile) {
-    //console.log('PERRO', profile);
     return this.httpClient.post(this.serverUrl + this.urlData, profile, httpOptions);
   }
 

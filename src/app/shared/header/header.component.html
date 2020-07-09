@@ -8,8 +8,8 @@
             </div>
             <div class="col-4 col-sm-1">
                 <button class="navbar-toggler mt-2 ides-navbar-toggler-mobile" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <fa class="cursor-pointer ides-text-white" [name]="'bars'"></fa>
-        </button>
+                    <fa class="cursor-pointer ides-text-white" [name]="'bars'"></fa>
+                </button>
                 <div class="collapse navbar-collapse mt-3 menu-mobile" id="navbarResponsive">
                     <ul class="nav ml-auto list-group list-group-flush">
                         <li class="list-group-item list-menu-mobile" *ngFor="let i of items">
@@ -38,15 +38,17 @@
         </div>
         <div class="col-3">
             <div class="navbar-collapse d-sm-none d-md-block">
+
                 <div *ngFor="let i of icons" class="ides-navbar-items-buttom">
                     <a target="_blank" [attr.href]="i.link" class="social ">
                         <fa class="cursor-pointer ides-text-icon" [name]="i.name"></fa>
                     </a>
                 </div>
+
                 <div class="dropdown text-white" class="text-white">
                     <button class="btn ides-dropdown dropdown-toggle ides-text-white ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="ides-mr-80 font-weight-bold text-white">{{ language | uppercase }}</span>
-          </button>
+                        <span class="ides-mr-80 font-weight-bold text-white">{{ language | uppercase }}</span>
+                    </button>
                     <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="dropdownMenuButton">
                         <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">Esp</a>
                         <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">Eng</a>
@@ -62,6 +64,7 @@
                         <!--   <img width="20" height="16" class="img" [src]="overLogin ? 'assets/ICONOS/user-admin-naranja.png' : 'assets/ICONOS/user-admin.png'" />-->
                     </a>
                 </div>
+
             </div>
         </div>
     </div>

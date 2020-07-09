@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'https://api-ideas-urbanas.uhemisferios.edu.ec/',
-  //serverUrl: 'http://localhost:3000/',
+  //serverUrl: 'https://api-ideas-urbanas.uhemisferios.edu.ec/',
+  serverUrl: 'http://localhost:3000/',
 
   stage: 'dev/',
   auth: {

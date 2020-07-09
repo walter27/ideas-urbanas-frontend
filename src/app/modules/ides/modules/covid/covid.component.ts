@@ -19,7 +19,7 @@ export class CovidComponent implements OnInit {
   model = 'Canton';
   filters = {
     page: 0,
-    limit: 3000,
+    limit: 4400,
     ascending: true,
     sort: 'name'
   };
@@ -33,7 +33,7 @@ export class CovidComponent implements OnInit {
   dateString: string[] = [];
   dateStringAll: string[] = [];
   dataMapa: any = [];
-  dataFinal: any = [];
+
 
   minStreamgraph: number;
   maxStreamgraph: number;
@@ -51,13 +51,17 @@ export class CovidComponent implements OnInit {
   };
 
 
+  dataFinal: any = [];
+  dataPrueba: any = [];
+
+
   constructor(private resultClasification: ClasificationService,
     private variableService: VariableService,
     private dataService: DataService,
     private regionService: RegionService) {
 
     this.getCantons();
-    this.getClasification();
+    //this.getClasification();
   }
 
 
@@ -104,15 +108,19 @@ export class CovidComponent implements OnInit {
     });*/
 
 
-    this.regionService.listRegionsPublic(this.filters, this.model).subscribe((data) => {
+    this.regionService.listRegions(this.filters, this.model).subscribe((data) => {
       this.cantons = data.data;
       //console.log(this.cantons);
 
-      /*this.dataService.getData().subscribe((data1) => {
-        this.dataCovid = data1;
-        this.saveDataCovid(this.cantons, this.dataCovid);
+      let dataCovid: any;
+      this.dataService.getData().subscribe((data1) => {
+        dataCovid = data1;
 
-      });*/
+        //console.log(dataCovid);
+
+        this.saveDataCovid(this.cantons, dataCovid);
+
+      });
 
 
     });
@@ -126,11 +134,11 @@ export class CovidComponent implements OnInit {
     for (const data of dataCovid) {
 
       let dataF = {
-        description: 'Datos defunciones del covid-19',
+        description: 'Casos confirmados de covid-19',
         value: '',
         year: '2020',
         id_Canton: '',
-        id_Variable: '5eebcd7018938a00176d9309',
+        id_Variable: '5f078e86a6b74a1e187c9da0',
         date: ''
       };
 
@@ -160,7 +168,7 @@ export class CovidComponent implements OnInit {
 
     }
 
-    // this.addData();
+    this.addData();
 
     /*
         for (const canton of cantons) {
@@ -192,12 +200,13 @@ export class CovidComponent implements OnInit {
     //console.log(this.dataFinal);
 
     //this.dataPrueba.push(this.dataFinal[0]);
-    //this.dataPrueba.push(this.dataFinal[2]);
+    //this.dataPrueba.push(this.dataFinal[1]);
+    //this.dataPrueba.push(this.dataFinal[8]);
 
-    /*console.log(this.dataPrueba[1]);
-    this.dataService.addData(this.dataPrueba[1]).subscribe((data2) => {
-      console.log(data2);
-    });*/
+    //console.log(this.dataPrueba);
+    /* this.dataService.addData(this.dataPrueba[1]).subscribe((data2) => {
+       console.log(data2);
+     });*/
 
 
     for (let index = 0; index < this.dataFinal.length; index++) {
@@ -245,7 +254,7 @@ export class CovidComponent implements OnInit {
       //CARGAR INICLAMENTE LOS CANTONES 
       setTimeout(() => {
         this.getDataStreamgraph(varibable._id);
-      }, 1);
+      }, 2000);
 
     });
 
@@ -313,11 +322,15 @@ export class CovidComponent implements OnInit {
 
     });
 
-    this.loadData();
+    setTimeout(() => {
+      this.loadData();
+    }, 1000);
 
   }
 
   loadData() {
+
+
 
     let datesString = [];
 
@@ -346,13 +359,9 @@ export class CovidComponent implements OnInit {
     let dataHighmap = [];
     let dataStreangraph = [];
 
-    let dataCovidlocal = localStorage.getItem('covid');
+    let dataCovidlocal = JSON.parse(localStorage.getItem('covid'));
 
-    // console.log(JSON.parse(dataCovidlocal));
-
-
-
-    for (const dataCovid of JSON.parse(dataCovidlocal)) {
+    for (const dataCovid of dataCovidlocal) {
 
 
       let date: Date = new Date(dataCovid.date);
@@ -402,6 +411,8 @@ export class CovidComponent implements OnInit {
 
     }
 
+
+    //console.log(dataHigcharts);
 
     /*let selectCantos = ;
     let dataSmall = [...dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 1);
@@ -504,11 +515,9 @@ export class CovidComponent implements OnInit {
 
     //console.log(this.selectDate);
 
-    let dataCovidlocal = localStorage.getItem('covid');
+    let dataCovidlocal = JSON.parse(localStorage.getItem('covid'));
 
-    //console.log(JSON.parse(dataCovidlocal));
-
-    for (const dataCovid of JSON.parse(dataCovidlocal)) {
+    for (const dataCovid of dataCovidlocal) {
 
       // console.log(dataCovid);
 

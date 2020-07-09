@@ -36,7 +36,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    if (changes['dates'] && this.dates) {
+    if (changes['data'] && this.data) {
       this.createBarChart();
 
     }
