@@ -335,11 +335,13 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     private regionService: RegionService,
     private chartService: ChartsService,
     private utilsService: UtilsService,
-    private router: Router
+    private router: Router,
+
   ) {
   }
 
   ngOnInit() {
+
     sessionStorage.clear();
 
     if (this.router.url != '/home')
@@ -380,7 +382,9 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
         return resp;
       })
     );
+
   }
+
 
   getVariables() {
     this.resultVariables$ = this.variableService.getVariablesByClasification(this.clasificationSelected._id).pipe(
@@ -565,10 +569,12 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
 
-    this.subscription = this.dataService.listDatasPublic({ page: 0, limit: 1000, ascending: true, sort: 'obj_Canton.name' },
+    this.subscription = this.dataService.listDatasPublic(
+      { page: 0, limit: 1000, ascending: true, sort: 'obj_Canton.name' },
       idVariable).subscribe(data => {
         this.loading = false;
         this.resultData = data.data;
+        console.log(this.resultData);
         this.getYearsAndCities();
         this.loadData();
       }, err => {
@@ -584,6 +590,9 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   }
 
   onSelectVariable(variable) {
+
+    console.log(variable);
+
     this.variableSelected = variable;
     sessionStorage.setItem('variableSelectedName', this.variableSelected.name);
     sessionStorage.setItem('variableSelectedLabel', this.variableSelected.label);

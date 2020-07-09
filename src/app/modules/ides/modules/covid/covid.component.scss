@@ -1,0 +1,130 @@
+.covid-header {
+    background: rgb(24, 156, 255);
+    background: linear-gradient(90deg, rgba(24, 156, 255, 1) 7%, rgba(3, 105, 255, 1) 26%, rgba(6, 76, 195, 1) 55%);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 0.4em;
+}
+
+//covid-19
+.select-covid {
+    border-radius: 40px;
+    background-color: #f8ac08;
+    width: 200px;
+    height: 50px;
+    color: white;
+    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+    text-align: center;
+}
+
+.select-covid-box {
+    background-color: white;
+    color: black;
+    border-radius: 40px;
+}
+
+.btn-covid {
+    border-radius: 40px;
+    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+    background-color: #f8ac08;
+    color: white;
+    width: 100px;
+    height: 50px;
+}
+
+.container-covid {
+    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+    border-radius: 24px;
+    border: 0px solid #000000;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    -webkit-box-shadow: 0px 0px 49px -7px rgba(199, 199, 207, 1);
+    -moz-box-shadow: 0px 0px 49px -7px rgba(199, 199, 207, 1);
+    box-shadow: 0px 0px 49px -7px rgba(199, 199, 207, 1);
+}
+
+:host ::ng-deep.ui-multiselect {
+    border-radius: 14px;
+    background: white;
+    border-color: rgba(6, 76, 195, 1);
+    width: 11rem;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: white;
+    color: rgba(6, 76, 195, 1);
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-label {
+    color: rgba(6, 76, 195, 1);
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel {
+    background-color: white;
+    border-radius: 14px;
+}
+
+//HIGCHARTS
+.highcharts {
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.haighmap {
+    background: gray;
+}
+
+//dropdown
+:host ::ng-deep.ui-dropdown {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+}
+
+:host ::ng-deep.ui-dropdown-clearable:hover {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px
+}
+
+:host ::ng-deep.ui-dropdown-label {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-trigger {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+}
+
+.tooltip {
+    word-spacing: 100vw;
+    margin: auto;
+}
+
+//card-timelines
+.hide-scroll {
+    margin-top: -20px;
+    background: none no-repeat scroll 0 0 #f3f4f5;
+    position: relative;
+}
+
+.que-hacen-ciudades {
+    background-color: #f3f4f5;
+    text-align: center;
+}
+
+.contienetodo2 {
+    padding: 100px 0 0px 0;
+    background-color: #fff;
+    // background: url(assets/covid/bg/bg.png);
+    background-size: cover;
+}

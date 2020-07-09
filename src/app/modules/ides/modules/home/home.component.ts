@@ -16,11 +16,18 @@ import { NotifierService } from 'angular-notifier';
 import { TranslateService, DefaultLangChangeEvent, LangChangeEvent } from '@ngx-translate/core';
 let { tagCloud } = require('src/app/core/utils/utils');
 
+//import { fade } from('src/app/ides/modules/home/animations');
+
+import {trigger,style,transition,animate,state} from '@angular/animations';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
+
+
+
 export class HomeComponent implements OnInit {
 
   cities = [
@@ -488,13 +495,32 @@ export class HomeComponent implements OnInit {
         this.onClickCity(params.city)
     });
 
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    elem.style.setProperty("background-color", 'transparent');
+    elem.classList.add("fixed-top");
+    elem.classList.remove("sticky-top");
+
+
+
+
   }
+
 
   @HostListener('window:scroll', ['$event'])
   onWindowIndexScroll($event) {
     if ($event.srcElement.scrollingElement.scrollTop > 50)
       this.getCantons();
+
+      let elem: HTMLElement = document.getElementById('navbarMenu');
+      let pos = window.pageYOffset;
+      if (pos > 20)
+        elem.style.setProperty("background-color", '#189cff');
+      else
+        elem.style.setProperty("background-color", 'transparent');
+       // else
+       // elem.style.setProperty("background-color", 'transparent');
   }
+
 
   async getCantons() {
     let cantons = localStorage.getItem('cantons');
@@ -728,5 +754,7 @@ export class HomeComponent implements OnInit {
     tagCloud(this.tagsData, width, height, maxFont, 'black');
 
   }
+
+
 
 }

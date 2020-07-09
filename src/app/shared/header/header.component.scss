@@ -32,3 +32,25 @@ div ul.nav li {
 .ides-navbar-toggler-mobile > fa:active{
     color: #076DCD !important;
 }
+
+.mat-menu-content {
+  width: inherit;
+  //background-color: #1756FF !important;
+  //background: transparent;
+  //background-color: #189cff;
+}
+
+.ides-navbar-items {
+  padding: 1.5rem 1.25rem;
+  margin-left: 2rem;
+}
+.ides-navbar-items-buttom{
+  padding: 1.5rem 1.25rem;
+}
+.nav-change-color-items{
+  background-color: white important;
+  color: white;
+}
+.nav-change-color-items:hover {
+    color: #F8A901 !important;
+}

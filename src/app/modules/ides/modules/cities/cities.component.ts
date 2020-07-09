@@ -75,6 +75,10 @@ export class CitiesComponent implements OnInit {
   }
 
   ngOnInit() {
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    elem.style.setProperty("background-color", '#189cff');
+    elem.classList.add("sticky-top");
+    elem.classList.remove("fixed-top");
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.idCity = params.city;
@@ -87,6 +91,9 @@ export class CitiesComponent implements OnInit {
         this.listCategories();
       });
     });
+
+    console.log(this.tagsData);
+
   }
 
   getClasifications() {
@@ -121,6 +128,11 @@ export class CitiesComponent implements OnInit {
     this.resultVariables = null;
     this.variableService.getVariablesByClasification(this.clasificationSelected._id).pipe(
       map(resp => {
+
+        console.log('Perro');
+
+        console.log(resp);
+
         return resp;
       })
     ).subscribe(resp => {
@@ -147,6 +159,9 @@ export class CitiesComponent implements OnInit {
     this.getVariables();
   }
 
+
+
+
   listTags(cityId) {
     const classTags = ['#F8A901', '#076DCD', '#B5DFFF'];
     this.tagsService.getTagsByCantByType(cityId).pipe(
@@ -161,6 +176,7 @@ export class CitiesComponent implements OnInit {
           size: el.count, //el.count > 10 ? 10 : el.count,
         });
       });
+      console.log(this.tagsData);
       this.newTagCloud();
     });
   }

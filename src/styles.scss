@@ -11,34 +11,36 @@
 
 @import '~ika.jvectormap/jquery-jvectormap-1.2.2.css';
 @import './assets/styles/ventor-map.scss';
+//@import '~animate.css/animate.min';
+
 body {
-    font-family: 'Noto Sans TC', sans-serif !important;
+    font-family: 'Work Sans', sans-serif, sans-serif !important;
     background-color: #FAFAFA!important;
 }
 
 h1,
 .h1 {
-    font: 50px 'Noto Sans TC' !important;
+    font: 50px 'Work Sans', sans-serif !important;
 }
 
 h2,
 .h2 {
-    font: 22px 'Noto Sans TC' !important;
+    font: 22px 'Work Sans', sans-serif !important;
 }
 
 h3,
 .h3 {
-    font: 20px 'Noto Sans TC' !important;
+    font: 20px 'Work Sans', sans-serif !important;
 }
 
 h4,
 .h4 {
-    font: 15px 'Noto Sans TC' !important;
+    font: 15px 'Work Sans', sans-serif !important;
 }
 
 h5,
 .h5 {
-    font: 12px 'Noto Sans TC' !important;
+    font: 12px 'Work Sans', sans-serif !important;
 }
 
 .cursor-pointer {
@@ -47,9 +49,9 @@ h5,
 
 div.ides-card {
     box-shadow: 0px 3px 6px #00000033;
-    border-radius: 15px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    padding: 15px;
+    border-radius: 10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    padding: 5px;
 }
 
 app-ides-card-clasification>div.ides-card:hover {
@@ -60,18 +62,27 @@ app-ides-card-clasification>div.ides-card:hover {
     color: #076DCD!important;
 }
 
+.ides-text-white {
+    color: #076DCD!important;
+}
+
 .ides-text-icon {
-    color: white!important;
+    background-color: white important;
+    color: white;
 }
 
 //icono del circulo
 .ides-icon-circle {
     height: 22px;
     width: 22px;
-    background-color: blue;
+    background-color: white;
     border-radius: 50%;
     display: inline-block;
     text-align: center;
+}
+
+.icon-b {
+    background-color: white;
 }
 
 .img {
@@ -81,7 +92,7 @@ app-ides-card-clasification>div.ides-card:hover {
 }
 
 .ides-text-white {
-    color: #ffffff!important;
+    color: #FFFFFF!important;
 }
 
 a.ides-text-white:hover {
@@ -96,16 +107,18 @@ a.ides-text-white:hover {
     color: #004587!important;
 }
 
+.ides-text-blue-light {
+    color: #189cff!important;
+}
+
 .ides-dropdown {
-    border: 1px solid #076DCD !important;
-    border-radius: 9px !important;
-    width: 70px;
-    height: 40;
+    //width: px;
+    height: 20px;
+    margin-left: 6rem;
 }
 
 .ides-dropdown:hover {
     color: #F8A901!important;
-    border: 1px solid #F8A901 !important;
 }
 
 .social>fa:hover {
@@ -133,12 +146,18 @@ a.ides-text-white:hover {
 }
 
 .nav-item {
-    color: #076DCD!important;
-    font: 16px 'Noto Sans TC';
+    //display: inline-block;
+    color: white;
+    font: 16px 'Karla', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .nav-item:hover {
-    color: #F8A901!important;
+    //display: inline-block;
+    color: yellow;
+    font-family: 'Karla', sans-serif;
+    //text-decoration: none;
 }
 
 .nav-item-categories {
@@ -152,29 +171,42 @@ a.ides-text-white:hover {
 }
 
 .nav-item-active {
-    color: white!important;
-    border-radius: 15px;
-    width: 35%;
-    padding: 8px;
-    background-color: #f8ac08;
-    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+    //  color: #FFFFFF!important;
+    color: yellow!important;
+    display: inline-block;
+    cursor: pointer;
+    //font-family: ' Karla', sans-serif;
+    //border-bottom: solid blue;
 }
 
 .nav-item-active:hover {
-    color: white!important;
+    //color: #F8A901 !important;
+    //border-bottom: solid white;
+}
+
+.nav-item-active-submenu {
+    color: blue!important;
+    display: inline-block;
+    cursor: pointer;
+    font-family: ' Karla', sans-serif;
+    border-bottom: solid blue;
+}
+
+.nav-item-active-submenu:hover {
+    border-bottom: solid white;
 }
 
 
 /* Let's get this party started */
 
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
     width: 6px;
 }
 
 
 /* Track */
 
-::-webkit-scrollbar-track {
+ ::-webkit-scrollbar-track {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background-color: #e1e1e1;
@@ -183,7 +215,7 @@ a.ides-text-white:hover {
 
 /* Handle */
 
-::-webkit-scrollbar-thumb {
+ ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: #b3b3b3;
@@ -214,6 +246,16 @@ a.ides-text-white:hover {
     height: 100%!important;
 }
 
+.ides-height-100-about-us{
+  height: 100%!important;
+  box-shadow: 0px 3px 6px #00000029;
+  background: #189cff 100% 100% no-repeat padding-box;
+  margin-top: 1rem !important;
+}
+
+
+
+
 a:hover {
     text-decoration: none!important;
 }
@@ -223,11 +265,11 @@ a:hover {
 }
 
 .ides-text-default {
-    font: 16px/30px 'Noto Sans TC';
+    font: 16px/30px 'Noto Sans TC', sans-serif;
 }
 
 .ides-text-custom {
-    font: 14px 'Noto Sans TC';
+    font: 14px 'Noto Sans TC', sans-serif;
     color: black;
 }
 
@@ -240,8 +282,16 @@ a:hover {
 }
 
 .subtitle {
-    font: 30px 'Noto Sans TC' !important;
-    padding-top: 2em !important;
+    font: 45px 'Noto Sans TC',sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #010C39;
+    font-weight: bold !important;
+}
+
+.text{
+    font-family: 20px 'Karla',sans-serif !important;
+    color: #787878;
+    font-weight: bold !important;
 }
 
 @media screen and (max-width: 550px) {
@@ -252,7 +302,7 @@ a:hover {
         margin-left: 1rem !important;
     }
     .subtitle {
-        font: 20px "Noto Sans TC" !important;
+        font: 45px "Work Sans" !important;
         padding-top: 1em !important;
         padding-left: 0px !important;
     }
@@ -269,8 +319,8 @@ a:hover {
 
 
 /*.nav-item-root:hover {
-    color: #F8A901 !important;
-}*/
+      color: #F8A901 !important;
+  }*/
 
 .points-block {
     z-index: 1 !important;
@@ -299,7 +349,7 @@ a:hover {
 }
 
 .ides-mr-5 {
-    margin-right: 3rem !important;
+    margin-right: 1rem !important;
 }
 
 
@@ -313,7 +363,7 @@ a:hover {
         padding-right: 0 !important;
     }
     .nav-item-categories {
-        font: 12px 'Noto Sans TC';
+        font: 12px 'Noto Sans TC', sans-serif;
         margin-bottom: 0.5rem !important;
     }
     h2,
@@ -344,9 +394,9 @@ a:hover {
         font: 14px "Noto Sans TC" !important;
     }
     .ides-header {
-        z-index: 900;
-        background-color: #ffffff;
-        padding-bottom: 1.5rem!important;
+        z-index:900;
+        background-color: transparent;
+        padding-bottom: 3rem!important;
     }
     .ides-text-index-title {
         font: 15pt "Noto Sans TC" !important;
@@ -398,7 +448,7 @@ a:hover {
         padding-left: 1.1em !important;
     }
     .nav-item-categories {
-        font: 12px 'Noto Sans TC';
+        font: 12px 'Work Sans', sans-serif;
         margin-bottom: 0.5rem !important;
     }
     .chart-size {
@@ -427,7 +477,7 @@ a:hover {
         padding-left: 1.1em !important;
     }
     .nav-item-categories {
-        font: 13px 'Noto Sans TC';
+        font: 13px 'Work Sans', sans-serif;
         margin-bottom: 0.5rem !important;
     }
     .chart-size {
@@ -444,7 +494,7 @@ a:hover {
     }
     .nav-item {
         color: #076DCD !important;
-        font: 15px "Noto Sans TC" !important;
+        font: 15px "Work Sans" !important;
     }
     .ides-header {
         z-index: 900;
@@ -625,4 +675,54 @@ a:hover {
     color: white;
     width: 100px;
     height: 50px;
+}
+
+.ngb-carousel {
+    width: inherit;
+    height: 50%;
+    //height: inherit;
+}
+
+
+.ides-ml-analyse_topics{
+  margin-top: 10rem !important;
+
+}
+.col-md-4 {
+    flex: 0 0 15%;
+    max-width: 15%;
+}
+.footer1[_ngcontent-yco-c3] {
+    background: #00877c 0% 0% no-repeat padding-box;
+}
+div.ides-card {
+    box-shadow: 0px 3px 6px #00000033;
+    border-radius: 10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    padding: 5px;
+    max-width: 600px;
+}
+.footer[_ngcontent-xjw-c3] {
+    background: #076DCD 0% 0% no-repeat padding-box;
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+.ides-navbar-items[_ngcontent-rdr-c2] {
+    padding: 1.5rem 1.25rem;
+    margin-left: 3rem;
+}
+.myButtonleermas[_ngcontent-bsa-c13] {
+    box-shadow: 0px 10px 14px -7px #9ba2a3;
+    background: linear-gradient(to bottom, #fbba2e 5%, #f8ac09 100%);
+    background-color: #fbba2e;
+    border-radius: 15px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 10px 21px;
+    text-decoration: none;
+    text-shadow: none; 
+    margin-bottom: 40px;
 }
