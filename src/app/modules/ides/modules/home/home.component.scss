@@ -1097,7 +1097,7 @@ div.ides-card-home {
 
 .myButton {
     border-radius: 36px;
-    border: 2px solid #ffffff;
+    border: 1px solid #ffffff;
     display: inline-block;
     cursor: pointer;
     color: #ffffff !important;
@@ -1123,9 +1123,8 @@ div.ides-card-home {
 }
 
 .ides-home-title{
-    max-width: 600px;
+    max-width: 500px;
     max-height: 800px;
-    //font-weight: bold !important;
     font: 40px "Poppins", sans-serif;
     font-weight: 300;
     line-height: 1.2;
@@ -1177,4 +1176,8 @@ div.ides-card-home {
     max-height: 800px;
     font: 40px "Poppins", sans-serif;
     font-weight: 300;
+}
+.text-center.text.pb-2.pl-4 {
+    margin-bottom: -20px;
+    font-size: 18px;
 }
