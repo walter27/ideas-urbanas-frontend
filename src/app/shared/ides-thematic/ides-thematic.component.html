@@ -1,5 +1,5 @@
 <div class="row ides-ml-clasificaions cursor-pointer">
-    <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )?.data" class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl mb-3 ides-mr-5">
+    <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )" class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl mb-3 ides-mr-5">
         <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
         </app-ides-card-clasification>
     </div>
@@ -49,13 +49,13 @@
 
             <div class="row pb-2 ">
                 <div class="col-md-3 text-left form-group">
-                    <p-dropdown class="block " [options]="( resultVariables$ | async )?.data" [(ngModel)]="variableSelected" name="variableSelected" optionLabel="name" [placeholder]="'Select variable'" (onChange)="getVariableSelected()">
+                    <p-dropdown class="block " [options]="( resultVariables$ | async )?.data" [(ngModel)]="variableSelected" name="variableSelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()">
                     </p-dropdown>
                 </div>
 
                 <div class="col-md-3 text-left form-group">
 
-                    <p-multiSelect class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Select cities'" (onChange)="getSelectCities()" [showHeader]=false name="citiesSelected">
+                    <p-multiSelect class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Seleccione'" (onChange)="getSelectCities()" [showHeader]=false name="citiesSelected">
                     </p-multiSelect>
                 </div>
 

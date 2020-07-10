@@ -50,6 +50,9 @@ export class CovidComponent implements OnInit {
     floor: 0
   };
 
+  minScroll: number;
+  maxScroll: number;
+
 
   dataFinal: any = [];
   dataPrueba: any = [];
@@ -60,8 +63,11 @@ export class CovidComponent implements OnInit {
     private dataService: DataService,
     private regionService: RegionService) {
 
+    this.minScroll = 0;
+    this.maxScroll = 6;
     this.getCantons();
     this.getClasification();
+
   }
 
 
@@ -96,6 +102,20 @@ export class CovidComponent implements OnInit {
 
 
 
+  scrollLeft() {
+    console.log('Izuierda');
+    this.minScroll -= 6;
+    this.maxScroll -= 6;
+  }
+
+  scrollRigt() {
+    console.log('derechas');
+    this.minScroll += 6;
+    this.maxScroll += 6;
+  }
+
+
+
   getCantons() {
 
 
@@ -112,7 +132,7 @@ export class CovidComponent implements OnInit {
       this.cantons = data.data;
       //console.log(this.cantons);
 
-     /* let dataCovid: any;
+      /*let dataCovid: any;
       this.dataService.getData().subscribe((data1) => {
         dataCovid = data1;
 
@@ -128,17 +148,14 @@ export class CovidComponent implements OnInit {
 
   saveDataCovid(cantons: Region[], dataCovid: any[]) {
 
-
-
-
     for (const data of dataCovid) {
 
       let dataF = {
-        description: 'Casos confirmados de covid-19',
+        description: 'Datos de defunciones por covid-19',
         value: '',
         year: '2020',
         id_Canton: '',
-        id_Variable: '5f078e86a6b74a1e187c9da0',
+        id_Variable: '5f089747a6b74a1e187dab7c',
         date: ''
       };
 
@@ -150,19 +167,30 @@ export class CovidComponent implements OnInit {
         if (canton.code === data.id_region) {
           let date = data.date.split(' ');
 
+          //console.log(date);
+
           dataF.id_Canton = canton._id;
           dataF.value = data.value;
-          dataF.date = date[0];
-          //console.log(data.id_region);
+          if (date[0].includes('/')) {
+            //console.log(data.date);
+            //let data = data.date.replace(/\//g, '-');
+            let dateg = date[0].split('/');
+            dataF.date = `${dateg[2]}-${dateg[1]}-${dateg[0]}`;
+            // console.log('SLAHS', dataF.date);
+          } else {
+            // console.log('sSIN SLAHS');
+
+            dataF.date = date[0];
+          }
           /*this.dataService.addData(data).subscribe((data2) => {
-             console.log(data2); 
-           });*/
+              console.log(data2); 
+            });*/
 
         }
 
 
       }
-      // console.log(dataF);
+      //console.log(dataF);
       this.dataFinal.push(dataF);
 
 
@@ -199,26 +227,35 @@ export class CovidComponent implements OnInit {
 
     //console.log(this.dataFinal);
 
-    //this.dataPrueba.push(this.dataFinal[0]);
-    //this.dataPrueba.push(this.dataFinal[1]);
+
+    // this.dataPrueba.push(this.dataFinal[0]);
+    // this.dataPrueba.push(this.dataFinal[1]);
     //this.dataPrueba.push(this.dataFinal[8]);
 
     //console.log(this.dataPrueba);
-    /* this.dataService.addData(this.dataPrueba[1]).subscribe((data2) => {
-       console.log(data2);
-     });*/
+    /*this.dataService.addData(this.dataPrueba[0]).subscribe((data2) => {
+      console.log(data2);
+    });*/
 
 
-    for (let index = 0; index < this.dataFinal.length; index++) {
-      //console.log(this.dataPrueba[index]);
+    /* for (let index = 0; index < this.dataFinal.length; index++) {
+ 
+       if (index > 34254 && index <= 38060) {
+         //console.log(this.dataFinal[index], index);
+ 
+         setTimeout(() => {
+           this.dataService.addData(this.dataFinal[index]).subscribe((data2) => {
+             console.log(data2, index);
+           });
+         }, 3000);
+ 
+       }
+ 
+ 
+     }*/
 
-      setTimeout(() => {
-        this.dataService.addData(this.dataFinal[index]).subscribe((data2) => {
-          console.log(data2);
-        });
-      }, 6000);
+    //console.log("terminado..");
 
-    }
   }
 
 
@@ -675,26 +712,26 @@ export class CovidComponent implements OnInit {
     //OBTAIN DATE RANGE
     /* let values: number[] = [];
      this.dateRange.map((date: Date) => {
-
+  
        if (date <= new Date(e.value)) {
          let value: number = date.getTime();
          values.push(value);
        }
-
+  
      });
-
-
+  
+  
      let dates: Date[] = [];
      for (const dateNumber of values) {
-
+  
        let date: Date = new Date(dateNumber);
        dates.push(date);
        console.log(date);
-
+  
      }
-
+  
      this.dates = dates;
-
+  
     // console.log(this.dates);*/
 
   }

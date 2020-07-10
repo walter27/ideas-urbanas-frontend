@@ -374,13 +374,16 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       }
     );
   }
-
+  
   getClasifications() {
     this.resultClasification$ = this.clasificationService.listClasification(this.filters).pipe(
       map(resp => {
-        this.clasificationSelected = resp.data[0];
+        this.clasificationSelected = resp.data[1];
         this.getVariables();
-        return resp;
+        //console.log(resp);
+        const newRes = resp.data.filter(clasification => clasification.name !== 'Corona Virus');
+        //console.log(newRes);
+        return newRes;
       })
     );
 

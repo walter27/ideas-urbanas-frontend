@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import TimeLine from 'highcharts/modules/timeline';
 
@@ -9,13 +9,21 @@ import TimeLine from 'highcharts/modules/timeline';
   templateUrl: './card-basic-graph-timeline.component.html',
   styleUrls: ['./card-basic-graph-timeline.component.scss']
 })
-export class CardBasicGraphTimelineComponent implements OnInit {
+export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
 
+  updateDemo: boolean;
   highcharts: any;
   chartOptions: any;
+  @Input("minScroll") minScroll: number;
+  @Input("maxScroll") maxScroll: number;
+
+
+
+
 
   constructor() {
 
+    this.updateDemo = false;
     this.highcharts = Highcharts;
     TimeLine(this.highcharts);
     this.createTimeLine();
@@ -25,8 +33,19 @@ export class CardBasicGraphTimelineComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(changes) {
+    if (changes['minScroll'] && changes['maxScroll']) {
+      this.createTimeLine();
+
+    }
+  }
 
   createTimeLine() {
+
+
+    console.log('MIN', this.minScroll);
+    console.log('MAX', this.maxScroll);
+
 
 
     this.chartOptions = {
@@ -34,17 +53,14 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       chart: {
         type: 'timeline',
         inverted: false,
-        scrollablePlotArea: {
-          minWidth: 6000,
-          scrollPositionX: 0,
-          marginLeft: 150
-        },
         backgroundColor: 'rgba(0,0,0,0)',
         animation: true
       },
       xAxis: {
         type: 'datetime',
-        visible: false
+        visible: false,
+        min: this.minScroll,
+        max: this.maxScroll
       },
 
       yAxis: {
@@ -226,6 +242,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
         }]
       }]
     };
+    this.updateDemo = true;
 
   }
 
