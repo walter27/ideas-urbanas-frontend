@@ -60,11 +60,15 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       },
 
       title: {
-        text: 'Covid-19 y ciudades'
+        text: 'Hitos del covid',
+        style: {
+          fontSize: '30px'
+        }
       },
 
       subtitle: {
-        text: 'Casos muertes y recuperados en las ciudades del Ecuador'
+        text: 'Como las ciudades han vivido la pandemia',
+          fontSize: '15px'
       },
 
       tooltip: {
