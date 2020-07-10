@@ -127,3 +127,29 @@
     // background: url(assets/covid/bg/bg.png);
     background-size: cover;
 }
+.covid-header {
+    background: #189cff;
+    background: linear-gradient(78deg, rgba(33,148,253,1) 0%, rgba(11,109,245,1) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 1.4em;
+}
+.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: #ffffff00;
+    color: #064cc3;
+}
+h2.titulos-covid {
+    font: 32px "Roboto", sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: bold !important;
+    line-height: 40px;
+}
+p.subtitulo-covid {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+}

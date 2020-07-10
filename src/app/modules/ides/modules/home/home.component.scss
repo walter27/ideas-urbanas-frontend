@@ -1097,7 +1097,7 @@ div.ides-card-home {
 
 .myButton {
     border-radius: 36px;
-    border: 2px solid #ffffff;
+    border: 1px solid #ffffff;
     display: inline-block;
     cursor: pointer;
     color: #ffffff !important;
@@ -1123,9 +1123,8 @@ div.ides-card-home {
 }
 
 .ides-home-title{
-    max-width: 600px;
+    max-width: 500px;
     max-height: 800px;
-    //font-weight: bold !important;
     font: 40px "Poppins", sans-serif;
     font-weight: 300;
     line-height: 1.2;
@@ -1177,4 +1176,131 @@ div.ides-card-home {
     max-height: 800px;
     font: 40px "Poppins", sans-serif;
     font-weight: 300;
+}
+.text-center.text.pb-2.pl-4 {
+    margin-bottom: -20px;
+    font-size: 18px;
+}
+.grafico-home1 {
+    max-width: 60%;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin: 0 auto;
+    padding-left: 3%;
+}
+.Texto-home1 {
+    max-width: 40%;
+    margin-top: 25%;
+    margin-left: 0%;
+}
+.grafico-home2 {
+    max-width: 60%;
+    margin-top: 1%;
+    padding-left: 2%;
+    margin: 0 auto;
+}
+.grafico-home3 {
+    max-width: 60%;
+    margin-top: 1%;
+    margin: 0 auto;
+    margin-left: -5%;
+}
+@media (min-width: 1700px){
+    .Texto-home1 {
+        max-width: 40%;
+        margin-top: 25%;
+        margin-left: 0%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1700px){
+    .grafico-home1 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 8%;
+    }
+}
+@media (min-width: 1700px){
+    .grafico-home2 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 6%;
+    }
+}
+@media (min-width: 1700px){
+    .grafico-home3 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 1%;
+        margin-left: 2%;
+    }
+}
+@media (min-width: 1920px){
+    .Texto-home1 {
+        max-width: 40%;
+        margin-top: 25%;
+        margin-left: 0%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1920px){
+    .grafico-home1 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 12%;
+    }
+}
+@media (min-width: 1920px){
+    .grafico-home2 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 10%;
+    }
+}
+@media (min-width: 1920px){
+    .grafico-home3 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 1%;
+        margin-left: 8%;
+    }
+}
+@media (min-width: 1600px){
+    .Texto-home1 {
+        max-width: 40%;
+        margin-top: 25%;
+        margin-left: 0%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1600px){
+    .grafico-home1 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 8%;
+    }
+}
+@media (min-width: 1600px){
+    .grafico-home2 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 6%;
+    }
+}
+@media (min-width: 1600px){
+    .grafico-home3 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 1%;
+        margin-left: 2%;
+    }
 }

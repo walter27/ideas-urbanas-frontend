@@ -55,7 +55,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
       },
       title: {
-        text: "Casos confirmados de covid-19"
+        text: "Casos de covid-19"
       },
       xAxis: {
         categories: this.dates,

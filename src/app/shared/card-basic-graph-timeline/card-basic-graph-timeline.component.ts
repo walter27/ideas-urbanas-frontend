@@ -53,14 +53,19 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
       chart: {
         type: 'timeline',
         inverted: false,
+        scrollablePlotArea: {
+          minWidth: 6000,
+          scrollPositionX: 0,
+          marginLeft: 150
+        },
         backgroundColor: 'rgba(0,0,0,0)',
         animation: true
       },
       xAxis: {
         type: 'datetime',
         visible: false,
-        min: this.minScroll,
-        max: this.maxScroll
+        //min: this.minScroll,
+        //max: this.maxScroll
       },
 
       yAxis: {
@@ -76,17 +81,12 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
       },
 
       title: {
-        text: 'Covid-19 y ciudades'
+        text: 'Hitps del Covid'
       },
 
       subtitle: {
-        text: 'Casos muertes y recuperados en las ciudades del Ecuador'
-      },
-
-      tooltip: {
-        style: {
-          width: 300
-        }
+        text: 'Como las ciudades han vivido la pandemia',
+        fontSize: '15px'
       },
       exporting: {
         enabled: false
