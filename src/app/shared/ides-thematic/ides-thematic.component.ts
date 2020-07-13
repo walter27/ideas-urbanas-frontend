@@ -390,8 +390,6 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
           thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
           finalRes.push(thematic);
         }
-        console.log(finalRes);
-
         return finalRes;
       })
     );
@@ -753,14 +751,17 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     }
 
     if (this.subscription) {
+
       this.subscription.unsubscribe();
     }
 
     this.subscription = this.dataService.listDatasPublic(
-      { page: 0, limit: 1000, ascending: true, sort: 'obj_Canton.name' },
+      { page: 0, limit: 2000, ascending: true, sort: 'obj_Canton.name' },
       idVariable).subscribe(data => {
         this.loading = false;
         this.resultData = data.data;
+        console.log(this.resultData);
+
         this.getYearsAndCities();
         if (this.citiesSelected.length === 0) {
           this.citiesSelected.push(this.cities[0]);
