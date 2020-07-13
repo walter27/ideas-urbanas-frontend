@@ -1205,6 +1205,125 @@ div.ides-card-home {
     margin: 0 auto;
     margin-left: -5%;
 }
+@media (min-width: 414px){
+    .Texto-home1 {
+        position: absolute;
+        z-index: 15;
+        top: 0px;
+        left: 200px;
+    }
+}
+@media (min-width: 414px){
+    .grafico-home1 {
+        position: absolute;
+        max-width: 100%;
+        margin: 0 auto;
+        top: 200px;
+        left: 250px;
+
+    }
+}
+@media (min-width: 414px){
+    .grafico-home2 {
+        position: absolute;
+        max-width: 100%;
+        margin: 0 auto;
+        top: 190px;
+        left: 340px;
+
+    }
+}
+@media (min-width: 414px){
+    .grafico-home3 {
+        position: absolute;
+        max-width: 100%;
+        margin: 0 auto;
+        top: 150px;
+        left: 300px;
+    }
+}
+@media (min-width: 1024px){
+    .Texto-home1 {
+        position: absolute;
+        z-index: 15;
+        top: -90px;
+        left: 200px;
+    }
+}
+@media (min-width: 1024px){
+    .grafico-home1 {
+        position: absolute;
+        max-width: 100%;
+        margin: 0 auto;
+        top: 200px;
+        left: 250px;
+
+    }
+}
+@media (min-width: 1024px){
+    .grafico-home2 {
+        position: absolute;
+        max-width: 100%;
+        margin: 0 auto;
+        top: 190px;
+        left: 340px;
+
+    }
+}
+@media (min-width: 1024px){
+    .grafico-home3 {
+        position: absolute;
+        max-width: 100%;
+        margin: 0 auto;
+        top: 150px;
+        left: 300px;
+    }
+}
+@media (min-width: 1080px){
+    .Texto-home1 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin-top: 25%;
+        margin-left: 2%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1080px){
+    .grafico-home1 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 0%;
+        margin-left: -16%;
+    }
+}
+@media (min-width: 1080px){
+    .grafico-home2 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 0%;
+        margin-left: -3%;
+    }
+}
+@media (min-width: 1080px){
+    .grafico-home3 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 0%;
+        margin-left: -9%;
+    }
+}
 @media (min-width: 1700px){
     .Texto-home1 {
         max-width: 40%;
@@ -1285,7 +1404,7 @@ div.ides-card-home {
         max-width: 60%;
         margin: 0 auto;
         margin-top: 3%;
-        margin-left: 8%;
+        margin-left: -6%;
     }
 }
 @media (min-width: 1600px){
@@ -1302,5 +1421,149 @@ div.ides-card-home {
         margin: 0 auto;
         margin-top: 1%;
         margin-left: 2%;
+    }
+}
+@media (min-width: 1280px){
+    .Texto-home1 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin-top: 25%;
+        margin-left: 0%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1280px){
+    .grafico-home1 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 0%;
+        margin-left: -10%;
+    }
+}
+@media (min-width: 1280px){
+    .grafico-home2 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 0%;
+        margin-left: -3%;
+    }
+}
+@media (min-width: 1280px){
+    .grafico-home3 {
+        left: 0px;
+        top: 0px;
+        position: relative;
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 0%;
+        margin-left: -9%;
+    }
+}
+@media (min-width: 1600px){
+    .Texto-home1 {
+        max-width: 40%;
+        margin-top: 40%;
+        margin-left: 0%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1600px){
+    .grafico-home1 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 13%;
+        margin-left: -8%;
+    }
+}
+@media (min-width: 1600px){
+    .grafico-home2 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 6%;
+        margin-left: 2%;
+    }
+}
+@media (min-width: 1600px){
+    .grafico-home3 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 9%;
+        margin-left: 0%;
+    }
+}
+@media (min-width: 1700px){
+    .Texto-home1 {
+        max-width: 40%;
+        margin-top: 35%;
+        margin-left: 0%;
+        min-width: 450px;
+        max-width: 450px;;
+    }
+}
+@media (min-width: 1700px){
+    .grafico-home1 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 9%;
+        margin-left: -5%;
+    }
+}
+@media (min-width: 1700px){
+    .grafico-home2 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 6%;
+        margin-left: 2%;
+    }
+}
+@media (min-width: 1700px){
+    .grafico-home3 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 6%;
+        margin-left: 0%;
+    }
+}
+@media (min-width: 1920px){
+    .Texto-home1 {
+        max-width: 40%;
+        margin-top: 30%;
+        margin-left: 0%;
+        min-width: 430px;
+        max-width: 430px;;
+    }
+}
+@media (min-width: 1920px){
+    .grafico-home1 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 5%;
+        margin-left: -5%;
+    }
+}
+@media (min-width: 1920px){
+    .grafico-home2 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 6%;
+        margin-left: 4%;
+    }
+}
+@media (min-width: 1920px){
+    .grafico-home3 {
+        max-width: 60%;
+        margin: 0 auto;
+        margin-top: 3%;
+        margin-left: 0%;
     }
 }

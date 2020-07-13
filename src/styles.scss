@@ -835,6 +835,42 @@ h4.titulo-noti {
     max-width: 1080px;
     margin: 0 auto;
 }
+@media (min-width: 414px){
+    .row1 {
+        display: flex;
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1024px){
+    .row1 {
+        display: block;
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1024px){
+    .row1 {
+        display: block;
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1080px){
+    .row1 {
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+    }
+}
 @media (min-width: 1600px){
     .row1 {
         display: flex;
@@ -858,7 +894,7 @@ h4.titulo-noti {
         display: flex;
         margin-right: -15px;
         margin-left: -15px;
-        max-width: 1200px;
+        max-width: 1300px;
         margin: 0 auto;
         }
     }
@@ -866,4 +902,163 @@ h4.titulo-noti {
         margin-top: 10%;
         margin-left: 0%;
     }
-    
+    @media (min-width: 1920px){
+        .row1 {
+            display: flex;
+            margin-right: -15px;
+            margin-left: -15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            }
+        }
+        svg#eay5tc9b44eu1 {
+            margin-top: 10%;
+            margin-left: 0%;
+        }
+ @media (min-width: 1280px){
+            .row1 {
+                display: flex;
+                margin-right: -15px;
+                margin-left: -15px;
+                width: 1000px;
+                margin: 0 auto;
+                }
+            }
+@media (min-width: 1280px){
+    .nav-item {
+                    color: #ffffff !important;
+                    font: 15px "roboto" !important;
+                    }
+                }
+@media (min-width: 1080px){
+         .nav-item {
+           color: #ffffff !important;
+           font: 15px "roboto" !important;
+        }
+}
+ @media (min-width: 1280px){
+    .col-md-8 {
+        color: #ffffff !important;
+        font: 15px "roboto" !important;
+    }
+}
+@media (min-width: 1080px){
+    .col-md-8.text-right {
+        flex: 0 0 33%;
+    max-width: 33%;
+    }
+}
+@media (min-width: 1080px){
+    .col-md-2.text-left {
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
+}
+@media (min-width: 1024px){
+    .col-md-8.text-right {
+        flex: 0 0 33%;
+    max-width: 33%;
+    }
+}
+@media (min-width: 1024px){
+    .col-md-2.text-left {
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
+}
+ @media (min-width: 1280px){
+    .col-md-8.text-right {
+        flex: 0 0 50%;
+    max-width: 50%;
+    }
+}
+@media (min-width: 1280px){
+    .col-md-2.text-left {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+@media (min-width: 1366px){
+    .col-md-8.text-right {
+        flex: 0 0 60%;
+    max-width: 60%;
+    }
+}
+@media (min-width: 1366px){
+    .col-md-2.text-left {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+@media (min-width: 1600px){
+    .col-md-8.text-right {
+        flex: 0 0 64%;
+    max-width: 64%;
+    }
+}
+@media (min-width: 1600px){
+    .col-md-2.text-left {
+        flex: 0 0 18%;
+        max-width: 18%;
+    }
+}
+@media (min-width: 1920px){
+    .col-md-8.text-right {
+        flex: 0 0 71%;
+    max-width: 71%;
+    }
+}
+@media (min-width: 1920px){
+    .col-md-2.text-left {
+        flex: 0 0 13%;
+        max-width: 13%;
+    }
+}
+@media (min-width: 1600px){
+    ngb-carousel.carousel.slide {
+        margin-top: -100px;
+    }
+}
+@media (min-width: 1920px){
+    ngb-carousel.carousel.slide {
+        margin-top: -1px;
+    }
+}
+@media (min-width: 1700px){
+    ngb-carousel.carousel.slide {
+        margin-top: -1px;
+    }
+}
+col-12 {
+    margin: 0 auto;
+}
+svg#ey5l34nrcb0a1 {
+    margin-top: 0%;
+    margin-left: 0%;
+}
+twitter-widget#twitter-widget-0 {
+    margin: 0 auto;
+    /* margin-top: 5px; */
+}
+@media (min-width: 1024px){
+    .container {
+        max-width: 70%;
+    }
+}
+@media (min-width: 1024px){
+    .col-md-8 {
+        color: #ffffff !important;
+        font: 15px "Roboto" !important;
+    }
+}
+@media screen and (max-width: 1280px) and (min-width: 992px){
+.nav-item {
+    color: #ffffff !important;
+    font: 15px "roboto" !important;
+    }
+}
+@media (min-width: 375px){
+    svg#revisi {
+        max-width: 500px;
+    }
+}
