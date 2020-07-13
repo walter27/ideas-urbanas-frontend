@@ -39,6 +39,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardBasicStreamgraphComponent } from './card-basic-streamgraph/card-basic-streamgraph.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
+import {CarouselModule} from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
 import { IdesOriginComponent } from './ides-origin/ides-origin.component';
 
 
@@ -111,6 +114,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ColorPickerModule,
     DropdownModule,
     MultiSelectModule,
+    CarouselModule,
+    ButtonModule,
+    ToastModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

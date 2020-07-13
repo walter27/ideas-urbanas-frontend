@@ -358,20 +358,20 @@ export class CovidComponent implements OnInit {
       localStorage.setItem('covid', JSON.stringify(data.data));
 
     });
-
+    console.log('LOCAL STPRAGE');
     setTimeout(() => {
       this.loadData();
-    }, 1000);
+    }, 4000);
 
   }
 
   loadData() {
 
+    console.log('DATA ', JSON.parse(localStorage.getItem('covid')));
 
 
     let datesString = [];
-
-    if (!this.selectDate) {
+    if (!this.selectDate || this.selectDate === 0) {
       this.selectDate = this.dateRange[0].getTime();
       let selectDate = new Date(this.selectDate).toDateString();
       datesString.push(selectDate);
@@ -390,16 +390,12 @@ export class CovidComponent implements OnInit {
     }
     this.dateStringAll = datesStringFinal;
 
-
-
     let dataHigcharts = [];
     let dataHighmap = [];
     let dataStreangraph = [];
-
     let dataCovidlocal = JSON.parse(localStorage.getItem('covid'));
 
     for (const dataCovid of dataCovidlocal) {
-
 
       let date: Date = new Date(dataCovid.date);
       let day = date.getUTCDate();
@@ -410,7 +406,6 @@ export class CovidComponent implements OnInit {
       let dataCovid2 = {
         data: [Number(dataCovid.value)],
         name: dataCovid.obj_Canton.name
-
 
       };
 
@@ -455,7 +450,10 @@ export class CovidComponent implements OnInit {
     let dataSmall = [...dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 1);
     console.log('ALTO', topValues);*/
 
-    if (!this.selectedCantons) {
+    if (!this.selectedCantons || this.selectedCantons.length === 0) {
+
+      console.log('CANTONES', this.selectedCantons);
+
 
       let cantonSelectInicial = [];
 
@@ -483,6 +481,9 @@ export class CovidComponent implements OnInit {
     }
 
     if (this.selectedCantons) {
+
+      console.log('EXISTE CANTONES', this.selectedCantons);
+
 
       let dataHighchartsFinal = [];
       let dataHighmapFinal = [];
@@ -523,7 +524,7 @@ export class CovidComponent implements OnInit {
 
       this.dataHigcharts = dataHighchartsFinal.sort((a, b) => { return b.data[0] - a.data[0] });
       this.dataMapa = dataHighmapFinal;
-
+      console.log('NUEVOS', this.dataHigcharts);
     }
 
   }
@@ -660,10 +661,18 @@ export class CovidComponent implements OnInit {
 
   getSelectVariable() {
 
+
+    this.selectDate = 0;
+    this.options = {
+      ceil: 0,
+      floor: 0
+    };
+    this.selectedCantons = [];
     this.getDatesVaribale(this.selectVariable);
-
+    setTimeout(() => {
+      this.getDataStreamgraph(this.selectVariable._id);
+    }, 2000);
   }
-
 
   getSelects() {
 
@@ -696,7 +705,7 @@ export class CovidComponent implements OnInit {
           this.getDataStreamgraph(this.selectVariable._id);
 
         } else {
-          console.log(this.dateRange[index].getTime(), index + 1);
+          //console.log(this.dateRange[index].getTime(), index + 1);
           this.minStreamgraph = index + 1;
           this.maxStreamgraph = index + 1;
           //console.log(this.dateStreamgraph);

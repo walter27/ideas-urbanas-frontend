@@ -81,7 +81,7 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
       },
 
       title: {
-        text: 'Hitps del Covid'
+        text: 'Hitos del Covid'
       },
 
       subtitle: {
@@ -181,7 +181,7 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
           description: "Alcaldes empiezan a recibir estadísticas de contagios en sus cantones por parte del MSP."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">3 DE MAYO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/mayo/2.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">115 funcionarios municipales fallecidos </br> y 19 alcaldes contagiados </br> por COVID-19 a nivel </br> nacional, según AME.</p>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/mayo/2.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">115 funcionarios municipales </br> fallecidos  y 19 alcaldes contagiados </br> por COVID-19 a nivel </br> nacional, según AME.</p>',
           description: "115 funcionarios municipales fallecidos y 19 alcaldes contagiados por COVID-19 a nivel nacional, según AME."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">4 DE MAYO</strong>',
@@ -189,7 +189,7 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
           description: "El país empieza a volver gradualmente a una nueva normalidad."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">7 DE MAYO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/mayo/4.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">El Presidente de la </br> República hace un llamado </br> a los alcaldes a cambiar </br> de color de semáforos </br>  para reactivar la economía.</p>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/mayo/4.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:0px;">El Presidente de la </br> República hace un llamado </br> a los alcaldes a cambiar </br> de color de semáforos </br>  para reactivar la economía.</p>',
           description: "El Presidente de la República hace un llamado a los alcaldes a cambiar de color de semáforos para reactivar la economía."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">12 DE MAYO</strong>',

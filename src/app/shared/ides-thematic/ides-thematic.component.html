@@ -40,7 +40,7 @@
 </div>-->
 
 <div class="row mb-2 ides-ml-charts">
-    <div class="col-12">
+    <div class="col-lg-12 col-xl-12">
         <div class="ides-card p-5">
 
 
@@ -48,18 +48,18 @@
 
 
             <div class="row pb-2 ">
-                <div class="col-md-3 text-left form-group">
+                <div class="col-lg-3  col-lx-3 text-left form-group">
                     <p-dropdown class="block " [options]="( resultVariables$ | async )?.data" [(ngModel)]="variableSelected" name="variableSelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()">
                     </p-dropdown>
                 </div>
 
-                <div class="col-md-3 text-left form-group">
+                <div class="col-lg-3 col-lx-3 text-left form-group">
 
                     <p-multiSelect class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Seleccione'" (onChange)="getSelectCities()" [showHeader]=false name="citiesSelected">
                     </p-multiSelect>
                 </div>
 
-                <div class="col-md-6 text-right">
+                <div class="col-lg-6 col-lx-6 text-right">
                     <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
                     </app-ides-download>
                 </div>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 mb-4">
+                        <div class="col-lg-12 col-lx-12 mb-4">
                             <div style="display: block;">
                                 <canvas *ngIf="!loading && lineChartData.length > 0" id="{{variableSelected?._id}}" baseChart width="3600" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
                                     [plugins]="lineChartPlugins" style="min-height: 180px;" [ngClass]="lineChartData.length > 10 ? 'chart-size-plus' : 'chart-size'"></canvas>

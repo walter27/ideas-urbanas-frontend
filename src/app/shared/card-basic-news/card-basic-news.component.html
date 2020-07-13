@@ -1,33 +1,16 @@
-<div class="que-hacen-ciudades2">
-    <h3 class="titulo-internas">Que hacen las ciudades para enfrentar el covid-19</h3>
-    <h4 class="subtitulo-internas">  Noticias destacadas</h4>
-    <div class="noticias">
-        <div class="noticia1">
+<p-carousel [value]="news" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <p-header>
+        <h3 class="titulo-internas">Que hacen las ciudades para enfrentar el covid-19</h3>
+        <h4 class="subtitulo-internas"> Noticias destacadas</h4>
+    </p-header>
+    <ng-template let-new pTemplate="item">
+        <div class="ides-card m-2">
             <div class="noti-titulo">
-                <h4 class="titulo-noti"> noticia1</h4>
+                <h4 class="titulo-noti">Noticia</h4>
             </div>
-            <img src="assets/covid/news/noti1.jpg">
-            <p class="parrafo-noti">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                book. </p>
+            <img src="{{new.img}}" />
+            <p class="parrafo-noti"> </p>
             <a href="#" class="myButtonleermas">Leer más</a>
         </div>
-        <div class="noticia1">
-            <div class="noti-titulo">
-                <h4 class="titulo-noti"> noticia1</h4>
-            </div>
-            <img src="assets/covid/news/noti2.jpg">
-            <p class="parrafo-noti">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                book. </p>
-            <a href="#" class="myButtonleermas">Leer más</a>
-        </div>
-        <div class="noticia1">
-            <div class="noti-titulo">
-                <h4 class="titulo-noti"> noticia1</h4>
-            </div>
-            <img src="assets/covid/news/noti3.jpg">
-            <p class="parrafo-noti">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                book. </p>
-            <a href="#" class="myButtonleermas">Leer más</a>
-        </div>
-    </div>
-</div>
+    </ng-template>
+</p-carousel>

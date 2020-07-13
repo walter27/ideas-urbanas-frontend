@@ -1,7 +1,6 @@
 <div class="row mb-4 header-city">
     <div class="col-xl-6 col-lg-12 city-backgroud" [ngClass]="citySelected?.name">
-        <div
-            class="header-city-logo navbar navbar-expand-xl navbar-light bg-lignt static-top pb-4 pl-4 pr-md-5 pl-md-5 ides-header">
+        <div class="header-city-logo navbar navbar-expand-xl navbar-light bg-lignt static-top pb-4 pl-4 pr-md-5 pl-md-5 ides-header">
             <div class="pl-4">
                 <a routerLink="/" class="navbar-brand ml-5 logo-link">
                     <img id="header-logo" class="hide-logo-header" src="assets/logos/logo.png" width="475" alt="">
@@ -18,13 +17,11 @@
                             </h1>
                         </div>
                         <div class="row ml-1">
-                            <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}"
-                                target="_blanck">{{ citySelected?.url }}</a>
+                            <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}" target="_blanck">{{ citySelected?.url }}</a>
                         </div>
                         <div class="row pl-4 pr-4 pt-4 city-resume">
                             <div class="col-5" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
-                                <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'"
-                                    class="city-img" />
+                                <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
                                 <div class="row" *ngIf="!overPoblacion">
                                     <div class="col-12 col-md-5">
                                         <h2 class="ides-text-yellow">
@@ -57,8 +54,7 @@
                                 </div>
                             </div>
                             <div class="col-7" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
-                                <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'"
-                                    class="city-img" />
+                                <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
                                 <div class="row" *ngIf="!overVAB">
                                     <div class="col-12 col-md-4 col-lg-5">
                                         <h2 class="ides-text-yellow">
@@ -96,13 +92,10 @@
                                 <h3 class="city-ides-subtitle">Actividades principales<span class="indicators">(Banco
                                         Central 2018)</span></h3>
                                 <div class="row city-activities">
-                                    <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index"
-                                        (mouseover)='a.over = true' (mouseout)='a.over = false'
-                                        [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
+                                    <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
                                         <div class="row">
                                             <div>
-                                                <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'"
-                                                    class="city-img" />
+                                                <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
                                             </div>
                                             <div class="ml-1" *ngIf="a.over">
                                                 <p class="mb-0 activity">
@@ -141,8 +134,7 @@
 
     <div class="col-xl-6 col-lg-12 mb-4 index-city">
         <div class="ides-card ides-height-100 ides-card-city mr-sm-0 mr-sm-4 mt-2" *ngIf="citySelected">
-            <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected"
-                [showDropYears]="true" [variableSelected]="v" class="city-index">
+            <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" class="city-index">
             </app-ides-index>
         </div>
     </div>
@@ -151,8 +143,7 @@
 <div class="row pt-4 pl-2">
     <div class="col-12">
         <div class="row cursor-pointer">
-            <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )?.data"
-                class="col-4 col-sm-6 col-md-4 col-lg-4 col-xl mb-4 ides-mr-5">
+            <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )" class="col-4 col-sm-6 col-md-4 col-lg-4 col-xl mb-4 ides-mr-5">
                 <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
                 </app-ides-card-clasification>
             </div>
@@ -188,14 +179,12 @@
                 </nav>
             </div>
             <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button"
-                    class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add information
+                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add information
                     <i-feather name="arrow-up"></i-feather>
                 </a>
             </div>
             <div *ngIf="isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                <button [routerLink]="['/admin/research']" [queryParams]="{showModal: true, goBack: citySelected?._id}"
-                    type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
+                <button [routerLink]="['/admin/research']" [queryParams]="{showModal: true, goBack: citySelected?._id}" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
                     Cargar un nuevo archivo
                     <i-feather name="arrow-up"></i-feather>
                 </button>
@@ -205,8 +194,7 @@
         <div *ngFor="let c of research?.data" class="row mb-4">
             <div class="ides-card row">
                 <div class="col-sm-3 col-md-1">
-                    <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img"
-                        [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
+                    <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img" [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
                 </div>
                 <div class="col-sm-10 col-md-11">
                     <div class="row">

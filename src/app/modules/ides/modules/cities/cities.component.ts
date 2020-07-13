@@ -92,18 +92,28 @@ export class CitiesComponent implements OnInit {
       });
     });
 
-    console.log(this.tagsData);
-
   }
 
   getClasifications() {
+
+    let newRes;
+    let finalRes: any = [];
     this.resultClasification$ = this.clasificationService.listClasification(this.filters).pipe(
       map(resp => {
-        this.clasificationSelected = resp.data[0];
+        this.clasificationSelected = resp.data[1];
         this.getVariables();
-        return resp;
+        //console.log(resp);
+        newRes = resp.data.filter(clasification => clasification.name !== 'Corona Virus');
+
+        for (const thematic of newRes) {
+          thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
+          thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
+          finalRes.push(thematic);
+        }
+        return finalRes;
       })
     );
+
   }
 
   getResearch() {
@@ -128,11 +138,6 @@ export class CitiesComponent implements OnInit {
     this.resultVariables = null;
     this.variableService.getVariablesByClasification(this.clasificationSelected._id).pipe(
       map(resp => {
-
-        console.log('Perro');
-
-        console.log(resp);
-
         return resp;
       })
     ).subscribe(resp => {
@@ -176,7 +181,6 @@ export class CitiesComponent implements OnInit {
           size: el.count, //el.count > 10 ? 10 : el.count,
         });
       });
-      console.log(this.tagsData);
       this.newTagCloud();
     });
   }

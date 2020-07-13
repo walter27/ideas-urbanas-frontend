@@ -34,7 +34,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    if (changes['data'] && this.data) {
+    if (changes['data']) {
       this.createMap();
 
     }
