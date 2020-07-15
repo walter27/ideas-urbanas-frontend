@@ -48,7 +48,6 @@ export class DataService {
   // tslint:disable-next-line:variable-name
   listDatasPublic(filters: Filters, id_Variable?, cities?): Observable<ResultList<Data>> {
 
-    //console.log(cities);
     const filtersB = this.utilsService.buildFilters(filters);
     const body = {
       id_Variable,

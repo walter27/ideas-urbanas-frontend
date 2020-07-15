@@ -36,8 +36,25 @@ export class IndexesComponent implements OnInit {
   }
 
   getClasifications() {
+
+    let newRes;
+    let finalRes: any = [];
     this.clasificationService.listClasification(this.filters).subscribe(resp => {
-      this.resultClasification = resp;
+
+
+      newRes = resp.data.filter(clasification => clasification.name !== 'Corona Virus');
+
+      for (const thematic of newRes) {
+        thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
+        thematic.image_route = `assets/ICONOS/${thematic.name}-AZUL.png`;
+        finalRes.push(thematic);
+      }
+
+
+
+
+
+      this.resultClasification = finalRes;
     });
   }
 

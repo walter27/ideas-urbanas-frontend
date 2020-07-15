@@ -55,7 +55,7 @@
 
 :host::ng-deep.ui-multiselect .ui-multiselect-trigger {
     border-radius: 14px;
-    background: white;
+    background: none;
     color: rgba(6, 76, 195, 1);
 }
 
@@ -153,3 +153,52 @@ p.subtitulo-covid {
     color: #9195a4;
     line-height: 22px;
 }
+.ui-multiselect .ui-multiselect-label {
+    color: #064cc3;
+    margin-left: 10PX;
+}
+.ui-dropdown-label {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+    margin-left: 20PX;
+}
+@media (min-width: 360px){
+h2.titulos-covid {
+    font: 32px "Roboto", sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: bold !important;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+}
+@media (min-width: 360px){
+p.subtitulo-covid {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+    margin-top: 20px;
+}
+}
+@media (min-width: 980px){
+    h2.titulos-covid {
+        font: 32px "Roboto", sans-serif !important;
+        padding-top: 0.5em !important;
+        color: #24355a;
+        font-weight: bold !important;
+        line-height: 40px;
+        margin-bottom: 5px;
+    }
+ }
+    @media (min-width: 980px){
+    p.subtitulo-covid {
+        margin-top: 5px;
+        font: 16px "Roboto", sans-serif;
+        color: #9195a4;
+        line-height: 22px;
+        margin-top: 0px;
+    }
+ }

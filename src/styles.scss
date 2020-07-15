@@ -767,13 +767,29 @@ svg#eay5tc9b44eu1 {
     margin-right: 10%;
     margin-top: -35px;
 }
-.col-lx-4 {
-    width: 20%;
-    margin-right: 20px;
+@media (min-width: 360px){
+    .col-lx-4 {
+        width: 40%;
+        margin-right: 1px;
+    }
 }
-.col-lx-8 {
-    width: 75%;
-    margin-left: 25px;
+@media (min-width: 360px){
+    .col-lx-8 {
+        width: 58%;
+        margin-left: 1px;
+    }
+}
+@media (min-width: 980px){
+    .col-lx-4 {
+        width: 20%;
+        margin-right: 20px;
+    }
+}
+@media (min-width: 980px){
+    .col-lx-8 {
+        width: 75%;
+        margin-left: 25px;
+    }
 }
 .logo12 {
     width: 20%;
@@ -835,13 +851,14 @@ h4.titulo-noti {
     max-width: 1080px;
     margin: 0 auto;
 }
-@media (min-width: 414px){
+@media (min-width: 360px){
     .row1 {
-        display: flex;
+        display: block;
         margin-right: -15px;
         margin-left: -15px;
-        max-width: 700px;
+        max-width: 1080px;
         margin: 0 auto;
+        min-height: 1000px;
     }
 }
 @media (min-width: 1024px){
@@ -1057,8 +1074,67 @@ twitter-widget#twitter-widget-0 {
     font: 15px "roboto" !important;
     }
 }
+img.somos1 {
+    max-width: 600px;
+    margin-bottom: 40px;
+}
 @media (min-width: 375px){
-    svg#revisi {
-        max-width: 500px;
+    img.somos1 {
+        margin-top: 60px;
+        max-width: 400px;
     }
+}
+.row.mb-4.ides-ml-analyse_topics {
+    max-width: 1500px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+twitter-widget#twitter-widget-1 {
+    margin: 0 auto;
+}
+.col-12.ides-text-blue.mb-4 {
+    margin: 0 auto;
+    text-align: center;
+}
+.col-12.mb-4 {
+    margin: 0 auto;
+    margin-top: 0px;
+}
+img#header-logo {
+    width: 210px;
+}
+button.navbar-toggler.mt-2.ides-navbar-toggler-mobile {
+    width: 100px;
+}
+twitter-widget#twitter-widget-1 {
+    padding: 20px;
+    /* -webkit-box-shadow: 3px 3px 14px 0px rgba(50, 50, 50, 0.28); */
+    -moz-box-shadow: 3px 3px 14px 0px rgba(50, 50, 50, 0.28);
+    /* box-shadow: 3px 3px 14px 0px rgba(50, 50, 50, 0.28); */
+}
+button.navbar-toggler.mt-2.ides-navbar-toggler-mobile {
+    width: 20px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+div.ides-card {
+    box-shadow: 0px 6px 22px 11px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    border: 0px solid #000000;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 49px -7px #c7c7cf;
+    padding: 5px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+.row-ciudades {
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-bottom: 70px;
+}
+.subtitle.text-center.pb-2.pl-4.pt-1 {
+    margin-top: 50px;
 }

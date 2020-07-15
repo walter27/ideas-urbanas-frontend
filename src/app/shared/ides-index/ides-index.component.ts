@@ -240,13 +240,15 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    if (this.router.url != '/home')
+    if (this.router.url !== '/home') {
       this.getData();
+    }
+
   }
 
   @HostListener('window:scroll', ['$event'])
   onWindowIndexScroll($event) {
-    if (!this.loadData && this.router.url == '/home' && $event.srcElement.scrollingElement.scrollTop > 100) {
+    if (!this.loadData && this.router.url === '/home' && $event.srcElement.scrollingElement.scrollTop > 100) {
       this.loadData = true;
       this.getData();
     }
@@ -264,7 +266,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
       this.radarChartLabels.sort();
       let color = '';
       if (!this.citySelected) {
-        let city = this.activeCities.find(x => x.name.toLowerCase() == c.toLowerCase());
+        let city = this.activeCities.find(x => x.name.toLowerCase() === c.toLowerCase());
         color = city.color;
       } else {
         color = this.citySelected.color;
@@ -338,6 +340,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
         this.updateChart(resp);
       });
     } else {
+
       this.dataService.listDataIndexes().subscribe(resp => {
         this.baseData = resp;
         this.updateChart(resp);
@@ -364,6 +367,8 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
   }
 
   getTitle() {
+
+
     if (this.title) {
       return this.title;
     } else {

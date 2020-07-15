@@ -1121,7 +1121,25 @@ div.ides-card-home {
 .btn-space {
   padding-top: 2em !important;
 }
-
+@media (min-width: 980px){
+.ides-home-title {
+    max-width: 500px;
+    max-height: 800px;
+    font: 20px "Poppins", sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    font-size: 25px;
+    }
+}
+@media (min-width: 1080px){
+    .ides-home-title{
+        max-width: 500px;
+        max-height: 800px;
+        font: 30px "Poppins", sans-serif;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+}
 .ides-home-title{
     max-width: 500px;
     max-height: 800px;
@@ -1205,41 +1223,43 @@ div.ides-card-home {
     margin: 0 auto;
     margin-left: -5%;
 }
-@media (min-width: 414px){
+@media (min-width: 360px){
     .Texto-home1 {
         position: absolute;
         z-index: 15;
-        top: 0px;
-        left: 200px;
+        top: 70px;
+        left: 15px;
+        max-width: 100%;
     }
 }
-@media (min-width: 414px){
+@media (min-width: 360px){
     .grafico-home1 {
         position: absolute;
         max-width: 100%;
         margin: 0 auto;
-        top: 200px;
-        left: 250px;
+        top: 350px;
+        left: -220px;
 
     }
 }
-@media (min-width: 414px){
+@media (min-width: 360px){
     .grafico-home2 {
         position: absolute;
         max-width: 100%;
         margin: 0 auto;
-        top: 190px;
-        left: 340px;
+        top: 350px;
+        left: -150px;
 
     }
 }
-@media (min-width: 414px){
+@media (min-width: 360px){
     .grafico-home3 {
         position: absolute;
         max-width: 100%;
         margin: 0 auto;
-        top: 150px;
-        left: 300px;
+        top: 350px;
+        left: -170px;
+
     }
 }
 @media (min-width: 1024px){
@@ -1567,3 +1587,117 @@ div.ides-card-home {
         margin-left: 0%;
     }
 }
+@media (min-width: 360px){
+.ides-home-title {
+    max-width: 500px;
+    max-height: 800px;
+    font: 30px "Poppins", sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    }
+}
+@media (min-width: 980px){
+    .ides-home-title {
+        max-width: 500px;
+        max-height: 800px;
+        font: 42px "Poppins", sans-serif;
+        font-weight: 300;
+        line-height: 1.2;
+        }
+    }
+.ides-home-subtitle {
+        margin-top: 1.1rem;
+        font: 18px "Roboto", sans-serif;
+        line-height: 26px;
+        padding-left: 2px;
+}
+.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: none;
+    color: #064cc3;
+}
+.anima-texto  {
+    -webkit-animation-name: anima-texto;
+    animation-name: anima-texto;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes anima-texto {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+     opacity: 0%;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+    @keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    opacity: 100%;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+ } 
+ .anima-boton {
+    -webkit-animation-name: anima-boton;
+    animation-name: anima-boton;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes anima-boton {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @keyframes anima-boton {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    } 
+    .text-center.text.pb-2.pl-4 {
+        margin-bottom: -20px;
+        font-size: 18px;
+    }
+
+.anima-texto  {
+    -webkit-animation-name: anima-texto;
+    animation-name: anima-texto;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes anima-texto {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+     opacity: 0%;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+    @keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    opacity: 100%;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+ } 
