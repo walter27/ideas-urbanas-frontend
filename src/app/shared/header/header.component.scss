@@ -24,7 +24,7 @@ div ul.nav li {
 }
 
 .ides-navbar-toggler-mobile > fa{
-    font-size: 2.25rem;
+    font-size: 1.4rem;
 }
 .ides-navbar-toggler-mobile > fa:hover{
     color: #076DCD !important;
@@ -70,4 +70,60 @@ div ul.nav li {
     margin-top: 9px;
     width: 20%;
     max-width: 200px;;
+}
+@media (min-width: 360px){
+    .row11 {
+        display: inline-block;
+        margin: 0 auto;
+        min-width: 100%;
+        text-align: center;
+    }
+}
+@media (min-width: 1080px){
+    .row11 {
+        display: flex;
+        margin: 0 auto;
+        min-width: 100%;
+        text-align: center;
+    }
+}
+@media (min-width: 360px){
+    .otromenu{
+        padding-left: 0px;
+        margin-top: 9px;
+        width: 100%;
+        max-width: 360px;
+    }
+}
+@media (min-width: 1080px){
+    .otromenu{
+        padding-left: 0px;
+        margin-top: 9px;
+        width: 20%;
+        max-width: 20%;
+    }
+}
+@media (min-width: 1080px){
+    .menu10 {
+        margin: 0 auto;
+        max-width: 20%;
+    }
+}
+@media (min-width: 360px){
+    .menu10 {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+.ides-navbar-items {
+    padding: 1.5rem 0rem;
+    min-width: 580px;
+    margin: 0 auto;
+}
+.row11 {
+    display: flex;
+    margin: 0 auto;
+    min-width: 100%;
+    text-align: center;
+    max-width: 1400px;
 }
