@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ClasificationService } from '../../../../core/services/clasification.service';
 import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
@@ -18,17 +18,17 @@ import { ItemDropdown } from 'src/app/core/models/item-dropdown.model';
   styleUrls: ['./covid.component.scss']
 })
 
-export class CovidComponent implements OnInit {
+export class CovidComponent implements OnInit, OnDestroy {
 
   model = 'Canton';
   filters = {
     page: 0,
-    limit: 4000,
+    limit: 2000,
     ascending: true,
     sort: 'name'
   };
-  cantons: ItemDropdown[] = [];
-  selectedCantons: ItemDropdown[] = [];
+  cantons: Region[] = [];
+  selectedCantons: Region[] = [];
 
   varibales2: Variable[];
   selectVariable: Variable;
@@ -64,7 +64,7 @@ export class CovidComponent implements OnInit {
   dataFinal: any = [];
   dataPrueba: any = [];
 
-    loading = false;
+  loading = false;
 
 
 
@@ -77,6 +77,70 @@ export class CovidComponent implements OnInit {
     this.maxScroll = 6;
     this.getCantons();
     this.getClasification();
+
+  }
+
+
+  ngOnInit() {
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    elem.style.setProperty("background-color", '#189cff');
+    elem.classList.add("sticky-top");
+    elem.classList.remove("fixed-top");
+
+  }
+
+
+  ngOnDestroy() {
+
+    let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 3);
+    let cantonsTop = [];
+
+    for (const canton of this.selectedCantons) {
+
+      for (const cantontop of dataTop) {
+
+        if (canton.name === cantontop.name) {
+
+          cantonsTop.push(canton);
+
+        }
+      }
+
+    }
+
+    let cantonsNotop = this.cantons.filter(canton => !cantonsTop.includes(canton));
+
+
+    cantonsTop.forEach(cantonTop => {
+      let body = {
+        covid: true,
+        code: cantonTop.code,
+        id_Provincia: cantonTop.obj_Provincia._id,
+        name: cantonTop.name,
+        active: cantonTop.active
+      };
+
+      setTimeout(() => {
+        this.regionService.editRegion(body, cantonTop._id, this.model).subscribe(res => { });
+      }, 1);
+
+    });
+
+
+    cantonsNotop.forEach(cantonNoTop => {
+      let body = {
+        covid: false,
+        code: cantonNoTop.code,
+        id_Provincia: cantonNoTop.obj_Provincia._id,
+        name: cantonNoTop.name,
+        active: cantonNoTop.active
+      };
+
+      setTimeout(() => {
+        this.regionService.editRegion(body, cantonNoTop._id, this.model).subscribe(res => { });
+      }, 1);
+
+    });
 
   }
 
@@ -101,19 +165,6 @@ export class CovidComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    let elem: HTMLElement = document.getElementById('navbarMenu');
-    elem.style.setProperty("background-color", '#189cff');
-    elem.classList.add("sticky-top");
-    elem.classList.remove("fixed-top");
-
-
-
-
-  }
-
-
-
   scrollLeft() {
     /*console.log('Izuierda');
     this.minScroll -= 6;
@@ -129,11 +180,9 @@ export class CovidComponent implements OnInit {
   }
 
   scrollRigt() {
-    console.log('derechas');
     this.minScroll += 6;
     this.maxScroll += 6;
   }
-
 
 
   getCantons() {
@@ -152,15 +201,15 @@ export class CovidComponent implements OnInit {
       this.cantons = data.data;
       //console.log(this.cantons);
 
-      /*let dataCovid: any;
-      this.dataService.getData().subscribe((data1) => {
-        dataCovid = data1;
-
-        //console.log(dataCovid);
-
-        this.saveDataCovid(this.cantons, dataCovid);
-
-      });*/
+      /* let dataCovid: any;
+       this.dataService.getData().subscribe((data1) => {
+         dataCovid = data1;
+ 
+         //console.log(dataCovid);
+ 
+         this.saveDataCovid(this.cantons, dataCovid);
+ 
+       });*/
 
 
     });
@@ -171,11 +220,11 @@ export class CovidComponent implements OnInit {
     for (const data of dataCovid) {
 
       let dataF = {
-        description: 'Datos de defunciones por covid-19',
+        description: 'Casos de defunciones por covid-19',
         value: '',
         year: '2020',
         id_Canton: '',
-        id_Variable: '5f089747a6b74a1e187dab7c',
+        id_Variable: '5f0cf58fedd2b60af04846da',
         date: ''
       };
 
@@ -248,31 +297,31 @@ export class CovidComponent implements OnInit {
     //console.log(this.dataFinal);
 
 
-    // this.dataPrueba.push(this.dataFinal[0]);
-    // this.dataPrueba.push(this.dataFinal[1]);
+    //this.dataPrueba.push(this.dataFinal[0]);
+    //this.dataPrueba.push(this.dataFinal[1]);
     //this.dataPrueba.push(this.dataFinal[8]);
 
     //console.log(this.dataPrueba);
-    /*this.dataService.addData(this.dataPrueba[0]).subscribe((data2) => {
-      console.log(data2);
-    });*/
+    /* this.dataService.addData(this.dataPrueba[0]).subscribe((data2) => {
+       console.log(data2);
+     });*/
 
 
-    /* for (let index = 0; index < this.dataFinal.length; index++) {
- 
-       if (index > 34254 && index <= 38060) {
-         //console.log(this.dataFinal[index], index);
- 
-         setTimeout(() => {
-           this.dataService.addData(this.dataFinal[index]).subscribe((data2) => {
-             console.log(data2, index);
-           });
-         }, 3000);
- 
-       }
- 
- 
-     }*/
+    /*for (let index = 0; index < this.dataFinal.length; index++) {
+
+      if (index > 34254 && index <= 38060) {
+        //console.log(this.dataFinal[index], index);
+
+        setTimeout(() => {
+          this.dataService.addData(this.dataFinal[index]).subscribe((data2) => {
+            console.log(data2, index);
+          });
+        }, 3000);
+
+      }
+
+
+    }*/
 
     //console.log("terminado..");
 
@@ -284,41 +333,67 @@ export class CovidComponent implements OnInit {
     this.variableService.getVariablesByClasification(idClasification).subscribe((data) => {
       this.varibales2 = data.data;
       this.selectVariable = this.varibales2[0];
-      this.getDatesVaribale(this.selectVariable);
+      this.getData(this.selectVariable._id);
 
     });
 
   }
 
 
-  getDatesVaribale(varibable: Variable) {
 
+  getData(idSelectVariable: string) {
 
-    let dataCovid = [];
     let dateRanges = [];
-    this.dataService.listDatasPublic(this.filters, varibable._id).subscribe((data) => {
 
-      dataCovid = data.data;
-      for (const info of dataCovid) {
+    this.dataService.listDatasCovid(this.filters, idSelectVariable).subscribe(data => {
+
+      for (const info of data.data) {
         dateRanges.push(info.date);
         // console.log(info.date);
 
       }
-
       this.rangeValues = dateRanges;
       this.createDateRange();
-      this.getData(varibable._id);
-      //CARGAR INICLAMENTE LOS CANTONES 
-      setTimeout(() => {
-        this.filterData();
-        this.filterDataStreamgraph();
-      }, 2000);
 
     });
 
 
+    this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
+    setTimeout(() => {
+      this.filterData();
+      this.filterDataStreamgraph();
+    }, 2000);
 
   }
+
+
+  /* getDatesVaribale(varibable: Variable) {
+ 
+ 
+     let dateRanges = [];
+     this.dataService.listDatasCovid(this.filters, varibable._id).subscribe((data) => {
+ 
+       dataCovid = data.data;
+       for (const info of data.data) {
+         dateRanges.push(info.date);
+         // console.log(info.date);
+ 
+       }
+ 
+       this.rangeValues = dateRanges;
+       this.createDateRange();
+       this.getData(varibable._id);
+       //CARGAR INICLAMENTE LOS CANTONES 
+       setTimeout(() => {
+         this.filterData();
+         this.filterDataStreamgraph();
+       }, 2000);
+ 
+     });
+ 
+ 
+ 
+   }*/
 
 
   createDateRange() {
@@ -367,15 +442,6 @@ export class CovidComponent implements OnInit {
 
 
 
-
-  }
-
-
-
-  async getData(idSelectVariable: string) {
-
-    console.log('ejecutando..');
-    this.result$ = await this.dataService.listDatasPublic(this.filters, idSelectVariable);
 
   }
 
@@ -474,8 +540,6 @@ export class CovidComponent implements OnInit {
   async loadData(dataHigcharts: any, dataHighmap: any) {
 
 
-    /*let data = [...dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 5);
-    console.log('ALTO', data);*/
 
     if (!this.selectedCantons || this.selectedCantons.length === 0) {
 
@@ -571,15 +635,9 @@ export class CovidComponent implements OnInit {
     }
     this.dateStringAll = datesStringFinal;
     if (this.selectDate === this.dateRange[0].getTime()) {
-      //console.log(this.selectDate);
       this.minStreamgraph = 0;
       this.maxStreamgraph = this.dateRange.length;
     }
-
-
-    //console.log(this.selectDate);
-
-    let dataCovidlocal = JSON.parse(localStorage.getItem('covid'));
 
     this.result$.forEach(element => {
 
@@ -705,15 +763,50 @@ export class CovidComponent implements OnInit {
       floor: 0
     };
     this.selectedCantons = [];
-    this.getDatesVaribale(this.selectVariable);
+    this.getData(this.selectVariable._id);
   }
 
   getSelects() {
 
+    if (this.selectedCantons) {
 
-    this.filterData();
-    this.filterDataStreamgraph();
+      this.selectedCantons.forEach(cantonSelected => {
 
+        let body = {
+          covid: true,
+          code: cantonSelected.code,
+          id_Provincia: cantonSelected.obj_Provincia._id,
+          name: cantonSelected.name,
+          active: cantonSelected.active
+        };
+        setTimeout(() => {
+          this.regionService.editRegion(body, cantonSelected._id, this.model).subscribe(res => { });
+        }, 1);
+
+
+      });
+
+      let cantons = this.cantons.filter(canton => !this.selectedCantons.includes(canton));
+      cantons.forEach(canton => {
+
+        let body = {
+          covid: false,
+          code: canton.code,
+          id_Provincia: canton.obj_Provincia._id,
+          name: canton.name,
+          active: canton.active
+        };
+        setTimeout(() => {
+          this.regionService.editRegion(body, canton._id, this.model).subscribe(res => { });
+        }, 1);
+      });
+
+      this.getData(this.selectVariable._id);
+
+
+
+
+    }
 
   }
 

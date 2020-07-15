@@ -60,9 +60,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('ITEMS', this.items);
-
-
   }
 
   isAuthenticated() {

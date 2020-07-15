@@ -760,8 +760,6 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       idVariable).subscribe(data => {
         this.loading = false;
         this.resultData = data.data;
-        console.log(this.resultData);
-
         this.getYearsAndCities();
         if (this.citiesSelected.length === 0) {
           this.citiesSelected.push(this.cities[0]);

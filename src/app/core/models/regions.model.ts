@@ -6,6 +6,7 @@ export interface Region {
     obj_Provincia: Region;
     obj_Canton: Region;
     active?: boolean;
+    covid: boolean;
     url?: string;
     extraData?: any;
     color?: string;
