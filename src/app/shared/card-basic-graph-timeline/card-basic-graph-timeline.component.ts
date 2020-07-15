@@ -42,12 +42,6 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
 
   createTimeLine() {
 
-
-    console.log('MIN', this.minScroll);
-    console.log('MAX', this.maxScroll);
-
-
-
     this.chartOptions = {
 
       chart: {

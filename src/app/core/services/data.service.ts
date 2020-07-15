@@ -96,6 +96,20 @@ export class DataService {
     );
   }
 
+
+  listDatasCovid(filters: Filters, idVariable?): Observable<ResultList<Data>> {
+    const filtersB = this.utilsService.buildFilters(filters);
+    const body = {
+      idVariable,
+    };
+
+    return this.httpClient.post<ResponseApi<ResultList<Data>>>(this.serverUrl + 'api/covid/' + filtersB, body).pipe(
+      map(data => {
+        return data.results;
+      })
+    );
+  }
+
   getData() {
     return this.httpClient.get(`${this.serverUrl}getCSV/datos/muertos`, httpOptions);
   }
