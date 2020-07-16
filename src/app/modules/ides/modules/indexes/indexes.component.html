@@ -1,16 +1,16 @@
 <div class="row mb-5">
-    <div class="col-12">
-        <div class="ides-card pl-0 pr-0">
-            <app-ides-index [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]='cities'>
-            </app-ides-index>
+    <div class="contiene-desempeno">
+        <div class="contiene-elementos">
+            <div class="anima-texto"><app-ides-index [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]='cities'>
+            </app-ides-index></div>
         </div>
     </div>
 </div>
 
-<div class="row">
+<div class="Definiciones">
     <div class="col-12 ides-text-blue mb-4">
-        <div class="ides-card">
-            <h2 class="text-center ides-text-index-title mb-5" translate>Definiciones</h2>
+        <div class="contiene-desempeno">
+            <div class="anima-texto"><h2 class="tituloz" translate>Definiciones</h2></div>
             <div class="row m-4">
                 <div class="col-md-12 col-lg-6" *ngFor="let c of resultClasification">
                     <div class="row">

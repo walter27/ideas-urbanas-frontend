@@ -153,3 +153,51 @@
     display: block;
     }
 }
+.anima-texto  {
+    -webkit-animation-name: anima-texto;
+    animation-name: anima-texto;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes anima-texto {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+     opacity: 0%;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+    @keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    opacity: 100%;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+ } 
+ .ides-card1.text-center.ides-height-100.row.ides-card-clasification:active {
+    background: rgb(251,187,49);
+    background: linear-gradient(78deg, rgba(251,187,49,1) 0%, rgba(248,171,6,1) 100%);
+    color: white;
+    box-shadow: 0px 14px 14px -7px #9ba2a3b0;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 10px 10px;
+    min-width: 200px;
+    max-width: 250px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #000000;
+}
