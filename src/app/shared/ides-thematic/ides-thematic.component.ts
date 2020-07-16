@@ -345,13 +345,14 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
 
     sessionStorage.clear();
 
-    if (this.router.url != '/home')
+    if (this.router.url !== '/home') {
       this.getCities();
+    }
   }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event) {
-    if (!this.loadCity && this.router.url == '/home' && $event.srcElement.scrollingElement.scrollTop > 100) {
+    if (!this.loadCity && this.router.url === '/home' && $event.srcElement.scrollingElement.scrollTop > 100) {
       this.loadCity = true;
       this.getCities();
     }

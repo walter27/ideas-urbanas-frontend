@@ -418,12 +418,13 @@ export class HomeComponent implements OnInit {
   defaultColors: any = {
     markerColor: '#FAFAFA',      // the marker points
     bgColor: 'transparent',      // the background
-    scaleColors: ['#7fb3ff', '#408eff', '#0068ff', '#3386ff'],    // the color of the region in the serie
+    scaleColors: ['#bbd8fc', '#3bcbff', '#3cbeed', '#2c98bf'],    // the color of the region in the serie
     regionFill: '#0068ff'       // the base region color
   };
   mapHeight: number;
 
   home: any = [];
+  responsiveOptions;
 
 
   constructor(
@@ -442,7 +443,7 @@ export class HomeComponent implements OnInit {
 
     this.mapOptions = {
       markerColor: this.defaultColors.markerColor,
-      //bgColor: this.defaultColors.bgColor,
+      bgColor: this.defaultColors.bgColor,
       scale: 1,
       scaleColors: this.defaultColors.scaleColors,
       regionFill: this.defaultColors.regionFill
@@ -494,14 +495,13 @@ export class HomeComponent implements OnInit {
     }
 
     this.activatedRoute.queryParams.subscribe(params => {
-      if (params.city)
-        this.onClickCity(params.city)
+      if (params.city) this.onClickCity(params.city)
     });
 
-    let elem: HTMLElement = document.getElementById('navbarMenu');
+    /*let elem: HTMLElement = document.getElementById('navbarMenu');
     elem.style.setProperty("background-color", 'transparent');
     elem.classList.add("fixed-top");
-    elem.classList.remove("sticky-top");
+    elem.classList.remove("sticky-top");*/
 
 
     this.home = [
@@ -510,8 +510,8 @@ export class HomeComponent implements OnInit {
         title: 'our_cities',
         subtitle: 'our_cities_description',
         grafico: 'grafico-home1',
-        svg: 'assets/home/mapa-final.svg',
-        routerLink: "['/thematic']"
+        svg: '',
+        routerLink: '/thematic'
       },
       {
         background: 'bg-banner-carousel-2',
@@ -519,7 +519,7 @@ export class HomeComponent implements OnInit {
         subtitle: 'response_covid_description',
         grafico: 'grafico-home2',
         svg: 'assets/home/coronavirus.svg',
-        routerLink: "['/covid']"
+        routerLink: '/covid'
 
       },
       {
@@ -528,11 +528,29 @@ export class HomeComponent implements OnInit {
         subtitle: ' ',
         grafico: 'grafico-home3',
         svg: 'assets/home/ciudades-comparacion.svg',
-        routerLink: "['/thematic']"
+        routerLink: '/thematic'
 
       },
 
 
+    ];
+
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
+      }
     ];
 
 
@@ -542,7 +560,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  @HostListener('window:scroll', ['$event'])
+ /* @HostListener('window:scroll', ['$event'])
   onWindowIndexScroll($event) {
     if ($event.srcElement.scrollingElement.scrollTop > 50)
       this.getCantons();
@@ -555,7 +573,7 @@ export class HomeComponent implements OnInit {
       elem.style.setProperty("background-color", 'transparent');
     // else
     // elem.style.setProperty("background-color", 'transparent');
-  }
+  }*/
 
 
   async getCantons() {
