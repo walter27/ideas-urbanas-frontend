@@ -26,10 +26,10 @@ export class IndexesComponent implements OnInit {
   }
 
   ngOnInit() {
-    let elem: HTMLElement = document.getElementById('navbarMenu');
+    /*let elem: HTMLElement = document.getElementById('navbarMenu');
     elem.style.setProperty("background-color", '#189cff');
     elem.classList.add("sticky-top");
-    elem.classList.remove("fixed-top");
+    elem.classList.remove("fixed-top");*/
 
     this.getClasifications();
     this.getCities();

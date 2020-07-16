@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <div *ngIf="step == 1">
-                    <ngb-carousel [showNavigationArrows]="true" interval="12000">
+                    <!--  <ngb-carousel [showNavigationArrows]="true" interval="12000">
                         <ng-template ngbSlide>
                             <div class="picsum-img-wrapper" class="bg-banner-carousel-1">
                                 <div class="row1">
@@ -12,8 +12,9 @@
                                             <div class="ides-text-white ides-home-title" translate>our_cities</div>
                                         </div>
                                         <div class="anima-texto">
-                                        <div class="ides-text-white ides-home-subtitle" translate>our_cities_description
-                                        </div></div>
+                                            <div class="ides-text-white ides-home-subtitle" translate>our_cities_description
+                                            </div>
+                                        </div>
                                         <div class="text-center btn-space">
                                             <div class="anima-boton">
                                                 <a class="myButton float-left" type="button" [routerLink]="['/thematic']">
@@ -37,10 +38,11 @@
                                             <div class="ides-text-white ides-home-title " translate>response_covid</div>
                                         </div>
                                         <div class="anima-texto">
-                                        <div class="home-subtitle">
-                                            <div class="ides-text-white ides-home-subtitle" translate>
-                                                response_covid_description</div>
-                                        </div></div>
+                                            <div class="home-subtitle">
+                                                <div class="ides-text-white ides-home-subtitle" translate>
+                                                    response_covid_description</div>
+                                            </div>
+                                        </div>
                                         <div class="text-center btn-space">
                                             <div class="anima-boton">
                                                 <a class="myButton float-left" type="button" [routerLink]="['/covid']">
@@ -56,33 +58,80 @@
                                 </div>
                             </div>
                         </ng-template>
+                      
                         <ng-template ngbSlide>
                             <div class="picsum-img-wrapper" class="bg-banner-carousel-3">
+                                
                                 <div class="row1">
                                     <div class="Texto-home1">
                                         <div class="anima-texto">
                                             <div class="ides-text-white ides-home-title" translate>compare_cities</div>
                                         </div>
                                         <div class="anima-texto">
-                                        <div class="home-subtitle">
-                                            <div class="ides-text-white ides-home-subtitle" translate></div>
-                                        </div></div>
+                                            <div class="home-subtitle">
+                                                <div class="ides-text-white ides-home-subtitle" translate></div>
+                                            </div>
+                                        </div>
                                         <div class="text-center btn-space">
                                             <div class="anima-boton">
-                                                <a class=" myButton float-left" type="button" [routerLink]="['/thematic']">
+                                                <a class=" myButton float-left" type="button"
+                                                    [routerLink]="['/thematic']">
                                                     <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="grafico-home3">
-                                        <svg-icon src="assets/home/ciudades-comparacion.svg" [svgStyle]="{ 'width.px':700, 'height.px':550}"></svg-icon>
+
+                                        <svg-icon src="assets/home/ciudades-comparacion.svg"[svgStyle]="{ 'width.px':700, 'height.px':550}"></svg-icon>
                                     </div>
 
                                 </div>
                             </div>
                         </ng-template>
-                    </ngb-carousel>
+                    </ngb-carousel>  -->
+
+
+
+                    <p-carousel [value]="home" [circular]="true" [autoplayInterval]="12000" >
+
+                        <ng-template let-home pTemplate="item">
+                            <div class="picsum-img-wrapper" class={{home.background}}>
+                                <div class="row1">
+                                    <div class="Texto-home1">
+                                        <div class="anima-texto">
+                                            <div class="ides-text-white ides-home-title" translate>{{home.title}}</div>
+                                        </div>
+                                        <div class="anima-texto">
+                                            <div class="ides-text-white ides-home-subtitle" translate>{{home.subtitle}}
+                                            </div>
+                                        </div>
+                                        <div class="text-center btn-space">
+                                            <div class="anima-boton">
+                                                <a class="myButton float-left" type="button" routerLink="{{home.routerLink}}">
+                                                    <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="{{home.grafico}}">
+                                        <svg-icon src="{{home.svg}}" [svgStyle]="{ 'width.px':700, 'height.px':725}">
+                                        </svg-icon>
+
+
+                                    </div>
+
+                                    <div *ngIf='home.title ==="our_cities"' class=" col-md-8">
+                                        <div vectormap [mapHeight]="mapHeight" [mapName]="mapName" [seriesData]="seriesData" [markersData]="markersData" [mapOptions]="mapOptions" (markerClick)="onMarkerClick($event)"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+
+
                     <!-- <div class="row">
                         <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
                             <h2 class="ides-text-yellow home-title" translate>our_cities</h2>
@@ -262,7 +311,7 @@
                                             <!-- <svg-icon src="assets/home/quienes-somos.svg" [svgStyle]="{ 'width.px':550, 'height.px':300}">
                                             </svg-icon>-->
 
-                                            <img [src]="'assets/home/somos.png'" width="100%" class="somos1"/>
+                                            <img [src]="'assets/home/somos.png'" width="100%" class="somos1" />
 
                                         </div>
                                         <div class="col-12 mb-4">

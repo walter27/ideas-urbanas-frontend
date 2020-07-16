@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit {
   //@HostListener('window:hashchange', ['$event'] )
 
 
-  @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
-    let elem: HTMLElement = document.getElementById('navbarMenu');
-    let pos = window.pageYOffset;
+  //@HostListener('window:scroll', ['$event']) onScrollEvent($event) {
+   // let elem: HTMLElement = document.getElementById('navbarMenu');
+    //let pos = window.pageYOffset;
     //let location= window.location.href;
     //   let loc=window.location.hash;
     //   if(location==='#/home'){
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     //
     // }
 
-  }
+  //}
 
   @Input() items: any[];
   @Input() language: any;
@@ -59,6 +59,8 @@ export class HeaderComponent implements OnInit {
   ) { console.log(window.location.href); }
 
   ngOnInit() {
+
+    
 
   }
 
