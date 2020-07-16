@@ -5,11 +5,12 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { TagCloudModule } from 'angular-tag-cloud-module';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { IconsModule } from 'src/app/icons/icons.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxTweetModule } from "ngx-tweet";
+import { NgxTweetModule } from 'ngx-tweet';
+import { CarouselModule } from 'primeng/carousel';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NgxTweetModule } from "ngx-tweet";
     IconsModule,
     TranslateModule,
     AngularSvgIconModule,
-    NgbModule
+    NgbModule,
+    CarouselModule
   ],
 
 })

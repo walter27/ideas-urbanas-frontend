@@ -18,7 +18,7 @@ let { tagCloud } = require('src/app/core/utils/utils');
 
 //import { fade } from('src/app/ides/modules/home/animations');
 
-import {trigger,style,transition,animate,state} from '@angular/animations';
+import { trigger, style, transition, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -423,6 +423,9 @@ export class HomeComponent implements OnInit {
   };
   mapHeight: number;
 
+  home: any = [];
+
+
   constructor(
     private clasificationService: ClasificationService,
     private tagsService: TagService,
@@ -439,7 +442,7 @@ export class HomeComponent implements OnInit {
 
     this.mapOptions = {
       markerColor: this.defaultColors.markerColor,
-      bgColor: this.defaultColors.bgColor,
+      //bgColor: this.defaultColors.bgColor,
       scale: 1,
       scaleColors: this.defaultColors.scaleColors,
       regionFill: this.defaultColors.regionFill
@@ -501,6 +504,39 @@ export class HomeComponent implements OnInit {
     elem.classList.remove("sticky-top");
 
 
+    this.home = [
+      {
+        background: 'bg-banner-carousel-1',
+        title: 'our_cities',
+        subtitle: 'our_cities_description',
+        grafico: 'grafico-home1',
+        svg: 'assets/home/mapa-final.svg',
+        routerLink: "['/thematic']"
+      },
+      {
+        background: 'bg-banner-carousel-2',
+        title: 'response_covid',
+        subtitle: 'response_covid_description',
+        grafico: 'grafico-home2',
+        svg: 'assets/home/coronavirus.svg',
+        routerLink: "['/covid']"
+
+      },
+      {
+        background: 'bg-banner-carousel-3',
+        title: 'compare_cities',
+        subtitle: ' ',
+        grafico: 'grafico-home3',
+        svg: 'assets/home/ciudades-comparacion.svg',
+        routerLink: "['/thematic']"
+
+      },
+
+
+    ];
+
+
+
 
 
   }
@@ -511,14 +547,14 @@ export class HomeComponent implements OnInit {
     if ($event.srcElement.scrollingElement.scrollTop > 50)
       this.getCantons();
 
-      let elem: HTMLElement = document.getElementById('navbarMenu');
-      let pos = window.pageYOffset;
-      if (pos > 20)
-        elem.style.setProperty("background-color", '#189cff');
-      else
-        elem.style.setProperty("background-color", 'transparent');
-       // else
-       // elem.style.setProperty("background-color", 'transparent');
+    let elem: HTMLElement = document.getElementById('navbarMenu');
+    let pos = window.pageYOffset;
+    if (pos > 20)
+      elem.style.setProperty("background-color", '#189cff');
+    else
+      elem.style.setProperty("background-color", 'transparent');
+    // else
+    // elem.style.setProperty("background-color", 'transparent');
   }
 
 
