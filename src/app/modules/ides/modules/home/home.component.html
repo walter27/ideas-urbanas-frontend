@@ -114,12 +114,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div [ngClass]="home.grafico">
-                                        <svg-icon src="{{home.svg}}" [svgStyle]="{ 'width.px':700, 'height.px':725}">
+                                    <div class="col-md-8">
+                                        <svg-icon class="mb-5" src="{{home.svg}}">
                                         </svg-icon>
                                     </div>
 
-                                    <div *ngIf='home.title ==="our_cities"' class=" col-md-8 mt-5 ml-5">
+                                    <div *ngIf='home.title ==="our_cities"' class=" col-md-8">
                                         <div vectormap [mapHeight]="mapHeight" [mapName]="mapName" [seriesData]="seriesData" [markersData]="markersData" [mapOptions]="mapOptions" (markerClick)="onMarkerClick($event)"></div>
                                     </div>
 

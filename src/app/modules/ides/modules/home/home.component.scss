@@ -1237,7 +1237,7 @@ div.ides-card-home {
 }
 
 .grafico-home2 {
-    max-width: 60%;
+    max-width: 100px;
     margin-top: 1%;
     padding-left: 2%;
     margin: 0 auto;
@@ -1250,82 +1250,57 @@ div.ides-card-home {
     margin-left: -5%;
 }
 
+.svg {
+    max-width: 60%;
+}
+
 @media (min-width: 360px) {
     .Texto-home1 {
-        position: absolute;
-        z-index: 15;
-        top: 70px;
-        left: 15px;
-        max-width: 100%;
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 50px;
+        margin-top: 5%;
+        margin-left: 0%;
+        padding-top: 250px;
+        padding-left: 10%;
+        z-index: 50;
     }
 }
 
 @media (min-width: 360px) {
     .grafico-home1 {
-        position: absolute;
-        max-width: 100%;
+        max-width: 90%;
         margin: 0 auto;
-        top: 350px;
-        left: -220px;
-    }
-}
-
-@media (min-width: 360px) {
-    .grafico-home2 {
-        position: absolute;
-        max-width: 100%;
-        margin: 0 auto;
-        top: 350px;
-        left: -150px;
-    }
-}
-
-@media (min-width: 360px) {
-    .grafico-home3 {
-        position: absolute;
-        max-width: 100%;
-        margin: 0 auto;
-        top: 350px;
-        left: -170px;
+        padding-top: 0px;
+        margin-top: 0%;
+        margin-left: 0%;
+        padding-top: 50px;
+        padding-left: 10%;
     }
 }
 
 @media (min-width: 1024px) {
     .Texto-home1 {
-        position: absolute;
-        z-index: 15;
-        top: -90px;
-        left: 200px;
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 50px;
+        margin-top: 5%;
+        margin-left: 0%;
+        padding-top: 250px;
+        padding-left: 10%;
+        z-index: 50;
     }
 }
 
 @media (min-width: 1024px) {
     .grafico-home1 {
-        position: absolute;
-        max-width: 100%;
+        max-width: 90%;
         margin: 0 auto;
-        top: 200px;
-        left: 250px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .grafico-home2 {
-        position: absolute;
-        max-width: 100%;
-        margin: 0 auto;
-        top: 190px;
-        left: 340px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .grafico-home3 {
-        position: absolute;
-        max-width: 100%;
-        margin: 0 auto;
-        top: 150px;
-        left: 300px;
+        padding-top: 0px;
+        margin-top: 0%;
+        margin-left: 0%;
+        padding-top: 50px;
+        padding-left: 10%;
     }
 }
 
@@ -1336,10 +1311,11 @@ div.ides-card-home {
         position: relative;
         max-width: 50%;
         margin-top: 25%;
-        margin-left: 2%;
+        margin-left: 4%;
         min-width: 450px;
         max-width: 450px;
-        ;
+        padding-top: 0px;
+        padding-left: 0%;
     }
 }
 
@@ -1351,7 +1327,9 @@ div.ides-card-home {
         max-width: 50%;
         margin: 0 auto;
         margin-top: 0%;
-        margin-left: -16%;
+        margin-left: -7%;
+        padding-top: 0px;
+        padding-left: 0%;
     }
 }
 

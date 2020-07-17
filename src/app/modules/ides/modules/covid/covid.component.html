@@ -15,7 +15,7 @@
         <div class="row p-5">
 
             <div class="col-lg-6">
-                <h2 class="titulos-covid">Respuestas urbanas al covid-19</h2>
+                <div class="anima-texto"> <h2 class="titulos-covid">Respuestas urbanas al covid-19</h2></div>
 
 
             </div>
@@ -31,7 +31,7 @@
 
             </div>
             <div class="col-lg-12">
-                <p class="subtitulo-covid">Evolución del covid-19 en ciudades del ecuador</p>
+                <div class="anima-texto"><p class="subtitulo-covid">Evolución del covid-19 en ciudades del ecuador</p></div>
             </div>
 
             <div class="col-lg-12 p-3">
@@ -43,8 +43,8 @@
                 <!-- <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions6" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
                 </highcharts-chart>-->
 
-                <app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts ">
-                </app-card-basic-graph-covid>
+                <div class="anima-texto"><app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts ">
+                </app-card-basic-graph-covid></div>
 
 
             </div>
@@ -53,7 +53,7 @@
             <div class="col-lg-6 col-lx-6">
                 <!-- <highcharts-chart class="animated fadeIn" [oneToOne]=true id="container" [Highcharts]="highcharts2" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
                 </highcharts-chart>-->
-                <app-card-basic-map-covid [data]="dataMapa"></app-card-basic-map-covid>
+                <div class="anima-texto"><app-card-basic-map-covid [data]="dataMapa"></app-card-basic-map-covid></div> 
 
             </div>
 
@@ -61,7 +61,7 @@
                 <!-- <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
                 </highcharts-chart>-->
 
-                <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph "></app-card-basic-streamgraph>
+                <div class="anima-texto"> <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph "></app-card-basic-streamgraph></div> 
             </div>
         </div>
 
@@ -75,11 +75,10 @@
 </div>
 
 <div class="row mb-5">
-
     <div class="que-hacen-ciudades col-12 mt-5">
-        <div #widgetsContent class="container">
+        <div class="anima-texto"><div #widgetsContent class="container">
             <app-card-basic-graph-timeline [minScroll]="minScroll" [maxScroll]="maxScroll">
-            </app-card-basic-graph-timeline>
+            </app-card-basic-graph-timeline>    </div> 
             <!--<div class="container hide-scroll text-right">
                 .
             </div>-->
@@ -88,14 +87,13 @@
 
             <!--  <button class="btn btn-outline-info" (click)="scrollRigt()">{{'>'}}</button>-->
         </div>
-    </div>
-
+    </div> 
 
 
 
     <div class="col-md-12 text-center mt-5">
         <div class="container">
-            <app-card-basic-news></app-card-basic-news>
+            <div class="anima-texto"><app-card-basic-news></app-card-basic-news></div>
         </div>
     </div>
 
