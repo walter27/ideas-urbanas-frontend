@@ -560,7 +560,7 @@ export class HomeComponent implements OnInit {
   }
 
 
- /* @HostListener('window:scroll', ['$event'])
+ @HostListener('window:scroll', ['$event'])
   onWindowIndexScroll($event) {
     if ($event.srcElement.scrollingElement.scrollTop > 50)
       this.getCantons();
@@ -573,7 +573,7 @@ export class HomeComponent implements OnInit {
       elem.style.setProperty("background-color", 'transparent');
     // else
     // elem.style.setProperty("background-color", 'transparent');
-  }*/
+  }
 
 
   async getCantons() {

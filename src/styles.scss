@@ -1059,7 +1059,11 @@ svg#eay5tc9b44eu1 {
         margin-top: -100px;
     }
 }
-
+@media (min-width: 1600px) {
+    row1 {
+        margin-top: -110px;
+    }
+    }
 @media (min-width: 1920px) {
     ngb-carousel.carousel.slide {
         margin-top: -1px;

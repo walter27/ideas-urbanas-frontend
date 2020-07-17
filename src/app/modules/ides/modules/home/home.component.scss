@@ -1238,7 +1238,7 @@ div.ides-card-home {
 
 .grafico-home2 {
     max-width: 60%;
-    margin-top: 1%;
+    margin-top: -3%;
     padding-left: 2%;
     margin: 0 auto;
 }
@@ -1412,7 +1412,7 @@ div.ides-card-home {
     .grafico-home2 {
         max-width: 60%;
         margin: 0 auto;
-        margin-top: 3%;
+        margin-top: -3%;
         margin-left: 10%;
     }
 }
@@ -1552,8 +1552,10 @@ div.ides-card-home {
     }
 }
 
+
 @media (min-width: 1700px) {
     .Texto-home1 {
+        margin-top: 0px;
         max-width: 40%;
         margin-top: 35%;
         margin-left: 0%;
@@ -1614,7 +1616,7 @@ div.ides-card-home {
     .grafico-home2 {
         max-width: 60%;
         margin: 0 auto;
-        margin-top: 6%;
+        margin-top: -5%;
         margin-left: 4%;
     }
 }
@@ -1623,7 +1625,7 @@ div.ides-card-home {
     .grafico-home3 {
         max-width: 60%;
         margin: 0 auto;
-        margin-top: 3%;
+        margin-top: -5%;
         margin-left: 0%;
     }
 }
