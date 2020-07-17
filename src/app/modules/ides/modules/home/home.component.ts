@@ -506,14 +506,6 @@ export class HomeComponent implements OnInit {
 
     this.home = [
       {
-        background: 'bg-banner-carousel-1',
-        title: 'our_cities',
-        subtitle: 'our_cities_description',
-        grafico: 'grafico-home1',
-        svg: '',
-        routerLink: '/thematic'
-      },
-      {
         background: 'bg-banner-carousel-2',
         title: 'response_covid',
         subtitle: 'response_covid_description',
@@ -521,6 +513,14 @@ export class HomeComponent implements OnInit {
         svg: 'assets/home/coronavirus.svg',
         routerLink: '/covid'
 
+      },
+      {
+        background: 'bg-banner-carousel-1',
+        title: 'our_cities',
+        subtitle: 'our_cities_description',
+        grafico: 'grafico-home1',
+        svg: '',
+        routerLink: '/thematic'
       },
       {
         background: 'bg-banner-carousel-3',
@@ -560,7 +560,7 @@ export class HomeComponent implements OnInit {
   }
 
 
- @HostListener('window:scroll', ['$event'])
+ /* @HostListener('window:scroll', ['$event'])
   onWindowIndexScroll($event) {
     if ($event.srcElement.scrollingElement.scrollTop > 50)
       this.getCantons();
@@ -573,7 +573,7 @@ export class HomeComponent implements OnInit {
       elem.style.setProperty("background-color", 'transparent');
     // else
     // elem.style.setProperty("background-color", 'transparent');
-  }
+  }*/
 
 
   async getCantons() {

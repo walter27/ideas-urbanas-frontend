@@ -46,3 +46,51 @@
     transform: translateY(0);
     }
  } 
+ .row.mx-auto.covid-header {
+    margin-top: 106px;
+}
+.covid-header1 {
+    width: 50%;
+    text-align: left;
+    padding-left: 3%;
+}
+.covid-header2 {
+    width: 50%;
+    text-align: right;
+    padding-right: 3%;
+}
+p.subtitulo {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+    margin-top: 0px;
+    text-align: center;
+}
+p.subtitulo2 {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+    margin-top: 20px;
+    text-align: left;
+}
+h2.subtitulo {
+    font: 32px "Roboto", sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: bold !important;
+    line-height: 40px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+}  
+.img-reportes {
+    width: 30%;
+}
+.texto-reportes8 {
+    width: 66%;
+    margin-left: 25px;
+}
+a.text-uppercase.font-weight-bold.ides-text-blue-dark:hover {
+    color: #f8ac0a;
+}

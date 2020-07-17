@@ -855,12 +855,41 @@ h4.titulo-noti {
     max-width: 1080px;
     margin: 0 auto;
 }
-
+@media (min-width: 320px) {
+    .row1 {
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 320px;
+        margin: 0 auto;
+        display: block;
+        margin-top: -94px;
+    }
+}
 @media (min-width: 360px) {
     .row1 {
         margin-right: -15px;
         margin-left: -15px;
         max-width: 360px;
+        margin: 0 auto;
+        display: block;
+        margin-top: -94px;
+    }
+}
+@media (min-width: 411px) {
+    .row1 {
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 411px;
+        margin: 0 auto;
+        display: block;
+        margin-top: -94px;
+    }
+}
+@media (min-width: 768px) {
+    .row1 {
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 768px;
         margin: 0 auto;
         display: block;
         margin-top: -94px;
@@ -1226,3 +1255,87 @@ p.ml-3 {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+@media (min-width: 768px){
+    .col-md-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+    }
+@media (min-width: 1080px){
+.col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    margin-left: -30%;
+    margin-top: 3%;
+}
+}
+@media (min-width: 768px){
+.col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    margin-top: 12%;
+    }
+}
+svg#eewkypfaedpm1 {
+    margin-top: 15%;
+    margin-left: 2%;
+}
+@media (min-width: 1280px){
+svg#eay5tc9b44eu1 {
+    margin-top: 3%;
+    }
+}
+@media (min-width: 1280px){
+svg#eewkypfaedpm1 {
+    margin-top: 5%;
+    margin-left: 20%;
+    }
+}
+@media (min-width: 1280px){
+.jvectormap-container {
+    margin-left: -10%;
+    margin-top: -5%;
+    }
+}
+@media (min-width: 1920px){
+.jvectormap-container {
+    margin-top: -5%;
+    }
+}
+@media (min-width: 1920px){
+svg#eewkypfaedpm1 {
+    margin-top: 5%;
+    margin-left: 10%;
+    }
+}
+highcharts-chart.animated.fadeIn {
+    margin-top: -50px;
+    margin-bottom: -50px;
+    /* border: #fff; */
+}
+highcharts-chart.animated.fadeIn {
+    margin-top: -50px;
+    margin-bottom: -50px;
+    /* border: #fff; */
+}
+div#pr_id_1 {
+    margin-top: -50px;
+}
+h4.subtitulo-internas {
+    margin-top: 15px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+    margin-bottom: 30px;
+}
+.ui-carousel-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow: auto;
+    padding: 0 .5em;
+    margin-bottom: 20px;
+}
+

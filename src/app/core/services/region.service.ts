@@ -16,9 +16,11 @@ enum url {
 }
 
 
+
+
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 @Injectable({
@@ -30,11 +32,13 @@ export class RegionService {
   urlProvince = environment.province.base;
   urlCanton = environment.canton.base;
   urlParish = environment.parish.base;
+  citySelect: any;
+
 
   constructor(
     private httpClient: HttpClient,
     private utilsService: UtilsService
-    ) {
+  ) {
 
   }
 
@@ -57,7 +61,7 @@ export class RegionService {
   }
 
   addRegion(profile, model: string) {
-    if ( profile.active === null ) {
+    if (profile.active === null) {
       profile.active = false;
     }
     return this.httpClient.post(this.serverUrl + url[model], profile, httpOptions);

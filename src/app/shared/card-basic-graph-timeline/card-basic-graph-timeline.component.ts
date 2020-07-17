@@ -75,11 +75,12 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
       },
 
       title: {
-        text: 'Hitos del Covid'
+        text: 'Hitos del Covid',
+        fontSize: '30px',
       },
 
       subtitle: {
-        text: 'Como las ciudades han vivido la pandemia',
+        text: 'Cronología de las respuestas urbanas al COVID-19',
         fontSize: '15px'
       },
       exporting: {

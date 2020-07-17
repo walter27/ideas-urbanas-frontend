@@ -1115,8 +1115,8 @@ div.ides-card-home {
 }
 
 .myButton:hover {
-    background: rgb(51, 169, 196);
-    background: linear-gradient(78deg, rgba(51, 169, 196, 1) 0%, rgba(126, 221, 134, 1) 100%);
+    background: rgb(251,187,49);
+    background: linear-gradient(78deg, rgba(251,187,49,1) 0%, rgba(249,173,12,1) 100%); 
     color: #fff;
     border: none !important;
 }
@@ -1273,6 +1273,30 @@ div.ides-card-home {
 
         }
     }
+    @media (min-width: 980px) {
+        .Texto-home1 {
+            max-width: 90%;
+            margin: 0 auto;
+            padding-top: 50px;
+            margin-top: 5%;
+            margin-left: 0%;
+            padding-top: 250px;
+            padding-left: 10%;
+            z-index: 50;
+            }
+        }
+        @media (min-width: 980px) {
+            .grafico-home1 {
+                max-width: 90%;
+                margin: 0 auto;
+                padding-top: 0px;
+                margin-top: 0%;
+                margin-left: 0%;
+                padding-top: 50px;
+                padding-left: 10%;
+        
+                }
+            }
     @media (min-width: 1024px) {
         .Texto-home1 {
             max-width: 90%;

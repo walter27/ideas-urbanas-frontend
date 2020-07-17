@@ -128,8 +128,9 @@
     background-size: cover;
 }
 .covid-header {
+    margin-top: 105px;
     background: #189cff;
-    background: linear-gradient(78deg, rgba(33,148,253,1) 0%, rgba(11,109,245,1) 100%);
+    background: linear-gradient(78deg, #2194fd 0%, #0b6df5 100%);
     color: white;
     display: flex;
     align-items: center;
@@ -202,3 +203,22 @@ p.subtitulo-covid {
         margin-top: 0px;
     }
  }
+ .covid-header {
+    margin-top: 105px;
+    background: #189cff;
+    background: linear-gradient(78deg, #2194fd 0%, #0b6df5 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 1.6em;
+}
+.covid-header1 {
+    width: 50%;
+    text-align: left;
+    padding-left: 3%;
+}
+.covid-header2 {
+    width: 50%;
+    text-align: right;
+    padding-right: 3%;
+}
