@@ -64,7 +64,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
 
       },
       title: {
-        text: "Casos de covid-19"
+        text: "Evolución Temporal COVID-19"
       },
       xAxis: {
         type: 'categories',

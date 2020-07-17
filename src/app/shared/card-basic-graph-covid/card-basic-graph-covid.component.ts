@@ -54,7 +54,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
       },
       title: {
-        text: "Casos de covid-19"
+        text: 'Evolución Espacial del COVID-19'
       },
       xAxis: {
         categories: this.dates,
@@ -68,7 +68,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
       },
       yAxis: {
         title: {
-          text: "Casos Confirmados"
+          text: 'Número de casos'
         }
       },
       legend: {

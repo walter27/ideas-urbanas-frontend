@@ -331,9 +331,12 @@ export class CovidComponent implements OnInit, OnDestroy {
   getVariables(idClasification: string) {
 
     this.variableService.getVariablesByClasification(idClasification).subscribe((data) => {
+
+
       this.varibales2 = data.data;
       this.selectVariable = this.varibales2[0];
       this.getData(this.selectVariable._id);
+      console.log(this.selectVariable._id);
 
     });
 
@@ -347,9 +350,9 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     this.dataService.listDatasCovid(this.filters, idSelectVariable).subscribe(data => {
 
+
       for (const info of data.data) {
         dateRanges.push(info.date);
-        // console.log(info.date);
 
       }
       this.rangeValues = dateRanges;
@@ -450,6 +453,9 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     let datesString = [];
     if (!this.selectDate || this.selectDate === 0) {
+
+      console.log(this.dateRange);
+      
       this.selectDate = this.dateRange[0].getTime();
       let selectDate = new Date(this.selectDate).toDateString();
       datesString.push(selectDate);
