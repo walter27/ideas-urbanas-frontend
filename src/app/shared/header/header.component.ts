@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegionService } from '../../core/services/region.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
 
   // @HostListener('window:hashchange', ['$event'] locationHashChanged($event)){
   //   if (location.hash === "#home") {
@@ -21,21 +22,24 @@ export class HeaderComponent implements OnInit {
 
 
   //@HostListener('window:scroll', ['$event']) onScrollEvent($event) {
-   // let elem: HTMLElement = document.getElementById('navbarMenu');
-    //let pos = window.pageYOffset;
-    //let location= window.location.href;
-    //   let loc=window.location.hash;
-    //   if(location==='#/home'){
-    //     if (pos > 20) {
-    //       elem.style.setProperty("background-color", '#189cff');
-    //
-    //      } //else {
-    //     //     elem.style.setProperty("background-color", 'transparent');
-    //     // }
-    //
-    // }
+  // let elem: HTMLElement = document.getElementById('navbarMenu');
+  //let pos = window.pageYOffset;
+  //let location= window.location.href;
+  //   let loc=window.location.hash;
+  //   if(location==='#/home'){
+  //     if (pos > 20) {
+  //       elem.style.setProperty("background-color", '#189cff');
+  //
+  //      } //else {
+  //     //     elem.style.setProperty("background-color", 'transparent');
+  //     // }
+  //
+  // }
 
   //}
+
+
+
 
   @Input() items: any[];
   @Input() language: any;
@@ -54,13 +58,69 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private authService: AuthService
-  ) { console.log(window.location.href); }
+  background: string;
+  citySelected: any;
+  pos: number;
 
+  constructor(
+    private authService: AuthService,
+    private regionService: RegionService,
+    private route: Router
+  ) {
+
+  }
+
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowIndexScroll($event) {
+    this.pos = window.pageYOffset;
+    if (this.pos > 20) {
+      this.background = 'mat-menu-content';
+
+    } else {
+
+      this.background = 'mat-menu-content2';
+
+    }
+
+  }
   ngOnInit() {
 
-    
+    if (!this.regionService.citySelect && this.route.url === '/home') {
+
+      this.background = 'mat-menu-content2';
+    }
+
+  }
+  ngDoCheck() {
+
+    if (this.route.url === '/thematic' ||
+      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
+      this.background = 'mat-menu-content';
+      this.regionService.citySelect = undefined;
+
+    } else {
+
+      if (this.pos < 20) {
+        this.background = 'mat-menu-content2';
+
+      }
+    }
+
+
+    if (this.regionService.citySelect && this.route.url === '/home') {
+      this.background = 'mat-menu-content';
+
+    }
+
+
+  }
+
+
+  changueBackground() {
+    this.background = 'mat-menu-content';
+
+    console.log('cambio');
 
   }
 

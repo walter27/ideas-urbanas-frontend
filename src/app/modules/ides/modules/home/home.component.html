@@ -93,7 +93,7 @@
 
 
 
-                    <p-carousel [value]="home" [circular]="true" [autoplayInterval]="4000" [responsiveOptions]="responsiveOptions">
+                    <p-carousel [value]="home" [circular]="true" [autoplayInterval]="4000">
 
                         <ng-template let-home pTemplate="item">
                             <div class="picsum-img-wrapper" class={{home.background}}>
@@ -114,11 +114,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="{{home.grafico}}">
+                                    <div [ngClass]="home.grafico">
                                         <svg-icon src="{{home.svg}}" [svgStyle]="{ 'width.px':700, 'height.px':725}">
                                         </svg-icon>
-
-
                                     </div>
 
                                     <div *ngIf='home.title ==="our_cities"' class=" col-md-8 mt-5 ml-5">
@@ -223,7 +221,7 @@
                             </div>
                         </div>
                         <div class="text-uppercase font-weight-bold ides-text-blue-dark text-center mt-4">
-                            <button class="btn ides-btn-blue-back btn-lg mr-5" type="button" (click)="step = 1">
+                            <button class="btn ides-btn-blue-back btn-lg mr-5" type="button" (click)="changueStep()">
                                 <span class="ides-mr-80 font-weight-bold" translate>Regresar</span>
                             </button>
                         </div>
