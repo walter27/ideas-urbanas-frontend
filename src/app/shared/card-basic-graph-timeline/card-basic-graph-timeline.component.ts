@@ -81,7 +81,7 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
 
       subtitle: {
         text: 'Cronología de las respuestas urbanas al COVID-19',
-        fontSize: '15px'
+        fontSize: '24px'
       },
       exporting: {
         enabled: false
