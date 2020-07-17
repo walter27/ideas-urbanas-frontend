@@ -82,17 +82,17 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    let elem: HTMLElement = document.getElementById('navbarMenu');
+   /* let elem: HTMLElement = document.getElementById('navbarMenu');
     elem.style.setProperty("background-color", '#189cff');
     elem.classList.add("sticky-top");
-    elem.classList.remove("fixed-top");
+    elem.classList.remove("fixed-top");*/
 
   }
 
 
   ngOnDestroy() {
 
-    let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 6);
+    let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 5);
     let cantonsTop = [];
 
     for (const canton of this.selectedCantons) {
@@ -453,9 +453,6 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     let datesString = [];
     if (!this.selectDate || this.selectDate === 0) {
-
-      console.log(this.dateRange);
-      
       this.selectDate = this.dateRange[0].getTime();
       let selectDate = new Date(this.selectDate).toDateString();
       datesString.push(selectDate);

@@ -1,11 +1,11 @@
 <nav id="navbarMenu" [ngClass]="background" class="navbar navbar-expand-xl fixed-top ">
     <div class="d-sm-block d-md-none">
         <div class="row">
-            <div class="col-8 col-sm-11">
+            <!--<div class="col-8 col-sm-11">
                 <a routerLink="/" class="navbar-brand ml-1 logo-link">
-                    <img id="header-logo" class="ide-logo-headerh" src="assets/logos/logo-blanco.svg" width="300px" alt="">
+                    <img id="header-logo" class="ide-logo-headerh" src="assets/logos/logo-color.svg" width="300px" alt="">
                 </a>
-            </div>
+            </div>-->
             <div class="col-4 col-sm-1">
                 <button class="navbar-toggler mt-2 ides-navbar-toggler-mobile" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <fa class="cursor-pointer ides-text-white" [name]="'bars'"></fa>
@@ -24,7 +24,7 @@
     <div class="row11">
         <div class="logo12">
             <a routerLink="/" class="navbar-brand ml-1 logo-link d-none d-sm-none d-md-block">
-                <img id="header-logo" class="" src="assets/logos/logo-blanco.svg" height="80px" width="200px" alt="">
+                <img id="header-logo" class="" [src]="srcImage" height="80px" width="200px" alt="">
             </a>
         </div>
         <div class="menu10">
@@ -41,15 +41,16 @@
 
                 <div *ngFor="let i of icons" class="ides-navbar-items-buttom">
                     <a target="_blank" [attr.href]="i.link" class="social ">
-                        <fa class="cursor-pointer ides-text-icon" [name]="i.name"></fa>
+                        <fa class="cursor-pointer" [ngClass]="colorIcon" [name]="i.name"></fa>
                     </a>
                 </div>
 
-                <div class="dropdown text-white" class="text-white">
-                    <button class="btn ides-dropdown dropdown-toggle ides-text-white ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="ides-mr-80 font-weight-bold text-white">{{ language | uppercase }}</span>
+                <div class="dropdown" [ngClass]="colorLanguaje">
+                    <button [ngClass]="colorButton" class="btn ides-dropdown dropdown-toggle ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="ides-mr-80 font-weight-bold"
+                            [ngClass]="colorLanguaje">{{ language | uppercase }}</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">Esp</a>
                         <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">Eng</a>
                     </div>
@@ -60,7 +61,7 @@
                         <i-feather (click)="logout()" class="cursor-pointer" name="log-out"></i-feather>
                     </div>
                     <a *ngSwitchDefault routerLink="/auth/login">
-                        <fa class="cursor-pointer ides-text-icon social" name="user"></fa>
+                        <fa [ngClass]="colorIcon" class="cursor-pointer social" name="user"></fa>
                         <!--   <img width="20" height="16" class="img" [src]="overLogin ? 'assets/ICONOS/user-admin-naranja.png' : 'assets/ICONOS/user-admin.png'" />-->
                     </a>
                 </div>

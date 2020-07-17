@@ -61,6 +61,10 @@ export class HeaderComponent implements OnInit, DoCheck {
   background: string;
   citySelected: any;
   pos: number;
+  srcImage: string;
+  colorIcon: string;
+  colorLanguaje: string;
+  colorButton: string;
 
   constructor(
     private authService: AuthService,
@@ -76,10 +80,13 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.pos = window.pageYOffset;
     if (this.pos > 20) {
       this.background = 'mat-menu-content';
+      //this.srcImage = 'assets/logos/logo-blanco.svg';
 
     } else {
 
       this.background = 'mat-menu-content2';
+      // this.srcImage = 'assets/logos/logo-blanco.svg';
+
 
     }
 
@@ -89,6 +96,8 @@ export class HeaderComponent implements OnInit, DoCheck {
     if (!this.regionService.citySelect && this.route.url === '/home') {
 
       this.background = 'mat-menu-content2';
+      //this.srcImage = 'assets/logos/logo-blanco.svg';
+
     }
 
   }
@@ -96,13 +105,18 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     if (this.route.url === '/thematic' ||
       this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
-      this.background = 'mat-menu-content';
+      this.background = 'mat-menu-content sticky-top';
       this.regionService.citySelect = undefined;
+      // this.srcImage = 'assets/logos/logo-blanco.svg';
+
+
 
     } else {
 
       if (this.pos < 20) {
         this.background = 'mat-menu-content2';
+        //this.srcImage = 'assets/logos/logo-blanco.svg';
+
 
       }
     }
@@ -110,7 +124,38 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     if (this.regionService.citySelect && this.route.url === '/home') {
       this.background = 'mat-menu-content';
+      //this.srcImage = 'assets/logos/logo-blanco.svg';
 
+
+    }
+
+
+    if (this.route.url === '/covid') {
+
+      this.background = 'mat-menu-content-covid sticky-top';
+      this.regionService.citySelect = undefined;
+      this.srcImage = 'assets/logos/logo-color.svg';
+      this.colorIcon = 'ides-text-icon2';
+      this.colorLanguaje = 'text-white2';
+      this.colorButton = 'ides-text-white2';
+
+      if (this.pos > 20) {
+
+        this.background = 'mat-menu-content';
+        this.srcImage = 'assets/logos/logo-blanco.svg';
+        this.colorIcon = 'ides-text-icon';
+        this.colorLanguaje = 'text-white';
+        this.colorButton = 'ides-text-white';
+
+
+      }
+
+
+    } else {
+      this.srcImage = 'assets/logos/logo-blanco.svg';
+      this.colorIcon = 'ides-text-icon';
+      this.colorLanguaje = 'text-white';
+      this.colorButton = 'ides-text-white';
     }
 
 

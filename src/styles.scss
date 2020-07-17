@@ -68,13 +68,14 @@ app-ides-card-clasification>div.ides-card:hover {
     color: #076DCD!important;
 }
 
-.ides-text-white {
-    color: #076DCD!important;
-}
-
 .ides-text-icon {
     background-color: white important;
     color: white;
+}
+
+.ides-text-icon2 {
+    background-color: blue important;
+    color: blue;
 }
 
 //icono del circulo
@@ -99,6 +100,10 @@ app-ides-card-clasification>div.ides-card:hover {
 
 .ides-text-white {
     color: #FFFFFF!important;
+}
+
+.ides-text-white2 {
+    color: blue!important;
 }
 
 a.ides-text-white:hover {
@@ -153,6 +158,14 @@ a.ides-text-white:hover {
 
 .nav-item {
     color: white;
+    font: 17px "Roboto", sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-weight: 400;
+}
+
+.nav-item-covid {
+    color: blue;
     font: 17px "Roboto", sans-serif;
     text-decoration: none;
     font-weight: bold;
@@ -783,8 +796,6 @@ svg#eay5tc9b44eu1 {
     margin-top: -35px;
 }
 
-
-
 .logo12 {
     width: 20%;
 }
@@ -808,7 +819,12 @@ svg#eay5tc9b44eu1 {
 
 .text-white {
     color: #fff!important;
-    margin-top: 20px;
+    margin-top: 23px;
+}
+
+.text-white2 {
+    color: blue;
+    margin-top: 23px;
 }
 
 .covid-header {
@@ -954,11 +970,19 @@ svg#eay5tc9b44eu1 {
         color: #ffffff !important;
         font: 15px "roboto" !important;
     }
+    .nav-item-covid {
+        color: blue !important;
+        font: 15px "roboto" !important;
+    }
 }
 
 @media (min-width: 1080px) {
     .nav-item {
         color: #ffffff !important;
+        font: 15px "roboto" !important;
+    }
+    .nav-item-covid {
+        color: blue !important;
         font: 15px "roboto" !important;
     }
 }
@@ -1104,6 +1128,10 @@ twitter-widget#twitter-widget-0 {
         color: #ffffff !important;
         font: 15px "roboto" !important;
     }
+    .nav-item {
+        color: blue !important;
+        font: 15px "roboto" !important;
+    }
 }
 
 img.somos1 {
@@ -1182,6 +1210,7 @@ div.ides-card {
 .subtitle.text-center.pb-2.pl-4.pt-1 {
     margin-top: 50px;
 }
+
 .ides-card-border-radius-0 {
     border: 4px solid #FFFFFF;
     box-shadow: 0px 3px 6px #00000029;
@@ -1189,26 +1218,31 @@ div.ides-card {
     border-radius: 15px;
     margin-bottom: 0px;
 }
+
 .dropdown-menu.show {
     display: block;
     margin-right: 0%;
     margin-top: 0px;
 }
+
 .dropdown-menu.show {
     margin-top: 8px;
     margin-left: 30px;
 }
+
 p.ml-3 {
     color: #4e4e4e;
     font-size: 16px;
     line-height: 1.6;
     margin-top: 10px;
 }
+
 img.ides-def-icons {
     max-width: 70px;
     max-height: 70px;
     margin-bottom: 10px;
 }
+
 p.ml-3 {
     color: #4e4e4e;
     font-size: 16px;
@@ -1218,6 +1252,7 @@ p.ml-3 {
     margin-top: 1rem;
     line-height: 1.6;
 }
+
 .contiene-ciudades {
     margin-top: 50px;
     margin-bottom: 50px;

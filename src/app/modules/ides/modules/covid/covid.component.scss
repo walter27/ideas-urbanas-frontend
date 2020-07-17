@@ -66,6 +66,13 @@
 :host::ng-deep.ui-multiselect .ui-multiselect-panel {
     background-color: white;
     border-radius: 14px;
+    width: 11rem;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
+    display: none !important;
+    background-color: red;
+    color: red;
 }
 
 .haighmap {
@@ -127,19 +134,22 @@
     // background: url(assets/covid/bg/bg.png);
     background-size: cover;
 }
+
 .covid-header {
     background: #189cff;
-    background: linear-gradient(78deg, rgba(33,148,253,1) 0%, rgba(11,109,245,1) 100%);
+    background: linear-gradient(78deg, rgba(33, 148, 253, 1) 0%, rgba(11, 109, 245, 1) 100%);
     color: white;
     display: flex;
     align-items: center;
     padding-top: 1.4em;
 }
+
 .ui-multiselect .ui-multiselect-trigger {
     border-radius: 14px;
     background: #ffffff00;
     color: #064cc3;
 }
+
 h2.titulos-covid {
     font: 32px "Roboto", sans-serif !important;
     padding-top: 0.5em !important;
@@ -147,16 +157,19 @@ h2.titulos-covid {
     font-weight: bold !important;
     line-height: 40px;
 }
+
 p.subtitulo-covid {
     margin-top: 5px;
     font: 16px "Roboto", sans-serif;
     color: #9195a4;
     line-height: 22px;
 }
+
 .ui-multiselect .ui-multiselect-label {
     color: #064cc3;
     margin-left: 10PX;
 }
+
 .ui-dropdown-label {
     background-color: #F5A700;
     border-color: #F5A700;
@@ -164,26 +177,29 @@ p.subtitulo-covid {
     color: white;
     margin-left: 20PX;
 }
-@media (min-width: 360px){
-h2.titulos-covid {
-    font: 32px "Roboto", sans-serif !important;
-    padding-top: 0.5em !important;
-    color: #24355a;
-    font-weight: bold !important;
-    line-height: 40px;
-    margin-bottom: 10px;
+
+@media (min-width: 360px) {
+    h2.titulos-covid {
+        font: 32px "Roboto", sans-serif !important;
+        padding-top: 0.5em !important;
+        color: #24355a;
+        font-weight: bold !important;
+        line-height: 40px;
+        margin-bottom: 10px;
+    }
 }
+
+@media (min-width: 360px) {
+    p.subtitulo-covid {
+        margin-top: 5px;
+        font: 16px "Roboto", sans-serif;
+        color: #9195a4;
+        line-height: 22px;
+        margin-top: 20px;
+    }
 }
-@media (min-width: 360px){
-p.subtitulo-covid {
-    margin-top: 5px;
-    font: 16px "Roboto", sans-serif;
-    color: #9195a4;
-    line-height: 22px;
-    margin-top: 20px;
-}
-}
-@media (min-width: 980px){
+
+@media (min-width: 980px) {
     h2.titulos-covid {
         font: 32px "Roboto", sans-serif !important;
         padding-top: 0.5em !important;
@@ -192,8 +208,9 @@ p.subtitulo-covid {
         line-height: 40px;
         margin-bottom: 5px;
     }
- }
-    @media (min-width: 980px){
+}
+
+@media (min-width: 980px) {
     p.subtitulo-covid {
         margin-top: 5px;
         font: 16px "Roboto", sans-serif;
@@ -201,4 +218,4 @@ p.subtitulo-covid {
         line-height: 22px;
         margin-top: 0px;
     }
- }
+}
