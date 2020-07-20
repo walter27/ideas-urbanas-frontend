@@ -21,6 +21,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
 
 
   @Input("data") data: any[];
+  @Input('variable') variable: any;
 
   constructor() {
     this.updateDemo = false;
@@ -68,6 +69,9 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         tickPixelInterval: 30,
         minColor: '#ffeda0',
         maxColor: '#bd0026'
+      },
+      exporting: {
+        filename: `casos_${this.variable.name}_covid19_espacial`
       },
       series: [{
         data: this.data,

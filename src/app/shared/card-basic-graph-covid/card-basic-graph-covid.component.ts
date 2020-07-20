@@ -3,6 +3,8 @@ import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
 import Color_Axis from 'highcharts/modules/coloraxis';
+import Series_Label from 'highcharts/modules/series-label';
+
 
 
 @Component({
@@ -18,6 +20,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
   @Input("dates") dates: any[];
   @Input("data") data: any[];
+  @Input('variable') variable: any;
 
 
 
@@ -28,6 +31,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
     HC_exporting(this.highcharts);
     HC_export(this.highcharts);
     Color_Axis(this.highcharts);
+    Series_Label(this.highcharts);
 
 
   }
@@ -54,7 +58,8 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
       },
       title: {
-        text: 'Evolución Espacial del COVID-19'
+        useHTML: true,
+        text: '<p translate>title_bar</p>'
       },
       xAxis: {
         categories: this.dates,
@@ -81,30 +86,20 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
       plotOptions: {
         series: {
           dataLabels: {
-            useHTML: true,
-            formatter: function () {
-              var styleStr = 'color:black; transform:rotate(270deg)';
-              return (
-                '<div style="' + styleStr + '">' +
-                '&nbsp;' + this.series.name +
-                '</div>'
-              );
-            },
             enabled: true,
+            crop: false,
+            overflow: 'none',
+            align: 'left',
             inside: true,
-            y: -20,
-            //rotation: 270,
-            //format: '{y}%',
-            //style: {
-            fontSize: '0.75em',
-            //  textShadow: false,
-            //}
+            format: '{series.name}',
+            rotation: 270,
           }
-
         }
       },
+      exporting: {
+        filename: `casos_${this.variable.name}_covid19`
+      },
       series: this.data
-
     };
 
     this.updateDemo = true;

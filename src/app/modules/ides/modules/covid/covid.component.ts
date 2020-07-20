@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { Data } from '@angular/router';
 import { ResultList } from 'src/app/core/models/resultList.model';
 import { ItemDropdown } from 'src/app/core/models/item-dropdown.model';
-
+let { titleCase }: any = require('../../../../core/utils/utils');
 
 @Component({
   selector: 'app-covid',
@@ -25,7 +25,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     page: 0,
     limit: 2000,
     ascending: true,
-    sort: 'name'
+    sort: 'value'
   };
   cantons: Region[] = [];
   selectedCantons: Region[] = [];
@@ -65,6 +65,7 @@ export class CovidComponent implements OnInit, OnDestroy {
   dataPrueba: any = [];
 
   loading = false;
+  optionsDate: any = {};
 
 
 
@@ -73,26 +74,26 @@ export class CovidComponent implements OnInit, OnDestroy {
     private dataService: DataService,
     private regionService: RegionService) {
 
-    this.minScroll = 0;
-    this.maxScroll = 6;
-    this.getCantons();
-    this.getClasification();
+
 
   }
 
 
   ngOnInit() {
-   /* let elem: HTMLElement = document.getElementById('navbarMenu');
-    elem.style.setProperty("background-color", '#189cff');
-    elem.classList.add("sticky-top");
-    elem.classList.remove("fixed-top");*/
+
+    this.minScroll = 0;
+    this.maxScroll = 6;
+    this.getCantons();
+    this.getClasification();
+    this.optionsDate = { year: 'numeric', month: 'short', day: 'numeric' };
+
 
   }
 
 
   ngOnDestroy() {
 
-    let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 5);
+    let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 6);
     let cantonsTop = [];
 
     for (const canton of this.selectedCantons) {
@@ -108,23 +109,10 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     }
 
-    let cantonsNotop = this.cantons.filter(canton => !cantonsTop.includes(canton));
+    let cantonsNotop = this.selectedCantons.filter(canton => !cantonsTop.includes(canton));
 
 
-    cantonsTop.forEach(cantonTop => {
-      let body = {
-        covid: true,
-        code: cantonTop.code,
-        id_Provincia: cantonTop.obj_Provincia._id,
-        name: cantonTop.name,
-        active: cantonTop.active
-      };
-
-      setTimeout(() => {
-        this.regionService.editRegion(body, cantonTop._id, this.model).subscribe(res => { });
-      }, 1);
-
-    });
+    console.log(cantonsNotop);
 
 
     cantonsNotop.forEach(cantonNoTop => {
@@ -198,7 +186,15 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
     this.regionService.listRegions(this.filters, this.model).subscribe((data) => {
-      this.cantons = data.data;
+
+      let cantons = [];
+      for (const canton of data.data) {
+
+        canton.name = titleCase(canton.name);
+        cantons.push(canton);
+      }
+
+      this.cantons = cantons;
       //console.log(this.cantons);
 
       /* let dataCovid: any;
@@ -336,7 +332,6 @@ export class CovidComponent implements OnInit, OnDestroy {
       this.varibales2 = data.data;
       this.selectVariable = this.varibales2[0];
       this.getData(this.selectVariable._id);
-      console.log(this.selectVariable._id);
 
     });
 
@@ -350,6 +345,8 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     this.dataService.listDatasCovid(this.filters, idSelectVariable).subscribe(data => {
 
+      console.log(data);
+
 
       for (const info of data.data) {
         dateRanges.push(info.date);
@@ -360,9 +357,9 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     });
 
-
-    this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
     setTimeout(() => {
+      this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
+
       this.filterData();
       this.filterDataStreamgraph();
     }, 2000);
@@ -415,7 +412,6 @@ export class CovidComponent implements OnInit, OnDestroy {
       let year = date.getUTCFullYear();
       let month = date.getUTCMonth();
       let dateStr = new Date(year, month, day);
-
       dates.push(dateStr);
 
     }
@@ -439,7 +435,7 @@ export class CovidComponent implements OnInit, OnDestroy {
         return { value: date.getTime() };
       }),
       translate: (value: number, label: LabelType): string => {
-        return new Date(value).toDateString();
+        return titleCase(new Date(value).toLocaleDateString('es-ES', this.optionsDate));
       }
     };
 
@@ -451,10 +447,13 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   filterData() {
 
+
+
     let datesString = [];
     if (!this.selectDate || this.selectDate === 0) {
       this.selectDate = this.dateRange[0].getTime();
-      let selectDate = new Date(this.selectDate).toDateString();
+
+      let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString('es-ES', this.optionsDate));
       datesString.push(selectDate);
       this.dateString = datesString;
 
@@ -466,7 +465,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     for (const dateString of this.dateRange) {
 
       let dateStringFinal = dateString.getTime();
-      let selectDate = new Date(dateStringFinal).toDateString();
+      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString('es-ES', this.optionsDate));
       datesStringFinal.push(selectDate);
     }
     this.dateStringAll = datesStringFinal;
@@ -509,7 +508,7 @@ export class CovidComponent implements OnInit, OnDestroy {
           let dataCovi = {
             data: [Number(dataCovid.value)],
             name: dataCovid.obj_Canton.name,
-            date: new Date(dateStr).toLocaleString()
+            date: titleCase(new Date(dateStr).toLocaleDateString('es-ES', this.optionsDate))
 
 
           };
@@ -633,7 +632,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     for (const dateString of this.dateRange) {
 
       let dateStringFinal = dateString.getTime();
-      let selectDate = new Date(dateStringFinal).toDateString();
+      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString('es-ES', this.optionsDate));
       datesStringFinal.push(selectDate);
     }
     this.dateStringAll = datesStringFinal;
@@ -660,7 +659,7 @@ export class CovidComponent implements OnInit, OnDestroy {
         let day = date.getUTCDate();
         let year = date.getUTCFullYear();
         let month = date.getUTCMonth();
-        let dateStr = new Date(year, month, day).toDateString();
+        let dateStr = titleCase(new Date(year, month, day).toLocaleDateString('es-ES', this.optionsDate));
 
         for (let index = 0; index < this.dateStringAll.length; index++) {
 
@@ -769,11 +768,16 @@ export class CovidComponent implements OnInit, OnDestroy {
     this.getData(this.selectVariable._id);
   }
 
-  getSelects() {
+  getSelects(e) {
+
+    // console.log(e.itemValue);
+    //console.log(this.selectedCantons);
 
     if (this.selectedCantons) {
 
       this.selectedCantons.forEach(cantonSelected => {
+
+        console.log(cantonSelected.name, cantonSelected.covid);
 
         let body = {
           covid: true,
@@ -782,42 +786,60 @@ export class CovidComponent implements OnInit, OnDestroy {
           name: cantonSelected.name,
           active: cantonSelected.active
         };
-        setTimeout(() => {
-          this.regionService.editRegion(body, cantonSelected._id, this.model).subscribe(res => { });
-        }, 1);
+        this.regionService.editRegion(body, cantonSelected._id, this.model).subscribe(res => {
+          console.log('TRUE', res);
 
 
+        });
       });
 
-      let cantons = this.cantons.filter(canton => !this.selectedCantons.includes(canton));
-      cantons.forEach(canton => {
 
+      if (!this.selectedCantons.includes(e.itemValue)) {
         let body = {
           covid: false,
-          code: canton.code,
-          id_Provincia: canton.obj_Provincia._id,
-          name: canton.name,
-          active: canton.active
+          code: e.itemValue.code,
+          id_Provincia: e.itemValue.obj_Provincia._id,
+          name: e.itemValue.name,
+          active: e.itemValue.active
         };
-        setTimeout(() => {
-          this.regionService.editRegion(body, canton._id, this.model).subscribe(res => { });
-        }, 1);
-      });
+        this.regionService.editRegion(body, e.itemValue._id, this.model).subscribe(res => {
+          console.log('false', res);
+
+        });
+      }
 
       this.getData(this.selectVariable._id);
 
-
-
+      /* let cantons = this.cantons.filter(canton => !this.selectedCantons.includes(canton));
+       cantons.forEach(canton => {
+ 
+         let body = {
+           covid: false,
+           code: canton.code,
+           id_Provincia: canton.obj_Provincia._id,
+           name: canton.name,
+           active: canton.active
+         };
+         setTimeout(() => {
+           this.regionService.editRegion(body, canton._id, this.model).subscribe(res => { });
+         }, 1);
+       });
+ 
+       this.getData(this.selectVariable._id);
+ 
+ 
+ 
+ 
+     }*/
 
     }
-
   }
 
   sliderChange(e) {
 
     let datesString = [];
     this.selectDate = e.value;
-    let selectDate = new Date(this.selectDate).toDateString();
+    let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString('es-ES', this.optionsDate));
     datesString.push(selectDate);
     this.dateString = datesString;
 

@@ -1,8 +1,19 @@
-<div class="row mb-5">
+<div class="contiene-pagina">
+    <div class="row mx-auto covid-header">
+        <div class="covid-header1 ">
+            <h2>Compara ciudades</h2>
+        </div>
+        <div class="covid-header2">
+            <h4 class="text-lg-right">Inicio | Compara ciudades</h4>
+
+        </div>
+    </div>
     <div class="contiene-desempeno">
         <div class="contiene-elementos">
-            <div class="anima-texto"><app-ides-index [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]='cities'>
-            </app-ides-index></div>
+            <div class="anima-texto">
+                <app-ides-index [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]='cities'>
+                </app-ides-index>
+            </div>
         </div>
     </div>
 </div>
@@ -10,7 +21,9 @@
 <div class="Definiciones">
     <div class="col-12 ides-text-blue mb-4">
         <div class="contiene-desempeno">
-            <div class="anima-texto"><h2 class="tituloz" translate>Definiciones</h2></div>
+            <div class="anima-texto">
+                <h2 class="tituloz" translate>Definiciones</h2>
+            </div>
             <div class="row m-4">
                 <div class="col-md-12 col-lg-6" *ngFor="let c of resultClasification">
                     <div class="row">

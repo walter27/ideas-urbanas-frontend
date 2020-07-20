@@ -67,9 +67,18 @@ function tagCloud(data, width, height, maxFont, color) {
 
 }
 
+function titleCase(text) {
+    if (!text) return text;
+    if (typeof text !== 'string') throw "invalid argument";
+    return text.toLowerCase().split(' ').map(value => {
+        return value.charAt(0).toUpperCase() + value.substring(1);
+    }).join(' ');
+}
+
 module.exports = {
     capitalizeFirst,
     formatLabel,
-    tagCloud
+    tagCloud,
+    titleCase
 };
 

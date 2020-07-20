@@ -1,7 +1,7 @@
 <div *appAllowMenuItem="item">
     <div [ngSwitch]="item.type">
         <div *ngSwitchCase="'text'">
-            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url" [ngClass]="textColorNav" class="ext-none cursor-pointer" (click)="hideMenu()" translate>{{ item.title }}</a>
+            <a [routerLinkActive]="['nav-item-active']" [routerLink]="item.url" [ngClass]="textColorNav" class="ext-none cursor-pointer" (click)="hideMenu(item)" translate>{{ item.title }}</a>
         </div>
 
         <div *ngSwitchDefault>

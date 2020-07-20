@@ -427,7 +427,6 @@ export class HomeComponent implements OnInit {
   responsiveOptions;
 
 
-
   constructor(
     private clasificationService: ClasificationService,
     private tagsService: TagService,
@@ -507,14 +506,6 @@ export class HomeComponent implements OnInit {
 
     this.home = [
       {
-        background: 'bg-banner-carousel-1',
-        title: 'our_cities',
-        subtitle: 'our_cities_description',
-        grafico: 'grafico-home1',
-        svg: '',
-        routerLink: '/thematic'
-      },
-      {
         background: 'bg-banner-carousel-2',
         title: 'response_covid',
         subtitle: 'response_covid_description',
@@ -522,6 +513,14 @@ export class HomeComponent implements OnInit {
         svg: 'assets/home/coronavirus.svg',
         routerLink: '/covid'
 
+      },
+      {
+        background: 'bg-banner-carousel-1',
+        title: 'our_cities',
+        subtitle: 'our_cities_description',
+        grafico: 'grafico-home1',
+        svg: '',
+        routerLink: '/thematic'
       },
       {
         background: 'bg-banner-carousel-3',
@@ -561,9 +560,10 @@ export class HomeComponent implements OnInit {
   }
 
 
-  /*@HostListener('window:scroll', ['$event'])
+  /* @HostListener('window:scroll', ['$event'])
    onWindowIndexScroll($event) {
-
+     if ($event.srcElement.scrollingElement.scrollTop > 50)
+       this.getCantons();
  
      let elem: HTMLElement = document.getElementById('navbarMenu');
      let pos = window.pageYOffset;
@@ -609,13 +609,12 @@ export class HomeComponent implements OnInit {
   }
 
   async onClickCity(id) {
-    if (this.stopwords.length === 0) {
+    if (this.stopwords.length == 0) {
       this.getStopwords();
     }
 
-    if (this.activeCities.length === 0) {
+    if (this.activeCities.length == 0)
       await this.getCantons();
-    }
 
     this.step = 2;
     this.listTags(id);
@@ -640,9 +639,8 @@ export class HomeComponent implements OnInit {
       this.tagsService.addTag({ text: element.toLowerCase().trim(), id_Canton: this.selectCity.id, type }).subscribe(data => {
         this.newTag = '';
         this.step = 3;
-        if (index + 1 == words.length) {
+        if (index + 1 == words.length)
           this.listTags(this.selectCity.id);
-        }
 
       }, err => {
         console.log(err);
@@ -813,11 +811,8 @@ export class HomeComponent implements OnInit {
   }
 
   changueStep() {
-
     this.step = 1;
     this.regionService.citySelect = undefined;
   }
-
-
 
 }

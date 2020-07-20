@@ -22,6 +22,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   @Input("data") data: any[];
   @Input("min") min: number;
   @Input("max") max: number;
+  @Input('variable') variable: any;
 
 
 
@@ -77,7 +78,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
           reserveSpace: false,
           rotation: 270
         },
-   
+
         /*events: {
           setExtremes: function (e) {
 
@@ -107,7 +108,9 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       legend: {
         enabled: false
       },
-
+      exporting: {
+        filename: `casos_${this.variable.name}_covid19_temporal`
+      },
       series: this.data,
     };
   }

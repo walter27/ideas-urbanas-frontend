@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, DoCheck, HostListener } from '@angular/core';
 import { AngularFontAwesomeComponent } from 'angular-font-awesome';
 import { Router } from '@angular/router';
+import { RegionService } from '../../core/services/region.service';
 declare var $: any;
 let { capitalizeFirst } = require('../../core/utils/utils');
 
@@ -17,7 +18,8 @@ export class NavbarItemComponent implements OnInit, DoCheck {
   @Input() item;
   @Output() showMore = new EventEmitter<any>();
 
-  constructor(private route: Router) {
+  constructor(private route: Router,
+    private regionService: RegionService) {
 
 
   }
@@ -33,18 +35,15 @@ export class NavbarItemComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    if (this.route.url === '/covid') {
+    if (this.route.url === '/covid' || this.route.url === '/thematic' ||
+      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports' ||
+      this.regionService.citySelect) {
 
       if (this.pos > 20) {
         this.textColorNav = 'nav-item';
-        //this.srcImage = 'assets/logos/logo-blanco.svg';
-
       } else {
 
         this.textColorNav = 'nav-item-covid';
-        // this.srcImage = 'assets/logos/logo-blanco.svg';
-
-
       }
     } else {
       this.textColorNav = 'nav-item';
@@ -63,8 +62,15 @@ export class NavbarItemComponent implements OnInit, DoCheck {
     });
   }
 
-  hideMenu() {
+  hideMenu(item) {
     $('#navbarResponsive').collapse('hide');
+    if (item.title === 'about us') {
+      //window.pageYOffset = 50;
+      //console.log(window.scroll());
+
+      //window.scroll(0, 1);
+    }
+
   }
 
   capitalizeFirst(str) {

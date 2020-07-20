@@ -78,62 +78,48 @@ export class HeaderComponent implements OnInit, DoCheck {
   @HostListener('window:scroll', ['$event'])
   onWindowIndexScroll($event) {
     this.pos = window.pageYOffset;
-    if (this.pos > 20) {
-      this.background = 'mat-menu-content';
-      //this.srcImage = 'assets/logos/logo-blanco.svg';
-
-    } else {
-
-      this.background = 'mat-menu-content2';
-      // this.srcImage = 'assets/logos/logo-blanco.svg';
-
-
-    }
-
   }
   ngOnInit() {
 
     if (!this.regionService.citySelect && this.route.url === '/home') {
 
       this.background = 'mat-menu-content2';
-      //this.srcImage = 'assets/logos/logo-blanco.svg';
+      this.srcImage = 'assets/logos/logo-blanco.svg';
+      this.colorIcon = 'ides-text-icon';
+      this.colorLanguaje = 'text-white';
+      this.colorButton = 'ides-text-white';
 
     }
 
   }
   ngDoCheck() {
 
-    if (this.route.url === '/thematic' ||
-      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
-      this.background = 'mat-menu-content sticky-top';
-      this.regionService.citySelect = undefined;
-      // this.srcImage = 'assets/logos/logo-blanco.svg';
+    if (!this.regionService.citySelect && this.route.url === '/home') {
 
+      this.background = 'mat-menu-content2';
+      this.srcImage = 'assets/logos/logo-blanco.svg';
+      this.colorIcon = 'ides-text-icon';
+      this.colorLanguaje = 'text-white';
+      this.colorButton = 'ides-text-white';
 
+      if (this.pos > 15) {
 
-    } else {
-
-      if (this.pos < 20) {
-        this.background = 'mat-menu-content2';
-        //this.srcImage = 'assets/logos/logo-blanco.svg';
+        this.background = 'mat-menu-content';
+        this.srcImage = 'assets/logos/logo-blanco.svg';
+        this.colorIcon = 'ides-text-icon';
+        this.colorLanguaje = 'text-white';
+        this.colorButton = 'ides-text-white';
 
 
       }
+
     }
+
 
 
     if (this.regionService.citySelect && this.route.url === '/home') {
-      this.background = 'mat-menu-content';
-      //this.srcImage = 'assets/logos/logo-blanco.svg';
-
-
-    }
-
-
-    if (this.route.url === '/covid') {
 
       this.background = 'mat-menu-content-covid sticky-top';
-      this.regionService.citySelect = undefined;
       this.srcImage = 'assets/logos/logo-color.svg';
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
@@ -151,11 +137,30 @@ export class HeaderComponent implements OnInit, DoCheck {
       }
 
 
-    } else {
-      this.srcImage = 'assets/logos/logo-blanco.svg';
-      this.colorIcon = 'ides-text-icon';
-      this.colorLanguaje = 'text-white';
-      this.colorButton = 'ides-text-white';
+    }
+    if (this.route.url === '/covid' || this.route.url === '/thematic' ||
+      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
+
+      this.background = 'mat-menu-content-covid sticky-top';
+      this.srcImage = 'assets/logos/logo-color.svg';
+      this.colorIcon = 'ides-text-icon2';
+      this.colorLanguaje = 'text-white2';
+      this.colorButton = 'ides-text-white2';
+      this.regionService.citySelect = undefined;
+
+
+      if (this.pos > 20) {
+
+        this.background = 'mat-menu-content';
+        this.srcImage = 'assets/logos/logo-blanco.svg';
+        this.colorIcon = 'ides-text-icon';
+        this.colorLanguaje = 'text-white';
+        this.colorButton = 'ides-text-white';
+
+
+      }
+
+
     }
 
 

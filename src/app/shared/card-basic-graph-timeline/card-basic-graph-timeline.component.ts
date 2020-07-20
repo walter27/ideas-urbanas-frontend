@@ -16,6 +16,7 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
   chartOptions: any;
   @Input("minScroll") minScroll: number;
   @Input("maxScroll") maxScroll: number;
+  @Input("variable") variable: any;
 
 
 
@@ -34,10 +35,10 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    if (changes['minScroll'] && changes['maxScroll']) {
+    /*if (changes['variable']) {
       this.createTimeLine();
 
-    }
+    }*/
   }
 
   createTimeLine() {
@@ -75,15 +76,17 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
       },
 
       title: {
-        text: 'Hitos del Covid'
+        text: 'Hitos del Covid',
+        fontSize: '30px',
       },
 
       subtitle: {
-        text: 'Como las ciudades han vivido la pandemia',
-        fontSize: '15px'
+        text: 'Cronología de las respuestas urbanas al COVID-19',
+        fontSize: '24px'
       },
       exporting: {
-        enabled: false
+        enabled: false,
+        //filename: `casos_${this.variable.name}_covid19_hitos`
       },
 
       series: [{

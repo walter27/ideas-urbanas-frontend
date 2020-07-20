@@ -1115,8 +1115,8 @@ div.ides-card-home {
 }
 
 .myButton:hover {
-    background: rgb(51, 169, 196);
-    background: linear-gradient(78deg, rgba(51, 169, 196, 1) 0%, rgba(126, 221, 134, 1) 100%);
+    background: rgb(251, 187, 49);
+    background: linear-gradient(78deg, rgba(251, 187, 49, 1) 0%, rgba(249, 173, 12, 1) 100%);
     color: #fff;
     border: none !important;
 }
@@ -1237,8 +1237,8 @@ div.ides-card-home {
 }
 
 .grafico-home2 {
-    max-width: 100px;
-    margin-top: 1%;
+    max-width: 60%;
+    margin-top: -3%;
     padding-left: 2%;
     margin: 0 auto;
 }
@@ -1248,10 +1248,6 @@ div.ides-card-home {
     margin-top: 1%;
     margin: 0 auto;
     margin-left: -5%;
-}
-
-.svg {
-    max-width: 60%;
 }
 
 @media (min-width: 360px) {
@@ -1268,6 +1264,31 @@ div.ides-card-home {
 }
 
 @media (min-width: 360px) {
+    .grafico-home1 {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 0px;
+        margin-top: 0%;
+        margin-left: 0%;
+        padding-top: 50px;
+        padding-left: 10%;
+    }
+}
+
+@media (min-width: 980px) {
+    .Texto-home1 {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 50px;
+        margin-top: 5%;
+        margin-left: 0%;
+        padding-top: 250px;
+        padding-left: 10%;
+        z-index: 50;
+    }
+}
+
+@media (min-width: 980px) {
     .grafico-home1 {
         max-width: 90%;
         margin: 0 auto;
@@ -1419,7 +1440,7 @@ div.ides-card-home {
     .grafico-home2 {
         max-width: 60%;
         margin: 0 auto;
-        margin-top: 3%;
+        margin-top: -3%;
         margin-left: 10%;
     }
 }
@@ -1561,6 +1582,7 @@ div.ides-card-home {
 
 @media (min-width: 1700px) {
     .Texto-home1 {
+        margin-top: 0px;
         max-width: 40%;
         margin-top: 35%;
         margin-left: 0%;
@@ -1621,7 +1643,7 @@ div.ides-card-home {
     .grafico-home2 {
         max-width: 60%;
         margin: 0 auto;
-        margin-top: 6%;
+        margin-top: -5%;
         margin-left: 4%;
     }
 }
@@ -1630,7 +1652,7 @@ div.ides-card-home {
     .grafico-home3 {
         max-width: 60%;
         margin: 0 auto;
-        margin-top: 3%;
+        margin-top: -5%;
         margin-left: 0%;
     }
 }
@@ -1785,4 +1807,9 @@ div.ides-card-home {
 :host ::ng-deep.ui-carousel .ui-carousel-content {
     padding-right: 0em;
     padding-left: 0em;
+}
+
+//twitter
+.margins {
+    margin-left: 250px;
 }
