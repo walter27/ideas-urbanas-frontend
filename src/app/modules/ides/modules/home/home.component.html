@@ -93,7 +93,7 @@
 
 
 
-                    <p-carousel [value]="home" [circular]="true" [autoplayInterval]="4000">
+                    <p-carousel [value]="home" [circular]="true" [autoplayInterval]="12000">
 
                         <ng-template let-home pTemplate="item">
                             <div class="picsum-img-wrapper" class={{home.background}}>
@@ -292,23 +292,25 @@
         <div class="row mb-4">
             <div class="container">
                 <div class="col-md-12 containerr">
-                    <div class="row">
+                    <div class="quienes-somos">
+
                         <div class="col-lg-12 col-xl-12 about-us">
                             <div class=" ides-height-100">
                                 <div class="col-12 p-3">
-                                    <div class="row">
-                                        <div class="col-12 ides-text-blue mb-4">
-                                            <!-- <svg-icon src="assets/home/quienes-somos.svg" [svgStyle]="{ 'width.px':550, 'height.px':300}">
-                                            </svg-icon>-->
+                                    <div class="col-12 mb-4">
+                                    </div>
+                                    <div class="conten1">
+                                        <!-- <div class="col-12 ides-text-blue mb-4">
+                                            <svg-icon src="assets/home/quienes-somos.svg" [svgStyle]="{ 'width.px':550, 'height.px':300}">
+                                            </svg-icon>
 
-                                            <img [src]="'assets/home/somos.png'" width="100%" class="somos1" />
+                                           <img [src]="'assets/home/somos.png'" width="100%" class="somos1" />
 
-                                        </div>
-                                        <div class="col-12 mb-4">
+                                        </div>-->
+                                        
+                                        <div class="texto-quines1">
                                             <div class="ides-little-tittle-text-about-us text-center" translate>
                                                 title-about-us</div>
-                                        </div>
-                                        <div class="col-12 mb-4">
                                             <p class="ides-little-text-about-us text-center" translate>about us description
                                             </p>
                                             <p class="ides-little-text-about-us text-center" translate>about us description complement
@@ -318,17 +320,19 @@
                                             <p class="ides-little-text-about-us text-center" translate>about us contact
                                             </p>
                                         </div>
-                                        <div class="col-md-12 text-center">
+                                    <div class="contenido-quines2">
+                                            <div class="quienes-logo">
 
-                                            <svg-icon src="assets/logos/logo-color.svg" [svgStyle]="{ 'width.px':300, 'height.px':150}">
-                                            </svg-icon>
+                                             <svg-icon src="assets/logos/logo-color.svg" [svgStyle]="{ 'width.px':300, 'height.px':150}">
+                                                </svg-icon>
                                             <!--  <img [src]="'assets/logos/logo-color.svg'" />-->
-                                        </div>
-                                        <div class="col-md-12 text-center">
+                                         </div>
+                                         <div class="col-md-12 text-center">
                                             <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" class=" ides-dropdown ides-text-blue-dark font-weight-bold ides-add-information" translate>about
                                                 us add information</a>
                                             <!-- <i-feather name="arrow-up"></i-feather> -->
                                         </div>
+                                    </div>
 
                                     </div>
                                 </div>
@@ -337,7 +341,7 @@
 
                         <div class="col-xl-12 col-lg-12 ">
 
-                            <div class="margins">
+                            <div class="twitt">
                                 <!-- <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'></app-ides-index> -->
                                 <ngx-tweet class="col-md-12" tweetId="1278357859496009729"></ngx-tweet>
                             </div>

@@ -422,7 +422,7 @@ export class HomeComponent implements OnInit, DoCheck {
     markerColor: '#FAFAFA',      // the marker points
     bgColor: 'transparent',      // the background
     scaleColors: ['#bbd8fc', '#3bcbff', '#3cbeed', '#2c98bf'],    // the color of the region in the serie
-    regionFill: '#2c98bf'       // the base region color
+    regionFill: '#006685'       // the base region color
   };
   mapHeight: number;
 

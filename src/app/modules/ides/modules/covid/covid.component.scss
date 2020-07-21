@@ -234,7 +234,7 @@ p.subtitulo {
 }
 
 h2.subtitulo {
-    font: 32px "Roboto", sans-serif !important;
+    font: 30px "Roboto", sans-serif !important;
     padding-top: 0.5em !important;
     color: #24355a;
     font-weight: bold !important;
@@ -248,4 +248,12 @@ h2.subtitulo {
     flex-direction: row;
     padding: 0 .1em;
     margin-top: 30px;
+}
+
+h3.titulos-covid {
+    padding-bottom: 5px;
+    margin-top: 30px;
+    font: 29px "Roboto", sans-serif !important;
+    color: #24355a;
+    font-weight: bold !important;
 }
