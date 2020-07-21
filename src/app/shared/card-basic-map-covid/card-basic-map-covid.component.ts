@@ -77,7 +77,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         data: this.data,
         keys: ['id', 'value'],
         joinBy: 'id',
-        name: 'Casos confirmados',
+        name: `Número de Casos ${this.variable.name}`,
         states: {
           hover: {
             color: '#a4edba'
@@ -85,6 +85,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         },
         dataLabels: {
           enabled: true,
+          color: 'black',
           format: '{point.properties.name}',
           style:
           {

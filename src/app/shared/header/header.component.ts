@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegionService } from '../../core/services/region.service';
+import { UtilsService } from '../../core/services/utils.service';
 
 
 @Component({
@@ -69,7 +70,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   constructor(
     private authService: AuthService,
     private regionService: RegionService,
-    private route: Router
+    private route: Router,
+    private utilService: UtilsService
   ) {
 
   }
@@ -163,14 +165,19 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     }
 
+    if ($('#IdButton').is(':visible')) {
 
-  }
+      this.utilService.buttonVisible = true;
+
+    } else {
+
+      console.log('false');
+      
+      this.utilService.buttonVisible = false;
+
+    }
 
 
-  changueBackground() {
-    this.background = 'mat-menu-content';
-
-    console.log('cambio');
 
   }
 

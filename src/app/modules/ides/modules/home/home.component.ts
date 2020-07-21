@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, HostListener, DoCheck, ViewChild, ElementRef } from '@angular/core';
 import { Clasification } from 'src/app/core/models/clasification.model';
 import { ResultList } from 'src/app/core/models/resultList.model';
 import { Observable, from } from 'rxjs';
@@ -19,6 +19,7 @@ let { tagCloud } = require('src/app/core/utils/utils');
 //import { fade } from('src/app/ides/modules/home/animations');
 
 import { trigger, style, transition, animate, state } from '@angular/animations';
+import { UtilsService } from '../../../../core/services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +29,7 @@ import { trigger, style, transition, animate, state } from '@angular/animations'
 
 
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, DoCheck {
 
   cities = [
     {
@@ -182,8 +183,8 @@ export class HomeComponent implements OnInit {
       url: '',
       queryParams: {},
       color: '',
-      posX: 7,
-      posY: -77.5660852
+      posX: 6.1,
+      posY: -78.5718573
     },
     {
       id: '5e41c9f7d82c451b6859ea0c',
@@ -408,6 +409,8 @@ export class HomeComponent implements OnInit {
 
   tagsData: any[] = [];
 
+  @ViewChild('about', { static: false }) about: ElementRef;
+
 
   private readonly notifier: NotifierService;
 
@@ -419,7 +422,7 @@ export class HomeComponent implements OnInit {
     markerColor: '#FAFAFA',      // the marker points
     bgColor: 'transparent',      // the background
     scaleColors: ['#bbd8fc', '#3bcbff', '#3cbeed', '#2c98bf'],    // the color of the region in the serie
-    regionFill: '#0068ff'       // the base region color
+    regionFill: '#2c98bf'       // the base region color
   };
   mapHeight: number;
 
@@ -431,6 +434,7 @@ export class HomeComponent implements OnInit {
     private clasificationService: ClasificationService,
     private tagsService: TagService,
     private regionService: RegionService,
+    private utilService: UtilsService,
     private router: Router,
     notifierService: NotifierService,
     private translate: TranslateService,
@@ -557,6 +561,24 @@ export class HomeComponent implements OnInit {
 
 
 
+  }
+
+  ngDoCheck() {
+
+    if (this.utilService.itemSelected) {
+
+      setTimeout(() => {
+        this.about.nativeElement.scrollIntoView();
+        console.log('excute');
+
+      }, 0.000001);
+
+      //console.log(this.utilService.itemSelected);
+
+
+    }
+
+    this.utilService.itemSelected = undefined;
   }
 
 

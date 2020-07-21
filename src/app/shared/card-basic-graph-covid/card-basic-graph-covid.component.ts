@@ -59,7 +59,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
       },
       title: {
         useHTML: true,
-        text: '<p translate>title_bar</p>'
+        text: 'Evolución Espacial del COVID-19'
       },
       xAxis: {
         categories: this.dates,
@@ -93,6 +93,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
             inside: true,
             format: '{series.name}',
             rotation: 270,
+            color: 'black'
           }
         }
       },

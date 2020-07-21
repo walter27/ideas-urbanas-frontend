@@ -41,6 +41,13 @@ export class ModulesComponent implements OnInit {
       url: '/home',
       active: false
     },
+    {
+      id: 'home',
+      title: 'about us',
+      type: 'text',
+      url: '/home',
+      active: false
+    },
     /*{
       id: 'cities',
       title: 'cities',
@@ -68,13 +75,6 @@ export class ModulesComponent implements OnInit {
       title: 'citizen reports',
       type: 'text',
       url: '/citizen-reports',
-      active: false
-    },
-    {
-      id: 'home',
-      title: 'about us',
-      type: 'text',
-      url: '/home',
       active: false
     },
     {
