@@ -1,5 +1,5 @@
 <nav id="navbarMenu" [ngClass]="background" class="navbar navbar-expand-xl fixed-top ">
-    <div class="d-sm-block d-md-none">
+    <div id="IdButton" class="d-sm-block d-md-none">
         <div class="row">
             <div class="col-8 col-sm-11">
                 <a routerLink="/" class="navbar-brand ml-1 logo-link">
@@ -7,8 +7,8 @@
                 </a>
             </div>
             <div class="col-4 col-sm-1">
-                <button id="IdButton" class="navbar-toggler mt-2 ides-navbar-toggler-mobile" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <fa class="cursor-pointer ides-text-white" [name]="'bars'"></fa>
+                <button class="navbar-toggler mt-2 ides-navbar-toggler-mobile" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <fa [ngClass]="colorButton2" class="cursor-pointer" [name]="'bars'"></fa>
                 </button>
                 <div class="collapse navbar-collapse mt-3 menu-mobile" id="navbarResponsive">
                     <ul class="nav ml-auto list-group list-group-flush">

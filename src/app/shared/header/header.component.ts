@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   colorIcon: string;
   colorLanguaje: string;
   colorButton: string;
+  colorButton2: string;
 
   constructor(
     private authService: AuthService,
@@ -90,6 +91,8 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorIcon = 'ides-text-icon';
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
+      this.colorButton2 = 'ides-text-white3';
+
 
     }
 
@@ -103,6 +106,9 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorIcon = 'ides-text-icon';
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
+      this.colorButton2 = 'ides-text-white4';
+
+
 
       if (this.pos > 15) {
 
@@ -111,6 +117,8 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.colorIcon = 'ides-text-icon';
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
+        this.colorButton2 = 'ides-text-white4';
+
 
 
       }
@@ -126,6 +134,8 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
+      this.colorButton2 = 'ides-text-white3';
+
 
       if (this.pos > 20) {
 
@@ -134,6 +144,8 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.colorIcon = 'ides-text-icon';
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
+        this.colorButton2 = 'ides-text-white4';
+
 
 
       }
@@ -148,6 +160,8 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
+      this.colorButton2 = 'ides-text-white3';
+
       this.regionService.citySelect = undefined;
 
 
@@ -158,6 +172,8 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.colorIcon = 'ides-text-icon';
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
+        this.colorButton2 = 'ides-text-white4';
+
 
 
       }
@@ -168,11 +184,12 @@ export class HeaderComponent implements OnInit, DoCheck {
     if ($('#IdButton').is(':visible')) {
 
       this.utilService.buttonVisible = true;
+      this.colorIcon = 'ides-text-icon2';
+      this.colorLanguaje = 'text-white2';
+      this.colorButton = 'ides-text-white2';
 
     } else {
 
-      console.log('false');
-      
       this.utilService.buttonVisible = false;
 
     }
