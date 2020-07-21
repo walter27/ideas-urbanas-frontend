@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import TimeLine from 'highcharts/modules/timeline';
 
@@ -9,14 +9,13 @@ import TimeLine from 'highcharts/modules/timeline';
   templateUrl: './card-basic-graph-timeline.component.html',
   styleUrls: ['./card-basic-graph-timeline.component.scss']
 })
-export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
+export class CardBasicGraphTimelineComponent implements OnInit {
 
   updateDemo: boolean;
   highcharts: any;
   chartOptions: any;
   @Input("minScroll") minScroll: number;
   @Input("maxScroll") maxScroll: number;
-  @Input("variable") variable: any;
 
 
 
@@ -27,19 +26,14 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
     this.updateDemo = false;
     this.highcharts = Highcharts;
     TimeLine(this.highcharts);
-    this.createTimeLine();
 
   }
 
   ngOnInit() {
+    this.createTimeLine();
+
   }
 
-  ngOnChanges(changes) {
-    /*if (changes['variable']) {
-      this.createTimeLine();
-
-    }*/
-  }
 
   createTimeLine() {
 
@@ -76,13 +70,17 @@ export class CardBasicGraphTimelineComponent implements OnInit, OnChanges {
       },
 
       title: {
-        text: 'Hitos del Covid',
-        fontSize: '30px',
+        text: 'Hitos del COVID-19',
+        style: {
+          fontSize: '30px',
+        }
       },
 
       subtitle: {
         text: 'Cronología de las respuestas urbanas al COVID-19',
-        fontSize: '24px'
+        style: {
+          fontSize: '15px'
+        }
       },
       exporting: {
         enabled: false,

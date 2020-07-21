@@ -65,7 +65,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
 
       },
       title: {
-        text: "Evolución Temporal COVID-19"
+        text: 'Evolución Temporal COVID-19'
       },
       xAxis: {
         type: 'categories',
@@ -111,6 +111,20 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       exporting: {
         filename: `casos_${this.variable.name}_covid19_temporal`
       },
+
+     /* plotOptions: {
+        series: {
+          dataLabels: {
+            enabled: true,
+            crop: false,
+            overflow: 'none',
+            align: 'left',
+            inside: true,
+            format: '{series.name}',
+            color: 'black'
+          }
+        }
+      },*/
       series: this.data,
     };
   }

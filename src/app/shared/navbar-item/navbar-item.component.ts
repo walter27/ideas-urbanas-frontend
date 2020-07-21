@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, DoCheck, HostListener }
 import { AngularFontAwesomeComponent } from 'angular-font-awesome';
 import { Router } from '@angular/router';
 import { RegionService } from '../../core/services/region.service';
+import { UtilsService } from '../../core/services/utils.service';
 declare var $: any;
 let { capitalizeFirst } = require('../../core/utils/utils');
 
@@ -19,7 +20,8 @@ export class NavbarItemComponent implements OnInit, DoCheck {
   @Output() showMore = new EventEmitter<any>();
 
   constructor(private route: Router,
-    private regionService: RegionService) {
+    private regionService: RegionService,
+    private utilService: UtilsService) {
 
 
   }
@@ -35,18 +37,39 @@ export class NavbarItemComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+
     if (this.route.url === '/covid' || this.route.url === '/thematic' ||
       this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports' ||
       this.regionService.citySelect) {
 
-      if (this.pos > 20) {
+      if (this.pos > 20 && this.utilService.buttonVisible === false) {
+        console.log('CAMBIAR', this.utilService.buttonVisible);
+
         this.textColorNav = 'nav-item';
       } else {
 
         this.textColorNav = 'nav-item-covid';
       }
     } else {
-      this.textColorNav = 'nav-item';
+
+      if (this.utilService.buttonVisible === true) {
+        this.textColorNav = 'nav-item-covid';
+
+      } else {
+        console.log('CAMBIAR2', this.utilService.buttonVisible);
+
+        this.textColorNav = 'nav-item';
+
+      }
+
+
+    }
+
+    if (this.utilService.buttonVisible === true) {
+
+      //console.log('CAMBIAR3', this.utilService.buttonVisible);
+
+      this.textColorNav = 'nav-item-covid';
 
     }
 
@@ -65,10 +88,10 @@ export class NavbarItemComponent implements OnInit, DoCheck {
   hideMenu(item) {
     $('#navbarResponsive').collapse('hide');
     if (item.title === 'about us') {
-      //window.pageYOffset = 50;
-      //console.log(window.scroll());
-
-      //window.scroll(0, 1);
+      this.utilService.itemSelected = item;
+    } else {
+      window.scrollTo(0, 0);
+      this.utilService.itemSelected = undefined;
     }
 
   }

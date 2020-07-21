@@ -111,10 +111,6 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     let cantonsNotop = this.selectedCantons.filter(canton => !cantonsTop.includes(canton));
 
-
-    console.log(cantonsNotop);
-
-
     cantonsNotop.forEach(cantonNoTop => {
       let body = {
         covid: false,
@@ -345,9 +341,6 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     this.dataService.listDatasCovid(this.filters, idSelectVariable).subscribe(data => {
 
-      console.log(data);
-
-
       for (const info of data.data) {
         dateRanges.push(info.date);
 
@@ -539,7 +532,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   }
 
-  async loadData(dataHigcharts: any, dataHighmap: any) {
+  loadData(dataHigcharts: any, dataHighmap: any) {
 
 
 
@@ -613,8 +606,8 @@ export class CovidComponent implements OnInit, OnDestroy {
 
       }
 
-      this.dataHigcharts = await dataHighchartsFinal.sort((a, b) => { return b.data[0] - a.data[0] });
-      this.dataMapa = await dataHighmapFinal;
+      this.dataHigcharts = dataHighchartsFinal.sort((a, b) => { return b.data[0] - a.data[0] });
+      this.dataMapa = dataHighmapFinal;
     }
 
 
@@ -730,7 +723,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   }
 
-  async loadDataStreamGraph(dataStreamGraphCopy: any) {
+  loadDataStreamGraph(dataStreamGraphCopy: any) {
 
     if (this.selectedCantons) {
 
@@ -748,7 +741,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
         }
       }
-      this.dataStreamGraphFinal = await dataStreamGraphCanton;
+      this.dataStreamGraphFinal = dataStreamGraphCanton;
     }
 
   }
@@ -777,7 +770,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
       this.selectedCantons.forEach(cantonSelected => {
 
-        console.log(cantonSelected.name, cantonSelected.covid);
+        //console.log(cantonSelected.name, cantonSelected.covid);
 
         let body = {
           covid: true,
@@ -787,7 +780,7 @@ export class CovidComponent implements OnInit, OnDestroy {
           active: cantonSelected.active
         };
         this.regionService.editRegion(body, cantonSelected._id, this.model).subscribe(res => {
-          console.log('TRUE', res);
+          // console.log('TRUE', res);
 
 
         });
@@ -803,7 +796,7 @@ export class CovidComponent implements OnInit, OnDestroy {
           active: e.itemValue.active
         };
         this.regionService.editRegion(body, e.itemValue._id, this.model).subscribe(res => {
-          console.log('false', res);
+          //console.log('false', res);
 
         });
       }

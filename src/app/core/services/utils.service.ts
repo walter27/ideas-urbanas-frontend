@@ -6,6 +6,9 @@ import { filter } from 'minimatch';
 })
 export class UtilsService {
 
+  itemSelected: any;
+  buttonVisible = false;
+
   constructor() {
 
   }
