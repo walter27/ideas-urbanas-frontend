@@ -10,7 +10,7 @@
                     <span class="nav-item-root" translate>{{ item.title }}</span>
                     <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
                         <div class="text-white" *ngFor="let o of item.options | slice:0:item.amountToShow">
-                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class=" dropdown-item" href="#" (click)="hideMenu()" translate>{{ capitalizeFirst(o.text) }}</a>
+                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class=" dropdown-item" href="#" (click)="hideMenu(item)" translate>{{ capitalizeFirst(o.text) }}</a>
                         </div>
                         <!-- <div *ngIf="item.options.length > item.amountToShow" class="text-center">
                             <fa class="cursor-pointer" [name]="'angle-double-down'"></fa>

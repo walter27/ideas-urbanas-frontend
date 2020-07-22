@@ -60,30 +60,30 @@
     </div>
 
     <div class="row11">
-        <div class="logo12">
+        <div class="logo12 mr-4">
             <a routerLink="/" class="navbar-brand ml-1 logo-link d-none d-sm-none d-md-block">
                 <img id="header-logo" [src]="srcImage" height="80px" width="200px" alt="">
             </a>
         </div>
-        <div class="menu10">
+        <div *ngIf="testBool" class="menu10">
             <div class="w-100 d-none d-sm-none d-md-block mr-4 navbar-collapse mt-2">
                 <ul class="nav ides-navbar-items">
-                    <li *ngFor="let i of items" class="mr-4">
+                    <li *ngFor="let i of items" class="mr-4 animate__animated animate__slideInRight animate__fast">
                         <app-navbar-item (showMore)="showMore.emit($event)" [item]="i"></app-navbar-item>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="otromenu d-none navbar-collapse">
+        <div *ngIf="testBool" class="otromenu d-none navbar-collapse">
             <div class="menu22">
 
-                <div *ngFor="let i of icons" class="ides-navbar-items-buttom">
-                    <a target="_blank" [attr.href]="i.link" class="social ">
+                <div *ngFor="let i of icons" class="ides-navbar-items-buttom animate__animated animate__slideInRight animate__fast">
+                    <a target="_blank" [attr.href]="i.link" class="social  ">
                         <fa class="cursor-pointer" [ngClass]="colorIcon" [name]="i.name"></fa>
                     </a>
                 </div>
 
-                <div class="dropdown" [ngClass]="colorLanguaje">
+                <div class="dropdown animate__animated animate__slideInRight animate__fast" [ngClass]="colorLanguaje">
                     <button [ngClass]="colorButton" class="btn ides-dropdown dropdown-toggle ides-dropdown-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="ides-mr-80 font-weight-bold"
                             [ngClass]="colorLanguaje">{{ language | uppercase }}</span>
@@ -93,7 +93,7 @@
                         <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">Eng</a>
                     </div>
                 </div>
-                <div class="login ides-navbar-items-buttom" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
+                <div class="login ides-navbar-items-buttom animate__animated animate__slideInRight animate__fast" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
                     <div *ngSwitchCase="true" class="ides-text-blue" style="font-size: 10px;">
                         <span translate>hello</span>, {{ getName() }}
                         <i-feather (click)="logout()" class="cursor-pointer" name="log-out"></i-feather>
@@ -106,8 +106,16 @@
 
             </div>
         </div>
+
+        <div *ngIf="!buttonVisible" [ngClass]="columnMenu" class="menu-animate cursor-pointer">
+            <span [ngClass]="marginSpan" (click)="showMenu()">MENU</span>
+        </div>
+
+
     </div>
 </nav>
+
+
 
 <!-- <div class="w-100 d-none d-sm-none d-md-block mr-5">
       <div class="navbar-collapse mt-2 ">

@@ -197,7 +197,7 @@ export class HomeComponent implements OnInit, DoCheck {
       url: '',
       queryParams: {},
       color: '',
-      posX: 5.8,
+      posX: 6.6,
       posY: -77.4031057
     },
     {

@@ -47,6 +47,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   @Output() setLanguage = new EventEmitter<any>();
   @Output() showMore = new EventEmitter<any>();
   overLogin = false;
+  testBool = true;
+
 
   icons = [
     {
@@ -67,6 +69,10 @@ export class HeaderComponent implements OnInit, DoCheck {
   colorLanguaje: string;
   colorButton: string;
   colorButton2: string;
+  columnMenu = 'col-md-2';
+  marginSpan = 'margin-span';
+  colorSpan: string;
+  buttonVisible: boolean;
 
   constructor(
     private authService: AuthService,
@@ -92,6 +98,10 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
       this.colorButton2 = 'ides-text-white3';
+      this.marginSpan = 'margin-span-color';
+      this.utilService.span = false;
+
+
 
 
     }
@@ -107,6 +117,9 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
       this.colorButton2 = 'ides-text-white4';
+      this.marginSpan = 'margin-span';
+      this.utilService.span = true;
+
 
 
 
@@ -118,6 +131,7 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
         this.colorButton2 = 'ides-text-white4';
+        this.utilService.span = true;
 
 
 
@@ -135,6 +149,9 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
+      this.marginSpan = 'margin-span-color';
+      this.utilService.span = false;
+
 
 
       if (this.pos > 20) {
@@ -145,6 +162,9 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
         this.colorButton2 = 'ides-text-white4';
+        this.marginSpan = 'margin-span';
+        this.utilService.span = true;
+
 
 
 
@@ -161,7 +181,8 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
-
+      this.marginSpan = 'margin-span-color';
+      this.utilService.span = false;
       this.regionService.citySelect = undefined;
 
 
@@ -173,6 +194,9 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
         this.colorButton2 = 'ides-text-white4';
+        this.marginSpan = 'margin-span';
+        this.utilService.span = true;
+
 
 
 
@@ -187,9 +211,10 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
+      this.buttonVisible = true;
 
     } else {
-
+      this.buttonVisible = false;
       this.utilService.buttonVisible = false;
 
     }
@@ -212,6 +237,26 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   onSetLanguage(l) {
     this.setLanguage.emit(l);
+  }
+
+
+  showMenu() {
+
+
+    this.testBool = this.testBool ? false : true;
+
+    if (!this.testBool) {
+
+
+      this.columnMenu = 'col-md-10 text-right';
+      this.marginSpan = 'margin-span';
+
+
+    } else {
+      this.columnMenu = 'col-md-2';
+
+    }
+
   }
 
 }
