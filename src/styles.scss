@@ -1471,7 +1471,26 @@ h4.subtitulo-internas {
     text-align: center;
     margin: 0 auto;
 }
+@media (min-width: 320px) {
+.ides-text-white.ides-home-subtitle {
+    max-width: 100%;
+}
+}
+@media (min-width: 320px) {
+    .texto-quines1 {
+        max-width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
 
+@media (min-width: 320px) {
+    .contenido-quines2 {
+        max-width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
 @media (min-width: 360px) {
     .texto-quines1 {
         max-width: 100%;
@@ -1503,7 +1522,14 @@ h4.subtitulo-internas {
         margin: 0 auto;
     }
 }
-
+@media (min-width: 320px) {
+    .conten1 {
+        max-width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        display: inline-block;
+    }
+}
 @media (min-width: 360px) {
     .conten1 {
         max-width: 100%;
@@ -1600,6 +1626,12 @@ i.fa.fa-twitter:hover {
 i.fa.fa-twitter:hover {
     color: #F8A901;
 }
+@media (min-width: 320px) {
+    svg#eewkypfaedpm1 {
+        margin-top: -20%;
+        margin-left: 15%;
+    }
+}
 
 @media (min-width: 360px) {
     svg#eewkypfaedpm1 {
@@ -1647,5 +1679,55 @@ i.fa.fa-twitter:hover {
     svg#eewkypfaedpm1 {
         margin-top: -4%;
         margin-left: 15%;
+    }
+}
+.twitter1 {
+    margin-top: 40px;
+}
+.nav-item {
+    color: #124ca6;
+    font: 17px "Roboto", sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-weight: 400;
+}
+.contentido-blanco {
+    background-color: #fff;
+    margin-top: -30px;
+}
+@media (min-width: 320px){
+    svg#eewkypfaedpm1 {
+        margin-top: -20%;
+        margin-left: 1%;
+        width: 300px;
+        height: 280px;
+    }
+}
+
+@media (min-width: 360px){
+    svg#eewkypfaedpm1 {
+        margin-top: -20%;
+        margin-left: 4%;
+        width: 300px;
+        height: 280px;
+    }
+}
+a.myButton.float-left {
+    z-index: 100;
+}
+@media (min-width: 411px){
+    svg#eewkypfaedpm1 {
+        margin-top: -20%;
+        margin-left: 4%;
+        width: 350px;
+        height: 330px;
+    }
+}
+@media (min-width: 411px){
+    svg#eewkypfaedpm1 {
+        margin-top: -20%;
+        margin-left: 4%;
+        width: 350px;
+        height: 330px;
     }
 }
