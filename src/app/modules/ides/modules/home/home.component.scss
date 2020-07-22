@@ -1249,7 +1249,30 @@ div.ides-card-home {
     margin: 0 auto;
     margin-left: -5%;
 }
+@media (min-width: 320px) {
+    .Texto-home1 {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 50px;
+        margin-top: 5%;
+        margin-left: 0%;
+        padding-top: 250px;
+        padding-left: 10%;
+        z-index: 50;
+    }
+}
 
+@media (min-width: 320px) {
+    .grafico-home1 {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 0px;
+        margin-top: 0%;
+        margin-left: 0%;
+        padding-top: 50px;
+        padding-left: 10%;
+    }
+}
 @media (min-width: 360px) {
     .Texto-home1 {
         max-width: 90%;
@@ -1622,7 +1645,7 @@ div.ides-card-home {
 @media (min-width: 1920px) {
     .Texto-home1 {
         max-width: 40%;
-        margin-top: 30%;
+        margin-top: 35%;
         margin-left: 0%;
         min-width: 430px;
         max-width: 430px;
@@ -1656,7 +1679,15 @@ div.ides-card-home {
         margin-left: 0%;
     }
 }
-
+@media (min-width: 320px) {
+    .ides-home-title {
+        max-width: 500px;
+        max-height: 800px;
+        font: 30px "Poppins", sans-serif;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+}
 @media (min-width: 360px) {
     .ides-home-title {
         max-width: 500px;
