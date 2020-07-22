@@ -42,8 +42,7 @@ export class NavbarItemComponent implements OnInit, DoCheck {
       this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports' ||
       this.regionService.citySelect) {
 
-      if (this.pos > 20 && this.utilService.buttonVisible === false) {
-        console.log('CAMBIAR', this.utilService.buttonVisible);
+      if (this.pos > 20 && !this.utilService.buttonVisible) {
 
         this.textColorNav = 'nav-item';
       } else {
@@ -52,12 +51,10 @@ export class NavbarItemComponent implements OnInit, DoCheck {
       }
     } else {
 
-      if (this.utilService.buttonVisible === true) {
+      if (this.utilService.buttonVisible) {
         this.textColorNav = 'nav-item-covid';
 
       } else {
-        console.log('CAMBIAR2', this.utilService.buttonVisible);
-
         this.textColorNav = 'nav-item';
 
       }
@@ -65,13 +62,19 @@ export class NavbarItemComponent implements OnInit, DoCheck {
 
     }
 
-    if (this.utilService.buttonVisible === true) {
-
-      //console.log('CAMBIAR3', this.utilService.buttonVisible);
+    if (this.utilService.buttonVisible) {
 
       this.textColorNav = 'nav-item-covid';
 
     }
+
+    if (this.utilService.span) {
+      this.textColorNav = 'nav-item';
+
+    }
+
+
+
 
 
 

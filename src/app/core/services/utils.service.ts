@@ -8,6 +8,7 @@ export class UtilsService {
 
   itemSelected: any;
   buttonVisible = false;
+  span: boolean;
 
   constructor() {
 
