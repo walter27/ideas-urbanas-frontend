@@ -69,7 +69,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   colorLanguaje: string;
   colorButton: string;
   colorButton2: string;
-  columnMenu = 'col-md-2';
   marginSpan = 'margin-span';
   colorSpan: string;
   buttonVisible: boolean;
@@ -217,6 +216,9 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.buttonVisible = false;
       this.utilService.buttonVisible = false;
 
+      console.log(this.buttonVisible);
+
+
     }
 
 
@@ -244,18 +246,6 @@ export class HeaderComponent implements OnInit, DoCheck {
 
 
     this.testBool = this.testBool ? false : true;
-
-    if (!this.testBool) {
-
-
-      this.columnMenu = 'col-md-10 text-right';
-      this.marginSpan = 'margin-span';
-
-
-    } else {
-      this.columnMenu = 'col-md-2';
-
-    }
 
   }
 

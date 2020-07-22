@@ -112,7 +112,7 @@ div ul.nav li {
     .row11 {
         display: inline-block;
         margin: 0 auto;
-        min-width: 100%;
+        // min-width: 100%;
         text-align: center;
     }
 }
@@ -121,7 +121,7 @@ div ul.nav li {
     .row11 {
         display: flex;
         margin: 0 auto;
-        min-width: 100%;
+        // min-width: 100%;
         text-align: center;
     }
 }
@@ -167,9 +167,9 @@ div ul.nav li {
 .row11 {
     display: flex;
     margin: 0 auto;
-    min-width: 100%;
+    //min-width: 100%;
     text-align: center;
-    max-width: 1400px;
+    // max-width: 1000px;
 }
 
 //MENU
@@ -178,12 +178,12 @@ div ul.nav li {
 }
 
 .margin-span {
-    margin-right: 1.6em;
+    //margin-right: 6em;
     color: white;
 }
 
 .margin-span-color {
-    margin-right: 1.6em;
+    // margin-right: 6em;
     color: #124ca6;
 }
 .menu-mobile {
