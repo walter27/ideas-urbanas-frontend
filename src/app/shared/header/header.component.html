@@ -59,12 +59,13 @@
         </div>
     </div>
 
+    <div class="logo12">
+        <a routerLink="/" class="navbar-brand ml-1 logo-link d-none d-sm-none d-md-block">
+            <img id="header-logo" [src]="srcImage" height="80px" width="200px" alt="">
+        </a>
+    </div>
     <div class="row11">
-        <div class="logo12 mr-4">
-            <a routerLink="/" class="navbar-brand ml-1 logo-link d-none d-sm-none d-md-block">
-                <img id="header-logo" [src]="srcImage" height="80px" width="200px" alt="">
-            </a>
-        </div>
+
         <div *ngIf="testBool" class="menu10">
             <div class="w-100 d-none d-sm-none d-md-block mr-4 navbar-collapse mt-2">
                 <ul class="nav ides-navbar-items">
@@ -107,13 +108,18 @@
             </div>
         </div>
 
-        <div *ngIf="!buttonVisible" [ngClass]="columnMenu" class="menu-animate cursor-pointer">
-            <span [ngClass]="marginSpan" (click)="showMenu()">MENU</span>
-        </div>
+
 
 
     </div>
+
+
+    <div *ngIf="!buttonVisible" class="cursor-pointer col-md-1 text-center">
+        <span [ngClass]="marginSpan" (click)="showMenu()">MENU</span>
+    </div>
 </nav>
+
+
 
 
 

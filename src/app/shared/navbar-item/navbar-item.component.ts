@@ -68,7 +68,7 @@ export class NavbarItemComponent implements OnInit, DoCheck {
 
     }
 
-    if (this.utilService.span) {
+    if (this.utilService.span && !this.utilService.buttonVisible) {
       this.textColorNav = 'nav-item';
 
     }

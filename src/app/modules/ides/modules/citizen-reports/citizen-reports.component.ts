@@ -26,12 +26,14 @@ export class CitizenReportsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   /* let elem: HTMLElement = document.getElementById('navbarMenu');
-    elem.style.setProperty("background-color", '#189cff');
-    elem.classList.add("sticky-top");
-    elem.classList.remove("fixed-top");*/
+    /* let elem: HTMLElement = document.getElementById('navbarMenu');
+     elem.style.setProperty("background-color", '#189cff');
+     elem.classList.add("sticky-top");
+     elem.classList.remove("fixed-top");*/
 
     this.getClasifications();
+    console.log('Reportes');
+
   }
 
   getClasifications() {
