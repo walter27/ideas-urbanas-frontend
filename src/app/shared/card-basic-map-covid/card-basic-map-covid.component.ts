@@ -48,10 +48,11 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         animation: true,
         backgroundColor: '#E5E8E8 ',
         borderRadius: 20,
+        height: 345,
         events: {
           load: function () {
             setTimeout(() => {
-              this.mapZoom(0.5, -3);
+              this.mapZoom(0.6, -2);
             }, 0.01);
           }
         }

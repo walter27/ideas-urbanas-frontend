@@ -55,6 +55,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
         borderColor: '#000000',
         borderRadius: 20,
         borderWidth: 1,
+        height: 340
 
       },
       title: {
