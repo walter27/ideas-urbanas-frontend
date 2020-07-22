@@ -52,12 +52,14 @@
 
 :host::ng-deep.ui-multiselect .ui-multiselect-label {
     color: rgba(6, 76, 195, 1);
+    padding-left: 1em;
 }
 
 :host::ng-deep.ui-multiselect .ui-multiselect-panel {
     background-color: white;
     border-radius: 14px;
     width: 11rem;
+    padding-left: 1em;
 }
 
 :host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
@@ -256,4 +258,15 @@ h3.titulos-covid {
     font: 29px "Roboto", sans-serif !important;
     color: #24355a;
     font-weight: bold !important;
+}
+.ui-dropdown-label {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+    padding-left: 15px;
+}
+.ui-multiselect .ui-multiselect-label {
+    color: #064cc3;
+    padding-left: 1em;
 }

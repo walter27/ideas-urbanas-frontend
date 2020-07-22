@@ -1,16 +1,25 @@
-<div class="row mb-4 header-city">
-    <div class="col-xl-6 col-lg-12 city-backgroud" [ngClass]="citySelected?.name">
-        <div class="header-city-logo navbar navbar-expand-xl navbar-light bg-lignt static-top pb-4 pl-4 pr-md-5 pl-md-5 ides-header">
-            <div class="pl-4">
-                <a routerLink="/" class="navbar-brand ml-5 logo-link">
-                    <img id="header-logo" class="hide-logo-header" src="assets/logos/logo.png" width="475" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="ides-nube ides-height-85">
+<div class="header-city-logo navbar navbar-expand-xl navbar-light bg-lignt static-top pb-4 pl-4 pr-md-5 pl-md-5 ides-header">
+    <div class="pl-4">
+        <a routerLink="/" class="navbar-brand ml-5 logo-link">
+            <img id="header-logo" class="hide-logo-header" src="assets/logos/logo.png" width="475" alt="">
+        </a>
+    </div>
+</div>
+<div class="row mx-auto covid-header">
+    <div class="covid-header1 ">
+        <h2 translate>citizen reports</h2>
+    </div>
+    <div class="covid-header2">
+        <a class="text-lg-right text-white cursor-pointer" routerLink="/" translate>Inicio / ciudades / Riobamba</a>
+
+    </div>
+</div>
+<div class="contiene-ciuades-todo">
+      
+        <div class="fondo-blanco">
             <div class="row ides-city-p">
-                <div class="col-11 ides-text-white ides-city-details">
-                    <div class="ides-city-details-text">
+                
+                    <div class="fondito-azul">
                         <div class="row ml-1">
                             <h1 class="ml-4 mt-4 ides-text-yellow">
                                 {{citySelected?.name | titlecase}}
@@ -127,22 +136,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
-    </div>
+    
 
-    <div class="col-xl-6 col-lg-12 mb-4 index-city">
-        <div class="ides-card ides-height-100 ides-card-city mr-sm-0 mr-sm-4 mt-2" *ngIf="citySelected">
+    <div class="fondo2-gris">
+        <div class="cuadro-grafico-ciudades" *ngIf="citySelected">
             <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" class="city-index">
             </app-ides-index>
         </div>
     </div>
 </div>
 
-<div class="row pt-4 pl-2">
-    <div class="col-12">
-        <div class="row cursor-pointer">
+<div class="botones">
+    <div class="botones-interior">
+        <div class="botones3">
             <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )" class="col-4 col-sm-6 col-md-4 col-lg-4 col-xl mb-4 ides-mr-5">
                 <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
                 </app-ides-card-clasification>
@@ -150,7 +159,7 @@
         </div>
     </div>
 </div>
-<div class="row mb-5">
+<div class="cuadro-grafico">
     <div class="col-lg-12 col-xl-6 mb-4" *ngFor="let v of resultVariables?.data">
         <div class="ides-card ides-height-100">
             <app-card-basic-graph [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v">
