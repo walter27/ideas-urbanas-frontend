@@ -35,12 +35,23 @@ div ul.nav li {
     color: #076DCD !important;
 }
 
-.mat-menu-content {
+.universidad-inicio {
     width: 100%;
     margin: 0 auto;
     //padding-left: 10%;
     //padding-right: 10%;
-    background-color: #095793;
+    background-color: #23448d;
+    //background: transparent;
+    //background-color: #189cff;
+}
+
+
+.universidad-internas {
+    width: 100%;
+    margin: 0 auto;
+    //padding-left: 10%;
+    //padding-right: 10%;
+    background-color: #f2f2f2;
     //background: transparent;
     //background-color: #189cff;
 }
@@ -194,5 +205,5 @@ div ul.nav li {
 }
 
 .margin-navbar {
-    margin-top: -45px;
+    margin-top: -20px;
 }
