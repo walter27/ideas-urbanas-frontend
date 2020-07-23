@@ -57,7 +57,12 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         }
       },
       title: {
-        text: 'Ecuador'
+        text: 'Evolución Espacial del COVID-19',
+        style: {
+          color: '#243554',
+          fontWeight: 'bold',
+          font: 'Roboto, sans-serif',
+        }
       },
       mapNavigation: {
         enabled: true,

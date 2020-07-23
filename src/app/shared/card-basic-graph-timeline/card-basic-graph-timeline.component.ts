@@ -72,6 +72,9 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       title: {
         text: 'Hitos del COVID-19',
         style: {
+          color: '#243554',
+          fontWeight: 'bold',
+          font: 'Roboto, sans-serif',
           fontSize: '30px',
         }
       },
@@ -79,6 +82,9 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       subtitle: {
         text: 'Cronología de las respuestas urbanas al COVID-19',
         style: {
+          color: '#243554',
+          fontWeight: 'bold',
+          font: 'Roboto, sans-serif',
           fontSize: '15px'
         }
       },

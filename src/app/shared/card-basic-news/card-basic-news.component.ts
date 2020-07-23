@@ -39,58 +39,60 @@ export class CardBasicNewsComponent implements OnInit {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/IDEAS1-01.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/2'
       },
       {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
-        img: 'assets/infografias/IDEAS2-02.png'
+        img: 'assets/infografias/IDEAS2-02.png',
+        read:'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/3'
 
       },
       {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/IDEAS3-03.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/4'
 
       },
       {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/IDEAS4-04.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/1'
 
       },
       {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/MARSCARILLAS-07.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide'
 
       },
       {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/BICICLETAS-19.png',
+        read:'https://twitter.com/escuelagob_ide/status/1280899356183461889/photo/1'
 
 
       }, {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/BICICLETAS-20.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide/status/1280899356183461889/photo/2'
 
       }, {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/BICICLETAS-21.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide/status/1280899356183461889/photo/3'
 
       }, {
         name: 'noticiaa',
         descriptions: 'loreakksdd',
         img: 'assets/infografias/bicicletas-22.png',
-        read: ' '
+        read: 'https://twitter.com/escuelagob_ide/status/1280899356183461889/photo/4'
 
       },
       {

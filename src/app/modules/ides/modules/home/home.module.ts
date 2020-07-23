@@ -11,6 +11,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxTweetModule } from 'ngx-tweet';
 import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { CarouselModule } from 'primeng/carousel';
     TranslateModule,
     AngularSvgIconModule,
     NgbModule,
-    CarouselModule
+    CarouselModule,
+    ButtonModule
   ],
 
 })

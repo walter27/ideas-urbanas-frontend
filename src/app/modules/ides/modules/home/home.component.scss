@@ -1128,6 +1128,8 @@ div.ides-card-home {
 
 .btn-space {
     padding-top: 2em !important;
+    z-index: 1;
+    position: absolute;
 }
 
 @media (min-width: 980px) {
@@ -1249,6 +1251,7 @@ div.ides-card-home {
     margin: 0 auto;
     margin-left: -5%;
 }
+
 @media (min-width: 320px) {
     .Texto-home1 {
         max-width: 90%;
@@ -1273,6 +1276,7 @@ div.ides-card-home {
         padding-left: 10%;
     }
 }
+
 @media (min-width: 360px) {
     .Texto-home1 {
         max-width: 90%;
@@ -1679,6 +1683,7 @@ div.ides-card-home {
         margin-left: 0%;
     }
 }
+
 @media (min-width: 320px) {
     .ides-home-title {
         max-width: 500px;
@@ -1688,6 +1693,7 @@ div.ides-card-home {
         line-height: 1.2;
     }
 }
+
 @media (min-width: 360px) {
     .ides-home-title {
         max-width: 500px;
@@ -1844,3 +1850,5 @@ div.ides-card-home {
 .margins {
     margin-left: 250px;
 }
+
+//
