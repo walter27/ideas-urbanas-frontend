@@ -1632,14 +1632,14 @@ i.fa.fa-twitter:hover {
 }
 @media (min-width: 320px) {
     svg#eewkypfaedpm1 {
-        margin-top: -20%;
+        margin-top: 5%;
         margin-left: 15%;
     }
 }
 
 @media (min-width: 360px) {
     svg#eewkypfaedpm1 {
-        margin-top: -20%;
+        margin-top: 5%;
         margin-left: 15%;
     }
 }
@@ -1656,6 +1656,18 @@ i.fa.fa-twitter:hover {
         margin-top: -15%;
         margin-left: 15%;
     }
+}
+.myButton {
+    border-radius: 36px;
+    border: 1px solid #fff;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff!important;
+    font-family: Arial!important;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 13px 38px;
+    min-width: 155px;
 }
 
 @media (min-width: 1280px) {
@@ -1701,7 +1713,7 @@ i.fa.fa-twitter:hover {
 }
 @media (min-width: 320px){
     svg#eewkypfaedpm1 {
-        margin-top: -20%;
+        margin-top: 10%;
         margin-left: 1%;
         width: 300px;
         height: 280px;
@@ -1710,7 +1722,7 @@ i.fa.fa-twitter:hover {
 
 @media (min-width: 360px){
     svg#eewkypfaedpm1 {
-        margin-top: -20%;
+        margin-top: 10%;
         margin-left: 4%;
         width: 300px;
         height: 280px;
@@ -1721,7 +1733,7 @@ a.myButton.float-left {
 }
 @media (min-width: 411px){
     svg#eewkypfaedpm1 {
-        margin-top: -20%;
+        margin-top: -10%;
         margin-left: 4%;
         width: 350px;
         height: 330px;
