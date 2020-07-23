@@ -94,7 +94,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content2';
       this.srcImage = 'assets/logos/logo-blanco.svg';
-      this.logoUniversidad='assets/logos/blanco.svg';
+      this.logoUniversidad = 'assets/logos/logo-01.png';
       this.colorIcon = 'ides-text-icon';
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content2';
       this.srcImage = 'assets/logos/logo-blanco.svg';
-      this.logoUniversidad = 'assets/logos/blanco.svg';
+      this.logoUniversidad = 'assets/logos/logo-01.png';
       this.colorIcon = 'ides-text-icon';
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
@@ -129,7 +129,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
         this.background = 'mat-menu-content';
         this.srcImage = 'assets/logos/logo-blanco.svg';
-        this.logoUniversidad = 'assets/logos/blanco.svg';
+        this.logoUniversidad = 'assets/logos/logo-01.png';
         this.colorIcon = 'ides-text-icon';
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
@@ -148,7 +148,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
-      this.logoUniversidad='assets/logos/color.svg';
+      this.logoUniversidad = 'assets/logos/color.svg';
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
@@ -162,7 +162,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
         this.background = 'mat-menu-content';
         this.srcImage = 'assets/logos/logo-blanco.svg';
-        this.logoUniversidad='assets/logos/blanco.svg';
+        this.logoUniversidad = 'assets/logos/logo-01.png';
         this.colorIcon = 'ides-text-icon';
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
@@ -182,7 +182,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
-      this.logoUniversidad='assets/logos/color.svg';
+      this.logoUniversidad = 'assets/logos/color.svg';
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
@@ -196,7 +196,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
         this.background = 'mat-menu-content';
         this.srcImage = 'assets/logos/logo-blanco.svg';
-        this.logoUniversidad='assets/logos/blanco.svg';
+        this.logoUniversidad = 'assets/logos/logo-01.png';
         this.colorIcon = 'ides-text-icon';
         this.colorLanguaje = 'text-white';
         this.colorButton = 'ides-text-white';
