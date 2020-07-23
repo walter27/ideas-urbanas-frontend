@@ -44,7 +44,7 @@
             </div>
 
 
-            <div class=" col-lg-6 col-lx-6 ">
+            <div class=" col-lg-6 col-lx-6">
 
                 <!-- <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions6" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
                 </highcharts-chart>-->
@@ -53,9 +53,9 @@
                     <app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts " [variable]="selectVariable">
                     </app-card-basic-graph-covid>
                 </div>
-                <!-- <div *ngIf="selectVariable" class="animate__animated animate__fadeInDown">
+                <div *ngIf="selectVariable" class="mt-3">
                     <p class="subtitulo-covid">{{selectVariable.origins[0].name }}</p>
-                </div>-->
+                </div>
 
 
 
@@ -68,24 +68,24 @@
                 <div *ngIf="dataMapa && selectVariable">
                     <app-card-basic-map-covid [data]="dataMapa" [variable]="selectVariable"></app-card-basic-map-covid>
                 </div>
-                <!-- <div *ngIf="selectVariable" class="animate__animated animate__fadeInDown">
+                <div *ngIf="selectVariable" class="margin-map-orign">
                     <p class="subtitulo-covid">{{selectVariable.origins[0].name }}</p>
-                </div>-->
+                </div>
 
             </div>
 
 
-            <div class="col-md-12 pt-3">
+            <div class="col-md-12">
                 <!-- <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
                 </highcharts-chart>-->
 
-                <div *ngIf="dataStreamGraphFinal && selectVariable" class="animate__animated animate__fadeInDown">
+                <div *ngIf="dataStreamGraphFinal && selectVariable">
                     <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph " [variable]="selectVariable">
                     </app-card-basic-streamgraph>
                     <!-- <div class=" text-uppercase ides-text-blue ides-origins">
                         {{selectVariable.origins[0].name }}
                     </div>-->
-                    <div *ngIf="selectVariable" class="animate__animated animate__fadeInDown">
+                    <div *ngIf="selectVariable">
                         <p class="subtitulo-covid">{{selectVariable.origins[0].name }}</p>
                     </div>
 

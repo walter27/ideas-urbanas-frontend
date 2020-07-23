@@ -65,7 +65,12 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
 
       },
       title: {
-        text: 'Evolución Temporal COVID-19'
+        text: 'Evolución Temporal COVID-19',
+        style: {
+          color: '#243554',
+          fontWeight: 'bold',
+          font: 'Roboto, sans-serif',
+        }
       },
       xAxis: {
         type: 'categories',

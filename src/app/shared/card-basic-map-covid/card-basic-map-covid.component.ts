@@ -48,17 +48,21 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         animation: true,
         backgroundColor: '#E5E8E8 ',
         borderRadius: 20,
-        height: 345,
         events: {
           load: function () {
             setTimeout(() => {
-              this.mapZoom(0.6, -2);
+              this.mapZoom(0.5, -3);
             }, 0.01);
           }
         }
       },
       title: {
-        text: 'Ecuador'
+        text: 'Evolución Espacial del COVID-19',
+        style: {
+          color: '#243554',
+          fontWeight: 'bold',
+          font: 'Roboto, sans-serif',
+        }
       },
       mapNavigation: {
         enabled: true,

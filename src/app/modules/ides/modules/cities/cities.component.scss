@@ -339,4 +339,214 @@ span.indicators{
  .city-index > div > div > div.ng-star-inserted{
     height: 685px !important;
 }
+.contienetodo2 {
+    padding: 100px 0 0px 0;
+    background-color: #fff;
+    // background: url(assets/covid/bg/bg.png);
+    background-size: cover;
+}
 
+.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: #ffffff00;
+    color: #064cc3;
+}
+
+h2.titulos-covid {
+    font: 32px "Roboto", sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: bold !important;
+    line-height: 40px;
+}
+
+p.subtitulo-covid {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+}
+
+.ui-multiselect .ui-multiselect-label {
+    color: #064cc3;
+    margin-left: 10PX;
+}
+
+.ui-dropdown-label {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+    margin-left: 20PX;
+}
+
+@media (min-width: 360px) {
+    h2.titulos-covid {
+        font: 32px "Roboto", sans-serif !important;
+        padding-top: 0.5em !important;
+        color: #24355a;
+        font-weight: bold !important;
+        line-height: 40px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 360px) {
+    p.subtitulo-covid {
+        margin-top: 5px;
+        font: 16px "Roboto", sans-serif;
+        color: #9195a4;
+        line-height: 22px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 980px) {
+    h2.titulos-covid {
+        font: 32px "Roboto", sans-serif !important;
+        padding-top: 0.5em !important;
+        color: #24355a;
+        font-weight: bold !important;
+        line-height: 40px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 980px) {
+    p.subtitulo-covid {
+        margin-top: 5px;
+        font: 16px "Roboto", sans-serif;
+        color: #9195a4;
+        line-height: 22px;
+        margin-top: 0px;
+    }
+}
+
+.covid-header {
+    margin-top: 2px;
+    background: #189cff;
+    background: linear-gradient(78deg, #2194fd 0%, #0b6df5 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 1.6em;
+}
+
+.covid-header1 {
+    width: 50%;
+    text-align: left;
+    padding-left: 3%;
+}
+
+.covid-header2 {
+    width: 50%;
+    text-align: right;
+    padding-right: 3%;
+}
+
+p.subtitulo {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+h2.subtitulo {
+    font: 30px "Roboto", sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: bold !important;
+    line-height: 40px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+.ui-carousel-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0 .1em;
+    margin-top: 30px;
+}
+
+h3.titulos-covid {
+    padding-bottom: 5px;
+    margin-top: 30px;
+    font: 29px "Roboto", sans-serif !important;
+    color: #24355a;
+    font-weight: bold !important;
+}
+.ui-dropdown-label {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    color: white;
+    padding-left: 15px;
+}
+.ui-multiselect .ui-multiselect-label {
+    color: #064cc3;
+    padding-left: 1em;
+}
+.fondo-blanco {
+    background-color: #fff;
+    max-width: 50%;
+    text-align: center;
+}
+.fondo2-gris {
+    background-color: #f1f2f6;
+    max-width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.contiene-ciuades-todo {
+    display: flex;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #f1f2f6;
+    margin: 0 auto;
+}
+.botones-interior {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+.botones {
+    background-color: #fff;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+.botones3 {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 40px;
+}
+.cuadro-grafico {
+    background-color: #fff;
+}
+button#dropdownMenuButton {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #007ad9;
+}
+.fondito-azul {
+    min-width: 300px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 7%;
+    background-color: azure;
+    background: rgb(15,144,246);
+    background: linear-gradient(78deg, rgba(15,144,246,1) 0%, rgba(4,107,245,1) 100%);
+}
+.cuadro-grafico-ciudades {
+    background-color: #fff;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 49px -7px #c7c7cf;
+    padding: 2%;
+}

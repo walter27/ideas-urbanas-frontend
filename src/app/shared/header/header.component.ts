@@ -216,9 +216,6 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.buttonVisible = false;
       this.utilService.buttonVisible = false;
 
-      console.log(this.buttonVisible);
-
-
     }
 
 

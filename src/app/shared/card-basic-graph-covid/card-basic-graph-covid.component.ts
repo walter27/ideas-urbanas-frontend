@@ -31,7 +31,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
     HC_exporting(this.highcharts);
     HC_export(this.highcharts);
     Color_Axis(this.highcharts);
-    Series_Label(this.highcharts);
+    //Series_Label(this.highcharts);
 
 
   }
@@ -55,12 +55,15 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
         borderColor: '#000000',
         borderRadius: 20,
         borderWidth: 1,
-        height: 340
 
       },
       title: {
-        useHTML: true,
-        text: 'Evolución Espacial del COVID-19'
+        text: `Casos ${this.variable.name}`,
+        style: {
+          color: '#243554',
+          fontWeight: 'bold',
+          font: 'Roboto, sans-serif',
+        }
       },
       xAxis: {
         categories: this.dates,
