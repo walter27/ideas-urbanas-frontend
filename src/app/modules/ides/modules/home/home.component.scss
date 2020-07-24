@@ -1854,7 +1854,7 @@ div.ides-card-home {
 //
 .myButton {
     border-radius: 36px;
-    border: 1px solid #ffffff;
+    border: 1px solid #20479b00;
     display: inline-block;
     cursor: pointer;
     color: #ffffff !important;
@@ -1863,4 +1863,9 @@ div.ides-card-home {
     text-decoration: none;
     padding: 13px 38px 13px 38px;
     min-width: 155px;
+    background-color: #f0ffff00;
+    border: solid 1px #fff;
+}
+.col-md-12.text-center {
+    background-color: #f2f2f2;
 }
