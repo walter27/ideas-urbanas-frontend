@@ -1,10 +1,10 @@
-<div class="header-city-logo navbar navbar-expand-xl navbar-light bg-lignt static-top pb-4 pl-4 pr-md-5 pl-md-5 ides-header">
+<!--<div class="header-city-logo navbar navbar-expand-xl navbar-light bg-lignt static-top pb-4 pl-4 pr-md-5 pl-md-5 ides-header">
     <div class="pl-4">
         <a routerLink="/" class="navbar-brand ml-5 logo-link">
-            <img id="header-logo" class="hide-logo-header" src="assets/logos/logo.png" width="475" alt="">
+            <img id="header-logo" class="hide-logo-header" src="assets/logos/logo.png" width="400" alt="">
         </a>
     </div>
-</div>
+</div>-->
 <div class="row mx-auto covid-header">
     <div class="covid-header1 ">
         <h2 translate>citizen reports</h2>
@@ -15,133 +15,186 @@
     </div>
 </div>
 <div class="contiene-ciuades-todo">
-      
-        <div class="fondo-blanco">
-            <div class="row ides-city-p">
-                
-                    <div class="fondito-azul">
-                        <div class="row ml-1">
-                            <h1 class="ml-4 mt-4 ides-text-yellow">
-                                {{citySelected?.name | titlecase}}
-                            </h1>
-                        </div>
-                        <div class="row ml-1">
-                            <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}" target="_blanck">{{ citySelected?.url }}</a>
-                        </div>
-                        <div class="row pl-4 pr-4 pt-4 city-resume">
-                            <div class="col-5" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
-                                <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
-                                <div class="row" *ngIf="!overPoblacion">
-                                    <div class="col-12 col-md-5">
-                                        <h2 class="ides-text-yellow">
-                                            {{citySelected?.extraData?.poblacionTotal | number:'1.0-0'}}
-                                        </h2>
-                                    </div>
-                                    <div class="col-12 col-md-7 pr-0">
-                                        <p class="mt-2 indicators">
-                                            Población
-                                        </p>
-                                        <span class="indicators">
-                                            (Proyección INEC)
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row" *ngIf="overPoblacion">
-                                    <div class="col-12 col-md-5">
-                                        <h2 class="ides-text-yellow">
-                                            {{citySelected?.extraData?.poblacionUrbana | number:'1.0-0'}}
-                                        </h2>
-                                    </div>
-                                    <div class="col-12 col-md-7 pr-0">
-                                        <p class="mt-2 indicators">
-                                            Población Urbana
-                                        </p>
-                                        <span class="indicators">
-                                            (Proyección Banco Mundial)
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-7" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
-                                <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
-                                <div class="row" *ngIf="!overVAB">
-                                    <div class="col-12 col-md-4 col-lg-5">
-                                        <h2 class="ides-text-yellow">
-                                            {{citySelected?.extraData?.vabCantonal | number:'1.0-0'}}
-                                        </h2>
-                                    </div>
-                                    <div class="col-12 col-md-8 col-lg-7 pr-0 pl-0">
-                                        <p class="mt-2 indicators">
-                                            Valor agregado bruto (VAB) cantonal
-                                        </p>
-                                        <span class="indicators">
-                                            (Banco Central 2018)
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row" *ngIf="overVAB">
-                                    <div class="col-12 col-md-4 col-lg-5">
-                                        <h2 class="ides-text-yellow">
-                                            {{citySelected?.extraData?.vabNacional | number:'1.2-2'}} %
-                                        </h2>
-                                    </div>
-                                    <div class="col-12 col-md-8 col-lg-7 pr-0 pl-0">
-                                        <p class="mt-2 indicators">
-                                            % Valor agregado bruto (VAB) nacional
-                                        </p>
-                                        <span class="indicators">
-                                            (Banco Central 2018)
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pl-4 pr-4 pt-4 city-resume">
-                            <div class="col-sm-12 col-md-10">
-                                <h3 class="city-ides-subtitle">Actividades principales<span class="indicators">(Banco
-                                        Central 2018)</span></h3>
-                                <div class="row city-activities">
-                                    <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
-                                        <div class="row">
-                                            <div>
-                                                <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
-                                            </div>
-                                            <div class="ml-1" *ngIf="a.over">
-                                                <p class="mb-0 activity">
-                                                    {{a.name}}
-                                                </p>
-                                                <p class="ides-text-yellow activity-value mb-0 ">
-                                                    {{a.vab}} % <span class="ides-text-white">VAB</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row p-t-4 p-b-4 p-l-0 p-r-0 city-resume">
-                            <div class="col-lg-12 col-xl-12 pl-4 pt-4">
-                                <h3 class="ides-text-white city-ides-subtitle">
-                                    La percepción ciudadana
-                                </h3>
+    <div class="fondo-blanco">
+        <div class="row ides-city-p">
+
+            <div class="fondito-azul">
+
+                <div class="row">
+
+                    <img [src]="imageCity" alt="" height="250px" width="450px">
+
+                </div>
+                <div class="row ml-1">
+                    <h1 class="ml-4 mt-4 ides-text-yellow">
+                        {{citySelected?.name | titlecase}}
+                    </h1>
+                </div>
+                <div class="row ml-1">
+                    <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}" target="_blanck">{{ citySelected?.url }}</a>
+                </div>
+                <div class="row pl-4 pr-4 pt-4 city-resume">
+                    <div class="col-12" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
+                        <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
+                        <div class="row" *ngIf="!overPoblacion">
+                            <div class="col-12 col-md-5">
+                                <h2 class="ides-text-yellow">
+                                    {{citySelected?.extraData?.poblacionTotal | number:'1.0-0'}}
+                                </h2>
                             </div>
-                            <div class="col-md-12">
-                                <div class="row justify-content-center" (click)="goToHome()">
-                                    <!-- <angular-tag-cloud [config]="options" [data]="tagsData" class="tag-cloud-city">
-                                    </angular-tag-cloud> -->
-                                    <section id="tag-cloud-wrapper" class="mt-4">
-                                    </section>
-                                </div>
+                            <div class="col-12 col-md-7 pr-0">
+                                <p class="mt-2 indicators">
+                                    Población
+                                </p>
+                                <span class="indicators">
+                                    (Proyección INEC)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="overPoblacion">
+                            <div class="col-12 col-md-5">
+                                <h2 class="ides-text-yellow">
+                                    {{citySelected?.extraData?.poblacionUrbana | number:'1.0-0'}}
+                                </h2>
+                            </div>
+                            <div class="col-12 col-md-7 pr-0">
+                                <p class="mt-2 indicators">
+                                    Población Urbana
+                                </p>
+                                <span class="indicators">
+                                    (Proyección Banco Mundial)
+                                </span>
                             </div>
                         </div>
                     </div>
-                
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="col-12" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
+                        <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
+                        <div class="row" *ngIf="!overVAB">
+                            <div class="col-6">
+                                <h2 class="ides-text-yellow">
+                                    {{citySelected?.extraData?.vabCantonal | number:'1.0-0'}}
+                                </h2>
+                            </div>
+                            <div class="col-6 pr-0 pl-0">
+                                <p class="mt-2 indicators">
+                                    Valor agregado bruto (VAB) cantonal
+                                </p>
+                                <span class="indicators">
+                                    (Banco Central 2018)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="overVAB">
+                            <div class="col-6">
+                                <h2 class="ides-text-yellow">
+                                    {{citySelected?.extraData?.vabNacional | number:'1.2-2'}} %
+                                </h2>
+                            </div>
+                            <div class="col-6  pr-0 pl-0">
+                                <p class="mt-2 indicators">
+                                    % Valor agregado bruto (VAB) nacional
+                                </p>
+                                <span class="indicators">
+                                    (Banco Central 2018)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <div class="row pl-4 pr-4 pt-4 city-resume">
+                    <div class="col-sm-12 col-md-10">
+
+                        <div class="col-12 text-center w-100 pb-3">
+                            <h3 class="city-ides-subtitle">Actividades principales<span class="indicators">(Banco
+                                    Central 2018)</span></h3>
+                        </div>
+
+
+                        <div class="row  w-100 text-center">
+
+                            <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
+                                <div class="row">
+
+                                    <div>
+                                        <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
+                                    </div>
+                                    <div class="ml-1" *ngIf="a.over">
+                                        <p class="mb-0 activity">
+                                            {{a.name}}
+                                        </p>
+                                        <p class="ides-text-yellow activity-value mb-0 ">
+                                            {{a.vab}} % <span class="ides-text-white">VAB</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
-    
+    </div>
+
 
     <div class="fondo2-gris">
+
+        <div class="row p-t-4 p-b-4 p-l-0 p-r-0 city-resume">
+
+
+
+            <div class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
+                <h3>DESCRIBE A TU CIUDAD</h3>
+            </div>
+
+            <div class="col-md-6 text-right pt-4">
+                <input type="text" pInputText [(ngModel)]="property" />
+            </div>
+
+            <div class="col-md-6 text-left pt-4">
+                <p-button label="ENVIAR"></p-button>
+
+            </div>
+
+            <div class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
+                <h3>
+                    Nube de palabras
+                </h3>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-md-12">
+                <div class="row justify-content-center" (click)="goToHome()">
+                    <!-- <angular-tag-cloud [config]="options" [data]="tagsData" class="tag-cloud-city">
+                            </angular-tag-cloud> -->
+                    <section id="tag-cloud-wrapper" class="mt-4">
+                    </section>
+                </div>
+            </div>
+        </div>
         <div class="cuadro-grafico-ciudades" *ngIf="citySelected">
             <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" class="city-index">
             </app-ides-index>
@@ -149,75 +202,99 @@
     </div>
 </div>
 
-<div class="botones">
-    <div class="botones-interior">
-        <div class="botones3">
-            <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )" class="col-4 col-sm-6 col-md-4 col-lg-4 col-xl mb-4 ides-mr-5">
-                <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
-                </app-ides-card-clasification>
+<div class="container">
+    <div class="botones">
+        <div class="botones-interior">
+            <div class="botones3">
+                <div (click)="onSelectClasification(c)" *ngFor="let c of ( resultClasification$ | async )" class="col-4 col-sm-6 col-md-4 col-lg-4 col-xl mb-4 ides-mr-5">
+                    <app-ides-card-clasification [clasification]="c" [selected]="c._id === clasificationSelected._id">
+                    </app-ides-card-clasification>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="cuadro-grafico">
-    <div class="col-lg-12 col-xl-6 mb-4" *ngFor="let v of resultVariables?.data">
+    <div class="cuadro-grafico">
+
+
+
+
+        <div *ngIf="citySelected && v" class="ides-card ides-height-100">
+
+
+            <div class="col-md-12 ml-2 mt-3">
+                <p-dropdown class="block " [options]="resultVariables?.data" [(ngModel)]="v" name="v" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()">
+                </p-dropdown>
+            </div>
+            <app-card-basic-graph [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v">
+            </app-card-basic-graph>
+        </div>
+
+        <!--  <div class="col-lg-12 col-xl-6 mb-4" *ngFor="let v of resultVariables?.data">
+
+
+
         <div class="ides-card ides-height-100">
             <app-card-basic-graph [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v">
             </app-card-basic-graph>
         </div>
+    </div>-->
     </div>
-</div>
-<div *ngIf="( resultResearch$ | async ) as research">
-    <div *ngIf="research?.data.length > 0">
-        <div class="row justify-content-center">
-            <div class="col text-center">
-                <h2 class="subtitle ides-text-blue" translate>Investigación</h2>
-            </div>
-        </div>
 
-        <div class="row mb-4">
-            <div class="col">
-                <nav class="navbar navbar-expand-md">
-                    <div class="collapse navbar-collapse" id="navbarResponsiveCity">
-                        <ul class="nav text-uppercase font-weight-bold">
-                            <li (click)="onSelectCategory(i)" class="nav-item" *ngFor="let i of items">
-                                <app-ides-tab-item [active]="i.active" [item]="i"></app-ides-tab-item>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add information
-                    <i-feather name="arrow-up"></i-feather>
-                </a>
-            </div>
-            <div *ngIf="isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                <button [routerLink]="['/admin/research']" [queryParams]="{showModal: true, goBack: citySelected?._id}" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
-                    Cargar un nuevo archivo
-                    <i-feather name="arrow-up"></i-feather>
-                </button>
-            </div>
-        </div>
 
-        <div *ngFor="let c of research?.data" class="row mb-4">
-            <div class="ides-card row">
-                <div class="col-sm-3 col-md-1">
-                    <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img" [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
-                </div>
-                <div class="col-sm-10 col-md-11">
-                    <div class="row">
-                        <div class="col ides-text-blue-dark">
-                            <h3 class="font-weight-bolder">{{ c.name }}</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p>{{ c.description }}</p>
-                        </div>
-                    </div>
+    <div *ngIf="( resultResearch$ | async ) as research">
+        <div *ngIf="research?.data.length > 0">
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <h2 class="subtitle ides-text-blue" translate>Investigación</h2>
                 </div>
             </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <nav class="navbar navbar-expand-md">
+                        <div class="collapse navbar-collapse" id="navbarResponsiveCity">
+                            <ul class="nav text-uppercase font-weight-bold">
+                                <li (click)="onSelectCategory(i)" class="nav-item" *ngFor="let i of items">
+                                    <app-ides-tab-item [active]="i.active" [item]="i"></app-ides-tab-item>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
+                    <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
+                        information
+                        <i-feather name="arrow-up"></i-feather>
+                    </a>
+                </div>
+                <div *ngIf="isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
+                    <button [routerLink]="['/admin/research']" [queryParams]="{showModal: true, goBack: citySelected?._id}" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
+                        Cargar un nuevo archivo
+                        <i-feather name="arrow-up"></i-feather>
+                    </button>
+                </div>
+            </div>
+
+            <div *ngFor="let c of research?.data" class="row mb-4">
+                <div class="ides-card row">
+                    <div class="col-sm-3 col-md-1">
+                        <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img" [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
+                    </div>
+                    <div class="col-sm-10 col-md-11">
+                        <div class="row">
+                            <div class="col ides-text-blue-dark">
+                                <h3 class="font-weight-bolder">{{ c.name }}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>{{ c.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>

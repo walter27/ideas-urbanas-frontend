@@ -1,21 +1,17 @@
-<div class="col-12 mb-4" >
+<div class="col-12 mb-4">
     <div class="row">
-        <div class="col-12 ides-text-blue mb-4">
-            <h2 class="subtitulo" translate>{{ getTitle() }}</h2>
+        <div class="col-6 ides-text-blue text-left mt-3">
+            <h3 class="subtitulo" translate>{{ getTitle() }}</h3>
+        </div>
+        <div class="col-6 text-right mb-2">
+            <app-ides-download [titleExport]="'Índices'" [hiddenCSV]="true" [idElement]="'indexesGraph'" [nameFile]="'indices_ideas_urbanas'"></app-ides-download>
         </div>
         <div class="col-12 mb-4">
-            <p class="subtitulo" translate>index description</p>
+            <p class="text-justify" translate>index description</p>
         </div>
-        <div class="canvas-index-width" [ngClass]="{ 'col-12': !marginAuto }"
-            [ngStyle]="{ 'margin': marginAuto ? 'auto' : '' }" *ngIf="radarChartData.length > 0">
-            <canvas id="indexesGraph" baseChart width="1200" [datasets]="radarChartData" [options]="radarChartOptions"
-                [labels]="radarChartLabels" [chartType]="radarChartType"
-                [ngClass]="radarChartData.length > 10 ? 'chart-index-size-plus' : 'chart-index-size'">
+        <div class="canvas-index-width" [ngClass]="{ 'col-12': !marginAuto }" [ngStyle]="{ 'margin': marginAuto ? 'auto' : '' }" *ngIf="radarChartData.length > 0">
+            <canvas id="indexesGraph" baseChart width="1200" [datasets]="radarChartData" [options]="radarChartOptions" [labels]="radarChartLabels" [chartType]="radarChartType" [ngClass]="radarChartData.length > 10 ? 'chart-index-size-plus' : 'chart-index-size'">
             </canvas>
         </div>
     </div>
-</div>
-<div class="col-12">
-    <app-ides-download [titleExport]="'Índices'" [hiddenCSV]="true" [idElement]="'indexesGraph'"
-        [nameFile]="'indices_ideas_urbanas'"></app-ides-download>
 </div>

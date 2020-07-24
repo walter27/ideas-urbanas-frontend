@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   colorSpan: string;
   buttonVisible: boolean;
   logoUniversidad: string;
-  backgroundUniversidad:String;
+  backgroundUniversidad: String;
 
   constructor(
     private authService: AuthService,
@@ -101,7 +101,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorButton = 'ides-text-white';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
-      this.backgroundUniversidad="universidad-inicio";
+      this.backgroundUniversidad = "universidad-inicio";
       this.utilService.span = false;
 
 
@@ -122,7 +122,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorButton = 'ides-text-white';
       this.colorButton2 = 'ides-text-white4';
       this.marginSpan = 'margin-span';
-      this.backgroundUniversidad="universidad-inicio";
+      this.backgroundUniversidad = "universidad-inicio";
       this.utilService.span = false;
 
 
@@ -140,14 +140,14 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
-      this.backgroundUniversidad="universidad-internas";
+      this.backgroundUniversidad = "universidad-internas";
 
       this.utilService.span = true;
     }
 
 
 
-    if (this.regionService.citySelect && this.route.url === '/home') {
+    if (this.regionService.citySelectedCloud || this.regionService.citySelect && this.route.url === '/home') {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
@@ -157,15 +157,15 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
-      this.backgroundUniversidad="universidad-internas";
+      this.backgroundUniversidad = "universidad-internas";
       this.utilService.span = true;
 
 
     }
 
-    
+
     if (this.route.url === '/covid' || this.route.url === '/thematic' ||
-      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
+        this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
@@ -175,7 +175,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
-      this.backgroundUniversidad="universidad-internas";
+      this.backgroundUniversidad = "universidad-internas";
       this.utilService.span = true;
       this.regionService.citySelect = undefined;
 
