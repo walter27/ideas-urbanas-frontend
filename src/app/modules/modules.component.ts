@@ -48,14 +48,14 @@ export class ModulesComponent implements OnInit {
       url: '/home',
       active: false
     },
-    /*{
+    {
       id: 'cities',
       title: 'cities',
       type: 'drop',
       options: [],
       url: '/cities',
       active: false
-    },*/
+    },
     {
       id: 'thematics',
       title: 'thematics',

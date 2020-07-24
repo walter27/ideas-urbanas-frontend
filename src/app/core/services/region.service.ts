@@ -33,6 +33,7 @@ export class RegionService {
   urlCanton = environment.canton.base;
   urlParish = environment.parish.base;
   citySelect: any;
+  citySelectedCloud: any;
 
 
   constructor(

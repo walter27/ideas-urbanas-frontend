@@ -58,7 +58,8 @@ export class CitiesComponent implements OnInit {
 
   overVAB = false;
   overPoblacion = false;
-  v: any;
+  v: Variable;
+  imageCity: string;
 
   constructor(
     private clasificationService: ClasificationService,
@@ -85,6 +86,8 @@ export class CitiesComponent implements OnInit {
       this.citySelected = null;
       this.regionService.getRegion(this.idCity, 'Canton').subscribe(resp => {
         this.citySelected = resp;
+        this.imageCity = `assets/cities/${this.citySelected.name.toUpperCase()}.jpg`;
+        this.regionService.citySelectedCloud = this.citySelected;
         this.getResearch();
         this.listTags(this.idCity);
         this.getClasifications();
@@ -142,6 +145,7 @@ export class CitiesComponent implements OnInit {
       })
     ).subscribe(resp => {
       this.resultVariables = resp;
+      this.v = this.resultVariables.data[0];
     });
   }
 
@@ -234,6 +238,12 @@ export class CitiesComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['/home'], { queryParams: { city: this.citySelected._id } });
+  }
+
+
+  getVariableSelected() {
+    //console.log(this.v);
+
   }
 
 }

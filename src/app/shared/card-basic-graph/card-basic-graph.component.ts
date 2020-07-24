@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges } from '@angular/core';
 import { ItemDropdown } from 'src/app/core/models/item-dropdown.model';
 import { Label, Color, BaseChartDirective } from 'ng2-charts';
 const years = require('src/app/core/const/years.data');
@@ -28,7 +28,7 @@ enum CharType {
   templateUrl: './card-basic-graph.component.html',
   styleUrls: ['./card-basic-graph.component.scss']
 })
-export class CardBasicGraphComponent implements OnInit {
+export class CardBasicGraphComponent implements OnInit, OnChanges {
 
   subscription: any;
 
@@ -49,10 +49,11 @@ export class CardBasicGraphComponent implements OnInit {
   };
 
   @Input() title: string;
-  @Input() variableSelected: Variable;
+  @Input('variableSelected') variableSelected: Variable;
   @Input() citySelected: Region;
   @Input() showDropCities = false;
   @Input() showDropYears = false;
+
 
   years: ItemDropdown[] = [];
 
@@ -297,8 +298,15 @@ export class CardBasicGraphComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     sessionStorage.setItem('citiesHidden', '[]');
     this.getCities();
+  }
+
+  ngOnChanges(changes) {
+    if (changes['variableSelected']) {
+      this.getData();
+    }
   }
 
   getCities() {
@@ -353,9 +361,9 @@ export class CardBasicGraphComponent implements OnInit {
         this.lineChartOptions.scales.yAxes[0].stacked = true;
         this.lineChartOptions.scales.yAxes[0].scaleLabel.labelString = this.variableSelected.label == '' ? 'Cantidad' : this.variableSelected.label;
         this.lineChartOptions.hover = { mode: "label" };
-        this.lineChartColors = [{ backgroundColor: '#004587' }, { backgroundColor: '#076DCD' }, { backgroundColor: '#FFDA20' }, 
-                                { backgroundColor: '#F8A901' }, { backgroundColor: '#1BD4D4' }, { backgroundColor: '#AAD6FF' },
-                                { backgroundColor: '#8F8F8F' }, { backgroundColor: '#BFBFBF' }, { backgroundColor: '#E3E3E3' }];
+        this.lineChartColors = [{ backgroundColor: '#004587' }, { backgroundColor: '#076DCD' }, { backgroundColor: '#FFDA20' },
+        { backgroundColor: '#F8A901' }, { backgroundColor: '#1BD4D4' }, { backgroundColor: '#AAD6FF' },
+        { backgroundColor: '#8F8F8F' }, { backgroundColor: '#BFBFBF' }, { backgroundColor: '#E3E3E3' }];
 
         Object.keys(this.resultData[0].value).forEach(k => {
           this.lineChartData.push(
@@ -456,6 +464,10 @@ export class CardBasicGraphComponent implements OnInit {
     this.loading = true;
 
     let idVariable = null;
+
+
+    //console.log(this.variableSelected);
+
 
     if (this.variableSelected) {
       sessionStorage.setItem('variableSelectedName', this.variableSelected.name);

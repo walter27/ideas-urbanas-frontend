@@ -1,61 +1,82 @@
 .Ambato {
-    background: transparent url(../../../../../assets/cities/AMBATO.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;   
-}
-.Ibarra {
-    background: transparent url(../../../../../assets/cities/IBARRA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
-}
-.Manta {
-    background: transparent url(../../../../../assets/cities/MANTA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
-}
-.Orellana {
-    background: transparent url(../../../../../assets/cities/ORELLANA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
-}
-.Portoviejo {
-    background: transparent url(../../../../../assets/cities/PORTOVIEJO.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
-}
-.Riobamba {
-    background: transparent url(../../../../../assets/cities/RIOBAMBA.jpg) 50% 0% no-repeat padding-box; opacity: 1; height: 100%;
+    background: transparent url(../../../../../assets/cities/AMBATO.jpg) 50% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
 }
 
-.header-city{
+.Ibarra {
+    background: transparent url(../../../../../assets/cities/IBARRA.jpg) 50% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
+}
+
+.Manta {
+    background: transparent url(../../../../../assets/cities/MANTA.jpg) 50% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
+}
+
+.Orellana {
+    background: transparent url(../../../../../assets/cities/ORELLANA.jpg) 50% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
+}
+
+.Portoviejo {
+    background: transparent url(../../../../../assets/cities/PORTOVIEJO.jpg) 50% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
+}
+
+.Riobamba {
+    background: transparent url(../../../../../assets/cities/RIOBAMBA.jpg) 50% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
+}
+
+.header-city {
     height: 900px;
     margin-left: -85px !important;
     margin-right: -85px !important;
     background-size: cover;
 }
 
-.ides-text-white{
+.ides-text-white {
     color: #FFFFFF !important;
 }
 
-.ides-text-white > a{
+.ides-text-white>a {
     color: #FFFFFF !important;
-    text-decoration: underline;;
+    text-decoration: underline;
+    ;
 }
 
-.city-shield{
+.city-shield {
     width: 220px;
     height: 220px;
 }
-.city-img{
+
+.city-img {
     height: 65px;
 }
 
-.activity{
+.activity {
     font: 16px/30px 'Noto Sans TC' !important;
 }
 
-.activity-value{
+.activity-value {
     font: 20px/33px 'Noto Sans TC' !important;
 }
 
-.activity-value > span{
+.activity-value>span {
     font: 14px/20px 'Noto Sans TC' !important;
 }
 
+
 /* moviles vertical*/
+
 @media screen and (max-width: 575px) {
-    .ides-card-city{
+    .ides-card-city {
         margin-top: 1.5em !important;
     }
     .header-city {
@@ -64,15 +85,15 @@
         margin-right: 0 !important;
         background-size: cover;
     }
-    .city-backgroud{
+    .city-backgroud {
         position: relative !important;
         padding-left: 0 !important;
         z-index: 1 !important;
     }
-    .index-city{
+    .index-city {
         position: relative !important;
     }
-    .header-city-logo{
+    .header-city-logo {
         display: none !important;
     }
     .research-img {
@@ -80,36 +101,38 @@
         width: 3em;
         margin-bottom: 5px;
     }
-    .city-img{
+    .city-img {
         height: 45px;
     }
-    .activity{
+    .activity {
         font: 10px 'Noto Sans TC' !important;
     }
-    .activity-value{
+    .activity-value {
         font: 10px 'Noto Sans TC' !important;
     }
     .ides-city-p {
         padding: 0 1em !important;
         margin-right: -50px !important;
     }
-    .ides-city-details{
-        background-color:rgba(0,0,0,0.3) !important;
+    .ides-city-details {
+        background-color: rgba(0, 0, 0, 0.3) !important;
         margin: 0 !important;
     }
-    .city-ides-subtitle{
+    .city-ides-subtitle {
         font: 18px "Noto Sans TC" !important;
     }
-    .city-resume{
+    .city-resume {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    .city-activities{
+    .city-activities {
         padding-left: 1em !important;
     }
 }
 
+
 /* moviles horizontal*/
+
 @media screen and (min-width: 576px) and (max-width: 767px) {
     .header-city {
         height: 100%;
@@ -117,14 +140,16 @@
         margin-right: -35px !important;
         background-size: cover;
     }
-    .city-backgroud{
+    .city-backgroud {
         z-index: 1 !important;
     }
 }
 
+
 /* tabletas */
+
 @media screen and (min-width: 768px) and (max-width: 991px) {
-    .ides-card-city{
+    .ides-card-city {
         margin-top: 2em !important;
     }
     .header-city {
@@ -133,15 +158,15 @@
         margin-right: 0px !important;
         background-size: cover;
     }
-    .city-backgroud{
+    .city-backgroud {
         position: relative !important;
         padding-left: 0 !important;
         z-index: 1 !important;
     }
-    .index-city{
+    .index-city {
         position: relative !important;
     }
-    .header-city-logo{
+    .header-city-logo {
         display: none !important;
     }
     .research-img {
@@ -153,15 +178,17 @@
         padding: 0 !important;
         margin-right: -43px !important;
     }
-    .ides-city-details{
-        background-color:rgba(0,0,0,0.3) !important;
+    .ides-city-details {
+        background-color: rgba(0, 0, 0, 0.3) !important;
         margin: 0 1em !important;
     }
 }
 
+
 /* normal */
-@media screen and (min-width: 992px) and (max-width: 1199.98px){
-    .ides-card-city{
+
+@media screen and (min-width: 992px) and (max-width: 1199.98px) {
+    .ides-card-city {
         margin-top: 2em !important;
     }
     .header-city {
@@ -170,15 +197,15 @@
         margin-right: 0px !important;
         background-size: cover;
     }
-    .city-backgroud{
+    .city-backgroud {
         position: relative !important;
         padding-left: 0 !important;
         z-index: 1 !important;
     }
-    .index-city{
+    .index-city {
         position: relative !important;
     }
-    .header-city-logo{
+    .header-city-logo {
         display: none !important;
     }
     .research-img {
@@ -190,14 +217,14 @@
         padding: 0 !important;
         margin-right: -65px !important;
     }
-    .ides-city-details{
-        background-color:rgba(0,0,0,0.3) !important;
+    .ides-city-details {
+        background-color: rgba(0, 0, 0, 0.3) !important;
         margin: 0 1em !important;
     }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1280px) {
-    .ides-card-city{
+    .ides-card-city {
         margin-top: 0 !important;
     }
     .header-city {
@@ -206,17 +233,17 @@
         margin-right: 0px !important;
         background-size: cover;
     }
-    .city-backgroud{
+    .city-backgroud {
         position: relative !important;
         padding-left: 0 !important;
         z-index: 1 !important;
         height: min-content !important;
     }
-    .index-city{
+    .index-city {
         position: relative !important;
         height: 760px !important;
     }
-    .header-city-logo{
+    .header-city-logo {
         display: none !important;
     }
     .research-img {
@@ -228,53 +255,61 @@
         padding: 0 !important;
         margin-right: -35px !important;
     }
-    .ides-city-details{
-        background-color:rgba(0,0,0,0.3) !important;
+    .ides-city-details {
+        background-color: rgba(0, 0, 0, 0.3) !important;
         margin: 0 1em !important;
     }
-} 
-   
+}
+
+
 /* pantallas grandes */
+
 @media screen and (min-width: 1281px) and (max-width: 1499.98px) {
-    body { font-size: 17px; }
-    .header-city{
+    body {
+        font-size: 17px;
+    }
+    .header-city {
         height: 840px;
         margin-left: -85px !important;
         margin-right: -85px !important;
         background-size: cover;
     }
-    .index-city{
+    .index-city {
         height: 840px !important;
     }
 }
 
-@media screen and (min-width: 1500px ) and (max-width: 1599.98px ){
-    body { font-size: 17px; }
-    .header-city{
+@media screen and (min-width: 1500px) and (max-width: 1599.98px) {
+    body {
+        font-size: 17px;
+    }
+    .header-city {
         height: 830px;
         margin-left: -85px !important;
         margin-right: -85px !important;
         background-size: cover;
     }
-    .index-city{
+    .index-city {
         height: 820px !important;
     }
 }
 
 @media screen and (min-width: 1600px) {
-    body { font-size: 17px; }
-    .header-city{
+    body {
+        font-size: 17px;
+    }
+    .header-city {
         height: 930px;
         margin-left: -85px !important;
         margin-right: -85px !important;
         background-size: cover;
     }
-    .index-city{
+    .index-city {
         height: 930px !important;
     }
 }
 
-.city-backgroud{
+.city-backgroud {
     position: absolute;
     top: 0;
     padding-right: 0 !important;
@@ -283,18 +318,18 @@
     z-index: 9998;
 }
 
-.header-city-logo{
+.header-city-logo {
     height: 120px;
     background: transparent linear-gradient(125deg, #FFFFFF 0%, #FFFFFF 42%, #FFFFFF 100%) 0% 0% no-repeat padding-box !important;
     opacity: 0.8;
 }
 
-.index-city{
+.index-city {
     position: absolute;
     right: 0;
 }
 
-.ides-height-85{
+.ides-height-85 {
     height: 100;
 }
 
@@ -303,42 +338,44 @@
     opacity: 0.8;
 }
 
-.ides-city-details{
-    background-color:rgba(0,0,0,0.3) !important;
+.ides-city-details {
+    background-color: rgba(0, 0, 0, 0.3) !important;
     margin: 1em 2em;
     /*border: 1px solid #707070;*/
 }
 
-p.indicators{
+p.indicators {
     font: 10px/20px 'Noto Sans TC' !important;
     margin-bottom: -10px !important;
 }
 
-span.indicators{
+span.indicators {
     font: 8px/15px 'Noto Sans TC' !important;
     color: #BFBFBF;
 }
 
-.ides-city-p{
+.ides-city-p {
     padding: 1.5em 5em;
 }
 
-.ides-pt-5{
+.ides-pt-5 {
     padding-top: 4.5rem !important;
 }
 
-.cloud-background-city{
-    background: transparent url(../../../../../assets/nube/nube-ciudades-1.png) 50% 50% no-repeat padding-box; height: 100%;
+.cloud-background-city {
+    background: transparent url(../../../../../assets/nube/nube-ciudades-1.png) 50% 50% no-repeat padding-box;
+    height: 100%;
     background-size: cover;
 }
 
-.tag-cloud-city{
+.tag-cloud-city {
     margin-top: 4rem !important;
 }
 
- .city-index > div > div > div.ng-star-inserted{
+.city-index>div>div>div.ng-star-inserted {
     height: 685px !important;
 }
+
 .contienetodo2 {
     padding: 100px 0 0px 0;
     background-color: #fff;
@@ -477,6 +514,7 @@ h3.titulos-covid {
     color: #24355a;
     font-weight: bold !important;
 }
+
 .ui-dropdown-label {
     background-color: #F5A700;
     border-color: #F5A700;
@@ -484,15 +522,18 @@ h3.titulos-covid {
     color: white;
     padding-left: 15px;
 }
+
 .ui-multiselect .ui-multiselect-label {
     color: #064cc3;
     padding-left: 1em;
 }
+
 .fondo-blanco {
     background-color: #fff;
     max-width: 50%;
     text-align: center;
 }
+
 .fondo2-gris {
     background-color: #f1f2f6;
     max-width: 50%;
@@ -501,6 +542,7 @@ h3.titulos-covid {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
 .contiene-ciuades-todo {
     display: flex;
     margin: 0 auto;
@@ -508,39 +550,46 @@ h3.titulos-covid {
     background-color: #f1f2f6;
     margin: 0 auto;
 }
+
 .botones-interior {
     max-width: 1500px;
     margin: 0 auto;
 }
+
 .botones {
     background-color: #fff;
     margin: 0 auto;
     padding-top: 100px;
     padding-bottom: 20px;
 }
+
 .botones3 {
     display: flex;
     margin: 0 auto;
     text-align: center;
     padding-left: 40px;
 }
+
 .cuadro-grafico {
     background-color: #fff;
 }
+
 button#dropdownMenuButton {
     margin-top: 20px;
     margin-bottom: 20px;
     color: #007ad9;
 }
+
 .fondito-azul {
     min-width: 300px;
     max-width: 500px;
     margin: 0 auto;
     padding: 7%;
     background-color: azure;
-    background: rgb(15,144,246);
-    background: linear-gradient(78deg, rgba(15,144,246,1) 0%, rgba(4,107,245,1) 100%);
+    background: rgb(15, 144, 246);
+    background: linear-gradient(78deg, rgba(15, 144, 246, 1) 0%, rgba(4, 107, 245, 1) 100%);
 }
+
 .cuadro-grafico-ciudades {
     background-color: #fff;
     background: #fff;
@@ -549,4 +598,57 @@ button#dropdownMenuButton {
     -webkit-border-radius: 27px 27px 27px 27px;
     box-shadow: 0px 0px 49px -7px #c7c7cf;
     padding: 2%;
+}
+
+//dropdown
+:host ::ng-deep.ui-dropdown {
+    border-radius: 14px;
+    background: white;
+    border-color: #064cc3;
+    width: 12rem;
+}
+
+:host ::ng-deep.ui-dropdown:hover {
+    border-radius: 14px;
+    background: white;
+    border-color: #064cc3;
+    width: 12rem;
+}
+
+:host ::ng-deep.ui-dropdown-clearable {
+    background-color: rgba(6, 76, 195, 1);
+    border-color: rgba(6, 76, 195, 1);
+    border-radius: 15px
+}
+
+:host ::ng-deep.ui-dropdown-label {
+    background-color: #ffffff00;
+    border-color: #064cc3;
+    /* border-radius: 15px; */
+    color: #064cc3;
+    width: 10rem;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-trigger {
+    background-color: #ffffff00;
+    border-color: #064cc3;
+    border-radius: 15px;
+    color: #064cc3;
+}
+
+:host ::ng-deep.ui-dropdown .ui-dropdown-panel {
+    background-color: white;
+    border-radius: 14px;
+}
+
+//button world cloud
+:host ::ng-deep.ui-button {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+}
+
+//inputext
+:host ::ng-deep.ui-inputtext {
+    border-radius: 15px;
 }
