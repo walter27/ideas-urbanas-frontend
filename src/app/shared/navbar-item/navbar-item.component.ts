@@ -38,29 +38,29 @@ export class NavbarItemComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
 
-    if (this.route.url === '/covid' || this.route.url === '/thematic' ||
-      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports' ||
-      this.regionService.citySelect) {
 
-      if (this.pos > 20 && !this.utilService.buttonVisible) {
 
-        this.textColorNav = 'nav-item';
-      } else {
+    if(this.route.url === '/home'){
 
-        this.textColorNav = 'nav-item-covid';
-      }
-    } else {
-
-      if (this.utilService.buttonVisible) {
+      if(this.pos>20 && !this.utilService.buttonVisible ){
         this.textColorNav = 'nav-item-covid';
 
-      } else {
+      }else{
         this.textColorNav = 'nav-item';
 
       }
-
 
     }
+
+    if (this.route.url === '/covid' || this.route.url === '/thematic' ||
+      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports' ||
+            this.regionService.citySelect) {
+
+              this.textColorNav = 'nav-item-covid';
+
+
+       
+    } 
 
     if (this.utilService.buttonVisible) {
 
@@ -69,7 +69,7 @@ export class NavbarItemComponent implements OnInit, DoCheck {
     }
 
     if (this.utilService.span && !this.utilService.buttonVisible) {
-      this.textColorNav = 'nav-item';
+      this.textColorNav = 'nav-item-covid';
 
     }
 

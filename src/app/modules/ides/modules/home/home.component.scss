@@ -1833,12 +1833,22 @@ div.ides-card-home {
 //dropdown
 :host ::ng-deep.ui-carousel .ui-carousel-container .ui-carousel-prev {
     //background-color: red;
-    display: none !important;
+    display: none!important;
+    //position: absolute;
+    //margin-left: 12px;
+    //z-index: 1;
+    //background: transparent;
+    //color: white;
 }
 
 :host ::ng-deep.ui-carousel .ui-carousel-container .ui-carousel-next {
     //background-color: red;
     display: none !important;
+    //position: absolute;
+    //margin-left: 93.3em;
+    //z-index: 1;
+    //background: transparent;
+    //color: white;
 }
 
 :host ::ng-deep.ui-carousel .ui-carousel-content {

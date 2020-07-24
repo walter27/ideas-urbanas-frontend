@@ -73,6 +73,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   colorSpan: string;
   buttonVisible: boolean;
   logoUniversidad: string;
+  backgroundUniversidad:String;
 
   constructor(
     private authService: AuthService,
@@ -94,12 +95,13 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content2';
       this.srcImage = 'assets/logos/logo-blanco.svg';
-      this.logoUniversidad='assets/logos/blanco.svg';
+      this.logoUniversidad = 'assets/logos/logo-01.png';
       this.colorIcon = 'ides-text-icon';
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
+      this.backgroundUniversidad="universidad-inicio";
       this.utilService.span = false;
 
 
@@ -114,32 +116,33 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content2';
       this.srcImage = 'assets/logos/logo-blanco.svg';
-      this.logoUniversidad = 'assets/logos/blanco.svg';
+      this.logoUniversidad = 'assets/logos/logo-01.png';
       this.colorIcon = 'ides-text-icon';
       this.colorLanguaje = 'text-white';
       this.colorButton = 'ides-text-white';
       this.colorButton2 = 'ides-text-white4';
       this.marginSpan = 'margin-span';
+      this.backgroundUniversidad="universidad-inicio";
+      this.utilService.span = false;
+
+
+    }
+
+
+
+    if (this.pos > 15) {
+
+      this.background = 'mat-menu-content-covid';
+      this.srcImage = 'assets/logos/logo-color.svg';
+      this.logoUniversidad = 'assets/logos/color.png';
+      this.colorIcon = 'ides-text-icon2';
+      this.colorLanguaje = 'text-white2';
+      this.colorButton = 'ides-text-white2';
+      this.colorButton2 = 'ides-text-white3';
+      this.marginSpan = 'margin-span-color';
+      this.backgroundUniversidad="universidad-internas";
+
       this.utilService.span = true;
-
-
-
-
-      if (this.pos > 15) {
-
-        this.background = 'mat-menu-content';
-        this.srcImage = 'assets/logos/logo-blanco.svg';
-        this.logoUniversidad = 'assets/logos/blanco.svg';
-        this.colorIcon = 'ides-text-icon';
-        this.colorLanguaje = 'text-white';
-        this.colorButton = 'ides-text-white';
-        this.colorButton2 = 'ides-text-white4';
-        this.utilService.span = true;
-
-
-
-      }
-
     }
 
 
@@ -148,67 +151,33 @@ export class HeaderComponent implements OnInit, DoCheck {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
-      this.logoUniversidad='assets/logos/color.svg';
+      this.logoUniversidad = 'assets/logos/color.png';
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
-      this.utilService.span = false;
-
-
-
-      if (this.pos > 20) {
-
-        this.background = 'mat-menu-content';
-        this.srcImage = 'assets/logos/logo-blanco.svg';
-        this.logoUniversidad='assets/logos/blanco.svg';
-        this.colorIcon = 'ides-text-icon';
-        this.colorLanguaje = 'text-white';
-        this.colorButton = 'ides-text-white';
-        this.colorButton2 = 'ides-text-white4';
-        this.marginSpan = 'margin-span';
-        this.utilService.span = true;
-
-
-
-
-      }
+      this.backgroundUniversidad="universidad-internas";
+      this.utilService.span = true;
 
 
     }
+
+    
     if (this.route.url === '/covid' || this.route.url === '/thematic' ||
       this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
-      this.logoUniversidad='assets/logos/color.svg';
+      this.logoUniversidad = 'assets/logos/color.png';
       this.colorIcon = 'ides-text-icon2';
       this.colorLanguaje = 'text-white2';
       this.colorButton = 'ides-text-white2';
       this.colorButton2 = 'ides-text-white3';
       this.marginSpan = 'margin-span-color';
-      this.utilService.span = false;
+      this.backgroundUniversidad="universidad-internas";
+      this.utilService.span = true;
       this.regionService.citySelect = undefined;
-
-
-      if (this.pos > 20) {
-
-        this.background = 'mat-menu-content';
-        this.srcImage = 'assets/logos/logo-blanco.svg';
-        this.logoUniversidad='assets/logos/blanco.svg';
-        this.colorIcon = 'ides-text-icon';
-        this.colorLanguaje = 'text-white';
-        this.colorButton = 'ides-text-white';
-        this.colorButton2 = 'ides-text-white4';
-        this.marginSpan = 'margin-span';
-        this.utilService.span = true;
-
-
-
-
-      }
-
 
     }
 
