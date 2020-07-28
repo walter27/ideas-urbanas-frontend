@@ -530,18 +530,29 @@ h3.titulos-covid {
 
 .fondo-blanco {
     background-color: #fff;
-    max-width: 50%;
+    width: 50%;
     text-align: center;
 }
 
 .fondo2-gris {
     background-color: #f1f2f6;
-    max-width: 50%;
+    width: 50%;
     text-align: center;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
 }
+.cuadro-grafico-ciudades {
+    background-color: #fff;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 49px -7px #c7c7cf;
+    padding: 2%;
+    margin: 0% 4% 0% 4%;
+}
+
 
 .contiene-ciuades-todo {
     display: flex;
@@ -651,4 +662,33 @@ button#dropdownMenuButton {
 //inputext
 :host ::ng-deep.ui-inputtext {
     border-radius: 15px;
+}
+.row.p-t-4.p-b-4.p-l-0.p-r-0.city-resume {
+    padding: 0% 5% 0% 5%;
+}
+.cuadro-grafico-ciudades {
+    background-color: #fff;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 49px -7px #c7c7cf;
+    padding: 6%;
+}
+.fondito-azul {
+    min-width: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 7%;
+    background-color: azure;
+    background: #0f90f6;
+    background: linear-gradient(78deg, #0f90f6 0%, #046bf5 100%);
+    text-align: center;
+    align-content: center;
+}
+.botones {
+    background-color: #fff0;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 20px;
 }
