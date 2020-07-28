@@ -63,13 +63,13 @@ export class ModulesComponent implements OnInit {
       url: '/thematic',
       active: false
     },
-   /* {
-      id: 'indexes',
-      title: 'indexes',
-      type: 'text',
-      url: '/indexes',
-      active: false
-    },*/
+    /* {
+       id: 'indexes',
+       title: 'indexes',
+       type: 'text',
+       url: '/indexes',
+       active: false
+     },*/
     {
       id: 'citizen_reports',
       title: 'citizen reports',
@@ -138,12 +138,17 @@ export class ModulesComponent implements OnInit {
           text: 'models.indicators',
           url: '/admin/indicator'
         }
-        // ,
-        // {
-        //   id: 'tag',
-        //   text: 'models.tag',
-        //   url: '/admin/tag'
-        // }
+        ,
+        {
+          id: 'tag',
+          text: 'models.tag',
+          url: '/admin/tag'
+        },
+        {
+          id: 'words',
+          text: 'models.stopwords',
+          url: '/admin/stopwords'
+        }
       ],
       onlyAdmin: true
     }
@@ -188,7 +193,7 @@ export class ModulesComponent implements OnInit {
   }
 
   onSetLanguage(l) {
-    this.language = l;    
+    this.language = l;
     this.translate.use(this.language);
     sessionStorage.setItem('language', this.language);
   }

@@ -640,15 +640,3 @@ button#dropdownMenuButton {
     background-color: white;
     border-radius: 14px;
 }
-
-//button world cloud
-:host ::ng-deep.ui-button {
-    background-color: #F5A700;
-    border-color: #F5A700;
-    border-radius: 15px;
-}
-
-//inputext
-:host ::ng-deep.ui-inputtext {
-    border-radius: 15px;
-}

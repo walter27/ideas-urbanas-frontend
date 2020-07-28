@@ -24,7 +24,7 @@ export class TagService {
   urlTag = environment.tag.base;
   urlTagsByCantByType = environment.home.getTagsByCantByType;
   urlAddTag = environment.home.addTag;
-  urlStopwords = environment.home.getStopwords; 
+  urlStopwords = environment.home.getStopwords;
 
   constructor(
     private httpClient: HttpClient,
@@ -35,7 +35,7 @@ export class TagService {
 
   listTags(filters: Filters, body: any = {}): Observable<ResultList<Tag>> {
     const filtersB = this.utilsService.buildFilters(filters);
-    return this.httpClient.post<ResponseApi<ResultList<Tag>>>(this.serverUrl +  this.urlTag + '/filter' +filtersB, body).pipe(
+    return this.httpClient.post<ResponseApi<ResultList<Tag>>>(this.serverUrl + this.urlTag + '/filter' + filtersB, body).pipe(
       map(data => {
         return data.results;
       })
@@ -47,6 +47,7 @@ export class TagService {
   }
 
   editTag(tag, id: string, model: string) {
+
     return this.httpClient.put(this.serverUrl + this.urlTag + '/' + id, tag, httpOptions);
   }
 
@@ -62,7 +63,7 @@ export class TagService {
     );
   }
 
-  getTagsByCantByType(id_Canton, type = 'all'): Observable<ResultList<Tag>> {
+  getTagsByCantByType(id_Canton: string, type = 'all'): Observable<ResultList<Tag>> {
     return this.httpClient.post<ResponseApi<ResultList<Tag>>>(
       this.serverUrl + this.urlTagsByCantByType, { id_Canton, type }, httpOptions).pipe(
         map(data => {

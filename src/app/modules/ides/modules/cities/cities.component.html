@@ -152,48 +152,19 @@
 
     <div class="fondo2-gris">
 
-        <div class="row p-t-4 p-b-4 p-l-0 p-r-0 city-resume">
-
-
-
-            <div class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
-                <h3>DESCRIBE A TU CIUDAD</h3>
-            </div>
-
-            <div class="col-md-6 text-right pt-4">
-                <input type="text" pInputText [(ngModel)]="property" />
-            </div>
-
-            <div class="col-md-6 text-left pt-4">
-                <p-button label="ENVIAR"></p-button>
-
-            </div>
-
-            <div class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
-                <h3>
-                    Nube de palabras
-                </h3>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
+        <div *ngIf="citySelected" class="row p-t-4 p-b-4 p-l-0 p-r-0 city-resume">
 
             <div class="col-md-12">
+                <app-word-cloud [citySelected]="citySelected"></app-word-cloud>
+            </div>
+            <!--  <div class="col-md-12">
                 <div class="row justify-content-center" (click)="goToHome()">
-                    <!-- <angular-tag-cloud [config]="options" [data]="tagsData" class="tag-cloud-city">
-                            </angular-tag-cloud> -->
+                 <angular-tag-cloud [config]="options" [data]="tagsData" class="tag-cloud-city">
+                            </angular-tag-cloud> 
                     <section id="tag-cloud-wrapper" class="mt-4">
                     </section>
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="cuadro-grafico-ciudades" *ngIf="citySelected">
             <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" class="city-index">

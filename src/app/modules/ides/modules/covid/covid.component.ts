@@ -349,19 +349,17 @@ export class CovidComponent implements OnInit, OnDestroy {
       this.createDateRange();
 
     });
+    
+    this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
 
-    setTimeout(() => {
-      this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
-
-      this.filterData();
-      this.filterDataStreamgraph();
-    }, 2000);
+   /* setTimeout(() => {
+      
+    }, 2000);*/
 
   }
 
 
   /* getDatesVaribale(varibable: Variable) {
- 
  
      let dateRanges = [];
      this.dataService.listDatasCovid(this.filters, varibable._id).subscribe((data) => {
@@ -433,6 +431,8 @@ export class CovidComponent implements OnInit, OnDestroy {
     };
 
 
+    this.filterData();
+    this.filterDataStreamgraph();
 
 
   }
@@ -768,7 +768,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     if (this.selectedCantons) {
 
-      this.selectedCantons.forEach(cantonSelected => {
+      /*this.selectedCantons.forEach(cantonSelected => {
 
         //console.log(cantonSelected.name, cantonSelected.covid);
 
@@ -784,7 +784,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
         });
-      });
+      });*/
 
 
       if (!this.selectedCantons.includes(e.itemValue)) {
@@ -799,6 +799,20 @@ export class CovidComponent implements OnInit, OnDestroy {
           //console.log('false', res);
 
         });
+      } else {
+        let body = {
+          covid: true,
+          code: e.itemValue.code,
+          id_Provincia: e.itemValue.obj_Provincia._id,
+          name: e.itemValue.name,
+          active: e.itemValue.active
+        };
+        this.regionService.editRegion(body, e.itemValue._id, this.model).subscribe(res => {
+          // console.log('TRUE', res);
+
+
+        });
+
       }
 
       this.getData(this.selectVariable._id);

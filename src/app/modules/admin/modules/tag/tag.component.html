@@ -1,3 +1,2 @@
-<app-ides-datatable [showSearch]="true" [showAdd]="false" (search)="onSearch($event)" [items]="(result$ | async)" [columns]="columns" [fields]="fields" [model]="'tag'"
-  (delete)="onDelete($event)" (changePage)="onChangePage($event)">
+<app-ides-datatable [showSearch]="true" (search)="onSearch($event)" [items]="(result$ | async)" [addEditForm]="addEditForm" [columns]="columns" [fields]="fields" [model]="'tag'" (delete)="onDelete($event)" (changePage)="onChangePage($event)" (submitForm)="onSubmit($event)">
 </app-ides-datatable>

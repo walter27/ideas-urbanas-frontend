@@ -492,6 +492,9 @@ export class HomeComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
+    console.log('TAG', this.newTag);
+
+
     if (window.innerWidth > 767) {
       this.translate.onLangChange.subscribe((params: LangChangeEvent) => {
         localStorage.setItem('language', params.lang);
@@ -655,6 +658,11 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   onAddTag(value, type) {
+
+    console.log('VALOR', value);
+    console.log('TYPE', type);
+
+
     let words = this.parseStopword(value);
     for (let index = 0; index < words.length; index++) {
       const element = words[index];
@@ -697,10 +705,10 @@ export class HomeComponent implements OnInit, DoCheck {
       })
     ).subscribe(resp => {
       const { data } = resp;
-
       if (resp.data.length > 0)
         this.stopwords = resp.data[0].stopwords;
     });
+
   }
 
   isStopword(sentence) {
