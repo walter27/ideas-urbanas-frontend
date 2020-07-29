@@ -43,6 +43,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import { IdesOriginComponent } from './ides-origin/ides-origin.component';
+import { WordCloudComponent } from './word-cloud/word-cloud.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -73,7 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicGraphTimelineComponent,
     CardBasicNewsComponent,
     CardBasicStreamgraphComponent,
-    IdesOriginComponent
+    IdesOriginComponent,
+    WordCloudComponent
   ],
   exports: [
     HeaderComponent,
@@ -96,7 +98,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicMapCovidComponent,
     CardBasicGraphTimelineComponent,
     CardBasicNewsComponent,
-    CardBasicStreamgraphComponent
+    CardBasicStreamgraphComponent,
+    WordCloudComponent
   ],
   imports: [
     CommonModule,

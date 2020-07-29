@@ -679,16 +679,114 @@ button#dropdownMenuButton {
     min-width: 300px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 7%;
+    padding: 0%;
     background-color: azure;
     background: #0f90f6;
     background: linear-gradient(78deg, #0f90f6 0%, #046bf5 100%);
     text-align: center;
     align-content: center;
+    max-width: 550px;
+    margin-top: 50px;
+    padding: 0% 3% 3% 3%;
+    text-align: center;
+    align-items: center;
 }
 .botones {
     background-color: #fff0;
     margin: 0 auto;
     padding-top: 100px;
     padding-bottom: 20px;
+}
+.covid-header {
+    margin-top: 0px;
+    background: #189cff;
+    background: linear-gradient(78deg, #2194fd 0%, #0b6df5 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 1.6em;
+}
+.adentro-azul-1 {
+    padding: 10px 0px 0px 0px;
+}
+.adentro-azul-2 {
+    margin-bottom: 20px;
+}
+.cuadro-grafico-ciudades {
+    background-color: #fff;
+    background: #fff;
+    overflow: hidden;
+    -moz-border-radius: 27px 27px 27px 27px;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 49px -7px #c7c7cf;
+    padding: 6%;
+    margin-top: 30px;
+}
+h2.subtitle.ides-text-blue {
+        margin-top: 40px;
+}
+@media (min-width: 360px){
+    .contiene-ciuades-todo {
+    display: inline-block;
+    }
+}
+@media (min-width: 1080px){
+    .contiene-ciuades-todo {
+    display: flex;
+    }
+}
+
+@media (min-width: 360px){
+.fondo-blanco {
+    width: 100%;
+    }
+}
+@media (min-width: 360px){
+.botones3 {
+    display: block;
+    padding-left: 20%;
+    }
+}
+@media (min-width: 1080px){
+    .botones3 {
+        display: flex;
+        padding-left: 0%;
+        }
+    }
+@media (min-width: 360px){
+    .fondo2-gris {
+        width: 100%;
+        }
+    }
+@media (min-width: 1080px){
+        .fondo-blanco {
+            width: 50%;
+            }
+        }
+@media (min-width: 1080px){
+            .fondo2-gris {
+                width: 50%;
+                }
+            }
+            .row-azul {
+                margin-left: -3%;
+                margin-right: -3%;
+            }
+@media (min-width: 1080px){          
+                .fondo2-gris {
+                                width: 50%;
+                                padding-left: 0%;
+                                padding-right: 0%;
+                    }
+}
+@media (min-width: 1080px){          
+.fondo2-gris {
+                width: 50%;
+                padding-left: 3%;
+                padding-right: 3%;
+    }
+}
+.cuadros-abajo.ng-star-inserted {
+    margin-bottom: 50px;
+    margin-top: 20px;
 }

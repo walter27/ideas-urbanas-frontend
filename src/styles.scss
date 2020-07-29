@@ -2047,3 +2047,24 @@ a.cursor-pointer.mr-4.text-capitalize {
     border-radius: 15px;
     margin-top: 30px;
 }
+input.ng-untouched.ng-pristine.ng-valid {
+    border-radius: 50px;
+    border: NONE;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 30px -5px #c7c7cf;
+    padding: 7px;
+}
+.ui-button {
+    background-color: #F5A700;
+    border-color: #F5A700;
+    border-radius: 15px;
+    border-radius: 50px;
+    border: NONE;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 30px -5px #c7c7cf;
+    padding: 5px;
+}
+.cuadros-abajo.ng-star-inserted {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}

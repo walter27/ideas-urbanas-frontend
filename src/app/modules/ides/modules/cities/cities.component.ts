@@ -185,6 +185,7 @@ export class CitiesComponent implements OnInit {
           size: el.count, //el.count > 10 ? 10 : el.count,
         });
       });
+
       this.newTagCloud();
     });
   }

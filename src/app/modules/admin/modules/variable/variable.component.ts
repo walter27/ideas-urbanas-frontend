@@ -128,8 +128,6 @@ export class VariableComponent implements OnInit {
   }
 
   listVariable() {
-    console.log('FILTROOOOOOssssssssssssssss', this.filters);
-
     this.result$ = this.variableService.listVariables(this.filters);
   }
 

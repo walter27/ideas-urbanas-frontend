@@ -128,8 +128,6 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     }
 
-
-
     if (this.pos > 15) {
 
       this.background = 'mat-menu-content-covid';
@@ -164,8 +162,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     }
 
 
-    if (this.route.url === '/covid' || this.route.url === '/thematic' ||
-        this.route.url === '/indexes' || this.route.url === '/citizen-reports') {
+    if (this.route.url !== '/home') {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
