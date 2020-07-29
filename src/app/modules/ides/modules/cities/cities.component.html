@@ -17,22 +17,25 @@
 <div class="contiene-ciuades-todo">
 
     <div class="fondo-blanco">
-        <div class="row ides-city-p">
+        
 
             <div class="fondito-azul">
 
-                <div class="row">
+                <div class="row-azul">
 
-                    <img [src]="imageCity" alt="" height="250px" width="450px">
+                    <img [src]="imageCity" alt="" height="100%" width="100%">
 
                 </div>
-                <div class="row ml-1">
+                <div class="adentro-azul-1">
                     <h1 class="ml-4 mt-4 ides-text-yellow">
                         {{citySelected?.name | titlecase}}
                     </h1>
                 </div>
-                <div class="row ml-1">
+                <div class="adentro-azul-2">
                     <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}" target="_blanck">{{ citySelected?.url }}</a>
+                </div>
+                <div class="col-md-12">
+                    <hr>
                 </div>
                 <div class="row pl-4 pr-4 pt-4 city-resume">
                     <div class="col-12" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
@@ -146,7 +149,6 @@
 
             </div>
 
-        </div>
     </div>
 
 
@@ -212,7 +214,7 @@
     </div>
 
 
-    <div *ngIf="( resultResearch$ | async ) as research">
+    <div class="cuadros-abajo" *ngIf="( resultResearch$ | async ) as research">
         <div *ngIf="research?.data.length > 0">
             <div class="row justify-content-center">
                 <div class="col text-center">

@@ -265,6 +265,7 @@ export class WordCloudComponent implements OnInit {
 
 
       });
+
       this.createWordCloud();
 
     });

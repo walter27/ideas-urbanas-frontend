@@ -163,7 +163,7 @@ div ul.nav li {
 }
 
 .ides-navbar-items {
-    padding: 1.5rem 0rem;
+    padding: 0.95rem 0rem;
     min-width: 580px;
     margin: 0 auto;
 }
@@ -203,7 +203,12 @@ div ul.nav li {
     padding-top: 32px;
     padding-left: 10px;
 }
-
-.margin-navbar {
-    margin-top: -20px;
+.col-md-12.margin-navbar {
+    border-bottom: 1px solid;
+    border-color: #9b9b9b7d;
+    max-height: 90px;
+    /* padding-bottom: 30px; */
+}
+.ui-carousel-items-content {
+    margin-top: 55px;
 }
