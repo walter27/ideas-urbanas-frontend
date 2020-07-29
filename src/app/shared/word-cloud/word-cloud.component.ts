@@ -290,6 +290,9 @@ export class WordCloudComponent implements OnInit {
       }],
       title: {
         text: ''
+      },
+      exporting: {
+        enabled: false,
       }
 
 
