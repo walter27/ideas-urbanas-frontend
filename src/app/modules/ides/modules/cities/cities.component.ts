@@ -86,7 +86,7 @@ export class CitiesComponent implements OnInit {
       this.citySelected = null;
       this.regionService.getRegion(this.idCity, 'Canton').subscribe(resp => {
         this.citySelected = resp;
-        this.imageCity = `assets/cities/${this.citySelected.name.toUpperCase()}.jpg`;
+        this.imageCity = `assets/cities/all/${this.citySelected.name.toLowerCase()}.jpg`;
         this.regionService.citySelectedCloud = this.citySelected;
         this.getResearch();
         this.listTags(this.idCity);

@@ -145,7 +145,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
 
 
-    if (this.regionService.citySelectedCloud || this.regionService.citySelect && this.route.url === '/home') {
+    if (this.regionService.citySelect && this.route.url === '/home') {
 
       this.background = 'mat-menu-content-covid sticky-top';
       this.srcImage = 'assets/logos/logo-color.svg';
@@ -160,7 +160,6 @@ export class HeaderComponent implements OnInit, DoCheck {
 
 
     }
-
 
     if (this.route.url !== '/home') {
 

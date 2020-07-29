@@ -233,7 +233,7 @@ export class WordCloudComponent implements OnInit {
     ).subscribe(resp => {
       this.tagsData = [];
 
-      resp.data.forEach(word => {
+      resp.data.forEach((word: any) => {
 
         if (word.positive > word.negative && word.positive > word.neutro) {
           //console.log('POSITIVA', word);
@@ -265,8 +265,6 @@ export class WordCloudComponent implements OnInit {
 
 
       });
-      console.log(this.tagsData);
-      
       this.createWordCloud();
 
     });

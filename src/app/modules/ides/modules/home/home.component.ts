@@ -314,10 +314,10 @@ export class HomeComponent implements OnInit, DoCheck {
     },
     {
       id: '5e41c9f7d82c451b6859e692',
-      title: 'Morona Santiago',
+      title: 'Macas',
       styleText: { top: '275px', left: '860px', opacity: 0.3 },
       stylePoint: { top: '105px', left: '180px' },
-      class: 'morona_santiago',
+      class: 'macas',
       hidden: false,
       hasPage: false,
       url: '',
