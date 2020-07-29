@@ -6,11 +6,11 @@
 
         <div *ngSwitchDefault>
             <div class="dropdown">
-                <a [routerLinkActive]="['nav-item-active']" [ngClass]="textColorNav" class="cursor-pointer text-none" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a [routerLinkActive]="['nav-item-active']" [ngClass]="textColorNav" class="cursor-pointer text-none dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="nav-item-root" translate>{{ item.title }}</span>
                     <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
                         <div class="text-white" *ngFor="let o of item.options | slice:0:item.amountToShow">
-                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class=" dropdown-item" href="#" (click)="hideMenu(item)" translate>{{ capitalizeFirst(o.text) }}</a>
+                            <a [routerLink]="o.url" [queryParams]="o.queryParams" class=" dropdown-item" href="#" (click)="hideMenu(o.text)" translate>{{ o.text }}</a>
                         </div>
                         <!-- <div *ngIf="item.options.length > item.amountToShow" class="text-center">
                             <fa class="cursor-pointer" [name]="'angle-double-down'"></fa>

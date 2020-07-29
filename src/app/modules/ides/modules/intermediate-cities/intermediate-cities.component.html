@@ -1,21 +1,21 @@
 <div class="row mx-auto covid-header">
     <div class="covid-header1 ">
-        <h3 translate>Ciudades</h3>
+        <h3 translate>intermediate_city</h3>
     </div>
     <div class="covid-header2">
-        <a class="text-lg-right text-white cursor-pointer" routerLink="/" translate>Inicio | Ciudades</a>
+        <a class="text-lg-right text-white cursor-pointer" routerLink="/" translate>intermediate_city_home</a>
     </div>
 </div>
 
 <div class="row">
     <div class="container mt-5 animate__animated animate__fadeInDown">
         <div class="card-columns mt-5">
-            <div *ngFor="let item of cantons" class="card">
+            <div [routerLink]="item.url" [queryParams]="item.queryParams" href="#" *ngFor="let item of cantons" class="card cursor-pointer">
                 <img [src]="item.img" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <a class="card-title">{{item.name}}</a>
-                    <p class="card-text">
-                        Ciudades Intermedias
+                    <h4 class="card-title">{{item.name}}</h4>
+                    <p class="card-text" translate>
+                        intermediate_city
                     </p>
                 </div>
             </div>

@@ -7,147 +7,156 @@
 </div>-->
 <div class="row mx-auto covid-header">
     <div class="covid-header1 ">
-        <h2 translate>citizen reports</h2>
+        <h2 *ngIf="citySelected">{{citySelected.name}}</h2>
     </div>
     <div class="covid-header2">
-        <a class="text-lg-right text-white cursor-pointer" routerLink="/" translate>Inicio / ciudades / Riobamba</a>
+        <div class="row">
+
+            <div class="col-lg-12 text-right">
+                <a class=" ides-text-white cursor-pointer" routerLink="/" translate>home_city</a>
+                <a>|</a>
+                <a *ngIf="citySelected" class=" ides-text-white cursor-pointer" routerLink="/intermediate-cities" translate>home_city_intermediate</a>
+            </div>
+
+
+        </div>
 
     </div>
 </div>
 <div class="contiene-ciuades-todo">
 
     <div class="fondo-blanco">
-        
 
-            <div class="fondito-azul">
 
-                <div class="row-azul">
+        <div class="fondito-azul">
 
-                    <img [src]="imageCity" alt="" height="100%" width="100%">
+            <div class="row-azul">
 
-                </div>
-                <div class="adentro-azul-1">
-                    <h1 class="ml-4 mt-4 ides-text-yellow">
-                        {{citySelected?.name | titlecase}}
-                    </h1>
-                </div>
-                <div class="adentro-azul-2">
-                    <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}" target="_blanck">{{ citySelected?.url }}</a>
+                <img [src]="imageCity" alt="" height="100%" width="100%">
+
+            </div>
+            <div class="adentro-azul-1">
+                <h1 class="ml-4 mt-4 ides-text-yellow">
+                    {{citySelected?.name | titlecase}}
+                </h1>
+            </div>
+            <div class="adentro-azul-2">
+                <a class="ml-4 mb-4 ides-text-white" href="{{ citySelected?.url }}" target="_blanck">{{ citySelected?.url }}</a>
+            </div>
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="row pl-4 pr-4 pt-4 city-resume">
+                <div class="col-12" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
+                    <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
+                    <div class="row" *ngIf="!overPoblacion">
+                        <div class="col-12 col-md-5">
+                            <h2 class="ides-text-yellow">
+                                {{citySelected?.extraData?.poblacionTotal | number:'1.0-0'}}
+                            </h2>
+                        </div>
+                        <div class="col-12 col-md-7 pr-0">
+                            <p class="mt-2 indicators">
+                                Población
+                            </p>
+                            <span class="indicators">
+                                (Proyección INEC)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="overPoblacion">
+                        <div class="col-12 col-md-5">
+                            <h2 class="ides-text-yellow">
+                                {{citySelected?.extraData?.poblacionUrbana | number:'1.0-0'}}
+                            </h2>
+                        </div>
+                        <div class="col-12 col-md-7 pr-0">
+                            <p class="mt-2 indicators">
+                                Población Urbana
+                            </p>
+                            <span class="indicators">
+                                (Proyección Banco Mundial)
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-12">
                     <hr>
                 </div>
-                <div class="row pl-4 pr-4 pt-4 city-resume">
-                    <div class="col-12" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
-                        <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
-                        <div class="row" *ngIf="!overPoblacion">
-                            <div class="col-12 col-md-5">
-                                <h2 class="ides-text-yellow">
-                                    {{citySelected?.extraData?.poblacionTotal | number:'1.0-0'}}
-                                </h2>
-                            </div>
-                            <div class="col-12 col-md-7 pr-0">
-                                <p class="mt-2 indicators">
-                                    Población
-                                </p>
-                                <span class="indicators">
-                                    (Proyección INEC)
-                                </span>
-                            </div>
+                <div class="col-12" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
+                    <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
+                    <div class="row" *ngIf="!overVAB">
+                        <div class="col-6">
+                            <h2 class="ides-text-yellow">
+                                {{citySelected?.extraData?.vabCantonal | number:'1.0-0'}}
+                            </h2>
                         </div>
-                        <div class="row" *ngIf="overPoblacion">
-                            <div class="col-12 col-md-5">
-                                <h2 class="ides-text-yellow">
-                                    {{citySelected?.extraData?.poblacionUrbana | number:'1.0-0'}}
-                                </h2>
-                            </div>
-                            <div class="col-12 col-md-7 pr-0">
-                                <p class="mt-2 indicators">
-                                    Población Urbana
-                                </p>
-                                <span class="indicators">
-                                    (Proyección Banco Mundial)
-                                </span>
-                            </div>
+                        <div class="col-6 pr-0 pl-0">
+                            <p class="mt-2 indicators">
+                                Valor agregado bruto (VAB) cantonal
+                            </p>
+                            <span class="indicators">
+                                (Banco Central 2018)
+                            </span>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                    <div class="col-12" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
-                        <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
-                        <div class="row" *ngIf="!overVAB">
-                            <div class="col-6">
-                                <h2 class="ides-text-yellow">
-                                    {{citySelected?.extraData?.vabCantonal | number:'1.0-0'}}
-                                </h2>
-                            </div>
-                            <div class="col-6 pr-0 pl-0">
-                                <p class="mt-2 indicators">
-                                    Valor agregado bruto (VAB) cantonal
-                                </p>
-                                <span class="indicators">
-                                    (Banco Central 2018)
-                                </span>
-                            </div>
+                    <div class="row" *ngIf="overVAB">
+                        <div class="col-6">
+                            <h2 class="ides-text-yellow">
+                                {{citySelected?.extraData?.vabNacional | number:'1.2-2'}} %
+                            </h2>
                         </div>
-                        <div class="row" *ngIf="overVAB">
-                            <div class="col-6">
-                                <h2 class="ides-text-yellow">
-                                    {{citySelected?.extraData?.vabNacional | number:'1.2-2'}} %
-                                </h2>
-                            </div>
-                            <div class="col-6  pr-0 pl-0">
-                                <p class="mt-2 indicators">
-                                    % Valor agregado bruto (VAB) nacional
-                                </p>
-                                <span class="indicators">
-                                    (Banco Central 2018)
-                                </span>
-                            </div>
+                        <div class="col-6  pr-0 pl-0">
+                            <p class="mt-2 indicators">
+                                % Valor agregado bruto (VAB) nacional
+                            </p>
+                            <span class="indicators">
+                                (Banco Central 2018)
+                            </span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-12">
-                    <hr>
-                </div>
-                <div class="row pl-4 pr-4 pt-4 city-resume">
-                    <div class="col-sm-12 col-md-10">
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="row pl-4 pr-4 pt-4 city-resume">
+                <div class="col-sm-12 col-md-10">
 
-                        <div class="col-12 text-center w-100 pb-3">
-                            <h3 class="city-ides-subtitle">Actividades principales<span class="indicators">(Banco
-                                    Central 2018)</span></h3>
-                        </div>
+                    <div class="col-12 text-center w-100 pb-3">
+                        <h3 class="city-ides-subtitle">Actividades principales<span class="indicators">(Banco
+                                Central 2018)</span></h3>
+                    </div>
 
 
-                        <div class="row  w-100 text-center">
+                    <div class="row  w-100 text-center">
 
-                            <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
-                                <div class="row">
+                        <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
+                            <div class="row">
 
-                                    <div>
-                                        <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
-                                    </div>
-                                    <div class="ml-1" *ngIf="a.over">
-                                        <p class="mb-0 activity">
-                                            {{a.name}}
-                                        </p>
-                                        <p class="ides-text-yellow activity-value mb-0 ">
-                                            {{a.vab}} % <span class="ides-text-white">VAB</span>
-                                        </p>
-                                    </div>
+                                <div>
+                                    <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
+                                </div>
+                                <div class="ml-1" *ngIf="a.over">
+                                    <p class="mb-0 activity">
+                                        {{a.name}}
+                                    </p>
+                                    <p class="ides-text-yellow activity-value mb-0 ">
+                                        {{a.vab}} % <span class="ides-text-white">VAB</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
+
+
+
                 </div>
-
-
             </div>
+
+
+        </div>
 
     </div>
 

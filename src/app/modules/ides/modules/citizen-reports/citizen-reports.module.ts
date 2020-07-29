@@ -4,6 +4,8 @@ import { CitizenReportsRoutingModule } from './citizen-reports-routing.module';
 import { CitizenReportsComponent } from './citizen-reports.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { IconsModule } from 'src/app/icons/icons.module';
+import { CarouselModule } from 'primeng/carousel';
+
 
 
 @NgModule({
@@ -12,7 +14,8 @@ import { IconsModule } from 'src/app/icons/icons.module';
     CommonModule,
     CitizenReportsRoutingModule,
     SharedModule,
-    IconsModule
+    IconsModule,
+    CarouselModule
   ]
 })
 export class CitizenReportsModule { }

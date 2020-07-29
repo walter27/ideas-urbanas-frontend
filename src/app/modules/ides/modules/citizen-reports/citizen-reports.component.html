@@ -25,16 +25,21 @@
     </div> -->
     <div class="anima-texto">
         <div class="contiene-ciudades">
-            <div class="row mb-4" *ngFor="let item of (resultReports$ | async)?.data">
+
+
+
+            <app-ides-citizen-reports-card [items]="reports"></app-ides-citizen-reports-card>
+
+            <!-- <div class="row mb-4" *ngFor="let item of (resultReports$ | async)?.data">
                 <div class="img-reportes" style="height: 250px;">
                     <div class="ides-height-100">
                         <img style="width: 100%;max-height: 100%" [src]="item.image_route" />
                     </div>
                 </div>
                 <div class="texto-reportes8" style="height: 250px;">
-                    <app-ides-citizen-reports-card [item]="item"></app-ides-citizen-reports-card>
+                    <app-ides-citizen-reports-card [items]="reports" [item]="item"></app-ides-citizen-reports-card>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

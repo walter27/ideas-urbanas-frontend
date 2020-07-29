@@ -1,5 +1,33 @@
-<div class="ides-card-border-radius-0 ides-height-auto">
-    <div class="row p-4">
+<!--<div class="ides-card-border-radius-0 ides-height-auto">-->
+
+
+
+<p-carousel [value]="items" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
+
+    <ng-template let-item pTemplate="item">
+        <div class="ides-card m-2">
+            <img src="{{item.image_route}}" />
+            <div class="col-md-12 text-center mt-3">
+                <h4 class="card-title">{{item.name}}</h4>
+            </div>
+            <div class="col-md-12 text-justify">
+
+                <p class="card-text" translate>
+                    {{item.description}}
+                </p>
+
+            </div>
+            <div class="col-md-12 text-center">
+
+                <a class="text-uppercase font-weight-bold ides-text-blue-dark" data-toggle="modal" data-target="#exampleModal" (click)="getValue(item)">
+                    {{hidden ? 'Leer Más' : 'Leer Menos'}}
+                </a>
+            </div>
+
+        </div>
+    </ng-template>
+</p-carousel>
+<!-- <div class="row p-4">
         <div class="col-12 ides-text-blue-dark">
             <h3 class="font-weight-bolder">{{ item.name }}</h3>
         </div>
@@ -9,30 +37,34 @@
             </p>
         </div>
         <div class="col-12 p-t-2 pt-4">
-            <a class="text-uppercase font-weight-bold ides-text-blue-dark" data-toggle="modal"
-                data-target="#exampleModal" (click)="getValue(item)">
+            <a class="text-uppercase font-weight-bold ides-text-blue-dark" data-toggle="modal" data-target="#exampleModal" (click)="getValue(item)">
                 {{hidden ? 'Leer Más' : 'Leer Menos'}}
             </a>
         </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ content }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
+    </div>-->
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ content }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
+<!-- </div>-->

@@ -32,9 +32,7 @@ export class NavbarItemComponent implements OnInit, DoCheck {
     this.pos = window.pageYOffset;
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   ngDoCheck() {
 
@@ -88,7 +86,8 @@ export class NavbarItemComponent implements OnInit, DoCheck {
 
   hideMenu(item) {
     $('#navbarResponsive').collapse('hide');
-    if (item.title === 'about us') {
+
+    if (item === 'about us') {
       this.utilService.itemSelected = item;
     } else {
       window.scrollTo(0, 0);

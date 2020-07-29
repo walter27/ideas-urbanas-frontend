@@ -21,6 +21,8 @@ export class CitizenReportsComponent implements OnInit {
 
   resultReports$: Observable<ResultList<CitizenReports>>;
 
+  reports: CitizenReports[] = [];
+
   constructor(
     private reportsService: CitizenReportsService
   ) { }
@@ -32,12 +34,20 @@ export class CitizenReportsComponent implements OnInit {
      elem.classList.remove("fixed-top");*/
 
     this.getClasifications();
-    console.log('Reportes');
 
   }
 
   getClasifications() {
     this.resultReports$ = this.reportsService.listReports(this.filters);
+
+    this.reportsService.listReports(this.filters).subscribe(resp => {
+
+      this.reports = resp.data;
+
+    });
+
+
+
   }
 
 }

@@ -91,6 +91,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
   ngOnInit() {
 
+
     if (!this.regionService.citySelect && this.route.url === '/home') {
 
       this.background = 'mat-menu-content2';
