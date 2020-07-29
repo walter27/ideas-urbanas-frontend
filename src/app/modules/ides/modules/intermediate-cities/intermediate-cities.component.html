@@ -1,0 +1,25 @@
+<div class="row mx-auto covid-header">
+    <div class="covid-header1 ">
+        <h3 translate>Ciudades</h3>
+    </div>
+    <div class="covid-header2">
+        <a class="text-lg-right text-white cursor-pointer" routerLink="/" translate>Inicio | Ciudades</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container mt-5 animate__animated animate__fadeInDown">
+        <div class="card-columns mt-5">
+            <div *ngFor="let item of cantons" class="card">
+                <img [src]="item.img" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <a class="card-title">{{item.name}}</a>
+                    <p class="card-text">
+                        Ciudades Intermedias
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

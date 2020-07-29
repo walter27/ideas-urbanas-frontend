@@ -78,6 +78,13 @@ export class ModulesComponent implements OnInit {
       active: false
     },
     {
+      id: 'intermediate_cities',
+      title: 'Ciudades',
+      type: 'text',
+      url: '/intermediate-cities',
+      active: false
+    },
+    {
       id: 'admin',
       title: 'Administración',
       type: 'drop',

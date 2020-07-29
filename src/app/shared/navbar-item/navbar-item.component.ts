@@ -40,27 +40,25 @@ export class NavbarItemComponent implements OnInit, DoCheck {
 
 
 
-    if(this.route.url === '/home'){
+    if (this.route.url === '/home') {
 
-      if(this.pos>20 && !this.utilService.buttonVisible ){
+      if (this.pos > 20 && !this.utilService.buttonVisible) {
         this.textColorNav = 'nav-item-covid';
 
-      }else{
+      } else {
         this.textColorNav = 'nav-item';
 
       }
 
     }
 
-    if (this.route.url === '/covid' || this.route.url === '/thematic' ||
-      this.route.url === '/cities' || this.route.url === '/indexes' || this.route.url === '/citizen-reports' ||
-            this.regionService.citySelect) {
+    if (this.route.url !== '/home' || this.regionService.citySelect) {
 
-              this.textColorNav = 'nav-item-covid';
+      this.textColorNav = 'nav-item-covid';
 
 
-       
-    } 
+
+    }
 
     if (this.utilService.buttonVisible) {
 

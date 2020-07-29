@@ -15,11 +15,6 @@ import { DropdownModule } from 'primeng/dropdown';
 
 
 
-
-
-
-
-
 @NgModule({
   declarations: [CovidComponent],
   imports: [

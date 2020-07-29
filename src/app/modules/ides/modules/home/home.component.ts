@@ -659,10 +659,6 @@ export class HomeComponent implements OnInit, DoCheck {
 
   onAddTag(value, type) {
 
-    console.log('VALOR', value);
-    console.log('TYPE', type);
-
-
     let words = this.parseStopword(value);
     for (let index = 0; index < words.length; index++) {
       const element = words[index];

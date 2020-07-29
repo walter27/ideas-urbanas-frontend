@@ -28,8 +28,8 @@ const routes: Routes = [
     loadChildren: './modules/indexes/indexes.module#IndexesModule'
   },
   {
-    path: 'covid',
-    loadChildren: './modules/covid/covid.module#CovidModule'
+    path: 'intermediate-cities',
+    loadChildren: './modules/intermediate-cities/intermediate-cities.module#IntermediateCitiesModule'
   }
 ];
 

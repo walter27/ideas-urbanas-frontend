@@ -4,7 +4,7 @@ import { IdesRoutingModule } from './ides-routing.module';
 import { IdesComponent } from './ides.component';
 
 @NgModule({
-  declarations: [IdesComponent], 
+  declarations: [IdesComponent],
   imports: [
     CommonModule,
     IdesRoutingModule

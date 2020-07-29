@@ -24,147 +24,11 @@ export class WordCloudComponent implements OnInit {
 
   @Input() citySelected: any;
 
-
-
-
-
-
   constructor(private tagService: TagService) {
 
     this.updateDemo = false;
     this.highcharts = Highcharts;
     Word_Cloud(this.highcharts);
-    this.data = [{
-      "name": "PERCOCET",
-      "weight": 10,
-      "color": "#E0362C",
-      "value": 31
-    }, {
-      "name": "MONITORING",
-      "weight": 11,
-      "color": "#E0362C",
-      "value": 31
-    }, {
-      "name": "FINGER",
-      "weight": 12,
-      "color": "#646bb6",
-      "value": 31
-    }, {
-      "name": "CONNECTED",
-      "weight": 13,
-      "color": "#E0362C",
-      "value": 31
-    }, {
-      "name": "COMMODE",
-      "weight": 14,
-      "color": "#E0362C",
-      "value": 31
-    }, {
-      "name": "CLOTTED",
-      "weight": 15,
-      "color": "#E0362C",
-      "value": 31
-    }, {
-      "name": "INITIATED",
-      "weight": 16,
-      "color": "#E0362C",
-      "value": 31
-    }, {
-      "name": "UPSET",
-      "weight": 17,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "REVIEW",
-      "weight": 18,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "LEVAQUIN",
-      "weight": 19,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "FEEDING",
-      "weight": 20,
-      "color": "#f33585",
-      "value": 32
-    }, {
-      "name": "DIFFERENT",
-      "weight": 21,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "APPROPRIATE",
-      "weight": 22,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "VITAL",
-      "weight": 23,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "PROVIDED",
-      "weight": 24,
-      "color": "#E0362C",
-      "value": 32
-    }, {
-      "name": "PLEASE",
-      "weight": 25,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "KNEES",
-      "weight": 26,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "#E0362C",
-      "weight": 27,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "CCU",
-      "weight": 28,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "BREAST",
-      "weight": 29,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "20MG",
-      "weight": 30,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "REFUSED",
-      "weight": 31,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "PINK",
-      "weight": 32,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "ULCER",
-      "weight": 33,
-      "color": "#E0362C",
-      "value": 33
-    }, {
-      "name": "SIZE",
-      "weight": 34,
-      "color": "#E0362C",
-      "value": 34
-    }, {
-      "name": "SHOWED",
-      "weight": 35,
-      "color": "#E0362C",
-      "value": 34
-    }]
   }
 
 
@@ -271,7 +135,6 @@ export class WordCloudComponent implements OnInit {
     });
   }
 
-
   createWordCloud() {
 
     this.chartOptions = {
@@ -294,7 +157,6 @@ export class WordCloudComponent implements OnInit {
       exporting: {
         enabled: false,
       }
-
 
     }
 
