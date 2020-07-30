@@ -1,12 +1,19 @@
 <div class="col-12 mb-4">
     <div class="row">
-        <div class="col-6 ides-text-blue text-left mt-3">
-            <h3 class="subtitulo" translate>{{ getTitle() }}</h3>
+
+        <div *ngIf="!citySelected" class="col-md-6 col-lx-12 text-left">
+            <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cantons" optionLabel="name" [(ngModel)]="cantonsSlected" [defaultLabel]="'Ciudades'" (onChange)="getCantonsSelected()" [showHeader]=false name="cantonsSlected">
+            </p-multiSelect>
         </div>
-        <div class="col-6 text-right mb-2">
+
+        <div [ngClass]="columnaDownload" class="col-lx-12 text-right">
             <app-ides-download [titleExport]="'Índices'" [hiddenCSV]="true" [idElement]="'indexesGraph'" [nameFile]="'indices_ideas_urbanas'"></app-ides-download>
         </div>
-        <div class="col-12 mb-4">
+        <div class="col-md-12 ides-text-blue text-left mt-3">
+            <h3 class="subtitulo" translate>{{ getTitle() }}</h3>
+        </div>
+
+        <div class="col-md-12 mb-3">
             <p class="text-justify" translate>index description</p>
         </div>
         <div class="canvas-index-width" [ngClass]="{ 'col-12': !marginAuto }" [ngStyle]="{ 'margin': marginAuto ? 'auto' : '' }" *ngIf="radarChartData.length > 0">

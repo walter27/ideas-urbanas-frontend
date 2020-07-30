@@ -16,6 +16,8 @@ import { ResultList } from 'src/app/core/models/resultList.model';
 import { Clasification } from 'src/app/core/models/clasification.model';
 import { ClasificationService } from 'src/app/core/services/clasification.service';
 import { map } from 'rxjs/operators';
+import { SelectItem } from 'primeng/api';
+
 let { capitalizeFirst } = require('../../core/utils/utils');
 
 @Component({
@@ -233,6 +235,10 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
   public radarChartData: ChartDataSets[] = [];
   public radarChartType: ChartType = 'radar';
 
+  cantons: any[] = [];
+  cantonsSlected: any[] = [];
+  columnaDownload: string;
+
   constructor(
     private dataService: DataService,
     private regionService: RegionService,
@@ -338,15 +344,59 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
       this.dataService.listDataIndexes(this.citySelected._id).subscribe(resp => {
         this.baseData = resp;
         this.updateChart(resp);
+        this.columnaDownload = 'col-md-12';
       });
     } else {
-
+      this.columnaDownload = 'col-md-6';
       this.dataService.listDataIndexes().subscribe(resp => {
         this.baseData = resp;
-        this.updateChart(resp);
+        this.cantons = [];
+        Object.keys(resp).forEach(c => {
+
+          this.cantons.push({
+            name: c
+          });
+
+        });
+        this.getCantonsSelected();
       });
     }
   }
+
+  getCantonsSelected() {
+
+    let selectedCantons = [];
+
+    if (this.cantonsSlected.length === 0) {
+
+      this.cantonsSlected.push(this.cantons[0]);
+    }
+
+    this.cantonsSlected.forEach(canton => {
+      selectedCantons.push(canton.name);
+
+    });
+
+    this.filteredDataIndexes(selectedCantons);
+
+  }
+
+
+  filteredDataIndexes(cantonsSelected) {
+
+    let filtered = Object.keys(this.baseData)
+      .filter(key => cantonsSelected.includes(key))
+      .reduce((obj, key) => {
+        obj[key] = this.baseData[key];
+        return obj;
+      }, {});
+
+    this.updateChart(filtered);
+
+
+  }
+
+
 
   onCheckItemYear(e) {
     const idx = this.years.findIndex(c => c.id === e);

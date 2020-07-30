@@ -173,6 +173,20 @@ export class HomeComponent implements OnInit, DoCheck {
       posY: -80.0604035
     },
     {
+      id: '5e41c9f7d82c451b6859e68d',
+      title: 'Latacunga',
+      styleText: { top: '275px', left: '860px', opacity: 0.3 },
+      stylePoint: { top: '105px', left: '180px' },
+      class: 'latacunga',
+      hidden: false,
+      hasPage: false,
+      url: '',
+      queryParams: {},
+      color: '',
+      posX: 6.7,
+      posY: -78.5718573
+    },
+    {
       id: '5e41c9f7d82c451b6859e693',
       title: 'Ambato',
       styleText: { top: '275px', left: '860px', opacity: 0.3 },
@@ -198,6 +212,20 @@ export class HomeComponent implements OnInit, DoCheck {
       queryParams: {},
       color: '',
       posX: 6.6,
+      posY: -77.4031057
+    },
+    {
+      id: '5e41c9f5d82c451b6859d8ad',
+      title: 'Pastaza',
+      styleText: { top: '275px', left: '860px', opacity: 0.3 },
+      stylePoint: { top: '105px', left: '180px' },
+      class: 'pastaza',
+      hidden: false,
+      hasPage: false,
+      url: '',
+      queryParams: {},
+      color: '',
+      posX: 5.8,
       posY: -77.4031057
     },
     {
@@ -230,10 +258,10 @@ export class HomeComponent implements OnInit, DoCheck {
     },
     {
       id: '5e41c9f5d82c451b6859daff',
-      title: 'Salinas',
+      title: 'Santa Elena',
       styleText: { top: '275px', left: '860px', opacity: 0.3 },
       stylePoint: { top: '105px', left: '180px' },
-      class: 'salinas',
+      class: 'santa_elena',
       hidden: false,
       hasPage: false,
       url: '',
@@ -285,6 +313,20 @@ export class HomeComponent implements OnInit, DoCheck {
       posY: -80.894932
     },
     {
+      id: '5e41c9f4d82c451b6859d2df',
+      title: 'Milagro',
+      styleText: { top: '275px', left: '860px', opacity: 0.3 },
+      stylePoint: { top: '105px', left: '180px' },
+      class: 'milagro',
+      hidden: false,
+      hasPage: false,
+      url: '',
+      queryParams: {},
+      color: '',
+      posX: 4.8,
+      posY: -80.104932
+    },
+    {
       id: '5e41c9f6d82c451b6859e0c4',
       title: 'Durán',
       styleText: { top: '275px', left: '860px', opacity: 0.3 },
@@ -297,6 +339,20 @@ export class HomeComponent implements OnInit, DoCheck {
       color: '',
       posX: 4.4,
       posY: -80.537749
+    },
+    {
+      id: '5e41c9f4d82c451b6859d1b4',
+      title: 'Azogues',
+      styleText: { top: '275px', left: '860px', opacity: 0.3 },
+      stylePoint: { top: '105px', left: '180px' },
+      class: 'azogues',
+      hidden: false,
+      hasPage: false,
+      url: '',
+      queryParams: {},
+      color: '',
+      posX: 4.1,
+      posY: -79.0008965
     },
     {
       id: '5e6874cf8795ae6ed43c68b9',
@@ -313,11 +369,11 @@ export class HomeComponent implements OnInit, DoCheck {
       posY: -79.1058965
     },
     {
-      id: '5e41c9f7d82c451b6859e692',
-      title: 'Macas',
+      id: '5e41c9f5d82c451b6859dc25',
+      title: 'Morona',
       styleText: { top: '275px', left: '860px', opacity: 0.3 },
       stylePoint: { top: '105px', left: '180px' },
-      class: 'macas',
+      class: 'morona',
       hidden: false,
       hasPage: false,
       url: '',
@@ -631,21 +687,23 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   async onClickCity(id) {
-    if (this.stopwords.length == 0) {
+
+
+    if (this.stopwords.length === 0) {
       this.getStopwords();
     }
 
-    if (this.activeCities.length == 0)
+    if (this.activeCities.length === 0) {
       await this.getCantons();
-
-    this.step = 2;
-    this.listTags(id);
-    this.cities.forEach(city => {
-      if (city.id === id) {
-        this.selectCity = city;
-        this.regionService.citySelect = this.selectCity;
-      }
-    });
+      this.step = 2;
+      this.listTags(id);
+      this.cities.forEach(city => {
+        if (city.id === id) {
+          this.selectCity = city;
+          this.regionService.citySelect = this.selectCity;
+        }
+      });
+    }
   }
 
   onHidde() {
@@ -781,6 +839,7 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   onMarkerClick(event) {
+    
     this.onClickCity(this.cities[event].id);
   }
 

@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import * as Highcharts from 'highcharts';
 import Word_Cloud from 'highcharts/modules/wordcloud';
 import { type } from 'os';
+import { RegionService } from 'src/app/core/services/region.service';
 
 @Component({
   selector: 'app-word-cloud',
@@ -19,12 +20,14 @@ export class WordCloudComponent implements OnInit {
   data: any = [];
   highcharts: any;
   tagsData: any[] = [];
+  citySelected: any;
 
 
 
-  @Input() citySelected: any;
+  @Input() citySelectedId: any;
 
-  constructor(private tagService: TagService) {
+  constructor(private tagService: TagService,
+              private regionService: RegionService) {
 
     this.updateDemo = false;
     this.highcharts = Highcharts;
@@ -34,9 +37,11 @@ export class WordCloudComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.citySelected) {
+
+    this.citySelected = this.regionService.citySelect;
+    if (this.citySelectedId) {
       this.getStopwords();
-      this.listTags(this.citySelected._id);
+      this.listTags(this.citySelectedId);
       //this.createWordCloud();
 
     }
@@ -75,11 +80,11 @@ export class WordCloudComponent implements OnInit {
     let words = this.parseStopword(value);
     for (let index = 0; index < words.length; index++) {
       const element = words[index];
-      this.tagService.addTag({ text: element.toLowerCase().trim(), id_Canton: this.citySelected._id, type }).subscribe(data => {
+      this.tagService.addTag({ text: element.toLowerCase().trim(), id_Canton: this.citySelectedId, type }).subscribe(data => {
         this.newTag = '';
         //this.step = 3;
         // if (index + 1 === words.length) {
-        this.listTags(this.citySelected._id);
+        this.listTags(this.citySelectedId);
         // }
 
       }, err => {

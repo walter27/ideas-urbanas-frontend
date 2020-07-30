@@ -2,7 +2,7 @@
 
 
 
-<p-carousel [value]="items" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
+<!--<p-carousel [value]="items" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
 
     <ng-template let-item pTemplate="item">
         <div class="ides-card m-2">
@@ -22,6 +22,29 @@
                 <a class="text-uppercase font-weight-bold ides-text-blue-dark" data-toggle="modal" data-target="#exampleModal" (click)="getValue(item)">
                     {{hidden ? 'Leer Más' : 'Leer Menos'}}
                 </a>
+            </div>
+
+        </div>
+    </ng-template>
+</p-carousel>-->
+
+<p-carousel [value]="reports" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-report pTemplate="item">
+        <div class="ides-card m-2">
+            <img src="{{report.img}}" />
+            <div class="col-md-12 text-center mt-3">
+                <h4 class="card-title">{{report.name}}</h4>
+            </div>
+            <div class="col-md-12 text-justify">
+
+                <p class="card-text ml-2 mr-2" translate>
+                    {{report.descriptions}}
+                </p>
+
+            </div>
+            <div class="col-md-12 text-center mt-3">
+
+                <a [href]="report.read" class="myButtonleermas" target="_blank" translate>read</a>
             </div>
 
         </div>

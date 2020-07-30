@@ -226,7 +226,7 @@
                     </div>
                 </div>
 
-                <div class="ides-card-home ides-card-home-steps" *ngIf="step == 3">
+                <div class="ides-card-home ides-card-home-steps mb-3" *ngIf="step == 3">
                     <div class="container mt-4 mb-4 pt-4">
                         <div class="row justify-content-center">
                             <div class="col-auto">
@@ -242,15 +242,18 @@
                             </h5>
                         </div>
                     </div>
-                    <div class="row justify-content-center cloud-background mt-4">
+                    <div class="col-md-12">
                         <!-- <angular-tag-cloud [config]="options" [data]="tagsData" class="mt-4 mb-4 tag-cloud-mt">
                         </angular-tag-cloud> -->
 
                         <!-- <section tagcloud id="tag-cloud-wrapper" [idElement]="'tag-cloud-wrapper'" [data]="dataTagCloud" [width]="500" [height]="270" [maxFont]="96">
                         </section> -->
 
-                        <section id="tag-cloud-wrapper" class="mt-4">
-                        </section>
+                        <app-word-cloud [citySelectedId]="selectCity.id"></app-word-cloud>
+
+
+                        <!-- <section id="tag-cloud-wrapper" class="mt-4">
+                        </section>-->
 
                     </div>
                     <div class="text-uppercase font-weight-bold ides-text-blue-dark text-center mt-4 pt-4">
