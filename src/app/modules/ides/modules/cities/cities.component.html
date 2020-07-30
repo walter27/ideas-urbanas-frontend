@@ -249,11 +249,11 @@
             </div>
 
             <div *ngFor="let c of research?.data" class="row mb-4">
-                <div class="ides-card row">
-                    <div class="col-sm-3 col-md-1">
+                <div class="ides-card row-inv">
+                    <div class="GRAFICO-INV">
                         <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img" [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
                     </div>
-                    <div class="col-sm-10 col-md-11">
+                    <div class="TEXTO-INV">
                         <div class="row">
                             <div class="col ides-text-blue-dark">
                                 <h3 class="font-weight-bolder">{{ c.name }}</h3>

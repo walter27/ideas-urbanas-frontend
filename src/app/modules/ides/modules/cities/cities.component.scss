@@ -687,7 +687,7 @@ button#dropdownMenuButton {
     align-content: center;
     max-width: 550px;
     margin-top: 50px;
-    padding: 0% 3% 3% 3%;
+    padding: 0% 0% 0% 0%;
     text-align: center;
     align-items: center;
 }
@@ -769,8 +769,8 @@ h2.subtitle.ides-text-blue {
                 }
             }
             .row-azul {
-                margin-left: -3%;
-                margin-right: -3%;
+                margin-left: 0%;
+                margin-right: 0%;
             }
 @media (min-width: 1080px){          
                 .fondo2-gris {
@@ -789,4 +789,33 @@ h2.subtitle.ides-text-blue {
 .cuadros-abajo.ng-star-inserted {
     margin-bottom: 50px;
     margin-top: 20px;
+}
+.row.pl-4.pr-4.pt-4.city-resume {
+    padding-bottom: 30px;
+    /* margin-left: 30px; */
+}
+.row.w-100.text-center {
+    padding-left: 50px;
+}
+.col-2 {
+    margin-left: 40px;
+}
+.col-sm-3.col-md-1 {
+    MARGIN-RIGHT: 30PX;
+}
+.GRAFICO-INV {
+    WIDTH: 15%;
+    margin: 0 auto;
+    text-align: center;
+}
+.TEXTO-INV {
+    WIDTH: 85%;
+}
+.ides-card.row-inv {
+    display: flex;
+    padding: 30px;
+}
+.ides-card.row-inv {
+    display: flex;
+    padding: 30px;
 }

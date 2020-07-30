@@ -2071,3 +2071,27 @@ input.ng-untouched.ng-pristine.ng-valid {
 .row.mx-auto.covid-header {
     margin-top: 0;
 }
+.ui-dropdown {
+    margin-top: 0px;
+}
+.ng-tns-c8-0.ui-multiselect.ui-widget.ui-state-default.ui-corner-all {
+    margin-top: 0px;
+}
+p.subtitulo-covid {
+    margin-bottom: 20px;
+}
+.row.mx-auto.covid-header {
+    margin-top: -1px;
+}
+@media (min-width: 768px){
+    .col-md-11 {
+        flex: 0 0 89%;
+        max-width: 89%;
+        }
+    }
+    @media (min-width: 768px){
+    .col-md-1 {
+        flex: 0 0 10%;
+        max-width: 10%;
+        }
+    }
