@@ -37,51 +37,61 @@ export class ModulesComponent implements OnInit {
     {
       id: 'home',
       title: 'home',
-      type: 'text',
+      type: 'drop',
+      options: [
+        {
+          id: 'home',
+          text: 'home',
+          url: '/home',
+        },
+        {
+          id: 'home',
+          text: 'about us',
+          url: '/home',
+        },
+        {
+          id: 'thematics',
+          text: 'thematics',
+          url: '/thematic',
+        }
+      ],
       url: '/home',
       active: false
     },
-    {
-      id: 'home',
-      title: 'about us',
-      type: 'text',
-      url: '/home',
-      active: false
-    },
-    {
+    /*{
       id: 'cities',
       title: 'cities',
       type: 'drop',
       options: [],
       url: '/cities',
       active: false
-    },
+    },*/
     {
-      id: 'thematics',
-      title: 'thematics',
+      id: 'intermediate_cities',
+      title: 'cities_inter',
       type: 'text',
-      url: '/thematic',
+      url: '/intermediate-cities',
       active: false
     },
-    /* {
-       id: 'indexes',
-       title: 'indexes',
-       type: 'text',
-       url: '/indexes',
-       active: false
-     },*/
+    {
+      id: 'indexes',
+      title: 'indexes',
+      type: 'text',
+      url: '/indexes',
+      active: false
+    },
     {
       id: 'citizen_reports',
-      title: 'citizen reports',
+      title: 'know',
       type: 'text',
       url: '/citizen-reports',
       active: false
     },
     {
-      id: 'intermediate_cities',
-      title: 'Ciudades',
+      id: 'covid',
+      title: 'COVID-19',
       type: 'text',
-      url: '/intermediate-cities',
+      url: '/covid',
       active: false
     },
     {

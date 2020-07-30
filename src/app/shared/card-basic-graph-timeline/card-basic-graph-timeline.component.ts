@@ -43,7 +43,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
         type: 'timeline',
         inverted: false,
         scrollablePlotArea: {
-          minWidth: 6000,
+          minWidth: 7000,
           scrollPositionX: 0,
           marginLeft: 150
         },
@@ -232,10 +232,51 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">27 DE JUNIO</strong>',
           label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/junio/5.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">"El alcade de </br> Quito  anuncia que los </br> servicios sanitarios </br> "Ya no dan más"..</p>',
           description: "El alcade de Quito anuncia que los servicios sanitarios 'Ya no dan más' y pide al COE Nacional ampliar el horario de toque de queda e implementar la ley seca."
-        }, {
-          name: ' <strong style="position: absolute; top:118px; right:10px;">29 DE JUNIO</strong>',
-          label: '<div style="position: absolute; bottom:-8px; right:-25px;"><img src = "assets/covid/junio/6.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">El COE Nacional autoriza </br> a que los funcionarios </br> públicos de la administración..</p>',
-          description: "El COE Nacional autoriza a que los funcionarios públicos de la administración central de gobierno regresen a trabajar de forma presencial"
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">29 DE JUNIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/junio/6.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">El COE Nacional autoriza </br> a que los funcionarios </br> públicos de la administración..</p>',
+          description: "El COE Nacional autoriza a que los funcionarios públicos de la administración central de gobierno regresen a trabajar de forma presencial."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">3 DE JULIO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/julio/3.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Milagro reinicia circulación </br> de buses de transporte </br> urbano con el 50% del aforo.</p>',
+          description: "Milagro reinicia circulación de buses de transporte urbano con el 50% del aforo."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">10 DE JULIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/10.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Manta promociona </br> estrategia de turismo </br> bioseguro.</p>',
+          description: "Manta promociona estrategia de turismo bioseguro."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">12 DE JULIO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/julio/12.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Alcalde de Ambato </br> da positivo para </br> Covid-19.</p>',
+          description: "Alcalde de Ambato da positivo para Covid-19."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">15 DE JULIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/15.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Alcaldesa de Ibarra </br> da positivo para </br> Covid-19.</p>',
+          description: "Alcaldesa de Ibarra da positivo para Covid-19."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">18 DE JULIO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/julio/18.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Alcaldes de Lago Agrio </br> y Francisco de Orellana </br> coordinan..</p>',
+          description: "Alcaldes de Lago Agrio y Francisco de Orellana coordinan para gestionar mancomunadamente medicina al gobierno de Rusia."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">23 DE JULIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/24.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Quito se convierte </br> en la ciudad con </br> mayor número..</p>',
+          description: "Quito se convierte en la ciudad con mayor número de personas contagiadas en Ecuador."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">24 DE JULIO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/julio/24.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Latacunga </br>  organiza datathón para </br> medir la cantidad  de aire en los </br> espacios públicos</p>',
+          description: "Latacunga organiza datathón para medir la cantidad de aire en los espacios públicos."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px; right:10px;">25 DE JULIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px; right:-25px;"><img src = "assets/covid/julio/25.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">COE de Esmeraldas, Cuenca, Tulcán </br> y Portoviejo  solicitan al COE nacional </br> ampliar los toques de queda..</p>',
+          description: "COE de Esmeraldas, Cuenca, Tulcán y Portoviejo solicitan al COE nacional ampliar los toques de queda, restringir el consumo de alcohol, prohibir reuniones de más de 25 personas y dotar de insumos a hospitales públicos."
         }]
       }]
     };

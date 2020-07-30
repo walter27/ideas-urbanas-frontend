@@ -133,5 +133,12 @@
     "read": "Leer más",
     "title_bar": "Evolución Espacial del COVID-19",
     "citizen_reports_start": "Inicio | Reportes Ciudadanos",
-    "thematics_start": "Inicio | Explorar Temas"
+    "thematics_start": "Inicio | Explorar Temas",
+    "intermediate_city": "Ciudades Intermedias",
+    "intermediate_city_home": "Inicio | Ciudades Intermedias",
+    "home_city": " Inicio ",
+    "home_city_intermediate": " Ciudades Intermedias",
+    "cities_inter": "Ciudades",
+    "know": "Conoce"
+
 }

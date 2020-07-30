@@ -9,14 +9,34 @@ import { CitizenReports } from 'src/app/core/models/citizen-reports.model';
 export class IdesCitizenReportsCardComponent implements OnInit {
 
   @Input() item: CitizenReports;
+  @Input() items: any;
   hidden = true;
   title = '';
   content = '';
+  responsiveOptions: any[] = [];
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit() {
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 1,
+        numScroll: 1
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 1,
+        numScroll: 1
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ];
   }
+
+  ngOnInit() { }
 
   getValue(item) {
     this.title = item.name;

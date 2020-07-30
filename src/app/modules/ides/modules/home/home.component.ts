@@ -492,9 +492,6 @@ export class HomeComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
-    console.log('TAG', this.newTag);
-
-
     if (window.innerWidth > 767) {
       this.translate.onLangChange.subscribe((params: LangChangeEvent) => {
         localStorage.setItem('language', params.lang);
@@ -570,18 +567,18 @@ export class HomeComponent implements OnInit, DoCheck {
 
     if (this.utilService.itemSelected) {
 
+
+
       setTimeout(() => {
         this.about.nativeElement.scrollIntoView();
-        console.log('excute');
 
       }, 0.000001);
-
-      //console.log(this.utilService.itemSelected);
 
 
     }
 
     this.utilService.itemSelected = undefined;
+
   }
 
 

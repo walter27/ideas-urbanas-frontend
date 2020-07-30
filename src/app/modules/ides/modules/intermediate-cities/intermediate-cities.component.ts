@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RegionService } from 'src/app/core/services/region.service';
-import { Region } from 'src/app/core/models/regions.model';
 import { Filters } from 'src/app/core/models/filters.model';
 
 @Component({
@@ -28,9 +27,12 @@ export class IntermediateCitiesComponent implements OnInit {
         this.cantons.push({
           name: canton.name,
           img: `assets/cities/all/${canton.name.toLowerCase()}.jpg`,
-          url: `/cities?city=${canton._id}`
+          url: '/cities',
+          queryParams: {
+            city: canton._id
+          }
 
-        })
+        });
       });
 
     });

@@ -106,7 +106,7 @@
     "our_cities_description": "Select a city to view data and statistics",
     "click_here": "Click here for more ►",
     "compare_cities": "Compare the development of two cities",
-    "analyse_topics": "Analyze cities by theme",
+    "analyse_topics": "Analyze cities by subjects",
     "statistical_charts": "Statistical charts",
     "response_covid_description": "Data and statistics from covid-19 in the medium-sized cities of Ecuador",
     "choose_options": "Options",
@@ -119,7 +119,18 @@
     "read": "Read more",
     "title_bar": "COVID-19 Space Evolution",
     "citizen_reports_start": "Home | Citizen Reports",
-    "thematics_start": "Home | Thematics"
+    "thematics_start": "Home | Thematics",
+    "intermediate_city": "Intermediate Cities",
+    "intermediate_city_home": "Home | Intermediate Cities",
+    "home_city": "Home ",
+    "home_city_intermediate": " Intermediate Cities",
+    "cities_inter": "Cities",
+    "know": "Read"
+
+
+
+
+
 
 
 }
