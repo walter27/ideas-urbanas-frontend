@@ -90,7 +90,6 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   }
 
-
   ngOnDestroy() {
 
     let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 6);
@@ -193,15 +192,15 @@ export class CovidComponent implements OnInit, OnDestroy {
       this.cantons = cantons;
       //console.log(this.cantons);
 
-      /* let dataCovid: any;
-       this.dataService.getData().subscribe((data1) => {
-         dataCovid = data1;
- 
-         //console.log(dataCovid);
- 
-         this.saveDataCovid(this.cantons, dataCovid);
- 
-       });*/
+      /*let dataCovid: any;
+      this.dataService.getData().subscribe((data1) => {
+        dataCovid = data1;
+
+        //console.log(dataCovid);
+
+        this.saveDataCovid(this.cantons, dataCovid);
+
+      });*/
 
 
     });
@@ -212,11 +211,11 @@ export class CovidComponent implements OnInit, OnDestroy {
     for (const data of dataCovid) {
 
       let dataF = {
-        description: 'Casos de defunciones por covid-19',
+        description: 'Número diario de personas fallecidas',
         value: '',
         year: '2020',
         id_Canton: '',
-        id_Variable: '5f0cf58fedd2b60af04846da',
+        id_Variable: '5f2354627bce7c1b149c118e',
         date: ''
       };
 
@@ -301,14 +300,14 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     /*for (let index = 0; index < this.dataFinal.length; index++) {
 
-      if (index > 34254 && index <= 38060) {
+      if (index > 25857 && index <= 28730) {
         //console.log(this.dataFinal[index], index);
 
         setTimeout(() => {
           this.dataService.addData(this.dataFinal[index]).subscribe((data2) => {
             console.log(data2, index);
           });
-        }, 3000);
+        }, 2000);
 
       }
 
@@ -349,12 +348,12 @@ export class CovidComponent implements OnInit, OnDestroy {
       this.createDateRange();
 
     });
-    
+
     this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
 
-   /* setTimeout(() => {
-      
-    }, 2000);*/
+    /* setTimeout(() => {
+       
+     }, 2000);*/
 
   }
 
