@@ -111,7 +111,7 @@ export class DataService {
   }
 
   getData() {
-    return this.httpClient.get(`${this.serverUrl}getCSV/datos/muertos`, httpOptions);
+    return this.httpClient.get(`${this.serverUrl}getCSV/datos/diarios`, httpOptions);
   }
 
   addData(profile) {
