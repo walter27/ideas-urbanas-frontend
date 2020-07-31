@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { TagService } from 'src/app/core/services/tag.service';
 import { map } from 'rxjs/operators';
 import * as Highcharts from 'highcharts';
@@ -11,7 +11,7 @@ import { RegionService } from 'src/app/core/services/region.service';
   templateUrl: './word-cloud.component.html',
   styleUrls: ['./word-cloud.component.scss']
 })
-export class WordCloudComponent implements OnInit {
+export class WordCloudComponent implements OnInit, OnChanges {
 
   stopwords: string[] = [];
   newTag = '';
@@ -24,7 +24,7 @@ export class WordCloudComponent implements OnInit {
 
 
 
-  @Input() citySelectedId: any;
+  @Input('citySelectedId') citySelectedId: any;
 
   constructor(private tagService: TagService,
               private regionService: RegionService) {
@@ -44,6 +44,14 @@ export class WordCloudComponent implements OnInit {
       this.listTags(this.citySelectedId);
       //this.createWordCloud();
 
+    }
+  }
+
+
+  ngOnChanges(changes) {
+    if (changes['citySelectedId']) {
+      this.getStopwords();
+      this.listTags(this.citySelectedId);
     }
   }
 

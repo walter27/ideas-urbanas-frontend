@@ -34,6 +34,8 @@ export class RegionService {
   urlParish = environment.parish.base;
   citySelect: any;
   citySelectedCloud: any;
+  citiesMap: any;
+  showWordCloud: number;
 
 
   constructor(

@@ -1884,29 +1884,32 @@ a.myButton.float-left {
 
 @media (min-width: 1024px) {
     .jvectormap-container {
- margin-top: -9%;
- margin-left: -5%;
- width: 380px;
- height: 380px;
-     }
- } 
- @media (min-width: 1366px){
+        margin-top: -9%;
+        margin-left: -5%;
+        width: 380px;
+        height: 380px;
+    }
+}
+
+@media (min-width: 1366px) {
     .jvectormap-container {
- margin-top: -8%;
- margin-left: -5%;
- width: 380px;
- height: 380px;
-     }
- } 
- @media (min-width: 1440px){
+        margin-top: -8%;
+        margin-left: -5%;
+        width: 380px;
+        height: 380px;
+    }
+}
+
+@media (min-width: 1440px) {
     .jvectormap-container {
- margin-top: -8%;
- margin-left: -5%;
- width: 380px;
- height: 380px;
-     }
- } 
- @media (min-width: 1600px){
+        margin-top: -8%;
+        margin-left: -5%;
+        width: 380px;
+        height: 380px;
+    }
+}
+
+@media (min-width: 1600px) {
     .jvectormap-container {
         margin-top: 5%;
         margin-left: -5%;
@@ -2065,13 +2068,6 @@ a.cursor-pointer.mr-4.text-capitalize {
     margin-top: 30px;
 }
 
-.ui-dropdown {
-    background-color: #F5A700;
-    border-color: #F5A700;
-    border-radius: 15px;
-    margin-top: 30px;
-}
-
 input.ng-untouched.ng-pristine.ng-valid {
     border-radius: 50px;
     border: NONE;
@@ -2098,10 +2094,6 @@ input.ng-untouched.ng-pristine.ng-valid {
 
 .row.mx-auto.covid-header {
     margin-top: 0;
-}
-
-.ui-dropdown {
-    margin-top: 0px;
 }
 
 .ng-tns-c8-0.ui-multiselect.ui-widget.ui-state-default.ui-corner-all {
@@ -2134,6 +2126,7 @@ p.subtitulo-covid {
     color: white;
     text-decoration: none;
 }
+
 h4.card-title {
     color: #196af0;
     font-family: 30px "Karla", sans-serif !important;
@@ -2143,6 +2136,7 @@ h4.card-title {
     margin-top: 10px;
     font-size: 18;
 }
+
 input.ng-untouched.ng-pristine.ng-valid {
     min-width: 275px;
     border-radius: 50px;
@@ -2151,6 +2145,7 @@ input.ng-untouched.ng-pristine.ng-valid {
     box-shadow: 0px 0px 30px -5px #c7c7cf;
     padding: 10px;
 }
+
 input.ng-pristine.ng-valid.ng-touched {
     min-width: 275px;
     border-radius: 20px;
@@ -2159,25 +2154,13 @@ input.ng-pristine.ng-valid.ng-touched {
     box-shadow: 0px 0px 30px -5px #c7c7cf;
     padding: 10px;
 }
-.ui-dropdown {
-    background-color: #F5A700;
-    border-color: #F5A700;
-    border-radius: 15px;
-    margin-top: 30px;
-    padding: 5px;
-}
+
 body .ui-button.ui-button-text-only .ui-button-text {
     padding: .9em 1.2em;
     border-radius: 20px;
 }
+
 .cuadros-abajo {
     margin-bottom: 60px;
     margin-top: 20px;
-}
-.ui-dropdown {
-    background-color: #F5A700;
-    border-color: #F5A700;
-    border-radius: 15px;
-    margin-top: 0px;
-    padding: 5px;
 }

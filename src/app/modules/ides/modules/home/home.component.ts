@@ -496,9 +496,9 @@ export class HomeComponent implements OnInit, DoCheck {
     private translate: TranslateService,
     private activatedRoute: ActivatedRoute
   ) {
+
     this.notifier = notifierService;
-
-
+    this.regionService.citiesMap = this.cities;
     this.mapName = 'ecuador_provinces';
 
     this.mapOptions = {
@@ -839,7 +839,7 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   onMarkerClick(event) {
-    
+
     this.onClickCity(this.cities[event].id);
   }
 

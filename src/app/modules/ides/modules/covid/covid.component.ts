@@ -256,7 +256,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     }
 
-    this.addData();
+    //this.addData();
 
     /*
         for (const canton of cantons) {
@@ -285,7 +285,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   addData() {
 
-    //console.log(this.dataFinal);
+    console.log(this.dataFinal);
 
 
     //this.dataPrueba.push(this.dataFinal[0]);
@@ -298,9 +298,9 @@ export class CovidComponent implements OnInit, OnDestroy {
      });*/
 
 
-    /*for (let index = 0; index < this.dataFinal.length; index++) {
+    for (let index = 0; index < this.dataFinal.length; index++) {
 
-      if (index > 25857 && index <= 28730) {
+      if (index > 28730 && index <= 30719) {
         //console.log(this.dataFinal[index], index);
 
         setTimeout(() => {
@@ -312,7 +312,7 @@ export class CovidComponent implements OnInit, OnDestroy {
       }
 
 
-    }*/
+    }
 
     //console.log("terminado..");
 

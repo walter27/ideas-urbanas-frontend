@@ -41,8 +41,8 @@
                                                         [ngClass]="colorLanguaje">{{ language | uppercase }}</span>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                                    <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">Esp</a>
-                                                    <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">Eng</a>
+                                                    <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">ES</a>
+                                                    <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">EG</a>
                                                 </div>
                                             </div>
                                             <div class="login ides-navbar-items-buttom" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
@@ -103,8 +103,8 @@
                                     [ngClass]="colorLanguaje">{{ language | uppercase }}</span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">Esp</a>
-                                <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">Eng</a>
+                                <a (click)="onSetLanguage('es')" class="dropdown-item cursor-pointer">ES</a>
+                                <a (click)="onSetLanguage('en')" class="dropdown-item cursor-pointer">EG</a>
                             </div>
                         </div>
                         <div class="login ides-navbar-items-buttom animate__animated animate__slideInRight animate__fast" [ngSwitch]="isAuthenticated()" (mouseover)='overLogin = true' (mouseout)='overLogin = false'>
@@ -127,9 +127,9 @@
             </div>
 
 
-            <div *ngIf="!buttonVisible" class="cursor-pointer col-md-1 text-center">
+            <!--  <div *ngIf="!buttonVisible" class="cursor-pointer col-md-1 text-center">
                 <span [ngClass]="marginSpan" (click)="showMenu()">MENU</span>
-            </div>
+            </div>-->
         </nav>
     </div>
 </div>

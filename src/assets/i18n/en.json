@@ -60,8 +60,8 @@
     "hello": "Hello",
     "home": "Home",
     "cities": "Your City",
-    "thematics": "Themes",
-    "indexes": "City Index",
+    "thematics": "Analize cities",
+    "indexes": "Compare cities",
     "citizen reports": "Citizen Reports",
     "Did you forget your password?": "Did you forget your password?",
     "Back to login": "Back to login",
@@ -125,7 +125,11 @@
     "home_city": "Home ",
     "home_city_intermediate": " Intermediate Cities",
     "cities_inter": "Cities",
-    "know": "Read"
+    "describe_city": "DESCRIBE CITY",
+    "word_cloud": "WORD CLOUD",
+    "about": "About",
+    "say": "Describe"
+
 
 
 
