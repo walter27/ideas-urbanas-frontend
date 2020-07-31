@@ -36,42 +36,42 @@ export class CardBasicNewsComponent implements OnInit {
 
     this.news = [
       {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
+        name: 'Lorem Ipsum',
+        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
         img: 'assets/infografias/IDEAS1-01.png',
         read: 'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/2'
       },
       {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
+        name: 'Lorem Ipsum',
+        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
         img: 'assets/infografias/IDEAS2-02.png',
         read:'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/3'
 
       },
       {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
+        name: 'Lorem Ipsum',
+        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
         img: 'assets/infografias/IDEAS3-03.png',
         read: 'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/4'
 
       },
       {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
+        name: 'Lorem Ipsum',
+        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
         img: 'assets/infografias/IDEAS4-04.png',
         read: 'https://twitter.com/escuelagob_ide/status/1260002770389815300/photo/1'
 
       },
       {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
+        name: 'Lorem Ipsum',
+        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
         img: 'assets/infografias/MARSCARILLAS-07.png',
         read: 'https://twitter.com/escuelagob_ide'
 
       },
       {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
+        name: 'Lorem Ipsum',
+        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
         img: 'assets/infografias/BICICLETAS-19.png',
         read:'https://twitter.com/escuelagob_ide/status/1280899356183461889/photo/1'
 

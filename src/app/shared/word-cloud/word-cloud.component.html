@@ -1,18 +1,18 @@
 <div class="row">
-    <div class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
+    <div *ngIf="!citySelected" class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
         <h3>DESCRIBE A TU CIUDAD</h3>
     </div>
 
-    <div class="col-md-6 text-right pt-4">
+    <div *ngIf="!citySelected" class="col-md-6 text-right pt-4">
         <input type="text" pInputText [(ngModel)]="newTag" />
     </div>
 
-    <div class="col-md-6 text-left pt-4">
+    <div *ngIf="!citySelected" class="col-md-6 text-left pt-4">
         <p-button label="ENVIAR" (onClick)="onAddTag(newTag,'positive')"></p-button>
 
     </div>
 
-    <div class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
+    <div *ngIf="!citySelected" class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
         <h3>
             Nube de palabras
         </h3>

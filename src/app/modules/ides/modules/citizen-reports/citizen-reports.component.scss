@@ -1,7 +1,6 @@
 .contiene-todo {
     padding: 40px 5% 40px 5%;
 }
-
 .titulo-ciudades {
     margin-bottom: 30px;
 }
@@ -15,7 +14,9 @@
 }
 
 .contiene-todo {
-    padding: 30px 15% 30px 15%;
+    margin: 0 auto;
+    padding: 30px 1% 30px 1%;
+    max-width: 1500px;
 }
 
 .anima-texto {
@@ -108,4 +109,16 @@ h2.subtitulo {
 
 a.text-uppercase.font-weight-bold.ides-text-blue-dark:hover {
     color: #f8ac0a;
+}
+h4.card-title {
+    color: #196af0;
+    font-family: 30px "Karla", sans-serif !important;
+    color: #196af0;
+    font-weight: bold !important;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    font-size: 20px;
+}
+.ides-card.m-2.ng-star-inserted {
+    padding: 15px;
 }
