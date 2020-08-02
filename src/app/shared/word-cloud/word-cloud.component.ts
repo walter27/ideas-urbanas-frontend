@@ -27,7 +27,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
   @Input('citySelectedId') citySelectedId: any;
 
   constructor(private tagService: TagService,
-              private regionService: RegionService) {
+    private regionService: RegionService) {
 
     this.updateDemo = false;
     this.highcharts = Highcharts;
@@ -103,6 +103,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
 
 
   listTags(cityId) {
+    let weight: number;
     this.tagService.getTagsByCantByType(cityId).pipe(
       map(resp => {
         return resp;
@@ -114,27 +115,73 @@ export class WordCloudComponent implements OnInit, OnChanges {
 
         if (word.positive > word.negative && word.positive > word.neutro) {
           //console.log('POSITIVA', word);
+
+          if (word.positive >= 9) {
+            weight = 9;
+
+          }
+
+          if (word.positive >= 6 && word.positive < 9) {
+            weight = 6;
+
+          }
+
+          if (word.positive > 0 && word.positive < 6) {
+            weight = 3;
+
+          }
           this.tagsData.push({
             name: word._id,
-            weight: word.positive,
+            weight,
             color: '#008000'
           });
 
         }
         if (word.negative > word.positive && word.negative > word.neutro) {
           //console.log('NEGATIVA', word);
+
+
+          if (word.negative >= 9) {
+            weight = 9;
+
+          }
+
+          if (word.negative >= 6 && word.negative < 9) {
+            weight = 6;
+
+          }
+
+          if (word.negative > 0 && word.negative < 6) {
+            weight = 3;
+
+          }
           this.tagsData.push({
             name: word._id,
-            weight: word.negative,
+            weight,
             color: '#ff6633'
           });
         }
 
         if (word.neutro > word.positive && word.neutro > word.negative) {
           //console.log('NEUTRO', word);
+
+          if (word.neutro >= 9) {
+            weight = 9;
+
+          }
+
+          if (word.neutro >= 6 && word.neutro < 9) {
+            weight = 6;
+
+          }
+
+          if (word.neutro > 0 && word.neutro < 6) {
+            weight = 3;
+
+          }
           this.tagsData.push({
             name: word._id,
-            weight: word.neutro,
+            weight,
             color: '#696969'
           });
 
@@ -167,6 +214,10 @@ export class WordCloudComponent implements OnInit, OnChanges {
       title: {
         text: ''
       },
+      tooltip: {
+        enabled: false
+      },
+
       exporting: {
         enabled: false,
       }
