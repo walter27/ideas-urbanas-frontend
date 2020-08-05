@@ -67,9 +67,7 @@
                     <app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts " [variable]="selectVariable">
                     </app-card-basic-graph-covid>
                 </div>
-                <div *ngIf="selectVariable" class="mt-3">
-                    <p class="subtitulo-covid">{{selectVariable.origins[0].name }}</p>
-                </div>
+
 
 
 
@@ -82,28 +80,22 @@
                 <div *ngIf="dataMapa && selectVariable">
                     <app-card-basic-map-covid [data]="dataMapa" [variable]="selectVariable"></app-card-basic-map-covid>
                 </div>
-                <div *ngIf="selectVariable" class="margin-map-orign">
-                    <p class="subtitulo-covid">{{selectVariable.origins[0].name }}</p>
-                </div>
+
 
             </div>
 
 
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="dataStreamGraphFinal && selectVariable">
                 <!-- <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
                 </highcharts-chart>-->
 
-                <div *ngIf="dataStreamGraphFinal && selectVariable">
-                    <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph " [variable]="selectVariable">
-                    </app-card-basic-streamgraph>
-                    <!-- <div class=" text-uppercase ides-text-blue ides-origins">
+                <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph " [variable]="selectVariable">
+                </app-card-basic-streamgraph>
+                <!-- <div class=" text-uppercase ides-text-blue ides-origins">
                         {{selectVariable.origins[0].name }}
                     </div>-->
-                    <div *ngIf="selectVariable">
-                        <p class="subtitulo-covid">{{selectVariable.origins[0].name }}</p>
-                    </div>
 
-                </div>
+
 
 
             </div>
