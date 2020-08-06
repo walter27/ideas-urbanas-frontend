@@ -64,6 +64,12 @@
     border-radius: 14px;
 }
 
+:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
+    display: none !important;
+    background-color: red;
+    color: red;
+}
+
 //dropdown
 :host ::ng-deep.ui-dropdown {
     border-radius: 14px;

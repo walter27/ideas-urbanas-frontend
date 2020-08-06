@@ -142,6 +142,9 @@
     "describe_city": "DESCRIBE A TU CIUDAD",
     "word_cloud": "NUBE DE PALABRAS",
     "about": "Nosotros",
-    "say": "Opina"
-
+    "say": "Defínelas",
+    "discover": "Descúbrelas",
+    "define_compare": " Define y Compara",
+    "difine_compare_description": "Elige una ciudad intermedia* defínela con tus propias palabras y mira cuántas personas piensan como tú.",
+    "define_compare_footer": "*Ciudades con población entre 100.000 y 500.000 habitantes urbanos, o que tienen menos y son capitales de provincia"
 }

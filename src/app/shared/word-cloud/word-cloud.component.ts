@@ -21,6 +21,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
   highcharts: any;
   tagsData: any[] = [];
   citySelected: any;
+  citySelectedWordCloud: any;
 
 
 
@@ -39,6 +40,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
 
 
     this.citySelected = this.regionService.citySelect;
+    this.citySelectedWordCloud = this.regionService.citySelectedWordCloud;
     if (this.citySelectedId) {
       this.getStopwords();
       this.listTags(this.citySelectedId);
@@ -209,7 +211,9 @@ export class WordCloudComponent implements OnInit, OnChanges {
       series: [{
         type: 'wordcloud',
         data: this.tagsData,
-        name: 'Value'
+        name: 'Value',
+        wordSpaces: 1,
+        spiral: 'archimedean'
       }],
       title: {
         text: ''

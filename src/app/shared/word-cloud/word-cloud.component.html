@@ -1,5 +1,6 @@
 <div class="row">
-    <div *ngIf="!citySelected" class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
+
+    <div *ngIf="!citySelected && !citySelectedWordCloud" class="col-lg-12 col-xl-12 pl-4 pt-4 text-left">
         <h4 class="titulos-word" translate>describe_city</h4>
     </div>
 
@@ -16,8 +17,8 @@
         <h4 class="titulos-word" translate>word_cloud</h4>
     </div>
 
-    <div class="col-md-12">
-        <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions" style="width: 100%; height: 400px; display: block;">
+    <div class="col-md-12 text-center">
+        <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions" style="width: 100%; height: 300px; display: block;">
         </highcharts-chart>
     </div>
 </div>

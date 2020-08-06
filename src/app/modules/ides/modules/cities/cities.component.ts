@@ -81,6 +81,9 @@ export class CitiesComponent implements OnInit {
     elem.classList.add("sticky-top");
     elem.classList.remove("fixed-top");*/
 
+    this.regionService.citySelectedWordCloud = undefined;
+    this.regionService.citySelect = undefined;
+
     this.activatedRoute.queryParams.subscribe(params => {
       this.idCity = params.city;
       this.citySelected = null;

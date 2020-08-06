@@ -10,8 +10,6 @@
 
             <div class="col-lg-12 text-lg-right">
                 <a class=" ides-text-white cursor-pointer" routerLink="/" translate>home_city</a>
-                <a>|</a>
-                <a class="isDisabled" translate>intermediate_city_home</a>
             </div>
 
 
@@ -33,18 +31,35 @@
             </div>
         </div>
 
-        <div *ngIf="citySelected && step===2" class="row ides-card">
+        <div *ngIf="step===2" class="row ides-card">
+
+            <div class="row m-3">
+                <div class="col-md-12 mt-4">
+                    <h2 class="subtitulo" translate>define_compare</h2>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <p class="subtitulo2 text-justify" translate>difine_compare_description</p>
+                </div>
 
 
+                <div class="col-md-12 col-lx-12 text-left mt-2">
+                    <p-dropdown class="block" [options]="cities" [(ngModel)]="citySelected" name="citySelected" optionLabel="title" [placeholder]="'Seleccione'" (onChange)="getCitySelected()" [filter]="true">
+                    </p-dropdown>
 
-            <div class="col-md-12 col-lx-12 text-left mt-4">
-                <p-dropdown class="block" [options]="cities" [(ngModel)]="citySelected" name="citySelected" optionLabel="title" [placeholder]="'Seleccione'" (onChange)="getCitySelected()">
-                </p-dropdown>
+
+                </div>
+
+                <div class="col-md-12 text-center">
+
+                    <app-word-cloud [citySelectedId]="citySelected.id"></app-word-cloud>
+                </div>
+
+
+                <div class="col-md-12 mb-4">
+                    <p class="subtitulo2 text-justify alert alert-primary" translate>define_compare_footer</p>
+                </div>
             </div>
 
-            <div class="col-md-12">
-                <app-word-cloud [citySelectedId]="citySelected.id"></app-word-cloud>
-            </div>
         </div>
 
     </div>

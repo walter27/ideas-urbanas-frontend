@@ -7,7 +7,7 @@
         <div *ngSwitchDefault>
             <div class="dropdown">
                 <a [routerLinkActive]="['nav-item-active']" [ngClass]="textColorNav" class="cursor-pointer text-none dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span (click)="hideMenu(item)" [routerLink]="item.url" class="nav-item-root" translate>{{ item.title }}</span>
+                    <span (click)="hideMenu(item)" class="nav-item-root text-none" translate>{{ item.title }}</span>
                     <div class="dropdown-menu dropdown-menu-xl-right dropdown-menu-sm-left" aria-labelledby="dropdownMenuButton">
                         <div class="text-white" *ngFor="let o of item.options | slice:0:item.amountToShow">
                             <a [routerLink]="o.url" [queryParams]="o.queryParams" class=" dropdown-item" href="#" (click)="showCloudWord(o.text)" translate>{{ o.text }}</a>

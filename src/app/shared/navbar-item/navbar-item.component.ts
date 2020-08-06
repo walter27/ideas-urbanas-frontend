@@ -99,6 +99,13 @@ export class NavbarItemComponent implements OnInit, DoCheck {
 
 
   showCloudWord(item) {
+    $('#navbarResponsive').collapse('hide');
+
+    if (item === 'discover') {
+
+      this.regionService.showWordCloud = 1;
+
+    }
 
     if (item === 'say') {
 

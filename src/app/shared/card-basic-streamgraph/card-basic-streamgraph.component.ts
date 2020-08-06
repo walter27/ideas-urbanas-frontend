@@ -17,6 +17,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   highcharts: any;
   updateDemo: boolean;
   chartOptions: any = {};
+  chartOptionsExport: any = {};
   socialMedia: any = [];
   imageURL: string;
 
@@ -25,6 +26,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   @Input("min") min: number;
   @Input("max") max: number;
   @Input('variable') variable: any;
+  @Input() maxExport: number;
 
 
 
@@ -39,14 +41,14 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
     Series_Label(this.highcharts);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngOnChanges(changes) {
     if (changes['data']) {
       this.createStreamGraph();
 
     }
+
   }
 
   createStreamGraph() {
@@ -101,68 +103,58 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
         },*/
 
       },
-      colorAxis: {
-
-        minColor: '#ffeda0',
-        maxColor: '#bd0026',
-
-      },
+      /* colorAxis: {
+ 
+         minColor: '#ffeda0',
+         maxColor: '#bd0026',
+ 
+       },*/
       yAxis: {
         visible: false,
         startOnTick: false,
         endOnTick: false
       },
+
       legend: {
         enabled: false
       },
-
-      plotOptions: {
-        series: {
-          label: {
-            enabled: true,
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: {
-              color: 'rgba(255,255,255,0.75)'
-            }
-          }
-        }
-      },
-
       exporting: {
         filename: `casos_${this.variable.name}_covid19_temporal`
       },
-
-      /* plotOptions: {
-         series: {
-           dataLabels: {
-             enabled: true,
-             crop: false,
-             overflow: 'none',
-             align: 'left',
-             inside: true,
-             format: '{series.name}',
-             color: 'black'
-           }
-         }
-       },*/
       series: this.data,
     };
 
-    this.getURLImage();
+
+    setTimeout(() => {
+      this.getURLImage();
+
+    }, 3000);
+
   }
 
   getURLImage() {
 
-    let chart = this.highcharts.charts[0];
-    let ohlcSvg = chart.getSVG(this.chartOptions);
-    let urlExport = this.highcharts.getOptions().exporting.url;
+    this.chartOptionsExport = Object.assign({}, this.chartOptions);
+    this.chartOptionsExport.xAxis.min = 0;
+    this.chartOptionsExport.xAxis.max = this.maxExport;
 
-    //console.log(this.highcharts.getOptions().exporting);
+    this.chartOptionsExport['legend'] = {
+      layout: 'vertical',
+      align: 'left',
+      verticalAlign: 'middle',
+      itemMarginTop: 10,
+      itemMarginBottom: 10
+    }
+
+    //let chart = this.highcharts.charts[0];
+    //let ohlcSvg = chart.getSVG(chartOptionsExport);
+
+    Series_Label(this.highcharts);
+    let urlExport = this.highcharts.getOptions().exporting.url;
 
 
     let data = {
-      options: JSON.stringify(this.chartOptions),
+      options: JSON.stringify(this.chartOptionsExport),
       filename: 'test.png',
       type: 'image/png',
       width: 450,

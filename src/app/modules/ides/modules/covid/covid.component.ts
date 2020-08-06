@@ -41,6 +41,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   minStreamgraph: number;
   maxStreamgraph: number;
+  maxExport: number;
 
   rangeValues: any = [];
 
@@ -631,6 +632,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     if (this.selectDate === this.dateRange[0].getTime()) {
       this.minStreamgraph = 0;
       this.maxStreamgraph = this.dateRange.length;
+      this.maxExport = this.dateRange.length;
     }
 
     this.result$.forEach(element => {

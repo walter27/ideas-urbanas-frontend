@@ -36,6 +36,7 @@ export class RegionService {
   citySelectedCloud: any;
   citiesMap: any;
   showWordCloud: number;
+  citySelectedWordCloud: any;
 
 
   constructor(
