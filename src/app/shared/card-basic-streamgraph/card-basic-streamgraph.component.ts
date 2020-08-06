@@ -17,6 +17,8 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   highcharts: any;
   updateDemo: boolean;
   chartOptions: any = {};
+  socialMedia: any = [];
+  imageURL: string;
 
   @Input("dates") dates: any[];
   @Input("data") data: any[];
@@ -113,25 +115,138 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       legend: {
         enabled: false
       },
+
+      plotOptions: {
+        series: {
+          label: {
+            enabled: true,
+            minFontSize: 5,
+            maxFontSize: 15,
+            style: {
+              color: 'rgba(255,255,255,0.75)'
+            }
+          }
+        }
+      },
+
       exporting: {
         filename: `casos_${this.variable.name}_covid19_temporal`
       },
 
-     /* plotOptions: {
-        series: {
-          dataLabels: {
-            enabled: true,
-            crop: false,
-            overflow: 'none',
-            align: 'left',
-            inside: true,
-            format: '{series.name}',
-            color: 'black'
-          }
-        }
-      },*/
+      /* plotOptions: {
+         series: {
+           dataLabels: {
+             enabled: true,
+             crop: false,
+             overflow: 'none',
+             align: 'left',
+             inside: true,
+             format: '{series.name}',
+             color: 'black'
+           }
+         }
+       },*/
       series: this.data,
     };
+
+    this.getURLImage();
+  }
+
+  getURLImage() {
+
+    let chart = this.highcharts.charts[0];
+    let ohlcSvg = chart.getSVG(this.chartOptions);
+    let urlExport = this.highcharts.getOptions().exporting.url;
+
+    //console.log(this.highcharts.getOptions().exporting);
+
+
+    let data = {
+      options: JSON.stringify(this.chartOptions),
+      filename: 'test.png',
+      type: 'image/png',
+      width: 450,
+      async: true
+    };
+
+    let that = this;
+
+
+    $.post(urlExport, data, function (url) {
+      that.socialMedia = [];
+      that.imageURL = urlExport + url;
+
+      that.socialMedia.push({
+        name: 'Facebook',
+        link: `https://www.facebook.com/sharer.php?u=${that.imageURL}`,
+        img: 'social-facebook'
+
+      });
+
+      that.socialMedia.push({
+        name: 'Twitter',
+        link: `https://twitter.com/intent/tweet?url=${that.imageURL}&text=Plataforma de Ideas Urbanas`,
+        img: 'social-twitter'
+
+      });
+
+
+
+
+      /*var urlCreator = window.URL || window.webkitURL
+      document.querySelector("#image").src = imageUrl
+      fetch(imageUrl).then(response => response.blob()).then(data => {
+        // You have access to chart data here
+        //console.log(data)
+      })*/
+    });
+
+
+
+
+    //console.log(ohlcSvg);
+    //console.log(this.highcharts.getOptions().exporting.url);
+    //console.log(this.chartOptions);
+
+
+
+
+
+    /*$('#facebook').click(function () {
+
+
+      function serialize(obj) {
+        return Object.keys(obj).map(function (p) {
+          return encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]);
+        }).join("&");
+      }
+
+      function postToFacebook(url) {
+        console.log(url);
+        let url2 = urlExport + url;
+        console.log(url2);
+
+        /*const title = 'Laboratorio';
+        window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url2) + '&t=' +
+          encodeURIComponent(title), 'sharer', 'toolbar=0,status=0,width=626,height=436');
+      }
+
+
+      $.ajax({
+        type: 'POST',
+        data: serialize({
+          svg: ohlcSvg,
+          type: 'image/png',
+          async: true
+        }),
+        url: urlExport,
+        success: postToFacebook,
+        error: function (e) {
+          throw e;
+        }
+      });
+    });*/
+
   }
 
 }

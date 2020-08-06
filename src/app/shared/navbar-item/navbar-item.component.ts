@@ -87,13 +87,24 @@ export class NavbarItemComponent implements OnInit, DoCheck {
   hideMenu(item) {
     $('#navbarResponsive').collapse('hide');
 
-    if (item === 'about us') {
+    if (item.title === 'about') {
       this.utilService.itemSelected = item;
     } else {
       window.scrollTo(0, 0);
       this.utilService.itemSelected = undefined;
+      this.regionService.showWordCloud = 1;
     }
 
+  }
+
+
+  showCloudWord(item) {
+
+    if (item === 'say') {
+
+      this.regionService.showWordCloud = 2;
+
+    }
   }
 
   capitalizeFirst(str) {

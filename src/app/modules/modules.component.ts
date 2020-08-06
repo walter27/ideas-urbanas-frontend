@@ -34,20 +34,35 @@ export class ModulesComponent implements OnInit {
   };
 
   items: Array<ItemsDrop> = [
+
     {
       id: 'home',
       title: 'home',
+      type: 'text',
+      url: '/home',
+      active: false
+    },
+    {
+      id: 'about',
+      title: 'about',
+      type: 'text',
+      url: '/home',
+      active: false
+    },
+    {
+      id: 'intermediate_city',
+      title: 'intermediate_city',
       type: 'drop',
       options: [
         {
-          id: 'home',
-          text: 'home',
-          url: '/home',
+          id: 'say',
+          text: 'say',
+          url: '/intermediate-cities',
         },
         {
-          id: 'home',
-          text: 'about us',
-          url: '/home',
+          id: 'indexes',
+          text: 'indexes',
+          url: '/indexes',
         },
         {
           id: 'thematics',
@@ -55,7 +70,7 @@ export class ModulesComponent implements OnInit {
           url: '/thematic',
         }
       ],
-      url: '/home',
+      url: '/intermediate-cities',
       active: false
     },
     /*{
@@ -67,29 +82,15 @@ export class ModulesComponent implements OnInit {
       active: false
     },*/
     {
-      id: 'intermediate_cities',
-      title: 'cities_inter',
-      type: 'text',
-      url: '/intermediate-cities',
-      active: false
-    },
-    {
-      id: 'indexes',
-      title: 'indexes',
-      type: 'text',
-      url: '/indexes',
-      active: false
-    },
-    {
       id: 'citizen_reports',
-      title: 'know',
+      title: 'citizen_reports_start',
       type: 'text',
       url: '/citizen-reports',
       active: false
     },
     {
       id: 'covid',
-      title: 'COVID-19',
+      title: 'response_covid_start',
       type: 'text',
       url: '/covid',
       active: false

@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IntermediateCitiesComponent } from './intermediate-cities.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -16,7 +17,8 @@ import { IntermediateCitiesComponent } from './intermediate-cities.component';
     SharedModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule
   ]
 })
 

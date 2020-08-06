@@ -84,18 +84,19 @@ p.subtitulo2 {
     font: 16px "Roboto", sans-serif;
     color: #9195a4;
     line-height: 22px;
-    margin-top: 20px;
-    text-align: left;
+    margin-top: 25px;
+    text-align: center;
 }
 
 h2.subtitulo {
-    font: 32px "Roboto", sans-serif !important;
+    font: 28px "Roboto", sans-serif !important;
     padding-top: 0.5em !important;
     color: #24355a;
     font-weight: bold !important;
     line-height: 40px;
     margin-bottom: -10px;
     margin-top: -10px;
+    font-weight: 600 !important;
 }
 
 .img-reportes {
@@ -112,7 +113,7 @@ a.text-uppercase.font-weight-bold.ides-text-blue-dark:hover {
 }
 h4.card-title {
     color: #196af0;
-    font-family: 30px "Karla", sans-serif !important;
+    font-family: 28px "Karla", sans-serif !important;
     color: #196af0;
     font-weight: bold !important;
     margin-bottom: 10px;
@@ -121,4 +122,10 @@ h4.card-title {
 }
 .ides-card.m-2.ng-star-inserted {
     padding: 15px;
+}
+.contiene-todo {
+    margin: 0 auto;
+    padding: 45px 1% 30px 1%;
+    max-width: 1500px;
+    text-align: center;
 }
