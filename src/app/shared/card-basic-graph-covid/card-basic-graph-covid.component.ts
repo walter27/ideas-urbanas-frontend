@@ -118,8 +118,8 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
   getURLImage() {
 
-    let chart = this.highcharts.charts[0];
-    let ohlcSvg = chart.getSVG(this.chartOptions);
+    //let chart = this.highcharts.charts[0];
+   // let ohlcSvg = chart.getSVG(this.chartOptions);
     let urlExport = this.highcharts.getOptions().exporting.url;
 
     //console.log(this.highcharts.getOptions().exporting);

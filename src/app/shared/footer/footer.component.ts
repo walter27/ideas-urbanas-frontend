@@ -13,6 +13,8 @@ export class FooterComponent implements OnInit {
   @Input() language: any;
   @Output() setLanguage = new EventEmitter<any>();
   overLogin = false;
+  anio: number = new Date().getFullYear();
+
 
   icons = [
     {

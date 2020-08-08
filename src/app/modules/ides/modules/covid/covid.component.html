@@ -17,9 +17,25 @@
     </div>
 </div>
 
-<div class="row pt-5 conti">
+<div class="row conti mt-5">
 
-    <div class="container container-covid">
+    <div class="que-hacen-ciudades col-12">
+        <div class="animate__animated animate__fadeInDown">
+            <div class="container">
+                <app-card-basic-graph-timeline [minScroll]="minScroll" [maxScroll]="maxScroll">
+                </app-card-basic-graph-timeline>
+            </div>
+            <!--<div class="container hide-scroll text-right">
+                .
+            </div>-->
+
+            <!-- <button class="btn btn-outline-info" (click)="scrollLeft()">{{'<'}}</button>-->
+
+            <!--  <button class="btn btn-outline-info" (click)="scrollRigt()">{{'>'}}</button>-->
+        </div>
+    </div>
+
+    <div class="container container-covid mt-5">
 
         <div class="row p-5">
 
@@ -45,9 +61,9 @@
 
             </div>
             <div class="col-lg-12">
-                <div class="animate__animated animate__fadeInDown">
+                <!-- <div class="animate__animated animate__fadeInDown">
                     <p class="subtitulo-covid" translate>evolution_covid_ecuador</p>
-                </div>
+                </div>-->
             </div>
 
             <div class="col-lg-12 p-3">
@@ -104,31 +120,26 @@
 </div>
 
 
-<div class="row mb-5">
-    <div class="que-hacen-ciudades col-12 mt-5">
-        <div class="animate__animated animate__fadeInDown">
-            <div class="container">
-                <app-card-basic-graph-timeline [minScroll]="minScroll" [maxScroll]="maxScroll">
-                </app-card-basic-graph-timeline>
-            </div>
-            <!--<div class="container hide-scroll text-right">
-                .
-            </div>-->
+<div class="row">
 
-            <!-- <button class="btn btn-outline-info" (click)="scrollLeft()">{{'<'}}</button>-->
 
-            <!--  <button class="btn btn-outline-info" (click)="scrollRigt()">{{'>'}}</button>-->
+
+
+    <div class="col-md-12 mt-5 text-center">
+        <div class="container">
+            <app-card-basic-news></app-card-basic-news>
         </div>
     </div>
 
 
 
-    <div class="col-md-12 text-center mt-5">
+    <div class="col-md-12 que-hacen-ciudades mt-4 mb-5 text-center">
         <div class="container">
-            <div class="animate__animated animate__fadeInDown">
-                <app-card-basic-news></app-card-basic-news>
-            </div>
+            <app-ides-videos></app-ides-videos>
+
         </div>
+
+
     </div>
 
     <!-- <div class="container">

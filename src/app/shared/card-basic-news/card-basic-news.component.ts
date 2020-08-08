@@ -94,20 +94,6 @@ export class CardBasicNewsComponent implements OnInit {
         img: 'assets/infografias/bicicletas-22.png',
         read: 'https://twitter.com/escuelagob_ide/status/1280899356183461889/photo/4'
 
-      },
-      {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
-        img: 'assets/infografias/webinar.jpeg',
-        read: 'https://youtu.be/1HmNAagmAeo'
-
-      },
-      {
-        name: 'noticiaa',
-        descriptions: 'loreakksdd',
-        img: 'assets/infografias/webinar2.jpeg',
-        read: 'https://youtu.be/OIFIVO3bjAQ'
-
       }
     ];
 

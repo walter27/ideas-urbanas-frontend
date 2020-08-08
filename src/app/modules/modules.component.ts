@@ -75,7 +75,7 @@ export class ModulesComponent implements OnInit {
           url: '/intermediate-cities',
         }
       ],
-      url: '/intermediate-cities',
+     // url: '/intermediate-cities',
       active: false
     },
     /*{

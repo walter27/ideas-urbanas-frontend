@@ -164,9 +164,19 @@ a.ides-text-white:hover {
     color: #000000!important;
 }
 
+@media screen and (max-width: 768px) {
+    .nav-item {
+        color: white;
+        font: 17px "Sans-Serif";
+        text-decoration: none;
+        font-weight: bold;
+        font-weight: 400;
+    }
+}
+
 .nav-item {
-    color: white;
-    font: 17px "Roboto", sans-serif;
+    color: #ffffff;
+    font: 17px "Sans-Serif";
     text-decoration: none;
     font-weight: bold;
     font-weight: 400;
@@ -174,7 +184,8 @@ a.ides-text-white:hover {
 
 .nav-item-covid {
     color: blue;
-    font: 17px "Roboto", sans-serif;
+    font: 17px;
+    font-family: sans-serif;
     text-decoration: none;
     font-weight: bold;
     font-weight: 400;
@@ -183,7 +194,7 @@ a.ides-text-white:hover {
 .nav-item:hover {
     //display: inline-block;
     color: yellow;
-    font-family: 'Karla', sans-serif;
+    font-family: 'Sans-Serif';
     //text-decoration: none;
 }
 
@@ -215,7 +226,7 @@ a.ides-text-white:hover {
     color: blue!important;
     display: inline-block;
     cursor: pointer;
-    font-family: ' Karla', sans-serif;
+    font-family: 'Sans-Serif';
     border-bottom: solid blue;
 }
 
@@ -996,18 +1007,18 @@ svg#eay5tc9b44eu1 {
     }
     .nav-item-covid {
         color: blue !important;
-        font: 15px "roboto" !important;
+        font: 15px "sans-serif" !important;
     }
 }
 
 @media (min-width: 1080px) {
     .nav-item {
         color: #ffffff !important;
-        font: 15px "roboto" !important;
+        font: 15px "sans-serif" !important;
     }
     .nav-item-covid {
         color: blue !important;
-        font: 15px "roboto" !important;
+        font: 15px "sans-serif" !important;
     }
 }
 
@@ -1427,7 +1438,7 @@ h4.subtitulo-internas {
 @media (min-width: 1080px) {
     .nav-item {
         color: #ffffff !important;
-        font: 15px "roboto" !important;
+        font: 15px "sans-serif" !important;
     }
 }
 
@@ -1574,13 +1585,13 @@ h4.subtitulo-internas {
 @media (min-width: 1080px) {
     .nav-item:hover {
         color: #F8A901 !important;
-        font: 15px "roboto" !important;
+        font: 15px "sans-serif" !important;
     }
 }
 
 .nav-item-covid {
     color: #124ca6 !important;
-    font: 15px "roboto" !important;
+    font: 15px "sans-serif" !important;
 }
 
 .ides-text-icon2 {
@@ -1611,7 +1622,7 @@ h4.subtitulo-internas {
 
 .nav-item-covid:hover {
     color: #F8A901 !important;
-    font: 15px "roboto" !important;
+    font: 15px "sans-serif" !important;
 }
 
 .text-white2:hover {
@@ -1713,7 +1724,7 @@ i.fa.fa-twitter:hover {
 
 .nav-item {
     color: #124ca6;
-    font: 17px "Roboto", sans-serif;
+    font: 17px "Sans-Serif";
     text-decoration: none;
     font-weight: bold;
     font-weight: 400;
@@ -2056,7 +2067,7 @@ div#pr_id_1 {
     color: #e09900 !important;
     display: inline-block;
     cursor: pointer;
-    font-family: " Karla", sans-serif;
+    font-family: "Sans-Serif";
     border-bottom: solid #e09900;
 }
 
@@ -2066,25 +2077,6 @@ a.cursor-pointer.mr-4.text-capitalize {
 
 .ng-tns-c8-0.ui-multiselect.ui-widget.ui-state-default.ui-corner-all {
     margin-top: 30px;
-}
-
-input.ng-untouched.ng-pristine.ng-valid {
-    border-radius: 50px;
-    border: NONE;
-    -webkit-border-radius: 27px 27px 27px 27px;
-    box-shadow: 0px 0px 30px -5px #c7c7cf;
-    padding: 7px;
-}
-
-.ui-button {
-    background-color: #F5A700;
-    border-color: #F5A700;
-    border-radius: 15px;
-    border-radius: 50px;
-    border: NONE;
-    -webkit-border-radius: 27px 27px 27px 27px;
-    box-shadow: 0px 0px 30px -5px #c7c7cf;
-    padding: 5px;
 }
 
 .cuadros-abajo.ng-star-inserted {
@@ -2129,7 +2121,7 @@ p.subtitulo-covid {
 
 h4.card-title {
     color: #196af0;
-    font-family: 30px "Karla", sans-serif !important;
+    font-family: 30px "Sans-Serif" !important;
     color: #196af0;
     font-weight: bold !important;
     margin-bottom: 10px;
@@ -2137,30 +2129,24 @@ h4.card-title {
     font-size: 18;
 }
 
-input.ng-untouched.ng-pristine.ng-valid {
-    min-width: 275px;
-    border-radius: 50px;
-    border: NONE;
-    -webkit-border-radius: 27px 27px 27px 27px;
-    box-shadow: 0px 0px 30px -5px #c7c7cf;
-    padding: 10px;
-}
-
-input.ng-pristine.ng-valid.ng-touched {
-    min-width: 275px;
-    border-radius: 20px;
-    border: none;
-    -webkit-border-radius: 27px 27px 27px 27px;
-    box-shadow: 0px 0px 30px -5px #c7c7cf;
-    padding: 10px;
-}
-
-body .ui-button.ui-button-text-only .ui-button-text {
-    padding: .9em 1.2em;
-    border-radius: 20px;
-}
-
 .cuadros-abajo {
     margin-bottom: 60px;
     margin-top: 20px;
+}
+
+.text-center.text.pb-2.pl-4 {
+    font: 16px "Sans-Serif";
+    color: #9195a4;
+    line-height: 22px;
+    margin-top: 8px;
+    margin-bottom: 20px !important;
+    text-align: left;
+    font-weight: 400 !important;
+}
+
+.subtitle {
+    font: 28px "Roboto" !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: 600 !important;
 }

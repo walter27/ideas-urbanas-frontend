@@ -2,7 +2,7 @@
     <div class="row">
 
         <div *ngIf="!citySelected" class="col-md-6 col-lx-12 text-left">
-            <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cantons" optionLabel="name" [(ngModel)]="cantonsSlected" [defaultLabel]="'Ciudades'" (onChange)="getCantonsSelected()" [showHeader]=false name="cantonsSlected">
+            <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cantons" optionLabel="name" [(ngModel)]="cantonsSlected" [defaultLabel]="'Ciudades'" (onChange)="getCantonsSelected()" [showHeader]=true name="cantonsSlected">
             </p-multiSelect>
         </div>
 

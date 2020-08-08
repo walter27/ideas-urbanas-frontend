@@ -22,6 +22,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
   tagsData: any[] = [];
   citySelected: any;
   citySelectedWordCloud: any;
+  columnaWordCloud: string;
 
 
 
@@ -54,6 +55,15 @@ export class WordCloudComponent implements OnInit, OnChanges {
     if (changes['citySelectedId']) {
       this.getStopwords();
       this.listTags(this.citySelectedId);
+    }
+
+    if (this.citySelectedId) {
+
+      this.columnaWordCloud = 'col-lg-8';
+
+    } else {
+      this.columnaWordCloud = 'col-lg-6';
+
     }
   }
 
@@ -118,17 +128,38 @@ export class WordCloudComponent implements OnInit, OnChanges {
         if (word.positive > word.negative && word.positive > word.neutro) {
           //console.log('POSITIVA', word);
 
-          if (word.positive >= 9) {
+          if (word.positive >= 16) {
+            weight = 24;
+
+          }
+          if (word.positive > 12 && word.positive <= 14) {
+            weight = 21;
+
+          }
+          if (word.positive > 10 && word.positive <= 12) {
+            weight = 18;
+
+          }
+          if (word.positive > 8 && word.positive <= 10) {
+            weight = 15;
+
+          }
+          if (word.positive > 6 && word.positive <= 8) {
+            weight = 12;
+
+          }
+
+          if (word.positive > 4 && word.positive <= 6) {
             weight = 9;
 
           }
 
-          if (word.positive >= 6 && word.positive < 9) {
+          if (word.positive > 2 && word.positive <= 4) {
             weight = 6;
 
           }
 
-          if (word.positive > 0 && word.positive < 6) {
+          if (word.positive > 0 && word.positive <= 2) {
             weight = 3;
 
           }
@@ -142,18 +173,42 @@ export class WordCloudComponent implements OnInit, OnChanges {
         if (word.negative > word.positive && word.negative > word.neutro) {
           //console.log('NEGATIVA', word);
 
+          if (word.negative >= 16) {
+            weight = 24;
 
-          if (word.negative >= 9) {
+          }
+
+          if (word.negative > 12 && word.negative <= 14) {
+            weight = 21;
+
+          }
+
+          if (word.negative > 10 && word.negative <= 12) {
+            weight = 18;
+
+          }
+
+          if (word.negative > 8 && word.negative <= 10) {
+            weight = 15;
+
+          }
+
+
+          if (word.negative > 6 && word.negative <= 8) {
+            weight = 12;
+
+          }
+          if (word.negative > 4 && word.negative <= 6) {
             weight = 9;
 
           }
 
-          if (word.negative >= 6 && word.negative < 9) {
+          if (word.negative > 2 && word.negative <= 4) {
             weight = 6;
 
           }
 
-          if (word.negative > 0 && word.negative < 6) {
+          if (word.negative > 0 && word.negative <= 2) {
             weight = 3;
 
           }
@@ -167,17 +222,37 @@ export class WordCloudComponent implements OnInit, OnChanges {
         if (word.neutro > word.positive && word.neutro > word.negative) {
           //console.log('NEUTRO', word);
 
-          if (word.neutro >= 9) {
+          if (word.neutro >= 16) {
+            weight = 24;
+
+          }
+          if (word.neutro > 12 && word.neutro <= 14) {
+            weight = 21;
+
+          }
+          if (word.neutro > 10 && word.neutro <= 12) {
+            weight = 18;
+
+          }
+          if (word.neutro > 8 && word.neutro <= 10) {
+            weight = 15;
+
+          }
+          if (word.neutro > 6 && word.neutro <= 8) {
+            weight = 12;
+
+          }
+          if (word.neutro > 4 && word.neutro <= 6) {
             weight = 9;
 
           }
 
-          if (word.neutro >= 6 && word.neutro < 9) {
+          if (word.neutro > 2 && word.neutro <= 4) {
             weight = 6;
 
           }
 
-          if (word.neutro > 0 && word.neutro < 6) {
+          if (word.neutro > 0 && word.neutro <= 2) {
             weight = 3;
 
           }
@@ -205,6 +280,8 @@ export class WordCloudComponent implements OnInit, OnChanges {
         plotBorderWidth: 0,
         animation: true,
         backgroundColor: 'transparent',
+        plotBackgroundImage: 'assets/nube/nube-homepage-1.png'
+
 
       },
 
@@ -212,8 +289,12 @@ export class WordCloudComponent implements OnInit, OnChanges {
         type: 'wordcloud',
         data: this.tagsData,
         name: 'Value',
-        wordSpaces: 1,
-        spiral: 'archimedean'
+        spiral: 'rectangular',
+        placementStrategy: 'center',
+        rotation: {
+          from: 0,
+          to: 0
+        },
       }],
       title: {
         text: ''

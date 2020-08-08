@@ -28,7 +28,7 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
     this.cities = this.regionService.citiesMap;
     if (!this.citySelected) {
       this.citySelected = this.cities[0];
-      this.regionService.citySelect = this.citySelected;
+      this.regionService.citySelectedWordCloud = this.citySelected;
     }
 
 

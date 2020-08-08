@@ -51,10 +51,11 @@
     color: white;
     font-size: 18px;
     padding-bottom: 12px;
+    padding-left: 7%;
 }
 p.footer3 {
     font-size: 14px;
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
     padding-top: 0px;
     padding-bottom: -5px;
@@ -74,7 +75,7 @@ p.footer3 {
     }
     @media (min-width: 360px){
     .FOOTERc {
-        width: 100%;
+        width: 0%;
         text-align: center;
         }
     }
@@ -92,132 +93,78 @@ p.footer3 {
         }
         @media (min-width: 768px){
         .FOOTERc {
-            width: 100%;
+            width: 0%;
             text-align: center;
             }
         }
         @media (min-width: 1000px){
             .FOOTERa {
-                width: 35%;
+                width: 50%;
                 text-align: left;
                 }
             }
             @media (min-width: 1000px){
             .FOOTERb {
-                width: 35%;
+                width: 50%;
                 text-align: left;
                 }
             }
             @media (min-width: 1000px){
             .FOOTERc {
-                width: 30%;
+                width: 0%;
                 text-align: right;
                 }
             }
 @media (min-width: 1024px){
     .FOOTERa {
-        width: 30%;
+        width: 50%;
+        text-align: right;
+        padding-right: 2%;
         }
-    }
+    }  
     @media (min-width: 1024px){
     .FOOTERb {
-        width: 30%;
+        width: 50%;
+        text-align: left;
+        padding-left: 2%;
         }
     }
-    @media (min-width: 1024px){
-    .FOOTERc {
-        width: 40%;
-        text-align: right;
-        }
-    }
-@media (min-width: 1080px){
-    .FOOTERa {
-        width: 30%;
-        }
-    }
-    @media (min-width: 1080px){
-    .FOOTERb {
-        width: 30%;
-        }
-    }
-    @media (min-width: 1080px){
-    .FOOTERc {
-        width: 40%;
-        text-align: right;
-        }
-    }
-    @media (min-width: 1280px){
+    @media (min-width: 1366px){
         .FOOTERa {
-            width: 25%;
-            }
-        }
-        @media (min-width: 1280px){
-        .FOOTERb {
-            width: 25%;
-            }
-        }
-        @media (min-width: 1280px){
-        .FOOTERc {
             width: 50%;
             text-align: right;
+            padding-right: 2%;
             }
-        }
-@media (min-width: 1366px){
-.FOOTERa {
-    width: 25%;
-    }
-}
-@media (min-width: 1366px){
-.FOOTERb {
-    width: 25%;
-    }
-}
-@media (min-width: 1366px){
-.FOOTERc {
-    width: 50%;
-    text-align: right;
-    }
-}
-@media (min-width: 1600px){
-    .FOOTERa {
-        width: 22%;
-        }
-    }
-@media (min-width: 1600px){
-    .FOOTERb {
-        width: 22%;
-        }
-    }
-@media (min-width: 1600px){
-    .FOOTERc {
-        width: 56%;
-        text-align: right;
-        }
-    }
-    @media (min-width: 1920px){
-        .FOOTERa {
-            width: 17%;
-            }
-        }
-    @media (min-width: 1920px){
+        }  
+        @media (min-width: 1366px){
         .FOOTERb {
-            width: 17%;
+            width: 50%;
+            text-align: left;
+            padding-left: 2%;
             }
         }
-    @media (min-width: 1920px){
-        .FOOTERc {
-            width: 64%;
-            text-align: right;
+        @media (min-width: 1920px){
+            .FOOTERa {
+                width: 50%;
+                text-align: right;
+                padding-right: 1%;
+                }
+            }  
+            @media (min-width: 1920px){
+            .FOOTERb {
+                width: 50%;
+                text-align: left;
+                padding-left: 1%;
+                }
             }
-        }
 .row {
     display: flex;
     margin-right: -15px;
     margin-left: -15px;
 }
 .row.footer {
-    padding-top: 35px;
-    padding-bottom: 35px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     vertical-align: middle;
     padding-left: 10%;
     padding-right: 10%;
