@@ -1,37 +1,43 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
-import HC_export from 'highcharts/modules/export-data';
-import Color_Axis from 'highcharts/modules/coloraxis';
-import Series_Label from 'highcharts/modules/series-label';
-import Streamgraph from 'highcharts/modules/streamgraph';
-
+import { Component, OnInit, OnChanges, Input } from "@angular/core";
+import * as Highcharts from "highcharts";
+import HC_exporting from "highcharts/modules/exporting";
+import HC_export from "highcharts/modules/export-data";
+import Color_Axis from "highcharts/modules/coloraxis";
+import Series_Label from "highcharts/modules/series-label";
+import Streamgraph from "highcharts/modules/streamgraph";
+import { ChartsService } from "src/app/core/services/charts.service";
 
 @Component({
-  selector: 'app-card-basic-streamgraph',
-  templateUrl: './card-basic-streamgraph.component.html',
-  styleUrls: ['./card-basic-streamgraph.component.scss']
+  selector: "app-card-basic-streamgraph",
+  templateUrl: "./card-basic-streamgraph.component.html",
+  styleUrls: ["./card-basic-streamgraph.component.scss"],
 })
 export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
-
   highcharts: any;
   updateDemo: boolean;
   chartOptions: any = {};
   chartOptionsExport: any = {};
-  socialMedia: any = [];
-  imageURL: string;
+  socialMedia: any = [
+    {
+      name: "Facebook",
+      link: "",
+      img: "social-facebook",
+    },
+    {
+      name: "Twitter",
+      link: "",
+      img: "social-twitter",
+    },
+  ];
 
   @Input("dates") dates: any[];
   @Input("data") data: any[];
   @Input("min") min: number;
   @Input("max") max: number;
-  @Input('variable') variable: any;
+  @Input("variable") variable: any;
   @Input() maxExport: number;
 
-
-
-  constructor() {
-
+  constructor(private chartService: ChartsService) {
     this.updateDemo = false;
     this.highcharts = Highcharts;
     Streamgraph(this.highcharts);
@@ -41,14 +47,12 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
     Series_Label(this.highcharts);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges(changes) {
-    if (changes['data']) {
+    if (changes["data"] && this.data.length > 0) {
       this.createStreamGraph();
-
     }
-
   }
 
   createStreamGraph() {
@@ -57,7 +61,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
         type: "streamgraph",
         animation: true,
         marginBottom: 120,
-        borderColor: '#000000',
+        borderColor: "#000000",
         borderRadius: 20,
         borderWidth: 1,
         //zoomType: 'x',
@@ -66,26 +70,25 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
              console.log(this.getExtremes());
            }
          }*/
-
       },
       title: {
-        text: 'Evolución Temporal COVID-19',
+        text: "Evolución Temporal COVID-19",
         style: {
-          color: '#243554',
-          fontWeight: 'bold',
-          font: 'Roboto, sans-serif',
-        }
+          color: "#243554",
+          fontWeight: "bold",
+          font: "Roboto, sans-serif",
+        },
       },
       xAxis: {
-        type: 'categories',
+        type: "categories",
         min: this.min,
         max: this.max,
         crosshair: true,
         categories: this.dates,
         labels: {
-          align: 'right',
+          align: "right",
           reserveSpace: false,
-          rotation: 270
+          rotation: 270,
         },
 
         /*events: {
@@ -101,7 +104,6 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
             console.log(this.getExtremes());
           }
         },*/
-
       },
       /* colorAxis: {
  
@@ -112,97 +114,84 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       yAxis: {
         visible: false,
         startOnTick: false,
-        endOnTick: false
+        endOnTick: false,
       },
 
       legend: {
-        enabled: false
+        enabled: false,
       },
       exporting: {
-        filename: `casos_${this.variable.name}_covid19_temporal`
+        filename: `casos_${this.variable.name}_covid19_temporal`,
       },
       series: this.data,
     };
 
-
     setTimeout(() => {
       this.getURLImage();
-
-    }, 3000);
-
+    }, 2000);
   }
 
   getURLImage() {
-
     this.chartOptionsExport = Object.assign({}, this.chartOptions);
     this.chartOptionsExport.xAxis.min = 0;
     this.chartOptionsExport.xAxis.max = this.maxExport;
 
-    this.chartOptionsExport['legend'] = {
-      layout: 'vertical',
-      align: 'left',
-      verticalAlign: 'middle',
+    this.chartOptionsExport["legend"] = {
+      layout: "vertical",
+      align: "left",
+      verticalAlign: "middle",
       itemMarginTop: 10,
-      itemMarginBottom: 10
-    }
+      itemMarginBottom: 10,
+    };
+
+    let chartsDetails = {
+      type: "png",
+      options: this.chartOptionsExport,
+    };
+    this.chartService.generateImage(chartsDetails).subscribe((resp) => {});
 
     //let chart = this.highcharts.charts[0];
     //let ohlcSvg = chart.getSVG(chartOptionsExport);
 
-    Series_Label(this.highcharts);
-    let urlExport = this.highcharts.getOptions().exporting.url;
-
+    /*let urlExport = this.highcharts.getOptions().exporting.url;
 
     let data = {
       options: JSON.stringify(this.chartOptionsExport),
-      filename: 'test.png',
-      type: 'image/png',
+      filename: "test.png",
+      type: "image/png",
       width: 450,
-      async: true
+      async: true,
     };
 
     let that = this;
-
 
     $.post(urlExport, data, function (url) {
       that.socialMedia = [];
       that.imageURL = urlExport + url;
 
       that.socialMedia.push({
-        name: 'Facebook',
+        name: "Facebook",
         link: `https://www.facebook.com/sharer.php?u=${that.imageURL}`,
-        img: 'social-facebook'
-
+        img: "social-facebook",
       });
 
       that.socialMedia.push({
-        name: 'Twitter',
+        name: "Twitter",
         link: `https://twitter.com/intent/tweet?url=${that.imageURL}&text=Plataforma de Ideas Urbanas`,
-        img: 'social-twitter'
-
+        img: "social-twitter",
       });
-
-
-
 
       /*var urlCreator = window.URL || window.webkitURL
       document.querySelector("#image").src = imageUrl
       fetch(imageUrl).then(response => response.blob()).then(data => {
         // You have access to chart data here
         //console.log(data)
-      })*/
-    });
-
-
-
+      })
+    });*/
 
     //console.log(ohlcSvg);
     //console.log(this.highcharts.getOptions().exporting.url);
     //console.log(this.chartOptions);
-
-
-
-
 
     /*$('#facebook').click(function () {
 
@@ -238,7 +227,17 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
         }
       });
     });*/
-
   }
 
+  sharedImage(item) {
+    this.variable["type"] = this.chartOptions.chart.type;
+    this.chartService.shareImage(this.variable).subscribe((resp) => {
+      this.socialMedia[0].link = `https://www.facebook.com/sharer.php?u=${resp}`;
+      this.socialMedia[1].link = `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
+    });
+
+    setTimeout(() => {
+      window.open(item.link, "blank");
+    }, 1000);
+  }
 }
