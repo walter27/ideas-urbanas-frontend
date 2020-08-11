@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   icons = [
     {
       name: 'twitter',
-      link: 'https://ideas-urbanas.uhemisferios.edu.ec/'
+      link: 'https://twitter.com/escuelagob_ide/'
     },
     {
       name: 'facebook',
