@@ -670,8 +670,9 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.chartService.imageBase24.then((value) => {
         this.imageBase64 = {
-          name: this.variableSelected._id,
+          name: "chart",
           data: value,
+          type: "chart",
         };
       });
     }, 3000);

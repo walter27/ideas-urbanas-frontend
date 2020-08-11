@@ -362,11 +362,11 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
     });
 
     setTimeout(() => {
-      
-      this.chartService.imageBase24.then((value) => {
+      this.chartService.imageRadarBase24.then((value) => {
         this.imageBase64 = {
-          name: 'radar',
+          name: "chart",
           data: value,
+          type: "radar",
         };
       });
     }, 3000);

@@ -57,7 +57,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         }
       },
       title: {
-        text: 'Evolución Espacial del COVID-19',
+        text: 'Evolución Espacial',
         style: {
           color: '#243554',
           fontWeight: 'bold',

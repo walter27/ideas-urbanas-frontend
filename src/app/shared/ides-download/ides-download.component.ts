@@ -33,6 +33,7 @@ export class IdesDownloadComponent implements OnInit, OnChanges {
   @Input() nameFile = "download";
   @Input() height = 200;
   @Output() downloadCSV = new EventEmitter<string>();
+  
 
   downloadOptions: ItemDropdown[] = [
     {
@@ -178,8 +179,16 @@ export class IdesDownloadComponent implements OnInit, OnChanges {
 
   saveImageServer() {
     setTimeout(() => {
+      Object.keys(this.data[0]._meta).forEach((key) => {
+        if (this.data[0]._meta[key].type === "radar") {
+          this.chartService.imageRadarBase24 = this.getURI(
+            this.idElement,
+            "png"
+          );
+        }
+      });
+
       this.chartService.imageBase24 = this.getURI(this.idElement, "png");
-      //console.log(this.chartService.imageBase24 );
     }, 2000);
   }
 }

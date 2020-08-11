@@ -37,7 +37,7 @@ export class IdesSocialMediaComponent implements OnInit, OnChanges {
 
   sharedImage(item) {
     this.variable = {
-      type: "chart",
+      type: this.imageBase64.type,
       name: this.imageBase64.name,
     };
     this.chartService.shareImage(this.variable).subscribe((resp) => {

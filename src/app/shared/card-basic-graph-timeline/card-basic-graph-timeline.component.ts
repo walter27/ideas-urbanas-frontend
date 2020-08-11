@@ -265,7 +265,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
         },
         {
           name: ' <strong style="position: absolute; top:118px;left:10px;">23 DE JULIO</strong>',
-          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/24.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Quito se convierte </br> en la ciudad con </br> mayor número..</p>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/23.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Quito se convierte </br> en la ciudad con </br> mayor número..</p>',
           description: "Quito se convierte en la ciudad con mayor número de personas contagiadas en Ecuador."
         },
         {
@@ -274,9 +274,29 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "Latacunga organiza datathón para medir la cantidad de aire en los espacios públicos."
         },
         {
-          name: ' <strong style="position: absolute; top:118px; right:10px;">25 DE JULIO</strong>',
-          label: '<div style="position: absolute; bottom:-8px; right:-25px;"><img src = "assets/covid/julio/25.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">COE de Esmeraldas, Cuenca, Tulcán </br> y Portoviejo  solicitan al COE nacional </br> ampliar los toques de queda..</p>',
-          description: "COE de Esmeraldas, Cuenca, Tulcán y Portoviejo solicitan al COE nacional ampliar los toques de queda, restringir el consumo de alcohol, prohibir reuniones de más de 25 personas y dotar de insumos a hospitales públicos."
+          name: ' <strong style="position: absolute; top:118px;left:10px;">25 DE JULIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/25.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">COE de Esmeraldas, Cuenca, Tulcán </br> y Portoviejo  solicitan al COE nacional </br> ampliar los toques de queda..</p>',
+          description: "COE de Esmeraldas, Cuenca, Tulcán y Portoviejo solicitan al COE nacional ampliar los toques de queda, restringir el consumo de alcohol, prohibir reuniones de más de 25 personas y dotar de insumos a hospitales públicos"
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">27 DE JULIO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/julio/27.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">El alcade de  </br> Pastaza,  Oswaldo Zúñiga, </br> informó que dio </br> positivo para COVID-19.</p>',
+          description: "El alcade de Pastaza, Oswaldo Zúñiga, informó que dio positivo para COVID-19."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">31 DE JULIO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/julio/31.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">A partir del </br> 31 de julio </br> rige ley seca..</p>',
+          description: "A partir del 31 de julio rige ley seca durante los fines de semana y ampliación del toque de queda de 19:00 a 05:00, de viernes a domingo para 18 provincias del país, por disposición del COE Nacional"
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">1 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/1.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">40.000 mascarillas antifluídos </br> serán confeccionadas localmente </br> en Tulcán </p>',
+          description: "40.000 mascarillas antifluídos serán confeccionadas localmente en Tulcán con la participación de la Asociación de Sastres del cantón. El proyecto cuenta con el financiamiento de la Embajada de Australia en Perú y la coordinación del GAD municipal"
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px; right:10px;">5 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px; right:-25px;"><img src = "assets/covid/agosto/5.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">Se abren las playas  </br>para promoción </br> del turismo interno</p>',
+          description: "Se abren las playas para promoción del turismo interno."
         }]
       }]
     };
