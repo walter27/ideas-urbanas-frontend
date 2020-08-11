@@ -53,11 +53,11 @@ export class HeaderComponent implements OnInit, DoCheck {
   icons = [
     {
       name: 'twitter',
-      link: 'https://twitter.com/intent/tweet?url=http://ides.sales24hours.com&text=Plataforma de Ideas Urbanas'
+      link: 'https://twitter.com/intent/tweet?url=https://ideas-urbanas.uhemisferios.edu.ec/&text=Plataforma de Ideas Urbanas'
     },
     {
       name: 'facebook',
-      link: 'https://www.facebook.com/sharer.php?u=http://ides.sales24hours.com/#/home'
+      link: 'https://www.facebook.com/sharer.php?u=https://ideas-urbanas.uhemisferios.edu.ec/#/home'
     }
   ];
 

@@ -44,6 +44,14 @@ import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import { IdesOriginComponent } from './ides-origin/ides-origin.component';
 import { WordCloudComponent } from './word-cloud/word-cloud.component';
+import { IdesVideosComponent } from './ides-videos/ides-videos.component';
+import {GalleriaModule} from 'primeng/galleria';
+import { LightboxModule } from 'primeng/lightbox';
+import {InputTextModule} from 'primeng/inputtext';
+import { IdesSocialMediaComponent } from './ides-social-media/ides-social-media.component';
+
+
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -75,7 +83,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicNewsComponent,
     CardBasicStreamgraphComponent,
     IdesOriginComponent,
-    WordCloudComponent
+    WordCloudComponent,
+    IdesVideosComponent,
+    IdesSocialMediaComponent
   ],
   exports: [
     HeaderComponent,
@@ -99,7 +109,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicGraphTimelineComponent,
     CardBasicNewsComponent,
     CardBasicStreamgraphComponent,
-    WordCloudComponent
+    WordCloudComponent,
+    IdesVideosComponent,
+    IdesSocialMediaComponent
   ],
   imports: [
     CommonModule,
@@ -120,6 +132,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CarouselModule,
     ButtonModule,
     ToastModule,
+    LightboxModule,
+    InputTextModule,
+    GalleriaModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

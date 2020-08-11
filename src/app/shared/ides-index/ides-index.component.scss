@@ -64,3 +64,9 @@ h2.subtitulo {
     background-color: white;
     border-radius: 14px;
 }
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
+    display: none !important;
+    background-color: red;
+    color: red;
+}

@@ -204,7 +204,7 @@
 
 
             <div class="col-md-12 ml-2 mt-3">
-                <p-dropdown class="block " [options]="resultVariables?.data" [(ngModel)]="v" name="v" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()">
+                <p-dropdown class="block " [options]="resultVariables?.data" [(ngModel)]="v" name="v" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()" [filter]=true>
                 </p-dropdown>
             </div>
             <app-card-basic-graph [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v">
@@ -244,7 +244,7 @@
                     </nav>
                 </div>
                 <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                    <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
+                    <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
                         information
                         <i-feather name="arrow-up"></i-feather>
                     </a>

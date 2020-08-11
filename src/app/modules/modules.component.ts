@@ -68,9 +68,14 @@ export class ModulesComponent implements OnInit {
           id: 'thematics',
           text: 'thematics',
           url: '/thematic',
+        },
+        {
+          id: 'discover',
+          text: 'discover',
+          url: '/intermediate-cities',
         }
       ],
-      url: '/intermediate-cities',
+     // url: '/intermediate-cities',
       active: false
     },
     /*{

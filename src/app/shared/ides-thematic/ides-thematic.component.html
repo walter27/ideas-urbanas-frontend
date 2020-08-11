@@ -44,18 +44,18 @@
             <div class="ides-card p-5">
                 <div class="row pb-2 ">
                     <div class="col-lg-3  col-lx-12 text-left form-group">
-                        <p-dropdown class="block " [options]="( resultVariables$ | async )?.data" [(ngModel)]="variableSelected" name="variableSelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()">
+                        <p-dropdown class="block " [options]="( resultVariables$ | async )?.data" [(ngModel)]="variableSelected" name="variableSelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()" [filter]="true">
                         </p-dropdown>
                     </div>
 
                     <div class="col-lg-3 col-lx-12 text-left form-group">
 
-                        <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Ciudades'" (onChange)="getSelectCities()" [showHeader]=false name="citiesSelected">
+                        <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Ciudades'" (onChange)="getSelectCities()" [showHeader]=true name="citiesSelected">
                         </p-multiSelect>
                     </div>
 
                     <div class="col-lg-6 col-lx-6 text-right">
-                        <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+                        <app-ides-download [data]="lineChartData" [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
                         </app-ides-download>
                     </div>
                 </div>
@@ -99,9 +99,19 @@
                             </div>
                         </div> -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                <div class="col" style="width: 100%; float: right;">
+                                <div class="col" style="width: 100%; float: left;">
 
                                     <app-ides-origin [origins]="variableSelected?.origins"></app-ides-origin>
+                                    <!-- <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+                                </app-ides-download>-->
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col" style="width: 100%; float: right;">
+
+                                    <app-ides-social-media *ngIf="imageBase64" [imageBase64]="imageBase64"></app-ides-social-media>
                                     <!-- <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
                                 </app-ides-download>-->
                                 </div>

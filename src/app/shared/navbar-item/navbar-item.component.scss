@@ -1,7 +1,3 @@
-.text-none:hover {
+.text-none {
     text-decoration: none;
-}
-
-:host ::ng-deep.dropdown:hover .dropdown-menu {
-    display: block;
 }

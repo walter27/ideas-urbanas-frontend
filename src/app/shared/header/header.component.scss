@@ -45,7 +45,6 @@ div ul.nav li {
     //background-color: #189cff;
 }
 
-
 .universidad-internas {
     width: 100%;
     margin: 0 auto;
@@ -61,7 +60,7 @@ div ul.nav li {
     margin: 0 auto;
     //padding-left: 10%;
     //padding-right: 10%;
-    background-color: transparent;
+    background-color: #254b95;
     //background: transparent;
     //background-color: #189cff;
 }
@@ -203,23 +202,29 @@ div ul.nav li {
     padding-top: 32px;
     padding-left: 10px;
 }
+
 .col-md-12.margin-navbar {
     border-bottom: 1px solid;
     border-color: #9b9b9b7d;
     max-height: 90px;
     /* padding-bottom: 30px; */
 }
+
 .ui-carousel-items-content {
     margin-top: 55px;
 }
-.mt-2, .my-2 {
+
+.mt-2,
+.my-2 {
     margin-top: .47rem!important;
 }
+
 .col-md-12.margin-navbar[_ngcontent-qin-c2] {
     border-bottom: 1px solid;
     border-color: #23448d7d;
     max-height: 90px;
 }
+
 .nav-item {
     color: #ffffff !important;
     font: 15px "arial" !important;

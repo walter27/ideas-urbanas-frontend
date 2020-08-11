@@ -28,7 +28,6 @@ export class ClasificationService {
     private httpClient: HttpClient,
     private utilsService: UtilsService
     ) {
-
   }
 
   listClasification(filters: Filters): Observable<ResultList<Clasification>> {

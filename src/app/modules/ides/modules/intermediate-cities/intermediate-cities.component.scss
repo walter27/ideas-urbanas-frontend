@@ -72,3 +72,55 @@ h2.titulos-cities {
     border-radius: 14px;
     border-color: rgba(6, 76, 195, 1);
 }
+
+//multiselect
+:host ::ng-deep.ui-multiselect {
+    border-radius: 14px;
+    background: white;
+    border-color: rgba(6, 76, 195, 1);
+    width: 11rem;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: none;
+    color: rgba(6, 76, 195, 1);
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-label {
+    color: rgba(6, 76, 195, 1);
+    padding-left: 1em;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel {
+    background-color: white;
+    border-radius: 14px;
+    width: 11rem;
+    padding-left: 1em;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
+    display: none !important;
+    background-color: red;
+    color: red;
+}
+
+p.subtitulo2 {
+    margin-top: 5px;
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
+    line-height: 22px;
+    margin-top: 20px;
+    text-align: center !important;
+}
+
+h2.subtitulo {
+    font: 32px "Roboto", sans-serif !important;
+    padding-top: 0.5em !important;
+    color: #24355a;
+    font-weight: bold !important;
+    line-height: 40px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+    text-align: center;
+}

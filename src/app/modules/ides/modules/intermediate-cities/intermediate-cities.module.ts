@@ -6,6 +6,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IntermediateCitiesComponent } from './intermediate-cities.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+
 
 
 
@@ -18,7 +20,8 @@ import { DropdownModule } from 'primeng/dropdown';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    MultiSelectModule
   ]
 })
 

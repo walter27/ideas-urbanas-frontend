@@ -2,13 +2,19 @@
 :host ::ng-deep.ui-button {
     background-color: #F5A700;
     border-color: #F5A700;
-    border-radius: 20px;
-    padding: 6px;
+    border-radius: 50px;
+    border: NONE;
+    -webkit-border-radius: 27px 27px 27px 27px;
+    box-shadow: 0px 0px 30px -5px #c7c7cf;
+    padding: 5px;
+    height: 50px;
 }
 
 //inputext
 :host ::ng-deep.ui-inputtext {
-    border-radius: 15px;
+    border-radius: 50px;
+    height: 50px;
+    width: 70%;
 }
 
 h4.titulos-word {

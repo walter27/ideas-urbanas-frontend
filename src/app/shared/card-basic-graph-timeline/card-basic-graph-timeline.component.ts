@@ -80,7 +80,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       },
 
       subtitle: {
-        text: 'Cronología de las respuestas urbanas al COVID-19',
+        text: 'Cronología de lo que sucede en las ciudades intermedias',
         style: {
           color: '#243554',
           fontWeight: 'bold',
@@ -146,8 +146,8 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "Coe Nacional solicita a las municipalidades regular el uso de mascarilla."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">8 DE ABRIL</strong>',
-          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/abril/4.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Riobamba y Santo Domingo son las primeras ciudades </br> capitales en aprovar ordenanzas </br> para regular el uso de mascarilla.</p>',
-          description: "Riobamba y Santo Domingo son las primeras ciudades capitales en aprovar ordenanzas para regular el uso de mascarilla."
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/abril/4.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Riobamba y Santo Domingo son las primeras ciudades </br> capitales en aprobar ordenanzas </br> para regular el uso de mascarilla.</p>',
+          description: "Riobamba y Santo Domingo son las primeras ciudades capitales en aprobar ordenanzas para regular el uso de mascarilla."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">9 DE ABRIL</strong>',
           label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/abril/5.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Se registran anglomeraciones </br> y disturbios en mercados </br> mayoristas de Loja y Ambato.</p>',

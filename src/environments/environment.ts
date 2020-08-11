@@ -6,67 +6,67 @@ export const environment = {
   production: false,
   //serverUrl: 'https://api-ideas-urbanas.uhemisferios.edu.ec/',
   serverUrl: 'https://ideas-urbanas-api.herokuapp.com/',
-  //serverUrl: 'http://localhost:3000/',
-  stage: 'dev/',
+  //serverUrl: "http://localhost:3000/",
+  stage: "dev/",
   auth: {
-    base: 'auth/',
-    login: 'login/',
-    forgotPassword: 'forgotPassword/',
-    forceChangePassword: 'forceChangePassword/'
+    base: "auth/",
+    login: "login/",
+    forgotPassword: "forgotPassword/",
+    forceChangePassword: "forceChangePassword/",
   },
   users: {
-    base: 'user/'
+    base: "user/",
   },
   config: {
-    base: 'config/'
+    base: "config/",
   },
   province: {
-    base: 'province/'
+    base: "province/",
   },
   canton: {
-    base: 'canton'
+    base: "canton",
   },
   parish: {
-    base: 'parroquia'
+    base: "parroquia",
   },
   research: {
-    base: 'research'
+    base: "research",
   },
   origin: {
-    base: 'origin'
+    base: "origin",
   },
   clasification: {
-    base: 'clasification'
+    base: "clasification",
   },
   reports: {
-    base: 'reports'
+    base: "reports",
   },
   variable: {
-    base: 'variable'
+    base: "variable",
   },
   data: {
-    base: 'data',
-    indexes: 'indexes'
+    base: "data",
+    indexes: "indexes",
   },
 
   charts: {
-    base: 'charts',
-    yearsAvailableForVariable: 'yearsAvailableForVariable'
+    base: "charts",
+    yearsAvailableForVariable: "yearsAvailableForVariable",
   },
   category: {
-    base: 'category'
+    base: "category",
   },
   tag: {
-    base: 'tag'
+    base: "tag",
   },
   home: {
-    getVariablesByClasification: 'getVariableByClasification',
-    getResearchsByCatAndCant: 'getResearchsByCatAndCant',
-    getTagsByCantByType: 'getTagsByCantByType',
-    addTag: 'addTag',
-    getStopwords: 'getStopwords'
+    getVariablesByClasification: "getVariableByClasification",
+    getResearchsByCatAndCant: "getResearchsByCatAndCant",
+    getTagsByCantByType: "getTagsByCantByType",
+    addTag: "addTag",
+    getStopwords: "getStopwords",
   },
   indicator: {
-    base: 'indicator'
-  }
+    base: "indicator",
+  },
 };
