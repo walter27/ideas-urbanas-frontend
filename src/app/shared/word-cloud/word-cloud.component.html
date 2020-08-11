@@ -4,11 +4,11 @@
         <h4 class="titulos-word" translate>describe_city</h4>
     </div>
 
-    <div class="container mt-3">
+    <div *ngIf="!citySelected" class="container mt-3">
 
         <div class="row justify-content-center">
 
-            <div [class]="columnaWordCloud">
+            <div class="col-lg-8">
                 <div class="input-group  input-group-lg">
                     <input type="text" pInputText [(ngModel)]="newTag" class="ides-text-blue" />
 

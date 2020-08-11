@@ -9,12 +9,12 @@
         <div [ngClass]="columnaDownload" class="col-lx-12 text-right">
             <app-ides-download [data]="radarChartData" [titleExport]="'Índices'" [hiddenCSV]="true" [idElement]="'indexesGraph'" [nameFile]="'indices_ideas_urbanas'"></app-ides-download>
         </div>
-        <div class="col-md-12 ides-text-blue text-left mt-3">
-            <h3 class="subtitulo" translate>{{ getTitle() }}</h3>
+        <div class="col-md-12 subtitulo text-center mt-5">
+            <h2 class="subtitulo" translate>{{ getTitle() }}</h2>
         </div>
 
-        <div class="col-md-12 mb-3">
-            <p class="text-justify" translate>index description</p>
+        <div class="col-md-12 mt-4 text-center">
+            <p translate>index description</p>
         </div>
         <div class="canvas-index-width" [ngClass]="{ 'col-12': !marginAuto }" [ngStyle]="{ 'margin': marginAuto ? 'auto' : '' }" *ngIf="radarChartData.length > 0">
             <canvas id="indexesGraph" baseChart width="1200" [datasets]="radarChartData" [options]="radarChartOptions" [labels]="radarChartLabels" [chartType]="radarChartType" [ngClass]="radarChartData.length > 10 ? 'chart-index-size-plus' : 'chart-index-size'">

@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-12 mr-5">
-            <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?.name" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+            <app-ides-download [data]="lineChartData" [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?.name" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
             </app-ides-download>
         </div>
 
@@ -48,5 +48,15 @@
                 </div>
             </div>
         </ng-template>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col" style="width: 100%; float: right;">
+
+                <app-ides-social-media *ngIf="imageBase64" [imageBase64]="imageBase64"></app-ides-social-media>
+                <!-- <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+            </app-ides-download>-->
+            </div>
+
+        </div>
     </div>
 </div>

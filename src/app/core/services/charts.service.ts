@@ -22,6 +22,8 @@ export class ChartsService {
   urlCharts = environment.charts.base;
   urlYearsAvailableForVariable = environment.charts.yearsAvailableForVariable;
   imageBase24: any;
+  imageRadarBase24: any;
+
 
   constructor(
     private httpClient: HttpClient,

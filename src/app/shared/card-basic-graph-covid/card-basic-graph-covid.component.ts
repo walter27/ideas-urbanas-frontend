@@ -4,7 +4,6 @@ import HC_exporting from "highcharts/modules/exporting";
 import HC_export from "highcharts/modules/export-data";
 import Color_Axis from "highcharts/modules/coloraxis";
 import Series_Label from "highcharts/modules/series-label";
-import { Facebook } from "angular-feather/icons";
 import { ChartsService } from "../../core/services/charts.service";
 
 @Component({
@@ -60,7 +59,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
         borderWidth: 1,
       },
       title: {
-        text: `Casos ${this.variable.name}`,
+        text: `${this.variable.name}`,
         style: {
           color: "#243554",
           fontWeight: "bold",
