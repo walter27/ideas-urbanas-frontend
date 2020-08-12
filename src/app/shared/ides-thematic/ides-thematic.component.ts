@@ -29,6 +29,8 @@ import { Options } from "ng5-slider";
 import { UtilsService } from "src/app/core/services/utils.service";
 import { NgxSpinnerService } from "ngx-spinner";
 let { formatLabel, capitalizeFirst } = require("../../core/utils/utils");
+let { titleCase }: any = require('../../core/utils/utils');
+
 
 enum CharType {
   lineal = "line",
@@ -410,7 +412,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       .listRegionsPublic(
         { page: 0, limit: 1000, ascending: true, sort: "_id" },
         "Canton"
-      )
+      ) 
       .subscribe((resp) => {
         this.cities = [];
         const setCities = new Set();
@@ -418,7 +420,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
           if (!setCities.has(c._id) && c.active) {
             this.cities.push({
               id: c._id,
-              name: c.name,
+              name: titleCase(c.name),
               check: true,
               color: c.color,
             });
