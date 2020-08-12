@@ -2,6 +2,9 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { RegionService } from 'src/app/core/services/region.service';
 import { Filters } from 'src/app/core/models/filters.model';
 
+let { titleCase }: any = require('../../../../core/utils/utils');
+
+
 @Component({
   selector: 'app-intermediate-cities',
   templateUrl: './intermediate-cities.component.html',
@@ -50,7 +53,7 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
       resp.data.forEach(canton => {
 
         this.cantons.push({
-          name: canton.name,
+          name: titleCase (canton.name),
           img: `assets/cities/all/${canton.name.toLowerCase()}.jpg`,
           url: '/cities',
           queryParams: {
