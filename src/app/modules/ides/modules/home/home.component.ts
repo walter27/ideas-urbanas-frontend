@@ -585,7 +585,7 @@ export class HomeComponent implements OnInit, DoCheck {
       {
         background: 'bg-banner-carousel-3',
         title: 'compare_cities',
-        subtitle: ' ',
+        subtitle: 'compare_cities_description',
         grafico: 'grafico-home3',
         svg: 'assets/home/ciudades-comparacion.svg',
         routerLink: '/thematic'

@@ -117,7 +117,7 @@
     "index description": "Conoce el desempeño de tu ciudad en el tema de tu interés y compara con otras ciudades similares",
     "citizen reports description": "Transformamos los datos en conocimiento, a través de reportes de fácil entendimiento para la ciudadanía.",
     "our_cities": "Nuestras ciudades están evolucionando",
-    "our_cities_description": "Diseñamos un Índice Multivariable para analizar la gestión municipal",
+    "our_cities_description": "Selecciona una ciudad intermedia y descubre sus datos y estadísticas",
     "click_here": "Ver más ►",
     "compare_cities": "Compara el desarrollo de las ciudades",
     "analyse_topics": "Analiza las ciudades por tema",
@@ -146,5 +146,6 @@
     "discover": "Descúbrelas",
     "define_compare": " Define y Compara",
     "difine_compare_description": "Elige una ciudad intermedia* defínela con tus propias palabras y mira cuántas personas piensan como tú.",
-    "define_compare_footer": "*Ciudades con población entre 100.000 y 500.000 habitantes urbanos, o que tienen menos y son capitales de provincia"
+    "define_compare_footer": "*Ciudades con población entre 100.000 y 500.000 habitantes urbanos, o que tienen menos y son capitales de provincia",
+    "compare_cities_description":"Diseñamos un índice multivariable para analizar la gestión municipal"
 }
