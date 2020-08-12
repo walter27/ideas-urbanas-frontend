@@ -28,9 +28,6 @@ import { ChartsService } from "src/app/core/services/charts.service";
 
 let { capitalizeFirst } = require("../../core/utils/utils");
 
-let { titleCase }: any = require('../../core/utils/utils');
-
-
 @Component({
   selector: "app-ides-index",
   templateUrl: "./ides-index.component.html",
@@ -365,11 +362,12 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
     });
 
     setTimeout(() => {
+      
       this.chartService.imageRadarBase24.then((value) => {
         this.imageBase64 = {
-          name: "chart",
+          name: 'chart',
           data: value,
-          type: "radar",
+          type:'radar'
         };
       });
     }, 3000);
