@@ -2160,7 +2160,7 @@ h4.card-title {
     font: 16px "Sans-Serif";
     color: #9195a4;
     line-height: 22px;
-    margin-top: 8px;
+    margin-top: -10px;
     margin-bottom: 20px !important;
     text-align: left;
     font-weight: 400 !important;
@@ -2192,4 +2192,12 @@ h4.card-title {
     }
     .ml-1.ng-star-inserted {
         margin-top: 10px;
+    }
+    .text-center.text.pb-2.pl-4 {
+        margin-top: -10px;
+        font: 16px "Roboto", sans-serif;
+        color: #9195a4;
+        line-height: 22px;
+        margin-top: 20px;
+        text-align: center;
     }
