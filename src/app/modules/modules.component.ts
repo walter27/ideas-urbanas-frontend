@@ -59,11 +59,11 @@ export class ModulesComponent implements OnInit {
           text: 'say',
           url: '/intermediate-cities',
         },
-        /*{
+        {
           id: 'indexes',
           text: 'indexes',
           url: '/indexes',
-        },*/
+        },
         {
           id: 'thematics',
           text: 'thematics',

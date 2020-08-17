@@ -31,18 +31,26 @@ export class DataService {
 
   }
 
-  listDataIndexes(idCity?): Observable<ResponseApi<any>> {
+  listDataIndexes(cities?, years?): Observable<ResponseApi<any>> {
     const body = {
-      cities: null
+      cities,
+      years
     };
-    if (idCity) {
-      body.cities = [idCity];
+    if (!years) {
+      body.cities = [cities];
     }
     return this.httpClient.post<ResponseApi<any>>(this.serverUrl + 'api/' + this.urlDataIndexes, body).pipe(
       map(data => {
         return data.results.data;
       })
     );
+  }
+
+  listYears() {
+    return this.httpClient.get(`${this.serverUrl}api/years`, httpOptions).pipe(map(data => {
+      return data['results'].data.years;
+    }));
+
   }
 
   // tslint:disable-next-line:variable-name

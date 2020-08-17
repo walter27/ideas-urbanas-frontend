@@ -351,6 +351,8 @@ export class CovidComponent implements OnInit, OnDestroy {
     });
 
     this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
+    console.log(this.result$);
+    
 
     /* setTimeout(() => {
        

@@ -12,7 +12,7 @@ let { titleCase }: any = require('../../../../core/utils/utils');
 })
 export class IntermediateCitiesComponent implements OnInit, DoCheck {
 
-  cantons: any = [];
+  cantons: any;
   cities: any = [];
   citiesPublic: any[];
   filters: Filters = {
@@ -21,18 +21,16 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
     ascending: true,
     sort: '_id'
   };
-  step: number;
+  step: number = 1;
   citySelected: any;
+
 
   constructor(private regionService: RegionService) { }
 
   ngOnInit() {
 
-    this.cities = this.regionService.citiesMap;
-    if (!this.citySelected) {
-      this.citySelected = this.cities[0];
-      this.regionService.citySelectedWordCloud = this.citySelected;
-    }
+    this.getCantons();
+
 
 
     /*this.cities.forEach(canton => {
@@ -49,30 +47,50 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
     });*/
 
 
+
+
+
+  }
+
+  getCantons() {
+
+    this.cantons = [];
+
     this.regionService.listRegionsPublic(this.filters, 'Canton').subscribe(resp => {
       resp.data.forEach(canton => {
 
         this.cantons.push({
-          name: titleCase (canton.name),
+          name: titleCase(canton.name),
           img: `assets/cities/all/${canton.name.toLowerCase()}.jpg`,
           url: '/cities',
+          id: canton._id,
           queryParams: {
             city: canton._id
           }
 
         });
+
+        if (!this.citySelected) {
+          this.citySelected = this.cantons[0];
+          this.regionService.citySelectedWordCloud = this.citySelected;
+        }
+
       });
     })
-    this.step = 1;
 
   }
 
   ngDoCheck() {
 
-    if (this.regionService.showWordCloud !== 1) {
+    if (this.regionService.showWordCloud === 2) {
+
       this.step = this.regionService.showWordCloud;
-    } else {
-      this.step = 1;
+    }
+
+    if (this.regionService.showWordCloud === 1) {
+
+
+      this.step = this.regionService.showWordCloud;
     }
 
 
@@ -85,7 +103,6 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
 
 
   getCitySelected() {
-    console.log(this.citySelected);
 
   }
 

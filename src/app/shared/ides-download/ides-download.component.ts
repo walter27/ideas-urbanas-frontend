@@ -114,7 +114,7 @@ export class IdesDownloadComponent implements OnInit, OnChanges {
     ctx.fillStyle = "blue";
     ctx.font = "16px Arial";
     ctx.fillText(currentUrl, 10, newCanvas.height - 10);
-    console.log("image:", newCanvas.width, newCanvas.height);
+    //console.log("image:", newCanvas.width, newCanvas.height);
     return newCanvas.toDataURL("image/" + type, 1);
   }
 

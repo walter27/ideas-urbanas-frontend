@@ -18,10 +18,27 @@
 
         </div>
     </div>
+
+    <div class="col-md-12 titulo text-center mt-4">
+        <h2 class="subtitulo" translate>Desempeño por ciudad</h2>
+    </div>
+
+    <div class="col-md-12 mt-4 text-center subtitulo">
+        <p translate>index description</p>
+    </div>
+
     <div class="contiene-desempeno">
         <div class="contiene-elementos">
             <div class="anima-texto">
-                <app-ides-index [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]='cities'>
+                <div class="col-md-6 col-lx-12 text-left+">
+                    <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Ciudades'" [showHeader]=true name="citiesSelected">
+                    </p-multiSelect>
+                </div>
+                <div class="col-lg-12 p-3">
+                    <ng5-slider (userChange)="getRangeYears($event)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options">
+                    </ng5-slider>
+                </div>
+                <app-ides-index *ngIf="yearsSelected.length>0" [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]="citiesSelected" [yearsSelected]="yearsSelected">
                 </app-ides-index>
             </div>
         </div>

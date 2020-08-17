@@ -92,3 +92,31 @@ h2.subtitulo {
     margin-bottom: -10px;
     margin-top: -10px;
 }
+
+//PRIMENG
+//multiselect
+:host ::ng-deep.ui-multiselect {
+    border-radius: 14px;
+    background: white;
+    border-color: rgba(6, 76, 195, 1);
+    width: 12rem;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-trigger {
+    border-radius: 14px;
+    background: #ffffff00;
+    color: #064cc3;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-label {
+    color: rgba(6, 76, 195, 1);
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel {
+    background-color: white;
+    border-radius: 14px;
+}
+
+:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
+    display: none !important;
+}

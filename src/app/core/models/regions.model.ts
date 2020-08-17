@@ -7,6 +7,7 @@ export interface Region {
     obj_Canton: Region;
     active?: boolean;
     covid: boolean;
+    indexes: boolean;
     url?: string;
     extraData?: any;
     color?: string;

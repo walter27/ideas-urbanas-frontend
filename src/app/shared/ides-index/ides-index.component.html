@@ -1,33 +1,49 @@
 <div class="col-12 mb-4">
     <div class="row">
 
-        <div *ngIf="!citySelected" class="col-md-6 col-lx-12 text-left">
-            <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cantons" optionLabel="name" [(ngModel)]="cantonsSlected" [defaultLabel]="'Ciudades'" (onChange)="getCantonsSelected()" [showHeader]=true name="cantonsSlected">
-            </p-multiSelect>
-        </div>
-
-        <div [ngClass]="columnaDownload" class="col-lx-12 text-right">
+        <!-- <div [ngClass]="columnaDownload" class="col-12 text-right">
             <app-ides-download [data]="radarChartData" [titleExport]="'Índices'" [hiddenCSV]="true" [idElement]="'indexesGraph'" [nameFile]="'indices_ideas_urbanas'"></app-ides-download>
         </div>
-        <div class="col-md-12 titulo text-center mt-5">
-            <h2 class="subtitulo" translate>{{ getTitle() }}</h2>
-        </div>
 
-        <div class="col-md-12 mt-4 text-center subtitulo">
-            <p translate>index description</p>
-        </div>
-        <div class="canvas-index-width" [ngClass]="{ 'col-12': !marginAuto }" [ngStyle]="{ 'margin': marginAuto ? 'auto' : '' }" *ngIf="radarChartData.length > 0">
+       <div class="canvas-index-width" [ngClass]="{ 'col-12': !marginAuto }" [ngStyle]="{ 'margin': marginAuto ? 'auto' : '' }" *ngIf="radarChartData.length > 0">
             <canvas id="indexesGraph" baseChart width="1200" [datasets]="radarChartData" [options]="radarChartOptions" [labels]="radarChartLabels" [chartType]="radarChartType" [ngClass]="radarChartData.length > 10 ? 'chart-index-size-plus' : 'chart-index-size'">
             </canvas>
+        </div>-->
+
+        <div class="col-md-12">
+            <highcharts-chart id="grafica" [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions" style="width: 100%; height: 380px; display: block; margin-top: 13px;">
+            </highcharts-chart>
         </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div class="container ">
+
+            <div class="row justify-content-md-center">
+
+
+                <div [ngClass]="marginSocial" class="col-md-1 col-1 share mt-lg-1">
+                    <span class="ides-text-blue">Compartir:</span>
+                </div>
+
+                <div class="ml-1 share-social" *ngFor="let item of socialMedia">
+
+                    <a class="cursor-pointer" (click)="sharedImage(item)">
+                        <i [ngClass]="item.img"></i>
+                    </a>
+
+                    <!--   <div class="col-md-6 col-lx-6 mt-1">
+                                    <span>{{item.name}}</span>
+                                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!---      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="col" style="width: 100%; float: right;">
 
                 <app-ides-social-media *ngIf="imageBase64" [imageBase64]="imageBase64"></app-ides-social-media>
-                <!-- <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
-            </app-ides-download>-->
+                <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+            </app-ides-download>
             </div>
 
-        </div>
+        </div>-->
     </div>
 </div>

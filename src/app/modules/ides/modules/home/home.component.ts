@@ -840,7 +840,10 @@ export class HomeComponent implements OnInit, DoCheck {
 
   onMarkerClick(event) {
 
-    this.onClickCity(this.cities[event].id);
+    this.router.navigate(['/cities'], { queryParams: { city: this.cities[event].id} });
+
+
+    //this.onClickCity(this.cities[event].id);
   }
 
 

@@ -22,18 +22,25 @@ import { Observable } from "rxjs";
 import { ResultList } from "src/app/core/models/resultList.model";
 import { Clasification } from "src/app/core/models/clasification.model";
 import { ClasificationService } from "src/app/core/services/clasification.service";
-import { map } from "rxjs/operators";
+import { map, filter } from 'rxjs/operators';
 import { SelectItem } from "primeng/api";
 import { ChartsService } from "src/app/core/services/charts.service";
-
 let { capitalizeFirst } = require("../../core/utils/utils");
+
+import * as Highcharts from "highcharts";
+import MO_Highcharts from 'highcharts/highcharts-more';
+import HC_exporting from "highcharts/modules/exporting";
+import HC_export from "highcharts/modules/export-data";
+import HC_accessibility from 'highcharts/modules/accessibility';
+import { OnChanges } from '@angular/core';
+
 
 @Component({
   selector: "app-ides-index",
   templateUrl: "./ides-index.component.html",
   styleUrls: ["./ides-index.component.scss"],
 })
-export class IdesIndexComponent implements OnInit, OnDestroy {
+export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
   filters: Filters = {
     page: 0,
     limit: 100,
@@ -48,13 +55,21 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
     floor: 2010,
   };
 
+  highcharts: any;
+  updateDemo: boolean;
+  chartOptions: any = {};
+  clasifications: any = [];
+  series: any = [];
+
+
   @Input() marginAuto = false;
   @Input() title: string;
   @Input() variableSelected: Variable;
   @Input() citySelected: Region;
   @Input() showDropCities = false;
   @Input() showDropYears = false;
-  @Input() activeCities: ItemDropdown[] = [];
+  @Input('activeCities') activeCities: any;
+  @Input('yearsSelected') yearsSelected: any;
   @Input() zone: string;
 
   years: ItemDropdown[] = [];
@@ -73,7 +88,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
   cities: ItemDropdown[] = [];
   axes: ItemDropdown[] = [];
   baseData: any;
-  filterData: any;
+  //filterData: any;
   loadData = false;
 
   // Radar
@@ -109,7 +124,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
           t = JSON.parse(sessionStorage.getItem("citiesHidden"));
           if (
             ci.data.datasets.length - 1 ===
-              JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
+            JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
             t.indexOf(legendItem.text) === -1
           ) {
             return;
@@ -257,22 +272,49 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
 
   cantons: any[] = [];
   cantonsSlected: any[] = [];
-  columnaDownload: string;
+  marginSocial: string;
   imageBase64: any;
+  socialMedia: any = [
+    {
+      name: "Facebook",
+      link: "",
+      img: "social-facebook",
+    },
+    {
+      name: "Twitter",
+      link: "",
+      img: "social-twitter",
+    },
+  ];
+
+  body: any;
 
   constructor(
     private dataService: DataService,
     private regionService: RegionService,
     private chartService: ChartsService,
     private router: Router
-  ) {}
+  ) {
+
+    this.updateDemo = false;
+    this.highcharts = Highcharts;
+    HC_exporting(this.highcharts);
+    HC_export(this.highcharts);
+    HC_accessibility(this.highcharts);
+    MO_Highcharts(this.highcharts);
+  }
 
   ngOnInit() {
     this.loadData = true;
-    this.getData();
-    /*if (this.router.url !== '/home') {
+    if (this.citySelected) {
       this.getData();
-    }*/
+    }
+  }
+
+  ngOnChanges(changes) {
+    if (changes['activeCities'] || changes["yearsSelected"] && this.activeCities.length > 0 && this.yearsSelected.length > 0) {
+      this.getData();
+    }
   }
 
   /* @HostListener('window:scroll', ['$event'])
@@ -361,16 +403,15 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
       ci.label = capitalizeFirst(ci.label);
     });
 
-    setTimeout(() => {
-      
+    /*setTimeout(() => {
       this.chartService.imageRadarBase24.then((value) => {
         this.imageBase64 = {
           name: 'chart',
           data: value,
-          type:'radar'
+          type: 'radar'
         };
       });
-    }, 3000);
+    }, 3000);*/
   }
 
   getData() {
@@ -380,24 +421,32 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
         .subscribe((resp) => {
           this.baseData = resp;
           this.updateChart(resp);
-          this.columnaDownload = "col-md-12";
+          this.filterData();
+          this.marginSocial = 'mr-lg-5';
         });
     } else {
-      this.columnaDownload = "col-md-6";
-      this.dataService.listDataIndexes().subscribe((resp) => {
+      this.marginSocial = 'mr-lg-1';
+
+      let idCities = [];
+      this.activeCities.forEach(city => {
+        idCities.push(city.id);
+      });
+      this.dataService.listDataIndexes(idCities, this.yearsSelected).subscribe((resp) => {
         this.baseData = resp;
-        this.cantons = [];
-        Object.keys(resp).forEach((c) => {
+        this.updateChart(resp);
+        this.filterData();
+        //this.cantons = [];
+        /*Object.keys(resp).forEach((c) => {
           this.cantons.push({
             name: c,
           });
         });
-        this.getCantonsSelected();
+        this.getCantonsSelected();*/
       });
     }
   }
 
-  getCantonsSelected() {
+  /*getCantonsSelected() {
     let selectedCantons = [];
 
     if (this.cantonsSlected.length === 0) {
@@ -420,7 +469,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
       }, {});
 
     this.updateChart(filtered);
-  }
+  }*/
 
   onCheckItemYear(e) {
     const idx = this.years.findIndex((c) => c.id === e);
@@ -467,6 +516,130 @@ export class IdesIndexComponent implements OnInit, OnDestroy {
     active: {}[];
   }): void {
     // console.log(event, active);
+  }
+
+  filterData() {
+
+    console.log(this.baseData);
+    
+
+    this.clasifications = [];
+    this.series = [];
+    let firstData = Object.keys(this.baseData)[0];
+    let valuesData = this.baseData[firstData];
+    Object.keys(valuesData).forEach((c) => {
+      this.clasifications.push(c);
+    });
+
+    Object.keys(this.baseData).forEach((city) => {
+      let data = [];
+
+      let clasificationName = this.baseData[city];
+
+      Object.keys(clasificationName).forEach((clasification) => {
+
+        let value = clasificationName[clasification];
+
+        data.push(value);
+      });
+      this.series.push({
+        name: city,
+        data,
+        pointPlacement: 'on'
+      });
+    });
+
+    //console.log(this.series);
+
+    //console.log(this.clasifications);
+
+
+    this.createRadar();
+
+
+  }
+
+
+  createRadar() {
+
+    this.chartOptions = {
+      chart: {
+        polar: true,
+        type: 'line'
+      },
+      title: {
+        text: '',
+      },
+
+      pane: {
+        size: '80%'
+      },
+
+      xAxis: {
+        categories: this.clasifications,
+        tickmarkPlacement: 'on',
+        lineWidth: 0
+      },
+
+      yAxis: {
+        gridLineInterpolation: 'polygon',
+        lineWidth: 0,
+        min: 0
+      },
+
+      tooltip: {
+        shared: true,
+        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+      },
+
+      series: this.series,
+
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              align: 'center',
+              verticalAlign: 'bottom',
+              layout: 'horizontal'
+            },
+            pane: {
+              size: '70%'
+            }
+          }
+        }]
+      }
+    };
+    this.updateDemo = true;
+    this.getURLImage();
+
+  }
+
+  getURLImage() {
+    let chartsDetails = {
+      type: "png",
+      options: this.chartOptions,
+    };
+    this.chartService.generateImage(chartsDetails).subscribe((resp) => { });
+
+  }
+
+  sharedImage(item) {
+
+    this.body = {
+      name: 'radar',
+      type: this.chartOptions.chart.type
+    }
+    this.chartService.shareImage(this.body).subscribe((resp) => {
+      this.socialMedia[0].link = `https://www.facebook.com/sharer.php?u=${resp}`;
+      this.socialMedia[1].link = `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
+    });
+
+    setTimeout(() => {
+      window.open(item.link, "blank");
+    }, 1000);
   }
 
   ngOnDestroy() {
