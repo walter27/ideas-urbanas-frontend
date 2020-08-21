@@ -42,6 +42,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
+import {TableModule} from 'primeng/table';
 import { IdesOriginComponent } from './ides-origin/ides-origin.component';
 import { WordCloudComponent } from './word-cloud/word-cloud.component';
 import { IdesVideosComponent } from './ides-videos/ides-videos.component';
@@ -131,6 +132,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MultiSelectModule,
     CarouselModule,
     ButtonModule,
+    TableModule,
     ToastModule,
     LightboxModule,
     InputTextModule,

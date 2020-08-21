@@ -11,8 +11,6 @@ export class AppComponent {
   device = "movil";
   constructor(translate: TranslateService) {
 
-    //console.log('walter');
-
     translate.addLangs(["en", "es"]);
     translate.setDefaultLang("es");
     if (sessionStorage.getItem("language")) {

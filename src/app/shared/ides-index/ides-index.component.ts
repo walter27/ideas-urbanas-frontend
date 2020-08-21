@@ -33,14 +33,40 @@ import HC_exporting from "highcharts/modules/exporting";
 import HC_export from "highcharts/modules/export-data";
 import HC_accessibility from 'highcharts/modules/accessibility';
 import { OnChanges } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 
 
 @Component({
   selector: "app-ides-index",
   templateUrl: "./ides-index.component.html",
+  animations: [
+    trigger('rowExpansionTrigger', [
+      state('void', style({
+        transform: 'translateX(-10%)',
+        opacity: 0
+      })),
+      state('active', style({
+        transform: 'translateX(0)',
+        opacity: 1
+      })),
+      transition('* <=> *', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+    ])
+  ],
   styleUrls: ["./ides-index.component.scss"],
 })
 export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
+  console = console;
+
+  cars = [
+    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
+    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
+    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
+    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
+    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 }
+  ];
+  cols2: any;
+
   filters: Filters = {
     page: 0,
     limit: 100,
@@ -60,6 +86,9 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
   chartOptions: any = {};
   clasifications: any = [];
   series: any = [];
+  cols: any[];
+  subcols: any[];
+  dataTable: any[];
 
 
   @Input() marginAuto = false;
@@ -309,6 +338,13 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     if (this.citySelected) {
       this.getData();
     }
+
+    this.cols2 = [
+      { field: 'vin', header: 'Vin' },
+      { field: 'year', header: 'Year' },
+      { field: 'brand', header: 'Brand' },
+      { field: 'color', header: 'Color' }
+    ];
   }
 
   ngOnChanges(changes) {
@@ -520,15 +556,33 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
 
   filterData() {
 
-    console.log(this.baseData);
-    
+    //console.log(this.baseData);
+
+    this.cols = [];
+    this.subcols = [];
+
+    this.cols.push({ field: 'variable', header: 'Variable' });
+    this.subcols.push({ field: 'indicator', header: 'Indicador' });
 
     this.clasifications = [];
     this.series = [];
     let firstData = Object.keys(this.baseData)[0];
     let valuesData = this.baseData[firstData];
     Object.keys(valuesData).forEach((c) => {
-      this.clasifications.push(c);
+
+      let indicators = [];
+
+      valuesData[c].indicators.forEach(indicator => {
+
+        indicators.push({ indicator: indicator.name });
+
+
+
+      });
+
+      this.clasifications.push({ name: c, indicators });
+
+
     });
 
     Object.keys(this.baseData).forEach((city) => {
@@ -540,21 +594,91 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
 
         let value = clasificationName[clasification];
 
-        data.push(value);
+        data.push(value.value);
       });
+
       this.series.push({
         name: city,
         data,
+        clasification: clasificationName,
         pointPlacement: 'on'
       });
+      this.cols.push({ field: city, header: city });
+      this.subcols.push({ field: city, header: city });
+
+
     });
+    this.createRadar();
+    this.createTable();
+  }
+
+  createTable() {
 
     //console.log(this.series);
+    let dataCity = {};
+    this.dataTable = [];
+    this.clasifications.forEach(clasification => {
 
-    //console.log(this.clasifications);
+      dataCity = { variable: clasification };
+      this.dataTable.push(dataCity);
+
+    });
 
 
-    this.createRadar();
+    this.series.forEach(serieCity => {
+
+      serieCity.data.forEach((value, i) => {
+
+        this.dataTable.forEach((data, j) => {
+
+          if (i === j) {
+            data[serieCity.name] = value;
+          }
+
+        });
+
+      });
+
+    });
+
+    this.series.forEach(serieCity => {
+
+      Object.keys(serieCity.clasification).forEach((keyClasification) => {
+        let indicators = serieCity.clasification[keyClasification];
+        Object.keys(indicators).forEach((key) => {
+          if (key === 'indicators') {
+            indicators[key].forEach((indicator, i) => {
+
+              this.dataTable.forEach(clasification => {
+                if (clasification.variable.name === keyClasification) {
+
+
+                  clasification.variable.indicators.forEach((indicatorDT, j) => {
+
+                    if (i === j) {
+                      indicatorDT[serieCity.name] = indicator.data;
+
+                    }
+                  });
+
+                }
+
+
+
+              });
+
+            });
+
+          }
+
+        })
+        //console.log(serieCity.clasification[key]);
+
+      })
+    });
+
+    console.log(this.dataTable);
+
 
 
   }

@@ -1,6 +1,11 @@
 <div class="row mx-auto covid-header">
     <div class="covid-header1 ">
         <h3 translate>response_covid</h3>
+        <div *ngIf="returnValue | async as name ">
+
+            <h4>{{name}}</h4>
+
+        </div>
     </div>
     <div class="covid-header2">
 
@@ -57,6 +62,9 @@
 
 
                 <p-dropdown [autoDisplayFirst]="false" class="block" [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
+                </p-dropdown>
+
+                <p-dropdown *ngIf="values.length>0" [autoDisplayFirst]="false" class="block" [options]="values" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
                 </p-dropdown>
 
             </div>

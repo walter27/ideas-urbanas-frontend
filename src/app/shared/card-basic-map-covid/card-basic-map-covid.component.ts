@@ -4,7 +4,7 @@ import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
 import Color_Axis from 'highcharts/modules/coloraxis';
 
-const catones: any = require('../../../assets/geojson/cantones.json');
+const catones: any = require('../../../assets/geojson/geojson_ecuador_cantones.json');
 
 
 @Component({

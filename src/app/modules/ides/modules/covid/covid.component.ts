@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ClasificationService } from '../../../../core/services/clasification.service';
 import { VariableService } from '../../../../core/services/variable.service';
 import { DataService } from '../../../../core/services/data.service';
+import { TranslateService } from '@ngx-translate/core';
 import { RegionService } from '../../../../core/services/region.service';
 import { Region } from 'src/app/core/models/regions.model';
 import { Variable } from 'src/app/core/models/variable.model';
@@ -68,26 +69,67 @@ export class CovidComponent implements OnInit, OnDestroy {
   loading = false;
   optionsDate: any = {};
 
+  prueba: string;
+  returnValue: Observable<string>;
+
+  values: any;
+
 
 
   constructor(private resultClasification: ClasificationService,
     private variableService: VariableService,
     private dataService: DataService,
-    private regionService: RegionService) {
-
-
-
+    private regionService: RegionService,
+    private translate: TranslateService) {
   }
 
 
   ngOnInit() {
 
+    this.values = [];
+
+    setTimeout(() => {
+      this.translate.stream(['fallecidos', 'confirmados', 'diarios']).subscribe(values => {
+
+
+        let data = [];
+
+        Object.keys(values).forEach((value) => {
+
+          data.push({
+            id: 123,
+            name: values[value]
+          })
+
+
+
+
+        })
+
+        this.values = data;
+        this.traslate();
+
+
+
+      });
+
+
+    }, 3000);
+
+    const currentLang = this.translate.currentLang; // get current language
+    this.prueba = 'cat';
     this.minScroll = 0;
     this.maxScroll = 6;
     this.getCantons();
     this.getClasification();
     this.optionsDate = { year: 'numeric', month: 'short', day: 'numeric' };
+    this.returnValue = this.translate.stream('cat'); // get converted string from current language
 
+  }
+
+
+  traslate() {
+    console.log(this.values);
 
   }
 
@@ -351,8 +393,6 @@ export class CovidComponent implements OnInit, OnDestroy {
     });
 
     this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
-    console.log(this.result$);
-    
 
     /* setTimeout(() => {
        
