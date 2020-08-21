@@ -51,7 +51,7 @@
         "jwt-decode": "^2.2.0",
         "natural": "^2.1.5",
         "ng2-charts": "^2.3.0",
-        "ng2-tooltip-directive": "^2.8.17",
+        "ng2-tooltip-directive": "^2.9.22",
         "ng5-slider": "^1.2.4",
         "ngtweet": "^1.0.0",
         "ngx-color-picker": "^9.0.0",
