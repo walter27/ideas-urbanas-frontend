@@ -617,9 +617,9 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     //console.log(this.series);
     let dataCity = {};
     this.dataTable = [];
-    this.clasifications.forEach(clasification => {
+    this.clasifications.forEach((clasification, i) => {
 
-      dataCity = { variable: clasification };
+      dataCity = { id: i, variable: clasification };
       this.dataTable.push(dataCity);
 
     });
@@ -686,6 +686,14 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
 
   createRadar() {
 
+    let clasifications = [];
+
+    this.clasifications.forEach(clasification => {
+
+      clasifications.push(clasification.name);
+
+    });
+
     this.chartOptions = {
       chart: {
         polar: true,
@@ -700,7 +708,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
       },
 
       xAxis: {
-        categories: this.clasifications,
+        categories: clasifications,
         tickmarkPlacement: 'on',
         lineWidth: 0
       },
