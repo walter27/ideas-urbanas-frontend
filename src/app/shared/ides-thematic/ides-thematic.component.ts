@@ -165,7 +165,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
           t = JSON.parse(sessionStorage.getItem("citiesHidden"));
           if (
             ci.data.datasets.length - 1 ===
-              JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
+            JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
             t.indexOf(legendItem.text) === -1
           ) {
             return;
@@ -381,7 +381,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     private chartService: ChartsService,
     private utilsService: UtilsService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     sessionStorage.clear();
@@ -412,7 +412,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       .listRegionsPublic(
         { page: 0, limit: 1000, ascending: true, sort: "_id" },
         "Canton"
-      ) 
+      )
       .subscribe((resp) => {
         this.cities = [];
         const setCities = new Set();
@@ -431,19 +431,15 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       });
   }
   getClasifications() {
-    let newRes;
     let finalRes: any = [];
     this.resultClasification$ = this.clasificationService
-      .listClasification(this.filters)
+      .listClasificationPublic(this.filters)
       .pipe(
         map((resp) => {
-          this.clasificationSelected = resp.data[1];
-          this.getVariables();
-          newRes = resp.data.filter(
-            (clasification) => clasification.name !== "Corona Virus"
-          );
 
-          for (const thematic of newRes) {
+          this.clasificationSelected = resp.data[0];
+          this.getVariables();
+          for (const thematic of resp.data) {
             thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
             thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
             finalRes.push(thematic);

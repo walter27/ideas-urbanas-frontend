@@ -102,16 +102,12 @@ export class CitiesComponent implements OnInit {
 
   getClasifications() {
 
-    let newRes;
     let finalRes: any = [];
-    this.resultClasification$ = this.clasificationService.listClasification(this.filters).pipe(
+    this.resultClasification$ = this.clasificationService.listClasificationPublic(this.filters).pipe(
       map(resp => {
-        this.clasificationSelected = resp.data[1];
+        this.clasificationSelected = resp.data[0];
         this.getVariables();
-        //console.log(resp);
-        newRes = resp.data.filter(clasification => clasification.name !== 'Corona Virus');
-
-        for (const thematic of newRes) {
+        for (const thematic of resp.data) {
           thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
           thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
           finalRes.push(thematic);

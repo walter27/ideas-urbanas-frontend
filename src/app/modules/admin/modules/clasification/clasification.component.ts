@@ -27,6 +27,7 @@ export class ClasificationComponent implements OnInit {
   columns = [
     { name: 'name', prop: 'name', width: '10%' },
     { name: 'description', prop: 'description', width: '60%' },
+    { name: 'active', prop: 'active' },
     { name: 'image', prop: 'image_route' },
     { name: 'active_image', prop: 'image_active_route' },
   ];
@@ -43,6 +44,13 @@ export class ClasificationComponent implements OnInit {
       type: 'text_area',
       id: 'description',
       formControlName: 'description',
+      required: false
+    },
+    {
+      label: 'active',
+      type: 'switch',
+      id: 'active',
+      formControlName: 'active',
       required: false
     },
     {

@@ -81,6 +81,9 @@ export class IdesDatatableComponent implements OnInit {
   }
 
   onEdit(item) {
+
+    console.log(item);
+    
     this.addEditForm.reset();
     this.action = 'edit';
     this.itemSelected = item;

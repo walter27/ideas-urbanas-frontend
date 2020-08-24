@@ -134,8 +134,6 @@ export class CantonComponent implements OnInit {
   }
 
   onSubmit(event) {
-
-    console.log(event);
     
     if (this.addEditForm.valid) {
       if (event.action === 'add') {

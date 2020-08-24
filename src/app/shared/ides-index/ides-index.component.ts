@@ -677,7 +677,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
       })
     });
 
-    console.log(this.dataTable);
+    //console.log(this.dataTable);
 
 
 

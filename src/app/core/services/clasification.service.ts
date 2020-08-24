@@ -43,6 +43,19 @@ export class ClasificationService {
     );
   }
 
+  listClasificationPublic(filters: Filters): Observable<ResultList<Clasification>> {
+    const filtersB = this.utilsService.buildFilters(filters);
+    return this.httpClient.get<ResponseApi<ResultList<Clasification>>>(this.serverUrl + 'api/clasifications' + filtersB).pipe(
+      map( data => {
+        data.results.data.forEach( el => {
+          el.image_route = this.serverUrl + el.image_route.substr(2);
+          el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
+        });
+        return data.results;
+      })
+    );
+  }
+
   addClasification(profile) {
     const formData = new FormData();
     formData.append('name', profile.name);
