@@ -170,7 +170,7 @@ export class ModulesComponent implements OnInit {
         {
           id: 'words',
           text: 'models.stopwords',
-          url: '/admin/stopwords'
+          url: '/admin/stop'
         }
       ],
       onlyAdmin: true

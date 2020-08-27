@@ -8,7 +8,6 @@ import { CitizenReports } from 'src/app/core/models/citizen-reports.model';
 })
 export class IdesCitizenReportsCardComponent implements OnInit {
 
-  @Input() item: CitizenReports;
   @Input() items: any;
   hidden = true;
   title = '';
@@ -36,36 +35,11 @@ export class IdesCitizenReportsCardComponent implements OnInit {
       }
     ];
 
-
-    this.reports = [
-      {
-        name: 'Lorem Ipsum',
-        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-        img: 'assets/reports/reporte.jpg',
-        read: ' '
-      },
-      {
-        name: 'Lorem Ipsum',
-        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-        img: 'assets/reports/reporte1.jpg',
-        read: ' '
-      },
-      {
-        name: 'Lorem Ipsum',
-        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-        img: 'assets/reports/reporte2.jpg',
-        read: ' '
-      },
-      {
-        name: 'Lorem Ipsum',
-        descriptions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-        img: 'assets/reports/reporte3.jpg',
-        read: ' '
-      },
-    ];
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   getValue(item) {
     this.title = item.name;

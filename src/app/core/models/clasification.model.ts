@@ -4,5 +4,5 @@ export interface Clasification {
     description: string;
     active: boolean;
     image_route: string;
-    image_active_route: string;
+    //image_active_route: string;
 }

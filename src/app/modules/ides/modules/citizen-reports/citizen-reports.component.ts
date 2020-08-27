@@ -20,9 +20,7 @@ export class CitizenReportsComponent implements OnInit {
 
   resultReports$: Observable<ResultList<CitizenReports>>;
 
-  reports: CitizenReports[] = [];
-
-  constructor(private reportsService: CitizenReportsService) {}
+  constructor(private reportsService: CitizenReportsService) { }
 
   ngOnInit() {
     /* let elem: HTMLElement = document.getElementById('navbarMenu');
@@ -30,14 +28,10 @@ export class CitizenReportsComponent implements OnInit {
      elem.classList.add("sticky-top");
      elem.classList.remove("fixed-top");*/
 
-    this.getClasifications();
+    this.getReports();
   }
 
-  getClasifications() {
+  getReports() {
     this.resultReports$ = this.reportsService.listReports(this.filters);
-
-    this.reportsService.listReports(this.filters).subscribe((resp) => {
-      this.reports = resp.data;
-    });
   }
 }

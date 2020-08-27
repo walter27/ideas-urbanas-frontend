@@ -34,9 +34,13 @@
         "year": "Año",
         "variable": "Variable",
         "active": "Activo",
+        "covid": "Covid",
+        "indexes": "Indices",
+        "date": "Fecha",
         "configs": "Configuración",
         "url": "Url",
         "text": "Palabra",
+        "actions": "Acciones",
         "color": "Color"
     },
     "actions": {
@@ -57,7 +61,8 @@
         "data": "Datos",
         "reports": "Reportes Ciudadanos",
         "indicators": "Indicadores",
-        "tag": "Nube de palabras"
+        "tag": "Nube de palabras",
+        "stopwords": "Palabras Prohibidas "
     },
     "models": {
         "user": "Usuario",
@@ -72,7 +77,9 @@
         "data": "Datos",
         "reports": "Reportes Ciudadanos",
         "indicators": "Indicadores",
-        "tag": "Nube de palabras"
+        "tag": "Nube de palabras",
+        "stopwords": "Palabras Prohibidas "
+
     },
     "is_required": "es requerido",
     "email_invalid": "Correo inválido",
@@ -148,6 +155,7 @@
     "difine_compare_description": "Elige una ciudad intermedia* defínela con tus propias palabras y mira cuántas personas piensan como tú.",
     "define_compare_footer": "*Ciudades con población entre 100.000 y 500.000 habitantes urbanos, o que tienen menos y son capitales de provincia",
     "compare_cities_description": "Diseñamos un índice multivariable para analizar la gestión municipal",
+    "showing": "{first} al {last} de {totalRecords} palabras",
     "cat": "perro",
     "fallecidos": "fallecidossss",
     "confirmados": "Confirmadossss",

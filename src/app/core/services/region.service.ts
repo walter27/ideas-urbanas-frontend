@@ -65,8 +65,12 @@ export class RegionService {
   }
 
   addRegion(profile, model: string) {
-    if (profile.active === null) {
+    if (profile.active === null || profile.indexes === null || profile.covid || profile.color === null) {
       profile.active = false;
+      profile.indexes = false;
+      profile.covid = false;
+      profile.color = 'rgb(143,216,49)';
+
     }
     return this.httpClient.post(this.serverUrl + url[model], profile, httpOptions);
   }

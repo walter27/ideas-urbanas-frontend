@@ -80,5 +80,9 @@ export class TagService {
         })
       );
   }
+  updateStopwords(listStopWords: any, id: string) {
+
+    return this.httpClient.put(this.serverUrl + this.urlTag + '/stopwords/' + id, listStopWords, httpOptions);
+  }
 
 }

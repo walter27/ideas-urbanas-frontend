@@ -836,7 +836,10 @@ export class CovidComponent implements OnInit, OnDestroy {
           code: e.itemValue.code,
           id_Provincia: e.itemValue.obj_Provincia._id,
           name: e.itemValue.name,
-          active: e.itemValue.active
+          active: e.itemValue.active,
+          color: e.itemValue.color,
+          indexes: e.itemValue.indexes
+
         };
         this.regionService.editRegion(body, e.itemValue._id, this.model).subscribe(res => {
           //console.log('false', res);
@@ -848,7 +851,10 @@ export class CovidComponent implements OnInit, OnDestroy {
           code: e.itemValue.code,
           id_Provincia: e.itemValue.obj_Provincia._id,
           name: e.itemValue.name,
-          active: e.itemValue.active
+          active: e.itemValue.active,
+          color: e.itemValue.color,
+          indexes: e.itemValue.indexes
+
         };
         this.regionService.editRegion(body, e.itemValue._id, this.model).subscribe(res => {
           // console.log('TRUE', res);

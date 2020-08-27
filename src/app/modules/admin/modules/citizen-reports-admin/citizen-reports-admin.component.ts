@@ -50,7 +50,9 @@ export class CitizenReportsAdminComponent implements OnInit {
       type: 'file',
       id: 'image',
       formControlName: 'image',
-      required: true
+      required: false,
+      extra: 'image_route'
+
     }
   ];
 
@@ -58,7 +60,7 @@ export class CitizenReportsAdminComponent implements OnInit {
   addEditForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    image: new FormControl('', [Validators.required])
+    image: new FormControl('')
   });
 
   images = {
@@ -76,7 +78,7 @@ export class CitizenReportsAdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.listReports();
   }
 
@@ -96,12 +98,16 @@ export class CitizenReportsAdminComponent implements OnInit {
           this.notifier.notify('error', 'Ha ocurrido un error intentando adicionar la ' + this.model + '.');
         });
       } else {
-        this.reportsService.editReports(this.addEditForm.value, event.id).subscribe(data => {
+
+        console.log('EDITAR', this.addEditForm.value);
+
+        this.reportsService.editReports({ ...this.addEditForm.value, images: this.images }, event.id).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' actualizada correctamente.');
           this.listReports();
         }, err => {
+          console.log(err);
           this.notifier.notify('error', 'Ha ocurrido un error intentando actualizar la ' + this.model + '.');
         });
       }
@@ -124,7 +130,15 @@ export class CitizenReportsAdminComponent implements OnInit {
   }
 
   onChangeFile(event) {
+
+    this.fields.forEach((value) => {
+      if (value.id === event.id) {
+        value.value = event.File.name;
+      }
+    });
     this.images[event.id] = event.File;
+    this.addEditForm.controls[event.id].setValue(event.File.name);
+
   }
 
 }

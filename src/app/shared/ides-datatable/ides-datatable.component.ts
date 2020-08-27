@@ -34,8 +34,7 @@ export class IdesDatatableComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onConfirmDelete(item) {
     this.itemSelected = item;
@@ -82,8 +81,6 @@ export class IdesDatatableComponent implements OnInit {
 
   onEdit(item) {
 
-    console.log(item);
-    
     this.addEditForm.reset();
     this.action = 'edit';
     this.itemSelected = item;
@@ -128,6 +125,9 @@ export class IdesDatatableComponent implements OnInit {
   }
 
   getValue(i, prop, text) {
+
+    //console.log(i);
+
     let solve = i;
 
     const t = prop.split('.');
@@ -136,9 +136,26 @@ export class IdesDatatableComponent implements OnInit {
       solve = solve[e];
     });
 
+
+
     if (solve && typeof (solve) === 'object') {
-      let resp = '';
-      return Object.entries(solve);
+
+      if (solve instanceof Array) {
+
+        solve.forEach(data => {
+
+          solve = data.name;
+
+
+          return solve;
+
+
+        });
+
+      }
+
+
+
       // solve.forEach((e, idx) => {
       //   if (idx !== 0) {
       //     resp += ', ';
@@ -147,6 +164,7 @@ export class IdesDatatableComponent implements OnInit {
       // });
       // return resp;
     }
+
     return solve;
   }
 
@@ -166,5 +184,6 @@ export class IdesDatatableComponent implements OnInit {
     event.ascending = event.ascending ? !event.ascending : true;
     this.sortBy.emit(event);
   }
+
 
 }
