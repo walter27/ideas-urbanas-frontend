@@ -103,7 +103,10 @@ export class StopComponent implements OnInit {
 
     this.listWords = [...this.listWords];
     this.displayDialog = false;
-    this.word = {};
+    this.word = {
+      id: '',
+      word: ''
+    };
     this.saveServer();
 
 
@@ -115,7 +118,10 @@ export class StopComponent implements OnInit {
   }
 
   addWord() {
-    this.word = {};
+    this.word = {
+      id: '',
+      word: ''
+    };
     this.displayDialog = true;
     this.typeNotifier = 'success';
 
@@ -131,7 +137,7 @@ export class StopComponent implements OnInit {
 
   onDelete() {
     this.listWords = this.listWords.filter(word => word.id !== this.word.id);
-    this.word = {};
+    //this.word = {};
     this.saveServer();
     $('#confirmModal').modal('hide');
   }
@@ -171,7 +177,7 @@ export class StopComponent implements OnInit {
 
     this.tagService.updateStopwords(this.listWordServer, this.listStopWordsId).subscribe(resp => {
 
-      this.notifier.notify(this.typeNotifier, `${resp.message}`);
+      this.notifier.notify(this.typeNotifier, 'Lista de palabras prohibidas actualizadas correctamente.');
 
     });
 
