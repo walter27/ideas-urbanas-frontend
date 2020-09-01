@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxTweetModule } from 'ngx-tweet';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+
 
 
 
@@ -29,7 +31,8 @@ import { ButtonModule } from 'primeng/button';
     AngularSvgIconModule,
     NgbModule,
     CarouselModule,
-    ButtonModule
+    ButtonModule,
+    NgxTwitterTimelineModule
   ],
 
 })

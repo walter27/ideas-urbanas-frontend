@@ -72,7 +72,10 @@ export class CovidComponent implements OnInit, OnDestroy {
   prueba: string;
   returnValue: Observable<string>;
 
-  values: any;
+  resultVariable$: Observable<ResultList<Variable>>;
+  keysVariable: any[];
+  languajeDate: string;
+
 
 
 
@@ -80,58 +83,22 @@ export class CovidComponent implements OnInit, OnDestroy {
     private variableService: VariableService,
     private dataService: DataService,
     private regionService: RegionService,
-    private translate: TranslateService) {
+    private translateService: TranslateService) {
   }
 
 
   ngOnInit() {
 
-    this.values = [];
-
-    setTimeout(() => {
-      this.translate.stream(['fallecidos', 'confirmados', 'diarios']).subscribe(values => {
-
-
-        let data = [];
-
-        Object.keys(values).forEach((value) => {
-
-          data.push({
-            id: 123,
-            name: values[value]
-          })
-
-
-
-
-        })
-
-        this.values = data;
-        this.traslate();
-
-
-
-      });
-
-
-    }, 3000);
-
-    const currentLang = this.translate.currentLang; // get current language
-    this.prueba = 'cat';
     this.minScroll = 0;
     this.maxScroll = 6;
     this.getCantons();
     this.getClasification();
     this.optionsDate = { year: 'numeric', month: 'short', day: 'numeric' };
-    this.returnValue = this.translate.stream('cat'); // get converted string from current language
 
   }
 
 
-  traslate() {
-    console.log(this.values);
 
-  }
 
   ngOnDestroy() {
 
@@ -361,14 +328,79 @@ export class CovidComponent implements OnInit, OnDestroy {
 
   }
 
+  traslate() {
+
+
+
+    this.translateService.stream(this.keysVariable).subscribe(values => {
+
+      let variables = [];
+      let lang = this.translateService.currentLang;
+
+
+      Object.keys(values).forEach((key, i) => {
+
+
+        this.varibales2.forEach((variable, j) => {
+
+          if (i === j) {
+            variable.name = values[key];
+            variables.push(variable)
+          }
+
+
+        });
+
+
+
+      })
+
+      this.varibales2 = variables;
+
+      if (lang === 'es') {
+
+        this.languajeDate = 'es-ES';
+        this.getData(this.selectVariable._id);
+
+      }
+
+      if (lang === 'en') {
+        this.languajeDate = 'en-US';
+        this.getData(this.selectVariable._id);
+
+      }
+
+    })
+
+
+
+
+
+  }
+
 
   getVariables(idClasification: string) {
+
+
+    this.keysVariable = [];
+
+
 
     this.variableService.getVariablesByClasification(idClasification).subscribe((data) => {
 
 
+      data.data.forEach(variable => {
+
+        this.keysVariable.push(variable.name);
+
+      });
+
+
+
+
       this.varibales2 = data.data;
       this.selectVariable = this.varibales2[0];
+      this.traslate();
       this.getData(this.selectVariable._id);
 
     });
@@ -468,7 +500,7 @@ export class CovidComponent implements OnInit, OnDestroy {
         return { value: date.getTime() };
       }),
       translate: (value: number, label: LabelType): string => {
-        return titleCase(new Date(value).toLocaleDateString('es-ES', this.optionsDate));
+        return titleCase(new Date(value).toLocaleDateString(this.languajeDate, this.optionsDate));
       }
     };
 
@@ -488,7 +520,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     if (!this.selectDate || this.selectDate === 0) {
       this.selectDate = this.dateRange[0].getTime();
 
-      let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString('es-ES', this.optionsDate));
+      let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString(this.languajeDate, this.optionsDate));
       datesString.push(selectDate);
       this.dateString = datesString;
 
@@ -500,7 +532,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     for (const dateString of this.dateRange) {
 
       let dateStringFinal = dateString.getTime();
-      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString('es-ES', this.optionsDate));
+      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString(this.languajeDate, this.optionsDate));
       datesStringFinal.push(selectDate);
     }
     this.dateStringAll = datesStringFinal;
@@ -543,7 +575,7 @@ export class CovidComponent implements OnInit, OnDestroy {
           let dataCovi = {
             data: [Number(dataCovid.value)],
             name: dataCovid.obj_Canton.name,
-            date: titleCase(new Date(dateStr).toLocaleDateString('es-ES', this.optionsDate))
+            date: titleCase(new Date(dateStr).toLocaleDateString(this.languajeDate, this.optionsDate))
 
 
           };
@@ -667,7 +699,7 @@ export class CovidComponent implements OnInit, OnDestroy {
     for (const dateString of this.dateRange) {
 
       let dateStringFinal = dateString.getTime();
-      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString('es-ES', this.optionsDate));
+      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString(this.languajeDate, this.optionsDate));
       datesStringFinal.push(selectDate);
     }
     this.dateStringAll = datesStringFinal;
@@ -695,7 +727,7 @@ export class CovidComponent implements OnInit, OnDestroy {
         let day = date.getUTCDate();
         let year = date.getUTCFullYear();
         let month = date.getUTCMonth();
-        let dateStr = titleCase(new Date(year, month, day).toLocaleDateString('es-ES', this.optionsDate));
+        let dateStr = titleCase(new Date(year, month, day).toLocaleDateString(this.languajeDate, this.optionsDate));
 
         for (let index = 0; index < this.dateStringAll.length; index++) {
 
@@ -895,7 +927,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     let datesString = [];
     this.selectDate = e.value;
-    let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString('es-ES', this.optionsDate));
+    let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString(this.languajeDate, this.optionsDate));
     datesString.push(selectDate);
     this.dateString = datesString;
 
