@@ -840,7 +840,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
   onMarkerClick(event) {
 
-    this.router.navigate(['/cities'], { queryParams: { city: this.cities[event].id} });
+    this.router.navigate(['/cities'], { queryParams: { city: this.cities[event].id } });
 
 
     //this.onClickCity(this.cities[event].id);
@@ -898,6 +898,11 @@ export class HomeComponent implements OnInit, DoCheck {
   changueStep() {
     this.step = 1;
     this.regionService.citySelect = undefined;
+  }
+
+
+  ngAfterViewInit(): void {
+    (<any>window).twttr.widgets.load();
   }
 
 }

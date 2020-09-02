@@ -1,4 +1,4 @@
-<div class="row mb-4">
+<div class="row ">
     <div class="col-12">
         <div class="row">
             <div class="col-12 mb-4">
@@ -344,27 +344,35 @@
                         </div>
 
                         <div class="col-xl-12 col-lg-12 ">
+                            <app-ides-authors></app-ides-authors>
 
-                            <div class="twitt">
-                                <!-- <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" [activeCities]='activeCities'></app-ides-index> -->
-                                <!--  <ngx-tweet class="col-md-12" tweetId="1278357859496009729"></ngx-tweet> -->
-                                <!-- <a class="twitter-timeline" data-height="500" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
-
-                            </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="contentido-blanco">
-                    <div class="twitter1">
-                        <ngx-twitter-timeline [data]="{sourceType: 'url', url: 'https://twitter.com/escuelagob_ide'}" [opts]="{tweetLimit: 1, height:'#FF5733'}"></ngx-twitter-timeline>
+
+
+
+            </div>
+        </div>
+
+        <div class="row bg-twitter">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 p-4">
+                        <a class="twitter-timeline" data-width="500" data-height="400" href="https://twitter.com/escuelagob_ide">Tweets by escuelagob_ide</a>
+
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <img class="m-md-auto d-block" src="assets/twitter/zona-twitter.png" alt="" style="width:300px;height:300px;">
                     </div>
                 </div>
-
-                <div class="col-md-12">
-
-                </div>
             </div>
+
+
+
         </div>
     </div>
 </div>
