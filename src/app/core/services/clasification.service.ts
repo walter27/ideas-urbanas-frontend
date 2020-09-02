@@ -13,7 +13,7 @@ import { Clasification } from '../models/clasification.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 @Injectable({
@@ -27,16 +27,16 @@ export class ClasificationService {
   constructor(
     private httpClient: HttpClient,
     private utilsService: UtilsService
-    ) {
+  ) {
   }
 
   listClasification(filters: Filters): Observable<ResultList<Clasification>> {
     const filtersB = this.utilsService.buildFilters(filters);
     return this.httpClient.get<ResponseApi<ResultList<Clasification>>>(this.serverUrl + 'api/' + this.urlClasification + filtersB).pipe(
-      map( data => {
-        data.results.data.forEach( el => {
+      map(data => {
+        data.results.data.forEach(el => {
           el.image_route = this.serverUrl + el.image_route.substr(2);
-          el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
+          //el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
         });
         return data.results;
       })
@@ -46,10 +46,10 @@ export class ClasificationService {
   listClasificationPublic(filters: Filters): Observable<ResultList<Clasification>> {
     const filtersB = this.utilsService.buildFilters(filters);
     return this.httpClient.get<ResponseApi<ResultList<Clasification>>>(this.serverUrl + 'api/clasifications' + filtersB).pipe(
-      map( data => {
-        data.results.data.forEach( el => {
+      map(data => {
+        data.results.data.forEach(el => {
           el.image_route = this.serverUrl + el.image_route.substr(2);
-          el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
+          //el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
         });
         return data.results;
       })
@@ -57,11 +57,17 @@ export class ClasificationService {
   }
 
   addClasification(profile) {
+
+    if (profile.active === null) {
+      profile.active = false;
+
+    }
     const formData = new FormData();
     formData.append('name', profile.name);
     formData.append('description', profile.description);
+    formData.append('active', profile.active);
     formData.append('image', profile.images.image, profile.images.image.name);
-    formData.append('image_active', profile.images.image_active, profile.images.image_active.name);
+    //formData.append('image_active', profile.images.image_active, profile.images.image_active.name);    
     return this.httpClient.post(this.serverUrl + this.urlClasification, formData);
   }
 
@@ -69,12 +75,13 @@ export class ClasificationService {
     const formData = new FormData();
     formData.append('name', profile.name);
     formData.append('description', profile.description);
-    if ( profile.images.image && profile.images.image.name ) {
+    formData.append('active', profile.active);
+    if (profile.images.image && profile.images.image.name) {
       formData.append('image', profile.images.image, profile.images.image.name);
     }
-    if ( profile.images.image_active && profile.images.image_active.name ) {
+    /*if (profile.images.image_active && profile.images.image_active.name) {
       formData.append('image_active', profile.images.image_active, profile.images.image_active.name);
-    }
+    }*/
     return this.httpClient.put(this.serverUrl + this.urlClasification + '/' + id, formData);
   }
 

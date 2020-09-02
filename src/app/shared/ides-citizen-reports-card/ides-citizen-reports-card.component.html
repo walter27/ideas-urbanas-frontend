@@ -28,10 +28,10 @@
     </ng-template>
 </p-carousel>-->
 
-<p-carousel [value]="reports" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+<p-carousel [value]="items" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
     <ng-template let-report pTemplate="item">
         <div class="ides-card m-2">
-            <img src="{{report.img}}" />
+            <img src="{{report.image_route}}" />
             <div class="col-md-12 text-center mt-3">
                 <h4 class="card-title">{{report.name}}</h4>
             </div>

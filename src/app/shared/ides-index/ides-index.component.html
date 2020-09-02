@@ -20,7 +20,7 @@
 
 
                 <div [ngClass]="marginSocial" class="col-md-1 col-1 share mt-lg-1">
-                    <span class="ides-text-blue">Compartir:</span>
+                    <span class="ides-text-blue" translate>share</span>
                 </div>
 
                 <div class="ml-1 share-social" *ngFor="let item of socialMedia">
@@ -35,13 +35,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+         <div class="col-md-12">
             <p-table [columns]="cols" [value]="dataTable" dataKey="id" [responsive]="true" rowExpandMode="single">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th style="width: 3em"></th>
+                        <th style="width: 3em">Ind</th>
                         <th *ngFor="let col of columns">
-                            {{col.header}}
+                            <span translate>{{col.header}}</span>
                         </th>
                     </tr>
                 </ng-template>
@@ -53,6 +53,7 @@
                             </a>
                         </td>
                         <td *ngFor="let col of columns; let i=index">
+                            <span class="ui-column-title">{{col.header}}</span>
                             <img *ngIf="i===0" alt="" src="assets/ICONOS/{{rowData[col.field].name}}-AZUL.png" width="32" style="vertical-align: middle" />
                             <span *ngIf="i===0" class="p-ml-1"> {{rowData[col.field].name}}</span>
                             <span *ngIf="i!==0" class="p-ml-1"> {{rowData[col.field]}}</span>
@@ -63,18 +64,18 @@
                     <tr>
                         <td [attr.colspan]="columns.length+1">
                             <div class="p-grid ui-fluid" style="font-size:16px;padding:20px" [@rowExpansionTrigger]="'active'">
-                                <p-table [columns]="subcols" [value]="rowData.variable.indicators" dataKey="indicator">
+                                <p-table [columns]="subcols" [responsive]="true" [value]="rowData.variable.indicators" dataKey="indicator">
                                     <ng-template pTemplate="header" let-columns>
                                         <tr>
                                             <th *ngFor="let col of columns">
-                                                {{col.header}}
+                                                <span translate>{{col.header}}</span>
                                             </th>
                                         </tr>
                                     </ng-template>
                                     <ng-template pTemplate="body" let-rowData let-columns="columns">
                                         <tr>
                                             <td *ngFor="let col of columns">
-                                                {{rowData[col.field]}}
+                                                <span class="ui-column-title">{{col.header}}</span> {{rowData[col.field]}}
                                             </td>
                                         </tr>
                                     </ng-template>

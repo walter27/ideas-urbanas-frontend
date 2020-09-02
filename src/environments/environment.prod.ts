@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
   env: 'prod',
-  //serverUrl: 'https://api-ideas-urbanas.uhemisferios.edu.ec/',
-  serverUrl: 'https://ideas-urbanas-api.herokuapp.com/',
+  serverUrl: 'https://api-ideas-urbanas.uhemisferios.edu.ec/',
+  //serverUrl: 'https://ideas-urbanas-api.herokuapp.com/',
   //serverUrl: 'http://localhost:3000/',
   stage: 'dev/',
   auth: {

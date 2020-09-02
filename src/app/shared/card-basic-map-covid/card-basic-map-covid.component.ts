@@ -3,6 +3,8 @@ import * as Highcharts from 'highcharts/highmaps';
 import HC_exporting from 'highcharts/modules/exporting';
 import HC_export from 'highcharts/modules/export-data';
 import Color_Axis from 'highcharts/modules/coloraxis';
+import { TranslateService } from '@ngx-translate/core';
+
 
 const catones: any = require('../../../assets/geojson/geojson_ecuador_cantones.json');
 
@@ -18,12 +20,18 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
   updateDemo: boolean;
   chartOptions: any = {};
   chartConstructor = 'mapChart';
-
+  title: string;
+  downloadPNG: string;
+  donwloadJPEG: string;
+  downloadSVG: string;
+  downloadPDF: string;
+  downloadCSV: string;
+  downloadXLS: string;
 
   @Input("data") data: any[];
   @Input('variable') variable: any;
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
     this.updateDemo = false;
     this.highcharts = Highcharts;
     HC_exporting(this.highcharts);
@@ -36,8 +44,8 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if (changes['data']) {
-      this.createMap();
-
+      //this.createMap();
+      this.translate();
     }
   }
 
@@ -57,7 +65,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         }
       },
       title: {
-        text: 'Evolución Espacial',
+        text: this.title,
         style: {
           color: '#243554',
           fontWeight: 'bold',
@@ -76,7 +84,31 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         maxColor: '#bd0026'
       },
       exporting: {
-        filename: `casos_${this.variable.name}_covid19_espacial`
+        filename: `casos_${this.variable.name}_covid19_espacial`,
+        buttons: {
+          contextButton: {
+            menuItems: [
+              {
+                text: this.downloadPNG, onclick() { this.exportChart({ type: 'image/png' }); }
+              },
+              {
+                text: this.donwloadJPEG, onclick() { this.exportChart({ type: 'image/jpeg' }); }
+              },
+              {
+                text: this.downloadSVG, onclick() { this.exportChart({ type: 'image/svg+xml' }); }
+              },
+              {
+                text: this.downloadPDF, onclick() { this.exportChart({ type: 'application/pdf' }); }
+              },
+              {
+                text: this.downloadCSV, onclick() { this.downloadCSV(); }
+              },
+              {
+                text: this.downloadXLS, onclick() { this.downloadXLS(); }
+              },
+            ]
+          }
+        }
       },
       series: [{
         data: this.data,
@@ -99,6 +131,44 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         }
       }]
     };
+  }
+
+
+  translate() {
+
+    this.translateService.stream(['title_map', 'downloadPNG', 'downloadJPEG', 'downloadSVG', 'downloadPDF', 'downloadCSV', 'downloadXLS']).subscribe(title => {
+
+
+      Object.keys(title).forEach((key) => {
+
+        if (key === 'title_map') {
+          this.title = title[key];
+        }
+        if (key === 'downloadPNG') {
+          this.downloadPNG = title[key];
+        }
+        if (key === 'downloadJPEG') {
+          this.donwloadJPEG = title[key];
+        }
+        if (key === 'downloadSVG') {
+          this.downloadSVG = title[key];
+        }
+        if (key === 'downloadPDF') {
+          this.downloadPDF = title[key];
+        }
+        if (key === 'downloadCSV') {
+          this.downloadCSV = title[key];
+        }
+        if (key === 'downloadXLS') {
+          this.downloadXLS = title[key];
+        }
+
+
+      });
+      this.createMap();
+
+    });
+
   }
 
 }

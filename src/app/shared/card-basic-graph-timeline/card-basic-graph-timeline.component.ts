@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import TimeLine from 'highcharts/modules/timeline';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -14,6 +15,8 @@ export class CardBasicGraphTimelineComponent implements OnInit {
   updateDemo: boolean;
   highcharts: any;
   chartOptions: any;
+  title: string;
+  subtitle: string;
   @Input("minScroll") minScroll: number;
   @Input("maxScroll") maxScroll: number;
 
@@ -21,7 +24,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
 
 
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
 
     this.updateDemo = false;
     this.highcharts = Highcharts;
@@ -30,7 +33,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createTimeLine();
+    this.translate();
 
   }
 
@@ -43,7 +46,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
         type: 'timeline',
         inverted: false,
         scrollablePlotArea: {
-          minWidth: 7000,
+          minWidth: 8000,
           scrollPositionX: 0,
           marginLeft: 150
         },
@@ -70,7 +73,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       },
 
       title: {
-        text: 'Hitos del COVID-19',
+        text: this.title,
         style: {
           color: '#243554',
           fontWeight: 'bold',
@@ -80,7 +83,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       },
 
       subtitle: {
-        text: 'Cronología de lo que sucede en las ciudades intermedias',
+        text: this.subtitle,
         style: {
           color: '#243554',
           fontWeight: 'bold',
@@ -301,6 +304,28 @@ export class CardBasicGraphTimelineComponent implements OnInit {
       }]
     };
     this.updateDemo = true;
+
+  }
+
+
+  translate() {
+
+    this.translateService.stream(['covid_milestones', 'timeline']).subscribe(values => {
+
+
+      Object.keys(values).forEach((key) => {
+
+        if (key === 'covid_milestones') {
+          this.title = values[key]
+        }
+
+        if (key === 'timeline') {
+          this.subtitle = values[key]
+        }
+      });
+      this.createTimeLine();
+
+    });
 
   }
 

@@ -35,7 +35,7 @@ export class CitiesComponent implements OnInit {
 
   items = [];
 
-  resultClasification$: Observable<ResultList<Clasification>>;
+  resultClasification$: any;
   resultResearch$: Observable<ResultList<Research>>;
 
   clasificationSelected: Clasification;
@@ -102,17 +102,17 @@ export class CitiesComponent implements OnInit {
 
   getClasifications() {
 
-    let finalRes: any = [];
+    //let finalRes: any = [];
     this.resultClasification$ = this.clasificationService.listClasificationPublic(this.filters).pipe(
       map(resp => {
         this.clasificationSelected = resp.data[0];
         this.getVariables();
-        for (const thematic of resp.data) {
-          thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
-          thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
-          finalRes.push(thematic);
-        }
-        return finalRes;
+        /* for (const thematic of resp.data) {
+           thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
+           thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
+           finalRes.push(thematic);
+         }*/
+        return resp.data;
       })
     );
 

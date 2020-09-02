@@ -6,6 +6,14 @@ import Color_Axis from "highcharts/modules/coloraxis";
 import Series_Label from "highcharts/modules/series-label";
 import Streamgraph from "highcharts/modules/streamgraph";
 import { ChartsService } from "src/app/core/services/charts.service";
+import { TranslateService } from '@ngx-translate/core';
+
+
+Streamgraph(Highcharts);
+HC_exporting(Highcharts);
+HC_export(Highcharts);
+Color_Axis(Highcharts);
+Series_Label(Highcharts);
 
 @Component({
   selector: "app-card-basic-streamgraph",
@@ -17,6 +25,13 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   updateDemo: boolean;
   chartOptions: any = {};
   chartOptionsExport: any = {};
+  title; string;
+  downloadPNG: string;
+  donwloadJPEG: string;
+  downloadSVG: string;
+  downloadPDF: string;
+  downloadCSV: string;
+  downloadXLS: string;
   socialMedia: any = [
     {
       name: "Facebook",
@@ -37,25 +52,23 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   @Input("variable") variable: any;
   @Input() maxExport: number;
 
-  constructor(private chartService: ChartsService) {
+  constructor(private chartService: ChartsService,
+    private translateService: TranslateService) {
     this.updateDemo = false;
     this.highcharts = Highcharts;
-    Streamgraph(this.highcharts);
-    HC_exporting(this.highcharts);
-    HC_export(this.highcharts);
-    Color_Axis(this.highcharts);
-    Series_Label(this.highcharts);
+
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges(changes) {
     if (changes["data"] && this.data.length > 0) {
-      this.createStreamGraph();
+      this.translate();
+      //this.createStreamGraph();
     }
   }
 
-  createStreamGraph() {
+  async createStreamGraph() {
     this.chartOptions = {
       chart: {
         type: "streamgraph",
@@ -72,7 +85,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
          }*/
       },
       title: {
-        text: "Evolución Temporal",
+        text: this.title,
         style: {
           color: "#243554",
           fontWeight: "bold",
@@ -122,6 +135,30 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       },
       exporting: {
         filename: `casos_${this.variable.name}_covid19_temporal`,
+        buttons: {
+          contextButton: {
+            menuItems: [
+              {
+                text: this.downloadPNG, onclick() { this.exportChart({ type: 'image/png' }); }
+              },
+              {
+                text: this.donwloadJPEG, onclick() { this.exportChart({ type: 'image/jpeg' }); }
+              },
+              {
+                text: this.downloadSVG, onclick() { this.exportChart({ type: 'image/svg+xml' }); }
+              },
+              {
+                text: this.downloadPDF, onclick() { this.exportChart({ type: 'application/pdf' }); }
+              },
+              {
+                text: this.downloadCSV, onclick() { this.downloadCSV(); }
+              },
+              {
+                text: this.downloadXLS, onclick() { this.downloadXLS(); }
+              },
+            ]
+          }
+        }
       },
       series: this.data,
     };
@@ -148,7 +185,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       type: "png",
       options: this.chartOptionsExport,
     };
-    this.chartService.generateImage(chartsDetails).subscribe((resp) => {});
+    this.chartService.generateImage(chartsDetails).subscribe((resp) => { });
 
     //let chart = this.highcharts.charts[0];
     //let ohlcSvg = chart.getSVG(chartOptionsExport);
@@ -231,13 +268,47 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
 
   sharedImage(item) {
     this.variable["type"] = this.chartOptions.chart.type;
-    this.chartService.shareImage(this.variable).subscribe((resp) => {
-      this.socialMedia[0].link = `https://www.facebook.com/sharer.php?u=${resp}`;
-      this.socialMedia[1].link = `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
+    this.chartService.shareImage(this.variable).subscribe(async resp => {
+      this.socialMedia[0].link = await `https://www.facebook.com/sharer.php?u=${resp}`;
+      this.socialMedia[1].link = await `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
     });
 
-    setTimeout(() => {
-      window.open(item.link, "blank");
-    }, 1000);
+    window.open(item.link, "blank");
+  }
+
+
+  translate() {
+
+    this.translateService.stream(['title_streamgraph', 'downloadPNG', 'downloadJPEG', 'downloadSVG', 'downloadPDF', 'downloadCSV', 'downloadXLS']).subscribe(title => {
+
+
+      Object.keys(title).forEach((key) => {
+
+        if (key === 'title_streamgraph') {
+          this.title = title[key];
+        }
+        if (key === 'downloadPNG') {
+          this.downloadPNG = title[key];
+        }
+        if (key === 'downloadJPEG') {
+          this.donwloadJPEG = title[key];
+        }
+        if (key === 'downloadSVG') {
+          this.downloadSVG = title[key];
+        }
+        if (key === 'downloadPDF') {
+          this.downloadPDF = title[key];
+        }
+        if (key === 'downloadCSV') {
+          this.downloadCSV = title[key];
+        }
+        if (key === 'downloadXLS') {
+          this.downloadXLS = title[key];
+        }
+      });
+      this.createStreamGraph();
+
+    });
+
   }
 }

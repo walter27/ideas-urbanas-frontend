@@ -54,7 +54,7 @@
 
             <div class="col-lg-3 col-lx-3 text-right mt-2">
 
-                <p-multiSelect selectedItemsLabel="{0} Ciudades Seleccionadas" class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Ciudades'" [showHeader]=true (onChange)="getSelects($event)" name="selectedCantons">
+                <p-multiSelect selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Ciudades'" [showHeader]=true (onChange)="getSelects($event)" name="selectedCantons">
                 </p-multiSelect>
 
             </div>

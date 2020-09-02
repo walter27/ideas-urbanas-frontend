@@ -34,6 +34,7 @@ import HC_export from "highcharts/modules/export-data";
 import HC_accessibility from 'highcharts/modules/accessibility';
 import { OnChanges } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -58,14 +59,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
   console = console;
 
-  cars = [
-    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
-    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
-    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
-    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 },
-    { vin: 'a1653d4d', brand: 'VW', year: 1998, color: 'White', price: 10000 }
-  ];
-  cols2: any;
+
 
   filters: Filters = {
     page: 0,
@@ -89,6 +83,14 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
   cols: any[];
   subcols: any[];
   dataTable: any[];
+
+
+  downloadPNG: string;
+  donwloadJPEG: string;
+  downloadSVG: string;
+  downloadPDF: string;
+  downloadCSV: string;
+  downloadXLS: string;
 
 
   @Input() marginAuto = false;
@@ -322,7 +324,8 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     private dataService: DataService,
     private regionService: RegionService,
     private chartService: ChartsService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) {
 
     this.updateDemo = false;
@@ -339,12 +342,6 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
       this.getData();
     }
 
-    this.cols2 = [
-      { field: 'vin', header: 'Vin' },
-      { field: 'year', header: 'Year' },
-      { field: 'brand', header: 'Brand' },
-      { field: 'color', header: 'Color' }
-    ];
   }
 
   ngOnChanges(changes) {
@@ -561,8 +558,8 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     this.cols = [];
     this.subcols = [];
 
-    this.cols.push({ field: 'variable', header: 'Variable' });
-    this.subcols.push({ field: 'indicator', header: 'Indicador' });
+    this.cols.push({ field: 'variable', header: 'variable' });
+    this.subcols.push({ field: 'indicator', header: 'indicator' });
 
     this.clasifications = [];
     this.series = [];
@@ -608,7 +605,8 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
 
 
     });
-    this.createRadar();
+    this.translate();
+    //this.createRadar();
     this.createTable();
   }
 
@@ -742,6 +740,33 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
             }
           }
         }]
+      },
+
+      exporting: {
+        buttons: {
+          contextButton: {
+            menuItems: [
+              {
+                text: this.downloadPNG, onclick() { this.exportChart({ type: 'image/png' }); }
+              },
+              {
+                text: this.donwloadJPEG, onclick() { this.exportChart({ type: 'image/jpeg' }); }
+              },
+              {
+                text: this.downloadSVG, onclick() { this.exportChart({ type: 'image/svg+xml' }); }
+              },
+              {
+                text: this.downloadPDF, onclick() { this.exportChart({ type: 'application/pdf' }); }
+              },
+              {
+                text: this.downloadCSV, onclick() { this.downloadCSV(); }
+              },
+              {
+                text: this.downloadXLS, onclick() { this.downloadXLS(); }
+              },
+            ]
+          }
+        }
       }
     };
     this.updateDemo = true;
@@ -764,14 +789,47 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
       name: 'radar',
       type: this.chartOptions.chart.type
     }
-    this.chartService.shareImage(this.body).subscribe((resp) => {
-      this.socialMedia[0].link = `https://www.facebook.com/sharer.php?u=${resp}`;
-      this.socialMedia[1].link = `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
+    this.chartService.shareImage(this.body).subscribe(async resp => {
+      this.socialMedia[0].link = await `https://www.facebook.com/sharer.php?u=${resp}`;
+      this.socialMedia[1].link = await `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
     });
 
-    setTimeout(() => {
-      window.open(item.link, "blank");
-    }, 1000);
+    window.open(item.link, "blank");
+  }
+
+  translate() {
+
+    this.translateService.stream(['downloadPNG', 'downloadJPEG', 'downloadSVG', 'downloadPDF', 'downloadCSV', 'downloadXLS'])
+      .subscribe(title => {
+
+
+        Object.keys(title).forEach((key) => {
+
+          if (key === 'downloadPNG') {
+            this.downloadPNG = title[key];
+          }
+          if (key === 'downloadJPEG') {
+            this.donwloadJPEG = title[key];
+          }
+          if (key === 'downloadSVG') {
+            this.downloadSVG = title[key];
+          }
+          if (key === 'downloadPDF') {
+            this.downloadPDF = title[key];
+          }
+          if (key === 'downloadCSV') {
+            this.downloadCSV = title[key];
+          }
+          if (key === 'downloadXLS') {
+            this.downloadXLS = title[key];
+          }
+
+
+        });
+        this.createRadar();
+
+      });
+
   }
 
   ngOnDestroy() {

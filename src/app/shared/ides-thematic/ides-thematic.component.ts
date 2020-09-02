@@ -67,7 +67,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
     sort: "name",
   };
 
-  resultClasification$: Observable<ResultList<Clasification>>;
+  resultClasification$: any;
   resultVariables$: Observable<ResultList<Variable>>;
   resultData: Data;
 
@@ -431,24 +431,22 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       });
   }
   getClasifications() {
-    let finalRes: any = [];
+    //let finalRes: any = [];
     this.resultClasification$ = this.clasificationService
       .listClasificationPublic(this.filters)
       .pipe(
         map((resp) => {
-
           this.clasificationSelected = resp.data[0];
           this.getVariables();
-          for (const thematic of resp.data) {
+          /*for (const thematic of resp.data) {
             thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
             thematic.image_route = `assets/ICONOS/${thematic.name}.png`;
             finalRes.push(thematic);
-          }
-          return finalRes;
+          }*/
+          return resp.data;
         })
       );
   }
-
   getVariables() {
     this.resultVariables$ = this.variableService
       .getVariablesByClasification(this.clasificationSelected._id)

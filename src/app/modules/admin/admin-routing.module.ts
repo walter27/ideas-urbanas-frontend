@@ -73,6 +73,11 @@ const routes: Routes = [
     component: AdminComponent,
     loadChildren: './modules/tag/tag.module#TagModule'
   },
+  {
+    path: 'stop',
+    component: AdminComponent,
+    loadChildren: './modules/stop/stop.module#StopModule'
+  },
 ];
 
 @NgModule({

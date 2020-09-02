@@ -28,6 +28,8 @@ export class CantonComponent implements OnInit {
     { name: 'code', prop: 'code' },
     { name: 'url', prop: 'url' },
     { name: 'active', prop: 'active' },
+    { name: 'covid', prop: 'covid' },
+    { name: 'indexes', prop: 'indexes' },
     { name: 'description', prop: 'description' },
     { name: 'province', prop: 'obj_Provincia.name' }
   ];
@@ -68,6 +70,20 @@ export class CantonComponent implements OnInit {
       required: false
     },
     {
+      label: 'indexes',
+      type: 'switch',
+      id: 'indexes',
+      formControlName: 'indexes',
+      required: false
+    },
+    {
+      label: 'covid',
+      type: 'switch',
+      id: 'covid',
+      formControlName: 'covid',
+      required: false
+    },
+    {
       label: 'color',
       type: 'color_picker',
       id: 'color',
@@ -92,6 +108,8 @@ export class CantonComponent implements OnInit {
     url: new FormControl('', [Validators.required]),
     description: new FormControl(''),
     active: new FormControl(''),
+    covid: new FormControl(''),
+    indexes: new FormControl(''),
     id_Provincia: new FormControl('', [Validators.required]),
     color: new FormControl(''),
   });
@@ -108,7 +126,7 @@ export class CantonComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.listProvinces();
     this.listCanton();
   }
@@ -118,11 +136,11 @@ export class CantonComponent implements OnInit {
   }
 
   listProvinces() {
-    this.regionService.listRegions({ page: 0, limit: 1000, ascending: true, sort: '_id' }, 'Province').subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'id_Provincia' ) {
+    this.regionService.listRegions({ page: 0, limit: 1000, ascending: true, sort: '_id' }, 'Province').subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Provincia') {
           el.options = [];
-          data.data.forEach( p => {
+          data.data.forEach(p => {
             el.options.push({
               id: p._id,
               text: p.name
@@ -130,11 +148,11 @@ export class CantonComponent implements OnInit {
           });
         }
       });
-    } );
+    });
   }
 
   onSubmit(event) {
-    
+
     if (this.addEditForm.valid) {
       if (event.action === 'add') {
         this.regionService.addRegion(this.addEditForm.value, this.model).subscribe(data => {

@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row ides-card mt-3 p-4 pt-4">
+
+        <div class="col-12">
+            <h3 class="font-weight-bold text-uppercase" translate>models.stopwords</h3>
+        </div>
+
+        <div class="col-md-12">
+            <button type="button" type="button" class="btn btn-info" (click)="addWord()" translate>button.add</button>
+        </div>
+
+        <div class="col-md-12 mt-3" *ngIf="listWords.length>0">
+
+
+            <p-table #dt [columns]="cols" [value]="listWords" [(selection)]="wordSelected" [paginator]="true" [rows]="10" [rowHover]="true" dataKey="id" [showCurrentPageReport]="true" [globalFilterFields]="['word']" currentPageReportTemplate="{{'showing'| translate }}">
+                <ng-template pTemplate="caption">
+                    <div class="col">
+
+                        <input id="search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="{{'button.search' | translate}}" />
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                            <span translate>fieldForm.{{col.header}}</span>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns;let i=index">
+                            {{rowData[col.field]}}
+
+                            <i-feather *ngIf="i===1" (click)="editWord(rowData)" class="icon-action icon-action-edit" name="edit">
+                            </i-feather>
+                            <i-feather *ngIf="i===1" (click)="deleteWord(rowData)" class="icon-action icon-action-delete" name="trash-2">
+                            </i-feather>
+
+                        </td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+
+
+            <p-dialog header="{{'fieldForm.text'| translate}}" [(visible)]="displayDialog" [focusOnShow]="false" showEffect="fade" [modal]="true" [style]="{width: '300px'}" styleClass="p-fluid">
+                <div class="p-grid ui-fluid" *ngIf="word">
+                    <div class="p-col-4">
+                        <label for="word" translate>fieldForm.text</label>
+                    </div>
+                    <div class="p-col-8">
+                        <input pInputText id="word" [(ngModel)]="word.word" autofocus />
+                    </div>
+
+                </div>
+                <p-footer>
+                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                        <button type="button" class="btn btn-secondary" (click)="hideDialog()" translate>button.cancel</button>
+                        <button type="button" class="btn btn-primary" (click)="saveWord()" translate>button.save</button>
+
+
+
+                    </div>
+                </p-footer>
+            </p-dialog>
+
+
+
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" translate>actions.delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <span translate>Are you sure you want to perform the action?</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" translate>button.no</button>
+                            <button (click)="onDelete()" type="button" class="btn btn-success" translate>button.yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

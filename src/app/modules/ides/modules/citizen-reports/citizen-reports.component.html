@@ -39,7 +39,7 @@
 
 
 
-            <app-ides-citizen-reports-card [items]="reports"></app-ides-citizen-reports-card>
+            <app-ides-citizen-reports-card [items]="(resultReports$ | async)?.data"></app-ides-citizen-reports-card>
 
             <!-- <div class="row mb-4" *ngFor="let item of (resultReports$ | async)?.data">
                 <div class="img-reportes" style="height: 250px;">
