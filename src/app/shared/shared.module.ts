@@ -50,6 +50,7 @@ import {GalleriaModule} from 'primeng/galleria';
 import { LightboxModule } from 'primeng/lightbox';
 import {InputTextModule} from 'primeng/inputtext';
 import { IdesSocialMediaComponent } from './ides-social-media/ides-social-media.component';
+import { IdesAuthorsComponent } from './ides-authors/ides-authors.component';
 
 
 
@@ -86,7 +87,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     IdesOriginComponent,
     WordCloudComponent,
     IdesVideosComponent,
-    IdesSocialMediaComponent
+    IdesSocialMediaComponent,
+    IdesAuthorsComponent
   ],
   exports: [
     HeaderComponent,
@@ -112,7 +114,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicStreamgraphComponent,
     WordCloudComponent,
     IdesVideosComponent,
-    IdesSocialMediaComponent
+    IdesSocialMediaComponent,
+    IdesAuthorsComponent
   ],
   imports: [
     CommonModule,

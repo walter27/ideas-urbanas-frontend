@@ -5,6 +5,8 @@ import { RegionService } from 'src/app/core/services/region.service';
 import { ItemDropdown } from 'src/app/core/models/item-dropdown.model';
 import { Options } from 'ng5-slider';
 import { DataService } from 'src/app/core/services/data.service';
+const accents = require('remove-accents');
+
 
 
 @Component({
@@ -90,8 +92,8 @@ export class IndexesComponent implements OnInit {
       newRes = resp.data.filter(clasification => clasification.name !== 'Corona Virus');
 
       for (const thematic of newRes) {
-        thematic.image_active_route = `assets/ICONOS/${thematic.name}.png`;
-        thematic.image_route = `assets/ICONOS/${thematic.name}-AZUL.png`;
+        thematic.image_active_route = `${accents.remove('assets/ICONOS/' + thematic.name)}-AZUL.png`;
+        thematic.image_route = `${accents.remove('assets/ICONOS/' + thematic.name)}-AZUL.png`;
         finalRes.push(thematic);
       }
 

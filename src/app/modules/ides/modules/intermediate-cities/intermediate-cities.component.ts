@@ -3,6 +3,8 @@ import { RegionService } from 'src/app/core/services/region.service';
 import { Filters } from 'src/app/core/models/filters.model';
 
 let { titleCase }: any = require('../../../../core/utils/utils');
+const accents = require('remove-accents');
+
 
 
 @Component({
@@ -61,7 +63,7 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
 
         this.cantons.push({
           name: titleCase(canton.name),
-          img: `assets/cities/all/${canton.name.toLowerCase()}.jpg`,
+          img: `${accents.remove('assets/cities/all/' + canton.name.toLowerCase())}.jpg`,
           url: '/cities',
           id: canton._id,
           queryParams: {
