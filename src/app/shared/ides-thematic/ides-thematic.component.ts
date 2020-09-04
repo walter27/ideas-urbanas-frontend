@@ -841,6 +841,8 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
         (data) => {
           this.loading = false;
           this.resultData = data.data;
+          console.log('DATOS', data.data);
+
           this.getYearsAndCities();
           if (this.citiesSelected.length === 0) {
             this.citiesSelected.push(this.cities[0]);

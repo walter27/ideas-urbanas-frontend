@@ -1886,3 +1886,8 @@ div.ides-card-home {
     background-size: cover;
     overflow: hidden;
 }
+@media (max-width: 1180px) {
+    .facet_sidebar {
+      display: none;
+    }
+  }
