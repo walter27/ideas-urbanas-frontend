@@ -12,5 +12,8 @@ export interface Variable {
     label: string;
     measure: string;
     measure_symbol: string;
-    origins:Origin[];
+    origins: Origin[];
+    is_indice?: boolean;
+    values_indice: any;
+
 }

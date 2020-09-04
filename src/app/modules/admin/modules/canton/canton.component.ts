@@ -27,8 +27,7 @@ export class CantonComponent implements OnInit {
     { name: 'name', prop: 'name' },
     { name: 'code', prop: 'code' },
     { name: 'url', prop: 'url' },
-    { name: 'active', prop: 'active' },
-    { name: 'covid', prop: 'covid' },
+    { name: 'is_intermediate', prop: 'is_intermediate' },
     { name: 'indexes', prop: 'indexes' },
     { name: 'description', prop: 'description' },
     { name: 'province', prop: 'obj_Provincia.name' }
@@ -63,10 +62,10 @@ export class CantonComponent implements OnInit {
       required: false
     },
     {
-      label: 'active',
+      label: 'is_intermediate',
       type: 'switch',
-      id: 'active',
-      formControlName: 'active',
+      id: 'is_intermediate',
+      formControlName: 'is_intermediate',
       required: false
     },
     {
@@ -74,13 +73,6 @@ export class CantonComponent implements OnInit {
       type: 'switch',
       id: 'indexes',
       formControlName: 'indexes',
-      required: false
-    },
-    {
-      label: 'covid',
-      type: 'switch',
-      id: 'covid',
-      formControlName: 'covid',
       required: false
     },
     {
@@ -107,8 +99,7 @@ export class CantonComponent implements OnInit {
     code: new FormControl('', [Validators.required]),
     url: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    active: new FormControl(''),
-    covid: new FormControl(''),
+    is_intermediate: new FormControl(''),
     indexes: new FormControl(''),
     id_Provincia: new FormControl('', [Validators.required]),
     color: new FormControl(''),

@@ -79,7 +79,8 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private resultClasification: ClasificationService,
+  constructor(
+    private resultClasification: ClasificationService,
     private variableService: VariableService,
     private dataService: DataService,
     private regionService: RegionService,
@@ -121,16 +122,12 @@ export class CovidComponent implements OnInit, OnDestroy {
     let cantonsNotop = this.selectedCantons.filter(canton => !cantonsTop.includes(canton));
 
     cantonsNotop.forEach(cantonNoTop => {
-      let body = {
-        covid: false,
-        code: cantonNoTop.code,
-        id_Provincia: cantonNoTop.obj_Provincia._id,
-        name: cantonNoTop.name,
-        active: cantonNoTop.active
-      };
+      cantonNoTop.covid = false;
+
+
 
       setTimeout(() => {
-        this.regionService.editRegion(body, cantonNoTop._id, this.model).subscribe(res => { });
+        this.regionService.editRegion(cantonNoTop, cantonNoTop._id, this.model).subscribe(res => { });
       }, 1);
 
     });
@@ -863,12 +860,14 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
       if (!this.selectedCantons.includes(e.itemValue)) {
+
+
         let body = {
           covid: false,
           code: e.itemValue.code,
           id_Provincia: e.itemValue.obj_Provincia._id,
           name: e.itemValue.name,
-          active: e.itemValue.active,
+          is_intermediate: e.itemValue.is_intermediate,
           color: e.itemValue.color,
           indexes: e.itemValue.indexes
 
@@ -883,7 +882,7 @@ export class CovidComponent implements OnInit, OnDestroy {
           code: e.itemValue.code,
           id_Provincia: e.itemValue.obj_Provincia._id,
           name: e.itemValue.name,
-          active: e.itemValue.active,
+          is_intermediate: e.itemValue.is_intermediate,
           color: e.itemValue.color,
           indexes: e.itemValue.indexes
 

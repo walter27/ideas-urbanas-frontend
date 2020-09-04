@@ -156,6 +156,7 @@
                 </button>
                 </div>
                 <form [formGroup]="addEditForm" (ngSubmit)="onSubmit(addEditForm)">
+
                     <div class="modal-body">
                         <div *ngFor="let f of fields" class="form-group">
                             <ng-container>
@@ -187,6 +188,12 @@
                                     <div *ngSwitchCase="'configs'">
                                         <app-ides-configs-indicator [formControlName]="f.formControlName">
                                         </app-ides-configs-indicator>
+                                    </div>
+
+                                    <div *ngSwitchCase="'values_indice'">
+                                        <app-ides-datatable-valuesindice [formControlName]="f.formControlName">
+                                        </app-ides-datatable-valuesindice>
+
                                     </div>
                                     <input *ngSwitchCase="'color_picker'" [(colorPicker)]="color" [style.background]="color" [attr.id]="f.id" (colorPickerChange)="cpInputChange(f.id,$event)" [value]="color" [cpOutputFormat]="'rgba'" />
                                     <input *ngSwitchDefault [formControlName]="f.formControlName" [attr.type]="f.type" class="form-control" [attr.id]="f.id">

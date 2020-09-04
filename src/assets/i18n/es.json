@@ -35,6 +35,8 @@
         "year": "Año",
         "variable": "Variable",
         "active": "Activo",
+        "is_intermediate": "Intermedia",
+        "is_indice": "Indice",
         "covid": "Covid",
         "indexes": "Indices",
         "date": "Fecha",
@@ -42,7 +44,8 @@
         "url": "Url",
         "text": "Palabra",
         "actions": "Acciones",
-        "color": "Color"
+        "color": "Color",
+        "values_indice": "Pesos"
     },
     "actions": {
         "add": "Adicionar",
@@ -174,7 +177,9 @@
     "downloadSVG": "Descargar SVG",
     "downloadPDF": "Descargar PDF",
     "downloadCSV": "Descargar CSV",
-    "downloadXLS": "Descargar XLS"
+    "downloadXLS": "Descargar XLS",
+    "value": "Valor",
+    "year": "Año"
 
 
 

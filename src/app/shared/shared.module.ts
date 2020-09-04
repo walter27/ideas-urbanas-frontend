@@ -51,7 +51,8 @@ import { LightboxModule } from 'primeng/lightbox';
 import {InputTextModule} from 'primeng/inputtext';
 import { IdesSocialMediaComponent } from './ides-social-media/ides-social-media.component';
 import { IdesAuthorsComponent } from './ides-authors/ides-authors.component';
-
+import { IdesDatatableValuesindiceComponent } from './ides-datatable-valuesindice/ides-datatable-valuesindice.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -88,7 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WordCloudComponent,
     IdesVideosComponent,
     IdesSocialMediaComponent,
-    IdesAuthorsComponent
+    IdesAuthorsComponent,
+    IdesDatatableValuesindiceComponent
   ],
   exports: [
     HeaderComponent,
@@ -115,7 +117,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WordCloudComponent,
     IdesVideosComponent,
     IdesSocialMediaComponent,
-    IdesAuthorsComponent
+    IdesAuthorsComponent,
+    IdesDatatableValuesindiceComponent
   ],
   imports: [
     CommonModule,
@@ -137,6 +140,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ButtonModule,
     TableModule,
     ToastModule,
+    DialogModule,
     LightboxModule,
     InputTextModule,
     GalleriaModule,

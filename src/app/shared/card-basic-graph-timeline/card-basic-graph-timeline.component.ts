@@ -46,7 +46,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
         type: 'timeline',
         inverted: false,
         scrollablePlotArea: {
-          minWidth: 8000,
+          minWidth: 10000,
           scrollPositionX: 0,
           marginLeft: 150
         },
@@ -293,13 +293,63 @@ export class CardBasicGraphTimelineComponent implements OnInit {
         },
         {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">1 DE AGOSTO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/1.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">40.000 mascarillas antifluídos </br> serán confeccionadas localmente </br> en Tulcán </p>',
-          description: "40.000 mascarillas antifluídos serán confeccionadas localmente en Tulcán con la participación de la Asociación de Sastres del cantón. El proyecto cuenta con el financiamiento de la Embajada de Australia en Perú y la coordinación del GAD municipal"
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/1-ago-a.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">La alcaldesa de Guayaquil </br> reaccionó en torno al </br> anuncio de la ministra de educación..</p>',
+          description: "La alcaldesa de Guayaquil reaccionó en torno al anuncio de la ministra de educación Monserrat Creamer sobre un operativo para el regreso a clases presenciales."
         },
         {
-          name: ' <strong style="position: absolute; top:118px; right:10px;">5 DE AGOSTO</strong>',
-          label: '<div style="position: absolute; bottom:-8px; right:-25px;"><img src = "assets/covid/agosto/5.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">Se abren las playas  </br>para promoción </br> del turismo interno</p>',
-          description: "Se abren las playas para promoción del turismo interno."
+          name: ' <strong style="position: absolute; top:118px;left:10px;">1 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/agosto/1-ago-c.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">40.000 mascarillas antifluídos </br> serán confeccionadas </br>localmente en Tulcán</p>',
+          description: "40.000 mascarillas antifluídos serán confeccionadas localmente en Tulcán con la participación de la Asociación de Sastres del cantón. El proyecto cuenta con el financiamiento de la Embajada de Australia en Perú y la coordinación del GAD municipal."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">1 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/1-ago-a.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Cerca de 3.000 comercios </br> han cerrado en Loja, según el presidente </br> de la Cámara de Comercio..</p>',
+          description: "Cerca de 3.000 comercios han cerrado en Loja, según el presidente de la Cámara de Comercio de esa ciudad."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">4 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/agosto/4-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Se abren 40 playas </br> como medida de promoción </br> del turismo interno. </p>',
+          description: "Se abren 40 playas como medida de promoción del turismo interno. Portoviejo y Manta deciden mantener cerradas sus playas hasta el 19 de agosto. Santa Elena hasta el 25 de agosto."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">5 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/5-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Portoviejo usa drones </br> y plataformas tecnológicas para </br> controlar el aforo </br> en sitios públicos</p>',
+          description: "Portoviejo usa drones y plataformas tecnológicas para controlar el aforo en sitios públicos."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">13 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/agosto/13-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Las instituciones públicas </br> de Azogues cierran </br> sus puertas..</p>',
+          description: "Las instituciones públicas de Azogues cierran sus puertas y se acogen al teletrabajo durante una semana, para evitar un potencial rebrote del COVID-19."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">15 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/15-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Rige la prohibición </br>  de reuniones sociales,</br>  de venta de bebidas alcohólicas..</p>',
+          description: "Rige la prohibición de reuniones sociales, de venta de bebidas alcohólicas y la ampliación del horario del toque de queda para todos los cantones de Carchi, Imbabura, Pichincha, Cotopaxi, Tungurahua, Bolívar, Chimborazo, Cañar, Azuay, Loja, Esmeraldas, Santo Domingo de los Tsáchilas, Sucumbíos, Napo, Orellana, Pastaza, Morona Santiago, Zamora Chinchipe." 
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">21 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/agosto/21-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Quito, Latacunga, Ambato, </br> Riobamba y Cuenca </br> se unen para promocionar</p>',
+          description: "Quito, Latacunga, Ambato, Riobamba y Cuenca se unen para promocionar el corredor turístico Camino de Los Andes, para promover el turismo seguro postpandemia."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">23 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/23-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Loja y Cuenca </br> registran incremento en  </br> el uso de la bicicleta, </br> monopatines y scooters..</p>',
+          description: "Loja y Cuenca registran incremento en el uso de la bicicleta, monopatines y scooters como transportes alternativos a los buses" 
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">24 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/agosto/24-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Restaurantes Unidos  </br> de Riobamba presentó..</p>',
+          description: "Restaurantes Unidos de Riobamba presentó la campaña Un mes de comida gratis para incentivar el consumo alimenticio en sus restaurantes."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">27 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/agosto/27-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Ambato lanza la campaña </br> Un Pacto para Vivir </br> que busca reducir..</p>',
+          description: "Ambato lanza la campaña Un Pacto para Vivir que busca reducir los contagios del COVID-19." 
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px; right:10px;">31 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px; right:-25px;"><img src = "assets/covid/agosto/31-ago.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">Guayaquil envía brigadas </br> médicas a Latacunga, </br> antes lo hizo a Portoviejo y Quito</p>',
+          description: "Guayaquil envía brigadas médicas a Latacunga , antes lo hizo a Portoviejo y Quito."
         }]
       }]
     };

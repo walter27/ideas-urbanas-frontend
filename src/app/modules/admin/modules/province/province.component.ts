@@ -26,7 +26,7 @@ export class ProvinceComponent implements OnInit {
   result$: Observable<ResultList<Region>>;
   columns = [
     { name: 'name', prop: 'name' },
-    { name: 'active', prop: 'active' },
+    { name: 'active', prop: 'active' }, 
     { name: 'description', prop: 'description' }
   ];
   fields: FieldsForm[] = [

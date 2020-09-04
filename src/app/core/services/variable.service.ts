@@ -45,6 +45,10 @@ export class VariableService {
   }
 
   addVariable(profile) {
+    if (profile.is_indice === null) {
+      profile.is_indice = false;
+
+    }
     return this.httpClient.post(this.serverUrl + this.urlVariable, profile, httpOptions);
   }
 

@@ -33,7 +33,9 @@ export class VariableComponent implements OnInit {
     { name: 'type', prop: 'type' },
     { name: 'chart_type', prop: 'chart_type' },
     { name: 'clasification', prop: 'obj_Clasification.name' },
-    { name: 'origin', prop: 'origins', text: 'name' }
+    { name: 'origin', prop: 'origins', text: 'name' },
+    { name: 'is_indice', prop: 'is_indice' },
+
   ];
   fields: FieldsForm[] = [
     {
@@ -94,6 +96,20 @@ export class VariableComponent implements OnInit {
       options: [],
       key: 'origins',
       required: true
+    },
+    {
+      label: 'is_indice',
+      type: 'switch',
+      id: 'is_indice',
+      formControlName: 'is_indice',
+      required: false
+    },
+    {
+      label: 'values_indice',
+      type: 'values_indice',
+      id: 'values_indice',
+      formControlName: 'values_indice',
+      required: false
     }
   ];
 
@@ -105,6 +121,10 @@ export class VariableComponent implements OnInit {
     chart_type: new FormControl('', [Validators.required]),
     id_Clasification: new FormControl('', [Validators.required]),
     origins: new FormControl('', [Validators.required]),
+    is_indice: new FormControl(''),
+    values_indice: new FormControl('')
+
+
   });
 
   private readonly notifier: NotifierService;

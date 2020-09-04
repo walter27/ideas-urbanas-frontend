@@ -12,6 +12,9 @@ declare var $: any;
 })
 export class IdesDatatableComponent implements OnInit {
 
+  console = console;
+
+
   @Input() items;
   @Input() columns;
   @Input() addEditForm;
@@ -102,6 +105,17 @@ export class IdesDatatableComponent implements OnInit {
           value = this.itemSelected[e.extra];
           e.value = value;
         }
+
+        if (e.type === 'color_picker') {
+          this.color = this.itemSelected[e.id];
+        }
+
+        if (e.type === 'values_indice') {
+
+
+          value = this.itemSelected[e.id];
+
+        }
         this.addEditForm.controls[e.id].setValue(value);
       }
     });
@@ -109,14 +123,18 @@ export class IdesDatatableComponent implements OnInit {
   }
 
   onSubmit(event) {
+
     if (this.addEditForm.valid) {
       $('#addEditModal').modal('hide');
       if (this.action === 'edit') {
+
         this.submitForm.emit({
           action: this.action,
           id: this.itemSelected._id
         });
       } else {
+
+
         this.submitForm.emit({
           action: this.action
         });

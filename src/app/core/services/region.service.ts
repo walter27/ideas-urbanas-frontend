@@ -65,13 +65,27 @@ export class RegionService {
   }
 
   addRegion(profile, model: string) {
-    if (profile.active === null || profile.indexes === null || profile.covid || profile.color === null) {
-      profile.active = false;
-      profile.indexes = false;
-      profile.covid = false;
-      profile.color = 'rgb(143,216,49)';
+
+    if (profile.is_intermediate === null && model === 'Canton') {
+
+      profile.is_intermediate = false;
+
 
     }
+    if (profile.indexes === null && model === 'Canton') {
+      profile.indexes = false;
+
+    }
+    if (profile.covid === null && model === 'Canton') {
+      profile.covid = false;
+
+    }
+
+    if (profile.active === null && model === 'Province') {
+      profile.active = false;
+
+    }
+
     return this.httpClient.post(this.serverUrl + url[model], profile, httpOptions);
   }
 

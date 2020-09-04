@@ -102,7 +102,7 @@ export class IndexesComponent implements OnInit {
   }
 
   getCities() {
-    this.regionService.listRegionsPublic({ page: 0, limit: 1000, ascending: true, sort: '_id' }, 'Canton').subscribe(
+    this.regionService.listRegions({ page: 0, limit: 1000, ascending: true, sort: '_id' }, 'Canton').subscribe(
       resp => {
         this.cities = [];
         resp.data.forEach(c => {

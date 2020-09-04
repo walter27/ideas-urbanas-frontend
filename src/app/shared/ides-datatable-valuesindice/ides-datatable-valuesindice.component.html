@@ -1,0 +1,64 @@
+<p-table [columns]="cols" [value]="listValues">
+
+    <ng-template pTemplate="caption">
+
+        <div style="text-align:right">
+            <i-feather (click)="addvalue()" class="icon-action icon-action-plus" name="plus">
+            </i-feather>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                <span translate>fieldForm.{{col.header}}</span>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns;let i=index">
+                {{rowData[col.field]}}
+
+                <i-feather *ngIf="i===2" (click)="editValue(rowData)" class="icon-action icon-action-edit" name="edit">
+                </i-feather>
+                <i-feather *ngIf="i===2" (click)="deleteValue(rowData)" class="icon-action icon-action-delete" name="trash-2">
+                </i-feather>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="{{'value'| translate}}" [(visible)]="displayDialog" [focusOnShow]="false" showEffect="fade" [modal]="true" [style]="{width: '300px'}">
+    <div class="p-grid ui-fluid" *ngIf="value">
+        <div class="p-col-4">
+            <label for="vin" translate>year</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="vin" [(ngModel)]="value.year" autofocus />
+        </div>
+        <div class="p-col-4">
+            <label for="year" translate>value</label>
+        </div>
+        <div class="p-col-8">
+            <input pInputText id="year" [(ngModel)]="value.value" />
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" class="btn btn-secondary" (click)="hideDialog()" translate>button.cancel</button>
+            <button type="button" class="btn btn-primary" (click)="saveValue()" translate>button.save</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="{{'value'| translate}}" [(visible)]="displayModal" [modal]="true" [style]="{width: '20vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <div class="modal-body">
+        <span translate>Are you sure you want to perform the action?</span>
+    </div>
+    <p-footer>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="hideDialogModal()" translate>button.no</button>
+            <button (click)="onDelete()" type="button" class="btn btn-success" translate>button.yes</button>
+        </div>
+    </p-footer>
+</p-dialog>

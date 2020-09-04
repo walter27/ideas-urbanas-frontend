@@ -28,7 +28,8 @@ export class StopComponent implements OnInit {
   typeNotifier: string;
 
   private readonly notifier: NotifierService;
-  constructor(private tagService: TagService,
+  constructor(
+    private tagService: TagService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;

@@ -34,13 +34,16 @@
         "year": "Year",
         "variable": "Variable",
         "active": "Active",
+        "is_intermediate": "Itermedia",
+        "is_indice": "Indexes",
         "covid": "Covid",
         "indexes": "Indexes",
         "date": "Date",
         "configs": "Configuration",
         "url": "Url",
         "actions": "Actions",
-        "text": "Word"
+        "text": "Word",
+        "values_indice": "Value"
 
     },
     "actions": {
@@ -161,7 +164,9 @@
     "downloadSVG": "Download SVG",
     "downloadPDF": "Download PDF",
     "downloadCSV": "Download CSV",
-    "downloadXLS": "Download XLS"
+    "downloadXLS": "Download XLS",
+    "value": "Value",
+    "year": "Year"
 
 
 }

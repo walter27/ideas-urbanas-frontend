@@ -417,7 +417,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
         this.cities = [];
         const setCities = new Set();
         resp.data.forEach((c) => {
-          if (!setCities.has(c._id) && c.active) {
+          if (!setCities.has(c._id) && c.is_intermediate) {
             this.cities.push({
               id: c._id,
               name: titleCase(c.name),
