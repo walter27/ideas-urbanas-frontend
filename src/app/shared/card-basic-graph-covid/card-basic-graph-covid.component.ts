@@ -56,11 +56,13 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     if (changes["data"] && this.data.length > 0) {
       this.translate();
+      //console.log('BAR',this.data);
+
       //this.createBarChart();
     }
   }
 
-  async createBarChart() {
+  createBarChart() {
     this.chartOptions = {
       chart: {
         type: "column",
@@ -142,10 +144,14 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
 
     this.updateDemo = true;
 
-    this.getURLImage();
+    setTimeout(() => {
+      this.getURLImage();
+
+    }, 1000);
+
   }
 
-  async getURLImage() {
+  getURLImage() {
     let chartsDetails = {
       type: "png",
       options: this.chartOptions,
@@ -159,7 +165,7 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
     
 
    
-
+ 
     //console.log(this.highcharts.getOptions().exporting);
 
     let data = {
@@ -242,7 +248,20 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
       this.socialMedia[1].link = await `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
     });
 
-    window.open(item.link, "blank");
+
+    setTimeout(() => {
+      if (item.link) {
+        window.open(item.link, "blank");
+
+      } else {
+        console.log('error');
+
+      }
+
+    }, 1000);
+
+
+
   }
 
 

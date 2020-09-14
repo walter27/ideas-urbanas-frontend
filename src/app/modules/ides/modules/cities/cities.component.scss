@@ -345,12 +345,12 @@
 }
 
 p.indicators {
-    font: 10px/20px 'Noto Sans TC' !important;
+    font: 20px/30px 'Noto Sans TC' !important;
     margin-bottom: -10px !important;
 }
 
 span.indicators {
-    font: 8px/15px 'Noto Sans TC' !important;
+    font: 16px/30px 'Noto Sans TC' !important;
     color: #BFBFBF;
 }
 
@@ -834,4 +834,20 @@ h2.subtitle.ides-text-blue {
 .ides-card.row-inv {
     display: flex;
     padding: 30px;
+}
+
+.research-link:hover {
+    border-bottom: solid 1px;
+}
+
+//primeng
+:host ::ng-deep.ui-float-label {
+    display: inline-block;
+    margin-left: 10px;
+    opacity: 0.5;
+}
+
+:host ::ng-deep.ui-table .ui-table-caption {
+    height: 60px;
+    margin-top: 15px;
 }

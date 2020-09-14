@@ -42,7 +42,7 @@
                 </div>
 
 
-                <div *ngIf="cantons.length>0" class="col-md-12 col-lx-12 text-left mt-2">
+                <div *ngIf="cantons.length>0" class="col-md-12 col-lx-12 mt-2 text-center text-sm-left">
                     <p-dropdown class="block" [options]="cantons" [(ngModel)]="citySelected" name="citySelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getCitySelected()" [filter]="true">
                     </p-dropdown>
                 </div>

@@ -25,12 +25,12 @@ export class CitizenReportsService {
   serverUrl = environment.serverUrl;
   urlReports = environment.reports.base;
 
-  constructor(
+  constructor( 
     private httpClient: HttpClient,
     private utilsService: UtilsService
   ) {
 
-  }
+  } 
 
   listReports(filters: Filters): Observable<ResultList<CitizenReports>> {
     const filtersB = this.utilsService.buildFilters(filters);
@@ -45,7 +45,6 @@ export class CitizenReportsService {
   }
 
   addReports(profile) {
-
 
     const formData = new FormData();
     formData.append('name', profile.name);

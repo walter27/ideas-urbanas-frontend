@@ -85,3 +85,12 @@
         height: 400px;
     }
 }
+
+@media screen and (max-width: 576px) {
+    .text-description {
+        font-size: 0.7em;
+    }
+    .text-description-author {
+        font-size: 10px;
+    }
+}

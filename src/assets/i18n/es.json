@@ -45,7 +45,13 @@
         "text": "Palabra",
         "actions": "Acciones",
         "color": "Color",
-        "values_indice": "Pesos"
+        "values_indice": "Pesos",
+        "title": "Título",
+        "author": "Autor",
+        "authors": "Autores",
+        "link": "link"
+
+
     },
     "actions": {
         "add": "Adicionar",
@@ -120,7 +126,7 @@
     "about us": "¿Quiénes somos?",
     "contact us": "Contáctanos",
     "about us description": "El laboratorio busca facilitar la toma de decisiones sobre la gestión urbana, a través de la consolidación y análisis de datos públicos.",
-    "about us description complement": "Trabajamos con todas las ciudades intermedias ecuatorianas que tienen entre 100.000 y 500.000 habitantes urbanos o que tienen menos habitantes, pero son capitales de provincia. En nuestra primera etapa, hacemos un piloto con Portoviejo, Manta, Riobamba, Ambato y El Coca.",
+    "about us description complement": "Trabajamos con todas las ciudades intermedias ecuatorianas que tienen entre 100.000 y 500.000 habitantes urbanos o que tienen menos habitantes, pero son capitales de provincia.",
     "about us help": "Hacemos nuestro trabajo de manera innovadora, colaborativa y ciudadana.",
     "about us contact": "Contamos con el apoyo de Counterpart Internacional.",
     "about us add information": "Incorpora nueva información",
@@ -131,7 +137,7 @@
     "our_cities_description": "Selecciona una ciudad intermedia y descubre sus datos y estadísticas",
     "click_here": "Ver más ►",
     "compare_cities": "Compara el desarrollo de las ciudades",
-    "analyse_topics": "Analiza las ciudades por tema",
+    "analyse_topics": "Analiza las ciudades por temas",
     "statistical_charts": "Consolidamos la información pública disponible sobre las ciudades intermedias de Ecuador, para analizarlas desde una perspectiva multidimensional.",
     "response_covid_description": "Conoce lo que hacen las ciudades para enfrentar la pandemia",
     "choose_options": "Desplegar menú",
@@ -156,11 +162,12 @@
     "about": "Nosotros",
     "say": "Defínelas",
     "discover": "Descúbrelas",
-    "define_compare": " Define y Compara",
-    "difine_compare_description": "Elige una ciudad intermedia* defínela con tus propias palabras y mira cuántas personas piensan como tú.",
+    "define_compare": " Define",
+    "difine_compare_description": "Elige una ciudad intermedia* defínela con tus propias palabras y conoce lo que otras personas piensan sobre ella.",
     "define_compare_footer": "*Ciudades con población entre 100.000 y 500.000 habitantes urbanos, o que tienen menos y son capitales de provincia",
     "compare_cities_description": "Diseñamos un índice multivariable para analizar la gestión municipal",
     "showing": "{first} al {last} de {totalRecords} palabras",
+    "showing_researchs": "{first} al {last} de {totalRecords} investigaciones",
     "Fallecidos": "Fallecidos",
     "Confirmados": "Confirmados",
     "Diarios": "Diarios",
@@ -179,7 +186,9 @@
     "downloadCSV": "Descargar CSV",
     "downloadXLS": "Descargar XLS",
     "value": "Valor",
-    "year": "Año"
+    "year": "Año",
+    "search_research": "Año, titulo o autores",
+    "search": "Buscar:"
 
 
 

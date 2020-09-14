@@ -12,13 +12,13 @@ import { Research } from '../models/research.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 
 const httpOptionsFile = {
   headers: new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
+    'Content-Type': 'application/x-www-form-urlencoded'
   })
 };
 
@@ -34,17 +34,17 @@ export class ResearchService {
   constructor(
     private httpClient: HttpClient,
     private utilsService: UtilsService
-    ) {
+  ) {
 
   }
 
   listResearchs(filters: Filters): Observable<ResultList<Research>> {
     const filtersB = this.utilsService.buildFilters(filters);
     return this.httpClient.get<ResponseApi<ResultList<Research>>>(this.serverUrl + this.urlResearch + filtersB).pipe(
-      map( data => {
-        data.results.data.forEach( el => {
-          el.image_route = this.serverUrl + el.image_route.substr(2);
-        });
+      map(data => {
+        /* data.results.data.forEach(el => {
+           el.image_route = this.serverUrl + el.image_route.substr(2);
+         });*/
         return data.results;
       })
     );
@@ -52,21 +52,28 @@ export class ResearchService {
 
   addResearch(profile) {
     const formData = new FormData();
-    formData.append('name', profile.name);
-    formData.append('description', profile.description);
+    formData.append('title', profile.title);
+    formData.append('author', profile.author);
+    formData.append('year', profile.year);
+    formData.append('link', profile.link);
     formData.append('id_Canton', profile.id_Canton);
     formData.append('category', profile.category);
-    formData.append('image', profile.image.File, profile.image.name);
+    //formData.append('image', profile.images.image, profile.images.image.name);
     return this.httpClient.post(this.serverUrl + this.urlResearch, formData);
   }
 
   editResearch(profile, id) {
+
     const formData = new FormData();
-    formData.append('name', profile.name);
-    formData.append('description', profile.description);
+    formData.append('title', profile.title);
+    formData.append('author', profile.author);
+    formData.append('year', profile.year);
+    formData.append('link', profile.link);
     formData.append('id_Canton', profile.id_Canton);
     formData.append('category', profile.category);
-    formData.append('image', profile.images.File, profile.images.name);
+    /*if (profile.images.image && profile.images.image.name) {
+      formData.append('image', profile.images.image, profile.images.image.name);
+    }*/
     return this.httpClient.put(this.serverUrl + this.urlResearch + '/' + id, formData);
   }
 
@@ -78,12 +85,12 @@ export class ResearchService {
   getResearchsByCatAndCant(id_Canton, category?): Observable<ResultList<Research>> {
     return this.httpClient.post<ResponseApi<ResultList<Research>>>(
       this.serverUrl + this.urlGetResearchsByCatAndCant, { id_Canton, category }, httpOptions).pipe(
-        map( data => {
-          data.results.data.forEach( el => {
+        map(data => {
+         /* data.results.data.forEach(el => {
             el.image_route = this.serverUrl + el.image_route.substr(2);
-          });
+          });*/
           return data.results;
         })
-    );
+      );
   }
 }

@@ -46,7 +46,7 @@ export class ModulesComponent implements OnInit {
       id: 'about',
       title: 'about',
       type: 'text',
-      url: '/home',
+      url: '/about',
       active: false
     },
     {
@@ -59,11 +59,11 @@ export class ModulesComponent implements OnInit {
           text: 'say',
           url: '/intermediate-cities',
         },
-        {
+        /*{
           id: 'indexes',
           text: 'indexes',
           url: '/indexes',
-        },
+        },*/
         {
           id: 'thematics',
           text: 'thematics',

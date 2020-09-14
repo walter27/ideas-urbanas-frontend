@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'intermediate-cities',
     loadChildren: './modules/intermediate-cities/intermediate-cities.module#IntermediateCitiesModule'
+  },
+  {
+    path: 'about',
+    loadChildren: './modules/about/about.module#AboutModule'
   }
 ];
 

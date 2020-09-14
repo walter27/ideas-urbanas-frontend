@@ -38,22 +38,65 @@ export class VariableService {
 
     return this.httpClient.get<ResponseApi<ResultList<Variable>>>(this.serverUrl + this.urlVariable + filtersB).pipe(
       map(data => {
-
+        data.results.data.forEach(el => {
+          el.image_route = this.serverUrl + el.image_route.substr(2);
+        });
         return data.results;
       })
     );
   }
 
   addVariable(profile) {
+
+
     if (profile.is_indice === null) {
       profile.is_indice = false;
 
     }
-    return this.httpClient.post(this.serverUrl + this.urlVariable, profile, httpOptions);
+    if (profile.active === null) {
+      profile.is_indice = false;
+
+    }
+
+    const formData = new FormData();
+    formData.append('name', profile.name);
+    formData.append('type', profile.type);
+    formData.append('description', profile.description);
+    formData.append('chart_type', profile.chart_type);
+    formData.append('id_Clasification', profile.id_Clasification);
+    formData.append('origins', profile.origins);
+    formData.append('active', profile.active);
+    formData.append('is_indice', profile.is_indice);
+    formData.append('values_indice', profile.values_indice);
+    formData.append('image', profile.images.image, profile.images.image.name);
+
+
+
+
+
+    return this.httpClient.post(this.serverUrl + this.urlVariable, formData);
   }
 
   editVariable(profile, id) {
-    return this.httpClient.put(this.serverUrl + this.urlVariable + '/' + id, profile, httpOptions);
+
+
+    const formData = new FormData();
+    formData.append('name', profile.name);
+    formData.append('type', profile.type);
+    formData.append('description', profile.description);
+    formData.append('chart_type', profile.chart_type);
+    formData.append('id_Clasification', profile.id_Clasification);
+    formData.append('origins', profile.origins);
+    formData.append('active', profile.active);
+    formData.append('is_indice', profile.is_indice);
+    formData.append('values_indice', profile.values_indice);
+
+    if (profile.images.image && profile.images.image.name) {
+      formData.append('image', profile.images.image, profile.images.image.name);
+    }
+
+
+    return this.httpClient.put(this.serverUrl + this.urlVariable + '/' + id, formData);
   }
 
   deleteVariable(id) {

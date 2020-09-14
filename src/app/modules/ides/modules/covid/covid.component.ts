@@ -189,15 +189,12 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     this.regionService.listRegions(this.filters, this.model).subscribe((data) => {
 
-      let cantons = [];
-      for (const canton of data.data) {
 
-        canton.name = titleCase(canton.name);
-        cantons.push(canton);
-      }
 
-      this.cantons = cantons;
-      //console.log(this.cantons);
+      this.cantons = data.data.sort((a, b) => {
+
+        return (a.covid === b.covid) ? 0 : a.covid ? -1 : 1;
+      });
 
       /*let dataCovid: any;
       this.dataService.getData().subscribe((data1) => {
@@ -981,6 +978,40 @@ export class CovidComponent implements OnInit, OnDestroy {
      this.dates = dates;
   
     // console.log(this.dates);*/
+
+  }
+
+  functionToClear() {
+
+    console.log(this.selectedCantons);
+
+    this.selectedCantons.forEach(canton => {
+
+      canton.covid = false;
+
+
+      let body = {
+        covid: false,
+        code: canton.code,
+        id_Provincia: canton.obj_Provincia._id,
+        name: canton.name,
+        is_intermediate: canton.is_intermediate,
+        color: canton.color,
+        indexes: canton.indexes
+
+      };
+
+      this.regionService.editRegion(body, canton._id, this.model).subscribe(res => {
+        console.log('false', res);
+
+      });
+
+
+
+    });
+    this.selectedCantons = [];
+    this.getData(this.selectVariable._id);
+
 
   }
 

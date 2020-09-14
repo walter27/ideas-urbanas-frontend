@@ -7,6 +7,8 @@ import { IconsModule } from 'src/app/icons/icons.module';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import {TableModule} from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -23,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     TagCloudModule,
     DropdownModule,
     FormsModule,
+    TableModule,
+    InputTextModule
   ]
 })
 export class CitiesModule { }

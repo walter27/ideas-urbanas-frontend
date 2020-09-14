@@ -276,17 +276,6 @@ a.ides-text-white:hover {
     background: #FFFFFF 0% 0% no-repeat padding-box;
 }
 
-.ides-height-100 {
-    height: 100%!important;
-}
-
-.ides-height-100-about-us {
-    height: 100%!important;
-    box-shadow: 0px 3px 6px #00000029;
-    background: #189cff 100% 100% no-repeat padding-box;
-    margin-top: 1rem !important;
-}
-
 a:hover {
     text-decoration: none!important;
 }
@@ -310,13 +299,6 @@ a:hover {
 
 .map-width {
     width: 1350px;
-}
-
-.subtitle {
-    font: 45px 'Noto Sans TC', sans-serif !important;
-    padding-top: 0.5em !important;
-    color: #010C39;
-    font-weight: bold !important;
 }
 
 .text {
@@ -738,12 +720,6 @@ a:hover {
     max-width: 15%;
 }
 
-.containerr {
-    background-color: #fff;
-    margin-top: -159px;
-    z-index: 5px;
-}
-
 svg#ey5l34nrcb0a1 {
     margin-top: 5%;
     margin-left: -15%;
@@ -757,14 +733,6 @@ svg#eewkypfaedpm1 {
 svg#eay5tc9b44eu1 {
     margin-top: 10%;
     margin-left: -25%;
-}
-
-.ides-height-100-about-us {
-    height: 100%!important;
-    box-shadow: 0 3px 6px #00000029;
-    background: rgb(11, 109, 245);
-    background: linear-gradient(78deg, rgba(11, 109, 245, 1) 0%, rgba(33, 148, 253, 1) 100%);
-    margin-top: 1rem!important;
 }
 
 .subtitle {
@@ -2213,6 +2181,7 @@ h4.card-title {
     margin-top: 20px;
     text-align: center;
 }
+
 .row.bg-twitter {
     padding-top: 75px;
     padding-bottom: 75px;

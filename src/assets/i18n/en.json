@@ -43,7 +43,11 @@
         "url": "Url",
         "actions": "Actions",
         "text": "Word",
-        "values_indice": "Value"
+        "values_indice": "Value",
+        "title": "Title",
+        "author": "Author",
+        "authors": "Authors",
+        "link": "link"
 
     },
     "actions": {
@@ -103,7 +107,7 @@
     "contact us": "Contact us",
     "Analiza las ciudades por tema": "Analyze cities by topics",
     "about us description": "The laboratory seeks to facilitate decision-making on urban management, through the consolidation and analysis of public data.",
-    "about us description complement": "We work with all Ecuadorian intermediate cities that have between 100,000 and 500,000 urban inhabitants or those that are smaller but are provincial capitals. In our first stage, we piloted with Portoviejo, Manta, Riobamba, Ambato and El Coca.",
+    "about us description complement": "We work with all Ecuadorian intermediate cities that have between 100,000 and 500,000 urban inhabitants or those that are smaller but are provincial capitals.",
     "about us help": "We do our work in an innovative, collaborative and citizen way.",
     "about us contact": "We have the support of Counterpart International.",
     "about us add information": "Incorporation of new information",
@@ -143,11 +147,12 @@
     "about": "About",
     "say": "Describes",
     "discover": "Discover",
-    "define_compare": "Defines-Compares",
-    "difine_compare_description": "Choose an intermediate city, define it in your own words and see how many people think like you.",
+    "define_compare": "Define",
+    "difine_compare_description": "Choose an intermediate city * define it in your own words and know what other people think about it.",
     "define_compare_footer": "*Cities with a population between 100,000 and 500,000 urban inhabitants, or that have fewer and are provincial capitals.",
     "compare_cities_description": "We designed multivarible indexes to analize the cities management",
     "showing": "{first} to {last} of {totalRecords} words",
+    "showing_researchs": "{first} to {last} of {totalRecords} researchs",
     "Fallecidos": "Deaths",
     "Confirmados": "Confirmed",
     "Diarios": "Daily confirmed",
@@ -166,7 +171,9 @@
     "downloadCSV": "Download CSV",
     "downloadXLS": "Download XLS",
     "value": "Value",
-    "year": "Year"
+    "year": "Year",
+    "search_research": "Year, title or authors",
+    "search": "Search:"
 
 
 }

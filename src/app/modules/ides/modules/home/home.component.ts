@@ -465,9 +465,6 @@ export class HomeComponent implements OnInit, DoCheck {
 
   tagsData: any[] = [];
 
-  @ViewChild('about', { static: false }) about: ElementRef;
-
-
   private readonly notifier: NotifierService;
 
   mapName: string;
@@ -620,20 +617,6 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-
-    if (this.utilService.itemSelected) {
-
-
-
-      setTimeout(() => {
-        this.about.nativeElement.scrollIntoView();
-
-      }, 0.000001);
-
-
-    }
-
-    this.utilService.itemSelected = undefined;
 
   }
 

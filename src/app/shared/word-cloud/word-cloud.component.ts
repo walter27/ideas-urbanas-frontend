@@ -117,6 +117,8 @@ export class WordCloudComponent implements OnInit, OnChanges {
   }
 
   listTags(cityId) {
+
+    const value = 1000;
     let weight: number;
     this.tagService
       .getTagsByCantByType(cityId)
@@ -131,73 +133,32 @@ export class WordCloudComponent implements OnInit, OnChanges {
         resp.data.forEach((word: any) => {
           if (word.positive > word.negative && word.positive > word.neutro) {
             //console.log('POSITIVA', word);
-
-            if (word.positive >= 16) {
-              weight = 24;
-            }
-            if (word.positive > 12 && word.positive <= 14) {
-              weight = 21;
-            }
-            if (word.positive > 10 && word.positive <= 12) {
-              weight = 18;
-            }
-            if (word.positive > 8 && word.positive <= 10) {
-              weight = 15;
-            }
-            if (word.positive > 6 && word.positive <= 8) {
-              weight = 12;
+            for (let index = 0; index < value; index++) {
+              if (word.positive > index && word.positive <= index + 1) {
+                weight = (index + 1) * 3;
+              }
             }
 
-            if (word.positive > 4 && word.positive <= 6) {
-              weight = 9;
-            }
-
-            if (word.positive > 2 && word.positive <= 4) {
-              weight = 6;
-            }
-
-            if (word.positive > 0 && word.positive <= 2) {
-              weight = 3;
-            }
             this.tagsData.push({
               name: word._id,
               weight,
               color: "#008000",
             });
           }
+
+
           if (word.negative > word.positive && word.negative > word.neutro) {
             //console.log('NEGATIVA', word);
 
-            if (word.negative >= 16) {
-              weight = 24;
+            for (let index = 0; index < value; index++) {
+              if (word.negative > index && word.negative <= index + 1) {
+                weight = (index + 1) * 3;
+
+              }
+
             }
 
-            if (word.negative > 12 && word.negative <= 14) {
-              weight = 21;
-            }
 
-            if (word.negative > 10 && word.negative <= 12) {
-              weight = 18;
-            }
-
-            if (word.negative > 8 && word.negative <= 10) {
-              weight = 15;
-            }
-
-            if (word.negative > 6 && word.negative <= 8) {
-              weight = 12;
-            }
-            if (word.negative > 4 && word.negative <= 6) {
-              weight = 9;
-            }
-
-            if (word.negative > 2 && word.negative <= 4) {
-              weight = 6;
-            }
-
-            if (word.negative > 0 && word.negative <= 2) {
-              weight = 3;
-            }
             this.tagsData.push({
               name: word._id,
               weight,
@@ -208,32 +169,15 @@ export class WordCloudComponent implements OnInit, OnChanges {
           if (word.neutro > word.positive && word.neutro > word.negative) {
             //console.log('NEUTRO', word);
 
-            if (word.neutro >= 16) {
-              weight = 24;
-            }
-            if (word.neutro > 12 && word.neutro <= 14) {
-              weight = 21;
-            }
-            if (word.neutro > 10 && word.neutro <= 12) {
-              weight = 18;
-            }
-            if (word.neutro > 8 && word.neutro <= 10) {
-              weight = 15;
-            }
-            if (word.neutro > 6 && word.neutro <= 8) {
-              weight = 12;
-            }
-            if (word.neutro > 4 && word.neutro <= 6) {
-              weight = 9;
+            for (let index = 0; index < value; index++) {
+              if (word.neutro > index && word.neutro <= index + 1) {
+                weight = (index + 1) * 3;
+
+              }
+
             }
 
-            if (word.neutro > 2 && word.neutro <= 4) {
-              weight = 6;
-            }
 
-            if (word.neutro > 0 && word.neutro <= 2) {
-              weight = 3;
-            }
             this.tagsData.push({
               name: word._id,
               weight,

@@ -33,8 +33,11 @@ export class VariableComponent implements OnInit {
     { name: 'type', prop: 'type' },
     { name: 'chart_type', prop: 'chart_type' },
     { name: 'clasification', prop: 'obj_Clasification.name' },
-    { name: 'origin', prop: 'origins', text: 'name' },
+    //{ name: 'origin', prop: 'origins', text: 'name' },
+    { name: 'active', prop: 'active' },
     { name: 'is_indice', prop: 'is_indice' },
+    { name: 'image', prop: 'image_route' },
+
 
   ];
   fields: FieldsForm[] = [
@@ -98,6 +101,13 @@ export class VariableComponent implements OnInit {
       required: true
     },
     {
+      label: 'active',
+      type: 'switch',
+      id: 'active',
+      formControlName: 'active',
+      required: false
+    },
+    {
       label: 'is_indice',
       type: 'switch',
       id: 'is_indice',
@@ -110,8 +120,21 @@ export class VariableComponent implements OnInit {
       id: 'values_indice',
       formControlName: 'values_indice',
       required: false
+    },
+    {
+      label: 'image',
+      type: 'file',
+      id: 'image',
+      formControlName: 'image',
+      required: false,
+      extra: 'image_route'
+
     }
   ];
+
+  images = {
+    image: null
+  };
 
   // Forms
   addEditForm = new FormGroup({
@@ -121,8 +144,11 @@ export class VariableComponent implements OnInit {
     chart_type: new FormControl('', [Validators.required]),
     id_Clasification: new FormControl('', [Validators.required]),
     origins: new FormControl('', [Validators.required]),
+    active: new FormControl(''),
     is_indice: new FormControl(''),
-    values_indice: new FormControl('')
+    values_indice: new FormControl(''),
+    image: new FormControl('')
+
 
 
   });
@@ -203,7 +229,7 @@ export class VariableComponent implements OnInit {
   onSubmit(event) {
     if (this.addEditForm.valid) {
       if (event.action === 'add') {
-        this.variableService.addVariable(this.addEditForm.value).subscribe(data => {
+        this.variableService.addVariable({ ...this.addEditForm.value, images: this.images }).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' adicionado correctamente.');
@@ -212,7 +238,7 @@ export class VariableComponent implements OnInit {
           this.notifier.notify('error', 'Ha ocurrido un error intentando adicionar la ' + this.model + '.');
         });
       } else {
-        this.variableService.editVariable(this.addEditForm.value, event.id).subscribe(data => {
+        this.variableService.editVariable({ ...this.addEditForm.value, images: this.images }, event.id).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' actualizada correctamente.');
@@ -240,7 +266,13 @@ export class VariableComponent implements OnInit {
   }
 
   onChangeFile(event) {
-
+    this.fields.forEach((value) => {
+      if (value.id === event.id) {
+        value.value = event.File.name;
+      }
+    });
+    this.images[event.id] = event.File;
+    this.addEditForm.controls[event.id].setValue(event.File.name);
   }
 
 }

@@ -12,7 +12,7 @@
         <div class="col-md-12 mt-3" *ngIf="listWords.length>0">
 
 
-            <p-table #dt [columns]="cols" [value]="listWords" [(selection)]="wordSelected" [paginator]="true" [rows]="10" [rowHover]="true" dataKey="id" [showCurrentPageReport]="true" [globalFilterFields]="['word']" currentPageReportTemplate="{{'showing'| translate }}">
+            <p-table #dt [columns]="cols" [autoLayout]="true" [value]="listWords" [(selection)]="wordSelected" [paginator]="true" [rows]="10" [rowHover]="true" dataKey="id" [showCurrentPageReport]="true" [globalFilterFields]="['word']" currentPageReportTemplate="{{'showing'| translate }}">
                 <ng-template pTemplate="caption">
                     <div class="col">
 
@@ -22,13 +22,13 @@
 
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        <th *ngFor="let col of columns">
                             <span translate>fieldForm.{{col.header}}</span>
                         </th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr [pSelectableRow]="rowData">
+                    <tr>
                         <td *ngFor="let col of columns;let i=index">
                             {{rowData[col.field]}}
 

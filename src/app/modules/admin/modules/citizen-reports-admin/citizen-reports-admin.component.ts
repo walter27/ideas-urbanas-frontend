@@ -98,16 +98,12 @@ export class CitizenReportsAdminComponent implements OnInit {
           this.notifier.notify('error', 'Ha ocurrido un error intentando adicionar la ' + this.model + '.');
         });
       } else {
-
-        console.log('EDITAR', this.addEditForm.value);
-
         this.reportsService.editReports({ ...this.addEditForm.value, images: this.images }, event.id).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' actualizada correctamente.');
           this.listReports();
         }, err => {
-          console.log(err);
           this.notifier.notify('error', 'Ha ocurrido un error intentando actualizar la ' + this.model + '.');
         });
       }

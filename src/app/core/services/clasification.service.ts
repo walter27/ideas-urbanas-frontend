@@ -36,7 +36,7 @@ export class ClasificationService {
       map(data => {
         data.results.data.forEach(el => {
           el.image_route = this.serverUrl + el.image_route.substr(2);
-          //el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
+          el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
         });
         return data.results;
       })
@@ -49,7 +49,7 @@ export class ClasificationService {
       map(data => {
         data.results.data.forEach(el => {
           el.image_route = this.serverUrl + el.image_route.substr(2);
-          //el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
+          el.image_active_route = this.serverUrl + el.image_active_route.substr(2);
         });
         return data.results;
       })
@@ -67,11 +67,12 @@ export class ClasificationService {
     formData.append('description', profile.description);
     formData.append('active', profile.active);
     formData.append('image', profile.images.image, profile.images.image.name);
-    //formData.append('image_active', profile.images.image_active, profile.images.image_active.name);    
+    formData.append('image_active', profile.images.image_active, profile.images.image_active.name);
     return this.httpClient.post(this.serverUrl + this.urlClasification, formData);
   }
 
   editClasification(profile, id) {
+
     const formData = new FormData();
     formData.append('name', profile.name);
     formData.append('description', profile.description);
@@ -79,9 +80,9 @@ export class ClasificationService {
     if (profile.images.image && profile.images.image.name) {
       formData.append('image', profile.images.image, profile.images.image.name);
     }
-    /*if (profile.images.image_active && profile.images.image_active.name) {
+    if (profile.images.image_active && profile.images.image_active.name) {
       formData.append('image_active', profile.images.image_active, profile.images.image_active.name);
-    }*/
+    }
     return this.httpClient.put(this.serverUrl + this.urlClasification + '/' + id, formData);
   }
 

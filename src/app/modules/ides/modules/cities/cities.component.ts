@@ -18,6 +18,7 @@ import { TagService } from 'src/app/core/services/tag.service';
 import { Tag } from 'src/app/core/models/tags.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 let { tagCloud } = require('src/app/core/utils/utils');
+const accents = require('remove-accents');
 
 @Component({
   selector: 'app-cities',
@@ -34,6 +35,7 @@ export class CitiesComponent implements OnInit {
   };
 
   items = [];
+  cols: any;
 
   resultClasification$: any;
   resultResearch$: Observable<ResultList<Research>>;
@@ -81,6 +83,13 @@ export class CitiesComponent implements OnInit {
     elem.classList.add("sticky-top");
     elem.classList.remove("fixed-top");*/
 
+    this.cols = [
+      { field: 'year', header: 'year', width: '3rem' },
+      { field: 'title', header: 'title' },
+      { field: 'author', header: 'authors' }
+
+    ];
+
     this.regionService.citySelectedWordCloud = undefined;
     this.regionService.citySelect = undefined;
 
@@ -89,7 +98,7 @@ export class CitiesComponent implements OnInit {
       this.citySelected = null;
       this.regionService.getRegion(this.idCity, 'Canton').subscribe(resp => {
         this.citySelected = resp;
-        this.imageCity = `assets/cities/all/${this.citySelected.name.toLowerCase()}.jpg`;
+        this.imageCity = `${accents.remove('assets/cities/all/' + this.citySelected.name.toLowerCase())}.jpg`;
         this.regionService.citySelectedCloud = this.citySelected;
         this.getResearch();
         this.listTags(this.idCity);

@@ -10,6 +10,9 @@ import { RegionService } from 'src/app/core/services/region.service';
 import { ResearchService } from 'src/app/core/services/research.service';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/core/services/data.service';
+import { Region } from 'src/app/core/models/regions.model';
+
 declare var $: any;
 
 @Component({
@@ -18,6 +21,8 @@ declare var $: any;
   styleUrls: ['./research.component.scss']
 })
 export class ResearchComponent implements OnInit {
+
+  data: any = [];
 
   model = 'Research';
   filters: Filters = {
@@ -28,26 +33,42 @@ export class ResearchComponent implements OnInit {
   };
   result$: Observable<ResultList<Research>>;
   columns = [
-    { name: 'name', prop: 'name', width: '10%' },
-    { name: 'description', prop: 'description', width: '60%' },
+    { name: 'title', prop: 'title', width: '60%' },
+    { name: 'author', prop: 'author', width: '60%' },
+    { name: 'year', prop: 'year' },
+    { name: 'link', prop: 'link' },
     { name: 'category', prop: 'category' },
-    { name: 'image', prop: 'image_route' },
+    //{ name: 'image', prop: 'image_route' },
     { name: 'canton', prop: 'obj_Canton.name' }
   ];
   fields: FieldsForm[] = [
     {
-      label: 'name',
+      label: 'title',
       type: 'text',
-      id: 'name',
-      formControlName: 'name',
+      id: 'title',
+      formControlName: 'title',
       required: true
     },
     {
-      label: 'description',
-      type: 'text_area',
-      id: 'description',
-      formControlName: 'description',
-      required: false
+      label: 'author',
+      type: 'text',
+      id: 'author',
+      formControlName: 'author',
+      required: true
+    },
+    {
+      label: 'year',
+      type: 'text',
+      id: 'year',
+      formControlName: 'year',
+      required: true
+    },
+    {
+      label: 'link',
+      type: 'text',
+      id: 'link',
+      formControlName: 'link',
+      required: true
     },
     {
       label: 'category',
@@ -67,23 +88,29 @@ export class ResearchComponent implements OnInit {
       key: 'obj_Canton',
       required: true
     },
-    {
-      label: 'image',
-      type: 'file',
-      id: 'image',
-      formControlName: 'image',
-      required: true
-    }
+    /* {
+       label: 'image',
+       type: 'file',
+       id: 'image',
+       formControlName: 'image',
+       required: false,
+       extra: 'image_route'
+ 
+     }*/
   ];
-  file: any;
+  images = {
+    image: null
+  };
 
   // Forms
   addEditForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    author: new FormControl('', [Validators.required]),
+    year: new FormControl('', [Validators.required]),
+    link: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
     id_Canton: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required])
+    //image: new FormControl('')
   });
 
   private readonly notifier: NotifierService;
@@ -93,6 +120,7 @@ export class ResearchComponent implements OnInit {
   constructor(
     private researchService: ResearchService,
     private regionService: RegionService,
+    private dataService: DataService,
     private categoryService: CategoryService,
     notifierService: NotifierService,
     private activatedRoute: ActivatedRoute,
@@ -102,9 +130,12 @@ export class ResearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
+    //this.loadData();
+
+
     this.activatedRoute.queryParams.subscribe(params => {
-      if ( params.showModal && params.goBack ) {
+      if (params.showModal && params.goBack) {
         this.goBack = params.goBack;
         $('#addEditModal').modal('show');
       }
@@ -124,11 +155,11 @@ export class ResearchComponent implements OnInit {
       limit: 1000,
       ascending: true,
       sort: '_id'
-    }, 'Canton').subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'id_Canton' ) {
+    }, 'Canton').subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Canton') {
           el.options = [];
-          data.data.forEach( p => {
+          data.data.forEach(p => {
             el.options.push({
               id: p._id,
               text: p.name
@@ -136,15 +167,15 @@ export class ResearchComponent implements OnInit {
           });
         }
       });
-    } );
+    });
   }
 
   listCategories() {
-    this.categoryService.listCategory().subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'category' ) {
+    this.categoryService.listCategory().subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'category') {
           el.options = [];
-          data.category.forEach( p => {
+          data.category.forEach(p => {
             el.options.push({
               id: p,
               text: p
@@ -157,13 +188,13 @@ export class ResearchComponent implements OnInit {
 
   onSubmit(event) {
     if (this.addEditForm.valid) {
-      if ( event.action === 'add' ) {
-        this.researchService.addResearch({ ...this.addEditForm.value, image: this.file }).subscribe(data => {
+      if (event.action === 'add') {
+        this.researchService.addResearch({ ...this.addEditForm.value, images: this.images }).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' adicionado correctamente.');
-          if ( this.goBack ) {
-            this.router.navigate(['/cities'], { queryParams: {city: this.goBack} });
+          if (this.goBack) {
+            this.router.navigate(['/cities'], { queryParams: { city: this.goBack } });
           } else {
             this.listResearch();
           }
@@ -171,7 +202,7 @@ export class ResearchComponent implements OnInit {
           this.notifier.notify('error', 'Ha ocurrido un error intentando adicionar la ' + this.model + '.');
         });
       } else {
-        this.researchService.editResearch({ ...this.addEditForm.value, images: this.file }, event.id).subscribe(data => {
+        this.researchService.editResearch({ ...this.addEditForm.value, images: this.images }, event.id).subscribe(data => {
           this.addEditForm.reset();
           this.filters.page = 0;
           this.notifier.notify('success', this.model + ' actualizada correctamente.');
@@ -199,7 +230,110 @@ export class ResearchComponent implements OnInit {
   }
 
   onChangeFile(event) {
-    this.file = event;
+    this.fields.forEach((value) => {
+      if (value.id === event.id) {
+        value.value = event.File.name;
+      }
+    });
+    this.images[event.id] = event.File;
+    this.addEditForm.controls[event.id].setValue(event.File.name);
   }
+
+
+  loadData() {
+
+
+    this.regionService.listRegions({
+      page: 0,
+      limit: 1000,
+      ascending: true,
+      sort: '_id'
+    }, 'Canton').subscribe(async canton => {
+
+
+      this.savedata(canton.data)
+
+
+
+
+    });
+
+
+
+  }
+
+
+  savedata(catones: any) {
+
+    this.dataService.getData().subscribe((data: any) => {
+      // console.log(data);
+
+      data.forEach(data1 => {
+
+
+
+
+        let nuevo = {
+          author: data1.autor,
+          category: 'academica',
+          id_Canton: '',
+          link: data1.link,
+          title: data1.titulo,
+          year: data1.year
+        }
+
+
+        catones.forEach(element => {
+
+
+          if (element.code === data1.id_region) {
+
+            nuevo.id_Canton = element._id;
+          }
+
+
+
+        });
+
+
+        this.data.push(nuevo);
+
+
+
+      });
+
+
+      //console.log(this.data);
+
+
+
+
+      /*for (let i = 0; i < this.data.length; i++) {
+
+        if (i > 21042 && i <= 24048) {
+
+          setTimeout(() => {
+            this.researchService.addResearch(this.data[i]).subscribe(resp => {
+              console.log(resp, i);
+
+            })
+          }, 2000);
+
+
+
+        }
+
+      }*/
+
+
+
+    });
+
+
+
+
+  }
+
+
 
 }

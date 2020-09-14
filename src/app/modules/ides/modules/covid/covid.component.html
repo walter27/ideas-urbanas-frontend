@@ -44,7 +44,7 @@
 
         <div class="row p-5">
 
-            <div class="col-lg-6">
+            <div class="col-md-6 text-center text-sm-left">
                 <div class="animate__animated animate__fadeInDown">
                     <h3 class="titulos-covid" translate>evolution_covid</h3>
                 </div>
@@ -52,13 +52,25 @@
 
             </div>
 
-            <div class="col-lg-3 col-lx-3 text-right mt-2">
+            <div class="col-md-3  text-center text-sm-right mt-2">
 
-                <p-multiSelect selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Ciudades'" [showHeader]=true (onChange)="getSelects($event)" name="selectedCantons">
+                <p-multiSelect #multiselect [showToggleAll]="false" [resetFilterOnHide]="true" selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Ciudades'" (onChange)="getSelects($event)"
+                    name="selectedCantons">
+                    <!-- <p-header>
+
+                        <div class="d-inline-block position-static mr-2 mt-2">
+                            <span (click)="functionToClear()" class="pi pi-undo "></span>
+
+                        </div>
+
+
+
+
+                    </p-header>-->
                 </p-multiSelect>
 
             </div>
-            <div class=" col-lg-3 col-lx-3 text-right mt-2">
+            <div class=" col-md-3 text-center text-sm-right mt-2">
 
 
                 <p-dropdown [autoDisplayFirst]="false" class="block" [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
@@ -82,10 +94,9 @@
 
             <div class=" col-lg-6 col-lx-6">
 
-                <!-- <highcharts-chart [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions6" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
-                </highcharts-chart>-->
 
-                <div *ngIf="dataHigcharts && selectVariable">
+
+                <div *ngIf="dataHigcharts.length>0 && selectVariable">
                     <app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts " [variable]="selectVariable">
                     </app-card-basic-graph-covid>
                 </div>
@@ -97,8 +108,7 @@
 
 
             <div class="col-lg-6 col-lx-6">
-                <!-- <highcharts-chart class="animated fadeIn" [oneToOne]=true id="container" [Highcharts]="highcharts2" [constructorType]="chartConstructor" [options]="chartOptionsMap" [callbackFunction]="chartCallback" [(update)]=updateFromInput [oneToOne]="true" style="width: 100%; height: 400px; display: block;">
-                </highcharts-chart>-->
+
                 <div *ngIf="dataMapa && selectVariable">
                     <app-card-basic-map-covid [data]="dataMapa" [variable]="selectVariable"></app-card-basic-map-covid>
                 </div>
@@ -107,9 +117,8 @@
             </div>
 
 
-            <div class="col-md-12" *ngIf="dataStreamGraphFinal && selectVariable">
-                <!-- <highcharts-chart [oneToOne]=true [Highcharts]="highcharts3" [options]="chartOptionsStreamgraph" style="width: 100%; height: 400px; display: block;" class="highcharts animated fadeIn">
-                </highcharts-chart>-->
+            <div class="col-md-12" *ngIf="dataStreamGraphFinal.length>0 && selectVariable">
+
 
                 <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph " [variable]="selectVariable" [maxExport]="maxExport">
                 </app-card-basic-streamgraph>

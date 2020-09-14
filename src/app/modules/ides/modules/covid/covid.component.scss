@@ -62,11 +62,20 @@
     padding-left: 1em;
 }
 
-:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
+.reset {
+    color: #848484;
+    top: 50%;
+    margin-top: -0.5em;
+    line-height: 1;
+    transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+
+/*:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
     display: none !important;
     background-color: red;
     color: red;
-}
+}*/
 
 .haighmap {
     background: gray;

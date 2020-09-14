@@ -24,7 +24,7 @@ import { ChartModule } from 'primeng/chart';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NgxTweetModule } from "ngx-tweet";
+import { NgxTweetModule } from 'ngx-tweet';
 
 
 

@@ -52,7 +52,8 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
   @Input("variable") variable: any;
   @Input() maxExport: number;
 
-  constructor(private chartService: ChartsService,
+  constructor(
+    private chartService: ChartsService,
     private translateService: TranslateService) {
     this.updateDemo = false;
     this.highcharts = Highcharts;
@@ -68,7 +69,11 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
     }
   }
 
-  async createStreamGraph() {
+  createStreamGraph() {
+
+
+    console.log('STRWAMGRAP', this.data);
+
     this.chartOptions = {
       chart: {
         type: "streamgraph",
@@ -165,7 +170,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
 
     setTimeout(() => {
       this.getURLImage();
-    }, 2000);
+    }, 3000);
   }
 
   getURLImage() {
@@ -181,8 +186,12 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       itemMarginBottom: 10,
     };
 
+    this.chartOptionsExport["subtitle"] = {
+      text: this.variable.name
+    }
+
     let chartsDetails = {
-      type: "png",
+      type: "jpeg",
       options: this.chartOptionsExport,
     };
     this.chartService.generateImage(chartsDetails).subscribe((resp) => { });
@@ -273,7 +282,20 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
       this.socialMedia[1].link = await `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
     });
 
-    window.open(item.link, "blank");
+    setTimeout(() => {
+
+      if (item.link) {
+        window.open(item.link, "blank");
+
+
+      } else {
+        console.log('LINK', item.link);
+
+      }
+
+
+    }, 1000);
+
   }
 
 
@@ -306,6 +328,7 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
           this.downloadXLS = title[key];
         }
       });
+
       this.createStreamGraph();
 
     });

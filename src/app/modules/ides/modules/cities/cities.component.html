@@ -177,10 +177,10 @@
                 </div>
             </div>-->
         </div>
-        <div class="cuadro-grafico-ciudades" *ngIf="citySelected">
+        <!-- <div class="cuadro-grafico-ciudades" *ngIf="citySelected">
             <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" class="city-index">
             </app-ides-index>
-        </div>
+        </div>-->
     </div>
 </div>
 
@@ -224,59 +224,110 @@
 
 
     <div class="cuadros-abajo" *ngIf="( resultResearch$ | async ) as research">
-        <div *ngIf="research?.data.length > 0">
-            <div class="row justify-content-center">
-                <div class="col text-center">
-                    <h2 class="subtitle ides-text-blue" translate>Investigación</h2>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h2 class="subtitle ides-text-blue" translate>Investigación</h2>
             </div>
+        </div>
 
-            <div class="row mb-4">
-                <div class="col">
-                    <nav class="navbar navbar-expand-md">
-                        <div class="collapse navbar-collapse" id="navbarResponsiveCity">
-                            <ul class="nav text-uppercase font-weight-bold">
-                                <li (click)="onSelectCategory(i)" class="nav-item" *ngFor="let i of items">
-                                    <app-ides-tab-item [active]="i.active" [item]="i"></app-ides-tab-item>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                    <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
+        <div class="row mb-4">
+            <!--<div class="col">
+                <nav class="navbar navbar-expand-md">
+                    <div class="collapse navbar-collapse" id="navbarResponsiveCity">
+                        <ul class="nav text-uppercase font-weight-bold">
+                            <li (click)="onSelectCategory(i)" class="nav-item" *ngFor="let i of items">
+                                <app-ides-tab-item [active]="i.active" [item]="i"></app-ides-tab-item>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>-->
+            <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
+                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
                         information
                         <i-feather name="arrow-up"></i-feather>
                     </a>
-                </div>
-                <div *ngIf="isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                    <button [routerLink]="['/admin/research']" [queryParams]="{showModal: true, goBack: citySelected?._id}" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
+            </div>
+            <div *ngIf="isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
+                <button [routerLink]="['/admin/research']" [queryParams]="{showModal: true, goBack: citySelected?._id}" type="button" class="btn ides-dropdown ides-text-blue-dark font-weight-bold">
                         Cargar un nuevo archivo
                         <i-feather name="arrow-up"></i-feather>
                     </button>
+            </div>
+        </div>
+
+
+        <div class="ides-card">
+
+            <div class="row p-3">
+                <div class="col-md-12">
+
+                    <p-table *ngIf="research?.data.length>0" #dt [columns]="cols" [autoLayout]="true" [value]="research?.data" [paginator]="true" [rows]="10" dataKey="id" [globalFilterFields]="['title','year','author']" [rowHover]="true" [responsive]="true" dataKey="id"
+                        [showCurrentPageReport]="true" currentPageReportTemplate="{{'showing_researchs'| translate }}">
+                        <ng-template pTemplate="caption">
+                            <div class="col pt-2 form-group">
+
+                                <label class="ides-text-blue" for="search" translate>search</label>
+                                <span class="ui-float-label">
+                                <input id="search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" />
+                                <label class="ides-text-blue" for="search" translate>search_research</label>
+                            </span>
+
+
+
+                            </div>
+                        </ng-template>
+
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns">
+
+                                    <span class="ides-text-blue" translate>fieldForm.{{col.header}}</span>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                            <tr>
+                                <td *ngFor="let col of columns ;let i=index">
+                                    <span class="ui-column-title">{{col.header}}</span>
+                                    <span *ngIf="i!==1">{{rowData[col.field]}}</span>
+                                    <span *ngIf="i===1" class="ides-text-blue cursor-pointer"> 
+                                        <a class="ides-text-blue research-link" target="_blank" [href]="rowData.link">  {{rowData[col.field]}}</a>
+                                    
+                                    </span>
+
+                                </td>
+                            </tr>
+                        </ng-template>
+
+                    </p-table>
+                    <div *ngIf="research?.data.length<=0" class="alert alert-warning" role="alert" translate>
+                        nothing
+                    </div>
                 </div>
             </div>
 
-            <div *ngFor="let c of research?.data" class="row mb-4">
-                <div class="ides-card row-inv">
-                    <div class="GRAFICO-INV">
-                        <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img" [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
-                    </div>
-                    <div class="TEXTO-INV">
-                        <div class="row">
-                            <div class="col ides-text-blue-dark">
-                                <h3 class="font-weight-bolder">{{ c.name }}</h3>
-                            </div>
+        </div>
+
+        <!--<div *ngFor="let c of research?.data" class="row mb-4">
+            <div class="ides-card row-inv">
+                <div class="GRAFICO-INV">
+                    <img (mouseover)='c.hover = true' (mouseout)='c.hover = false' width="70" class="research-img" [src]="c.hover ? 'assets/ICONOS/investigacion-01.png' : 'assets/ICONOS/investigacion.png'" />
+                </div>
+                <div class="TEXTO-INV">
+                    <div class="row">
+                        <div class="col ides-text-blue-dark">
+                            <h3 class="font-weight-bolder">{{ c.name }}</h3>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <p>{{ c.description }}</p>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>{{ c.description }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
 </div>

@@ -119,7 +119,7 @@ export class DataService {
   }
 
   getData() {
-    return this.httpClient.get(`${this.serverUrl}getCSV/datos/diarios`, httpOptions);
+    return this.httpClient.get(`${this.serverUrl}getCSV/datos/researchs`, httpOptions);
   }
 
   addData(profile) {

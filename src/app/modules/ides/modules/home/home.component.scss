@@ -39,11 +39,6 @@ ul.step li {
     color: #F8A901 !important;
 }
 
-.ides-text-white {
-    color: #FFFFFF!important;
-    //font: 50px 'Work Sans', sans-serif;
-}
-
 .circulo {
     width: 27.32px;
     height: 27.32px;
@@ -1173,27 +1168,6 @@ div.ides-card-home {
     margin-left: 12%;
 }
 
-.ides-margin-about-us {
-    margin-bottom: 10rem;
-    //margin-top: 15rem;
-}
-
-.ides-text-about-us {
-    margin-top: 6rem
-}
-
-.ides-little-text-about-us {
-    font: 15px 'Karla', sans-serif;
-    color: #787878;
-    margin-top: 1rem;
-}
-
-.ides-little-tittle-text-about-us {
-    font: 19px 'Karla', sans-serif;
-    color: #787878;
-    font-weight: bold;
-}
-
 .bg-banner-carousel-1 {
     background: transparent url(../../../../../assets/home/bg1.svg) 0% 100% no-repeat padding-box;
     //height: 600px;
@@ -1886,8 +1860,9 @@ div.ides-card-home {
     background-size: cover;
     overflow: hidden;
 }
+
 @media (max-width: 1180px) {
     .facet_sidebar {
-      display: none;
+        display: none;
     }
-  }
+}

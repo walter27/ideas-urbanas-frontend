@@ -29,7 +29,7 @@ export class ClasificationComponent implements OnInit {
     { name: 'description', prop: 'description', width: '60%' },
     { name: 'active', prop: 'active' },
     { name: 'image', prop: 'image_route' },
-    //{ name: 'active_image', prop: 'image_active_route' },
+    { name: 'active_image', prop: 'image_active_route' },
   ];
   fields: FieldsForm[] = [
     {
@@ -58,17 +58,17 @@ export class ClasificationComponent implements OnInit {
       type: 'file',
       id: 'image',
       formControlName: 'image',
-      required: false,
+      required: true,
       extra: 'image_route'
     },
-    /* {
+     {
        label: 'active_image',
        type: 'file',
        id: 'image_active',
        formControlName: 'image_active',
        required: true,
        extra: 'image_active_route'
-     }*/
+     }
   ];
 
   // Forms
@@ -77,12 +77,12 @@ export class ClasificationComponent implements OnInit {
     description: new FormControl(''),
     active: new FormControl(''),
     image: new FormControl(''),
-    //image_active: new FormControl('', [Validators.required])
+    image_active: new FormControl('', [Validators.required])
   });
 
   images = {
     image: null,
-    //image_active: null
+    image_active: null
   };
 
   private readonly notifier: NotifierService;
