@@ -121,7 +121,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
           t = JSON.parse(sessionStorage.getItem("citiesHidden"));
           if (
             ci.data.datasets.length - 1 ===
-              JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
+            JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
             t.indexOf(legendItem.text) === -1
           ) {
             return;
@@ -270,10 +270,10 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
           // tslint:disable-next-line:no-string-literal
           return [
             data.datasets[tooltipItem[0].datasetIndex].data[
-              tooltipItem[0].index
+            tooltipItem[0].index
             ]["x"],
             data.datasets[tooltipItem[0].datasetIndex].data[
-              tooltipItem[0].index
+            tooltipItem[0].index
             ]["t"],
           ];
         },
@@ -335,7 +335,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
     private regionService: RegionService,
     private chartService: ChartsService,
     private utilsService: UtilsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     sessionStorage.setItem("citiesHidden", "[]");
@@ -418,7 +418,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
         this.lineChartOptions.scales.yAxes[0].scaleLabel.labelString =
           this.variableSelected.label == ""
             ? "Cantidad"
-            : this.variableSelected.label;
+            : `${this.variableSelected.label} (${this.variableSelected.measure_symbol})`;
         this.lineChartOptions.hover = { mode: "label" };
         this.lineChartColors = [
           { backgroundColor: "#004587" },
@@ -456,7 +456,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
         this.lineChartOptions.scales.yAxes[0].scaleLabel.labelString =
           this.variableSelected.label == ""
             ? "Cantidad"
-            : capitalizeFirst(this.variableSelected.label);
+            : `${this.variableSelected.label} (${this.variableSelected.measure_symbol})`;
         this.lineChartOptions.hover = { mode: "dataset" };
 
         this.cities.forEach((c, idx) => {

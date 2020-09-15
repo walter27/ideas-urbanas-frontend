@@ -111,6 +111,7 @@
     "about us help": "We do our work in an innovative, collaborative and citizen way.",
     "about us contact": "We have the support of Counterpart International.",
     "about us add information": "Incorporation of new information",
+    "about us strategic": "Por su importancia estratégica, también incluimos datos de Quito, Guayaquil y Cuenca.",
     "Desempeño por ciudad": "City Index",
     "index description": "Know the performance of your city in the subject of your interest and compare with other similar cities.",
     "Definiciones": "Definitiones",
@@ -173,7 +174,12 @@
     "value": "Value",
     "year": "Year",
     "search_research": "Year, title or authors",
-    "search": "Search:"
+    "search": "Search:",
+    "investigation_title": "Investigation",
+    "investigation_subtitle": "We connect you with academic studies about this city",
+    "shortly": "Shortly"
+
+
 
 
 }

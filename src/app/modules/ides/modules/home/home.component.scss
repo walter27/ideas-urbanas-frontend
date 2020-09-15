@@ -1866,3 +1866,42 @@ div.ides-card-home {
         display: none;
     }
 }
+
+//ABOUT US
+.ides-height-100-about-us {
+    height: 200px!important;
+    box-shadow: 0 3px 6px #00000029;
+    background: rgb(11, 109, 245);
+    background: linear-gradient(78deg, rgba(11, 109, 245, 1) 0%, rgba(33, 148, 253, 1) 100%);
+}
+
+.title {
+    font: 30px 'Noto Sans TC', sans-serif !important;
+    padding-top: 0.5em !important;
+    font-weight: bold !important;
+    color: white;
+}
+
+.ides-about-text {
+    background-color: #fff;
+    margin-top: -150px;
+    //z-index: 5px;
+}
+
+.ides-little-text-about-us {
+    font: 15px 'Karla', sans-serif;
+    color: #787878;
+    margin-top: 1rem;
+}
+
+.ides-little-tittle-text-about-us {
+    font: 19px 'Karla', sans-serif;
+    color: #787878;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 576px) {
+    .contaniner-padding {
+        padding-left: 27px;
+    }
+}

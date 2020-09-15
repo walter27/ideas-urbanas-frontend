@@ -24,9 +24,15 @@
                 <img [src]="item.img" class="card-img-top" alt="...">
                 <div class="card-body text-center">
                     <h4 class="card-title">{{item.name}}</h4>
-                    <p class="card-text" translate>
-                        intermediate_city
+                    <p *ngIf="item.intermediate!==' '" class="card-text" translate>
+                        {{item.intermediate}}
                     </p>
+
+                    <br *ngIf="item.intermediate===' '" class="card-text">
+
+
+
+
                 </div>
             </div>
         </div>

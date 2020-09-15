@@ -59,13 +59,27 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
     this.cantons = [];
 
     this.regionService.listRegionsPublic(this.filters, 'Canton').subscribe(resp => {
+
+
       resp.data.forEach(canton => {
+
+
+        let intermediate;
+
+        if (canton.name === 'Guayaquil' || canton.name === 'Quito' || canton.name === 'Cuenca') {
+          intermediate = ' ';
+
+        } else {
+          intermediate = 'intermediate_city';
+
+        }
 
         this.cantons.push({
           name: titleCase(canton.name),
           img: `${accents.remove('assets/cities/all/' + canton.name.toLowerCase())}.jpg`,
           url: '/cities',
           id: canton._id,
+          intermediate,
           queryParams: {
             city: canton._id
           }

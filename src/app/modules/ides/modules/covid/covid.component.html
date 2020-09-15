@@ -117,7 +117,7 @@
             </div>
 
 
-            <div class="col-md-12" *ngIf="dataStreamGraphFinal.length>0 && selectVariable">
+            <div class="col-md-12" *ngIf="dataStreamGraphFinal && selectVariable">
 
 
                 <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph " [variable]="selectVariable" [maxExport]="maxExport">

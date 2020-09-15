@@ -226,7 +226,11 @@
     <div class="cuadros-abajo" *ngIf="( resultResearch$ | async ) as research">
         <div class="row justify-content-center">
             <div class="col text-center">
-                <h2 class="subtitle ides-text-blue" translate>Investigación</h2>
+                <h2 class="subtitle ides-text-blue" translate>investigation_title</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <p class="subtitulo2" translate>investigation_subtitle</p>
             </div>
         </div>
 
@@ -302,7 +306,7 @@
 
                     </p-table>
                     <div *ngIf="research?.data.length<=0" class="alert alert-warning" role="alert" translate>
-                        nothing
+                        shortly
                     </div>
                 </div>
             </div>
