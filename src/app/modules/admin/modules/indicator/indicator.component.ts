@@ -8,7 +8,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
 import { OriginService } from 'src/app/core/services/origin.service';
 import { IndicatorService } from 'src/app/core/services/indicator.service';
-import { ClasificationService } from 'src/app/core/services/clasification.service';
+import { VariableService } from 'src/app/core/services/variable.service';
+import { RegionService } from 'src/app/core/services/region.service';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-indicator',
@@ -20,93 +22,139 @@ export class IndicatorComponent implements OnInit {
   model = 'Indicators';
   filters: Filters = {
     page: 0,
-    limit: 10,
+    limit: 100,
     ascending: true,
     sort: '_id'
   };
-  result$: Observable<ResultList<Origin>>;
+  result$: Observable<ResultList<Data>>;
   columns = [
-    { name: 'name', prop: 'name' },
-    { name: 'description', prop: 'description' },
-    { name: 'clasification', prop: 'obj_Clasification.name' },
-    { name: 'configs', prop: 'configs' }
+    { name: 'variable', prop: 'obj_Variable.name' },
+    { name: 'canton', prop: 'obj_Canton.name' },
+    { name: 'ridit', prop: 'ridit' },
+    { name: 'ridit', prop: 'ridit_normalize' },
+    { name: 'year', prop: 'year' }
+
   ];
   fields: FieldsForm[] = [
     {
-      label: 'name',
-      type: 'text',
-      id: 'name',
-      formControlName: 'name',
-      required: true
-    },
-    {
-      label: 'description',
-      type: 'text_area',
-      id: 'description',
-      formControlName: 'description',
-      required: false
-    },
-    {
-      label: 'clasification',
+      label: 'canton',
       type: 'select',
-      id: 'id_Clasification',
-      formControlName: 'id_Clasification',
+      id: 'id_Canton',
+      formControlName: 'id_Canton',
       options: [],
-      key: 'obj_Clasification',
+      key: 'obj_Canton',
       required: true
     },
     {
-      label: 'configs',
-      type: 'configs',
-      id: 'configs',
-      formControlName: 'configs',
+      label: 'variable',
+      type: 'select',
+      id: 'id_Variable',
+      formControlName: 'id_Variable',
+      options: [],
+      key: 'obj_Variable',
       required: true
-    }
+    },
+    {
+      label: 'ridit',
+      type: 'number',
+      id: 'ridit',
+      formControlName: 'ridit',
+      required: true
+    },
+    {
+      label: 'ridit_normalize',
+      type: 'number',
+      id: 'ridit_normalize',
+      formControlName: 'ridit_normalize',
+      required: true
+    },
+    {
+      label: 'year',
+      type: 'number',
+      id: 'year',
+      formControlName: 'year',
+      required: true
+    },
   ];
 
   // Forms
   addEditForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    description: new FormControl(''),
-    id_Clasification: new FormControl('', [Validators.required]),
-    configs: new FormControl([[0, 0], [0, 0], [0]], [Validators.required])
+    id_Canton: new FormControl('', [Validators.required]),
+    id_Variable: new FormControl('', [Validators.required]),
+    ridit: new FormControl(''),
+    ridit_normalize: new FormControl(''),
+    year: new FormControl('', [Validators.required]),
   });
 
   private readonly notifier: NotifierService;
 
   constructor(
     private indicatorService: IndicatorService,
-    private clasification: ClasificationService,
+    private variableService: VariableService,
+    private regionService: RegionService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
   }
 
   ngOnInit() {
-    
+
+    this.listVariable();
+    this.listCanton();
     this.listIndicators();
-    this.listClasification();
+  }
+
+
+  listVariable() {
+    this.variableService.listVariables(this.filters).subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Variable') {
+          el.options = [];
+          data.data.forEach(p => {
+            if (p.is_indice) {
+              el.options.push({
+                id: p._id,
+                text: p.name
+              });
+            }
+          });
+        }
+      });
+    });
+  }
+
+  listCanton() {
+    this.regionService.listRegions({
+      page: 0,
+      limit: 1000,
+      ascending: true,
+      sort: '_id'
+    }, 'Canton').subscribe(data => {
+      this.fields.forEach(el => {
+        if (el.id === 'id_Canton') {
+          el.options = [];
+          data.data.forEach(p => {
+
+            if (p.is_intermediate) {
+
+
+              el.options.push({
+                id: p._id,
+                text: p.name
+              });
+            }
+
+          });
+        }
+      });
+    });
   }
 
   listIndicators() {
     this.result$ = this.indicatorService.listIndicators(this.filters);
   }
 
-  listClasification() {
-    this.clasification.listClasification({ page: 0, limit: 1000, ascending: true, sort: 'name' }).subscribe( data => {
-      this.fields.forEach( el => {
-        if ( el.id === 'id_Clasification' ) {
-          el.options = [];
-          data.data.forEach( p => {
-            el.options.push({
-              id: p._id,
-              text: p.name
-            });
-          });
-        }
-      });
-    } );
-  }
+
 
   onSubmit(event) {
     if (this.addEditForm.valid) {

@@ -31,16 +31,16 @@
 <p-dialog header="{{'value'| translate}}" [(visible)]="displayDialog" [focusOnShow]="false" showEffect="fade" [modal]="true" [style]="{width: '300px'}">
     <div class="p-grid ui-fluid" *ngIf="value">
         <div class="p-col-4">
-            <label for="vin" translate>year</label>
+            <label for="year" translate>year</label>
         </div>
         <div class="p-col-8">
-            <input pInputText id="vin" [(ngModel)]="value.year" autofocus />
+            <p-inputNumber id="year" [(ngModel)]="value.year" autofocus> </p-inputNumber>
         </div>
         <div class="p-col-4">
-            <label for="year" translate>value</label>
+            <label for="value" translate>value</label>
         </div>
         <div class="p-col-8">
-            <input pInputText id="year" [(ngModel)]="value.value" />
+            <p-inputNumber id="value" mode="decimal" [maxFractionDigits]="20" [(ngModel)]="value.value"></p-inputNumber>
         </div>
     </div>
     <p-footer>

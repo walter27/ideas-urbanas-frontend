@@ -105,10 +105,12 @@ export class DataService {
   }
 
 
-  listDatasCovid(filters: Filters, idVariable?): Observable<ResultList<Data>> {
+  listDatasCovid(filters: Filters, idVariable?, cities?): Observable<ResultList<Data>> {
+
     const filtersB = this.utilsService.buildFilters(filters);
     const body = {
       idVariable,
+      cities
     };
 
     return this.httpClient.post<ResponseApi<ResultList<Data>>>(this.serverUrl + 'api/covid/' + filtersB, body).pipe(

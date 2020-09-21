@@ -13,7 +13,7 @@ import { Indicator } from '../models/indicator.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 @Injectable({
@@ -27,7 +27,7 @@ export class IndicatorService {
   constructor(
     private httpClient: HttpClient,
     private utilsService: UtilsService
-    ) {
+  ) {
 
   }
 
@@ -41,6 +41,7 @@ export class IndicatorService {
   }
 
   addIndicator(profile) {
+
     return this.httpClient.post(this.serverUrl + this.urlIndicator, profile, httpOptions);
   }
 

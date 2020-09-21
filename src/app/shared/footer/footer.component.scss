@@ -1,13 +1,19 @@
-.footer {
+.footer-background {
     background: #076DCD 0% 0% no-repeat padding-box;
+}
+
+.footer-background-copy {
+    background-color: #024bc3;
+    height: 100%;
 }
 
 .footer1 {
     background: #004587 0% 0% no-repeat padding-box;
 }
 
-.footer-text {
+.text-footer {
     font: 10pt 'Noto Sans TC';
+    color: white;
 }
 
 .ides-footer-icons-mobile {
@@ -35,31 +41,12 @@
     }
 }
 
-.footer {
-    background: #076DCD 0% 0% no-repeat padding-box;
-    padding: 0 5% 0 5%;
-}
-
 .footer1 {
     background: #004587 0% 0% no-repeat padding-box;
     margin-top: -1px;
 }
 
-.FOOTER3 {
-    background-color: #024bc3;
-    margin-bottom: -15px;
-    color: white;
-    font-size: 18px;
-    padding-bottom: 12px;
-    padding-left: 7%;
-}
-
-p.footer3 {
-    font-size: 14px;
-    margin: 0;
-    text-align: center;
-    padding-top: 0px;
-    padding-bottom: -5px;
+.footer-text {
     font: 15px "Roboto", sans-serif;
 }
 
@@ -174,29 +161,7 @@ p.footer3 {
     }
 }
 
-.row {
-    display: flex;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-.row.footer {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
 .logoo3 {
     padding-top: 25px;
     padding-bottom: 25px;
-}
-
-.footer {
-    background: #1a6af0 0% 0% no-repeat padding-box;
-    padding: 0 5% 0 5%;
-}
-
-.col-md-12.pt-3.footer-text.text-center {
-    margin-left: -5%;
 }

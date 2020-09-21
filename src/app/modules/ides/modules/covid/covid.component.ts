@@ -19,7 +19,7 @@ let { titleCase }: any = require('../../../../core/utils/utils');
   styleUrls: ['./covid.component.scss']
 })
 
-export class CovidComponent implements OnInit, OnDestroy {
+export class CovidComponent implements OnInit {
 
   model = 'Canton';
   filters = {
@@ -101,38 +101,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
 
-  ngOnDestroy() {
 
-    let dataTop = [...this.dataHigcharts].sort((a, b) => b.data[0] - a.data[0]).slice(0, 6);
-    let cantonsTop = [];
-
-    for (const canton of this.selectedCantons) {
-
-      for (const cantontop of dataTop) {
-
-        if (canton.name === cantontop.name) {
-
-          cantonsTop.push(canton);
-
-        }
-      }
-
-    }
-
-    let cantonsNotop = this.selectedCantons.filter(canton => !cantonsTop.includes(canton));
-
-    cantonsNotop.forEach(cantonNoTop => {
-      cantonNoTop.covid = false;
-
-
-
-      setTimeout(() => {
-        this.regionService.editRegion(cantonNoTop, cantonNoTop._id, this.model).subscribe(res => { });
-      }, 1);
-
-    });
-
-  }
 
 
   getClasification() {
@@ -190,11 +159,17 @@ export class CovidComponent implements OnInit, OnDestroy {
     this.regionService.listRegions(this.filters, this.model).subscribe((data) => {
 
 
+      this.cantons = data.data;
 
-      this.cantons = data.data.sort((a, b) => {
+      for (let i = 0; i < this.cantons.length; i++) {
 
-        return (a.covid === b.covid) ? 0 : a.covid ? -1 : 1;
-      });
+        if (this.cantons[i].name === 'Guayaquil' || this.cantons[i].name === 'Babahoyo' ||
+          this.cantons[i].name === 'Quito' || this.cantons[i].name === 'Lago Agrio') {
+
+          this.selectedCantons.push(this.cantons[i]);
+
+        }
+      }
 
       /*let dataCovid: any;
       this.dataService.getData().subscribe((data1) => {
@@ -406,8 +381,13 @@ export class CovidComponent implements OnInit, OnDestroy {
   getData(idSelectVariable: string) {
 
     let dateRanges = [];
+    let idCantons = [];
+    for (let i = 0; i < this.selectedCantons.length; i++) {
+      idCantons.push(this.selectedCantons[i]._id);
+    }
 
-    this.dataService.listDatasCovid(this.filters, idSelectVariable).subscribe(data => {
+    this.dataService.listDatasCovid(this.filters, idSelectVariable, idCantons).subscribe(data => {
+
 
       for (const info of data.data) {
         dateRanges.push(info.date);
@@ -418,7 +398,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
     });
 
-    this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable);
+    this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable, idCantons);
 
     /* setTimeout(() => {
        
@@ -592,6 +572,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
       }
 
+
       this.loadData(dataHigcharts, dataHighmap);
     });
 
@@ -637,6 +618,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
 
 
+
       let dataHighchartsFinal = [];
       let dataHighmapFinal = [];
 
@@ -645,6 +627,8 @@ export class CovidComponent implements OnInit, OnDestroy {
         for (const canton of this.selectedCantons) {
 
           if (canton.name === dataCovidHighcharts.name) {
+
+
 
             dataHighchartsFinal.push(dataCovidHighcharts);
 
@@ -826,7 +810,6 @@ export class CovidComponent implements OnInit, OnDestroy {
       ceil: 0,
       floor: 0
     };
-    this.selectedCantons = [];
     this.getData(this.selectVariable._id);
   }
 
@@ -856,7 +839,7 @@ export class CovidComponent implements OnInit, OnDestroy {
       });*/
 
 
-      if (!this.selectedCantons.includes(e.itemValue)) {
+      /*if (!this.selectedCantons.includes(e.itemValue)) {
 
 
         let body = {
@@ -890,7 +873,7 @@ export class CovidComponent implements OnInit, OnDestroy {
 
         });
 
-      }
+      }*/
 
       this.getData(this.selectVariable._id);
 

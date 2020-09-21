@@ -1,345 +1,115 @@
 <div class="row ">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-12 mb-4">
-                <div *ngIf="step == 1">
-                    <!--  <ngb-carousel [showNavigationArrows]="true" interval="12000">
-                        <ng-template ngbSlide>
-                            <div class="picsum-img-wrapper" class="bg-banner-carousel-1">
-                                <div class="row1">
-                                    <div class="Texto-home1">
-                                        <div class="anima-texto">
-                                            <div class="ides-text-white ides-home-title" translate>our_cities</div>
-                                        </div>
-                                        <div class="anima-texto">
-                                            <div class="ides-text-white ides-home-subtitle" translate>our_cities_description
-                                            </div>
-                                        </div>
-                                        <div class="text-center btn-space">
-                                            <div class="anima-boton">
-                                                <a class="myButton float-left" type="button" [routerLink]="['/thematic']">
-                                                    <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grafico-home1">
-                                        <svg-icon src="assets/home/mapa-final.svg" [svgStyle]="{ 'width.px':700, 'height.px':725}">
-                                        </svg-icon>
-                                    </div>
+    <div class="col-md-12">
+
+        <p-carousel [value]="home" [circular]="true" [autoplayInterval]="12000">
+
+            <ng-template let-home pTemplate="item">
+                <div class="picsum-img-wrapper" class={{home.background}}>
+                    <div class="row1">
+                        <div class="Texto-home1">
+                            <div class="anima-texto">
+                                <div class="ides-text-white ides-home-title" translate>{{home.title}}</div>
+                            </div>
+                            <div class="anima-texto">
+                                <div class="ides-text-white ides-home-subtitle" translate>{{home.subtitle}}
                                 </div>
                             </div>
-                        </ng-template>
-                        <ng-template ngbSlide>
-                            <div class="picsum-img-wrapper" class="bg-banner-carousel-2">
-                                <div class="row1">
-                                    <div class="Texto-home1">
-                                        <div id="test" class="anima-texto">
-                                            <div class="ides-text-white ides-home-title " translate>response_covid</div>
-                                        </div>
-                                        <div class="anima-texto">
-                                            <div class="home-subtitle">
-                                                <div class="ides-text-white ides-home-subtitle" translate>
-                                                    response_covid_description</div>
-                                            </div>
-                                        </div>
-                                        <div class="text-center btn-space">
-                                            <div class="anima-boton">
-                                                <a class="myButton float-left" type="button" [routerLink]="['/covid']">
-                                                    <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grafico-home2">
-                                        <svg-icon src="assets/home/coronavirus.svg" [svgStyle]="{ 'width.px':600, 'height.px':600}">
-                                        </svg-icon>
-                                    </div>
+                            <div class="text-center btn-space">
+                                <div class="anima-boton">
+                                    <a class="myButton float-left" type="button" [routerLink]="home.routerLink">
+                                        <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
+                                    </a>
                                 </div>
                             </div>
-                        </ng-template>
-                      
-                        <ng-template ngbSlide>
-                            <div class="picsum-img-wrapper" class="bg-banner-carousel-3">
-                                
-                                <div class="row1">
-                                    <div class="Texto-home1">
-                                        <div class="anima-texto">
-                                            <div class="ides-text-white ides-home-title" translate>compare_cities</div>
-                                        </div>
-                                        <div class="anima-texto">
-                                            <div class="home-subtitle">
-                                                <div class="ides-text-white ides-home-subtitle" translate></div>
-                                            </div>
-                                        </div>
-                                        <div class="text-center btn-space">
-                                            <div class="anima-boton">
-                                                <a class=" myButton float-left" type="button"
-                                                    [routerLink]="['/thematic']">
-                                                    <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grafico-home3">
-
-                                        <svg-icon src="assets/home/ciudades-comparacion.svg"[svgStyle]="{ 'width.px':700, 'height.px':550}"></svg-icon>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </ng-template>
-                    </ngb-carousel>  -->
-
-
-
-                    <p-carousel [value]="home" [circular]="true" [autoplayInterval]="12000">
-
-                        <ng-template let-home pTemplate="item">
-                            <div class="picsum-img-wrapper" class={{home.background}}>
-                                <div class="row1">
-                                    <div class="Texto-home1">
-                                        <div class="anima-texto">
-                                            <div class="ides-text-white ides-home-title" translate>{{home.title}}</div>
-                                        </div>
-                                        <div class="anima-texto">
-                                            <div class="ides-text-white ides-home-subtitle" translate>{{home.subtitle}}
-                                            </div>
-                                        </div>
-                                        <div class="text-center btn-space">
-                                            <div class="anima-boton">
-                                                <a class="myButton float-left" type="button" [routerLink]="home.routerLink">
-                                                    <span class="ides-mr-80 cursor-pointer" translate>click_here</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8" *ngIf="home.svg">
-                                        <svg-icon src="{{home.svg}}">
-                                        </svg-icon>
-                                    </div>
-
-                                    <div *ngIf='home.title ==="our_cities"' class=" col-md-8 ml-5">
-                                        <div vectormap [mapHeight]="mapHeight" [mapName]="mapName" [seriesData]="seriesData" [markersData]="markersData" [mapOptions]="mapOptions" (markerClick)="onMarkerClick($event)"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </p-carousel>
-
-
-                    <!-- <div class="row">
-                        <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 header-block">
-                            <h2 class="ides-text-yellow home-title" translate>our_cities</h2>
-                            <h4 translate>our_cities_description</h4>
                         </div>
-                        <div class="col-12 col-md-12 col-md-8 col-lg-4 col-xl-4">
+                        <div class="col-md-8" *ngIf="home.svg">
+                            <svg-icon src="{{home.svg}}">
+                            </svg-icon>
+                        </div>
+
+                        <div *ngIf='home.title ==="our_cities"' class=" col-md-8 ml-5">
                             <div vectormap [mapHeight]="mapHeight" [mapName]="mapName" [seriesData]="seriesData" [markersData]="markersData" [mapOptions]="mapOptions" (markerClick)="onMarkerClick($event)"></div>
                         </div>
-                        <div class="col-12 col-md-12 col-md-6 col-lg-4 col-xl-4 d-none d-md-none d-lg-block">
-                            <div class="row pt-4 pr-2">
-                                <div class="col-12 col-md-12 col-md-12 col-lg-12 col-xl-6 pt-4">
-                                    <div class="ides-card-header ides-height-100">
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <p class="ides-card-header-title" translate>Temáticas de desarrollo
-                                                    </p>
-                                                </div>
-                                                <div class="col-12">
-                                                    <p class="ides-card-header-desc" translate>Anaiza la evolución de las ciudades intermediaspor tema.
-                                                    </p>
-                                                </div>
-                                                <div class="col-12 text-center">
-                                                    <a class="btn ides-btn-blue-back float-left" type="button" [routerLink]="['/thematic']">
-                                                        <span class="ides-mr-80" translate>Ver
-                                                            más</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-12 col-md-12 col-lg-12 col-xl-6 pt-4">
-                                    <div class="ides-card-header ides-height-100">
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <p class="ides-card-header-title" translate>Índice de desarrollo urbano
-                                                    </p>
-                                                </div>
-                                                <div class="col-12">
-                                                    <p class="ides-card-header-desc" translate>Compara el desempeño de tu ciudad con otras ciudades
-                                                    </p>
-                                                </div>
-                                                <div class="col-12 text-center">
-                                                    <a class="btn ides-btn-blue-back float-left" type="button" [routerLink]="['/indexes']">
-                                                        <span class="ides-mr-80" translate>Ver
-                                                            más</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="ides-card-home ides-card-home-steps" *ngIf="step == 2">
-                    <div class="container mt-4 mb-4 pt-4">
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                <div class="circulo mr-3"></div>
-                                <div class="circulo-o mr-3"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ml-4 mr-4 mb-5">
-                        <div class="col text-center ides-text-yellow">
-                            <h5 class="font-weight-subtitle-home">
-                                ¿Qué idea tienes de {{selectCity.title}}?
-                            </h5>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-6 ">
-                            <form #ftag="ngForm" id="ftag">
-                                <div class="input-group mb-3 input-group-lg">
-                                    <input type="text" class="form-control ides-text-blue ides-input-tag" placeholder="" aria-label="" [(ngModel)]="newTag" aria-describedby="button-addon2" [ngModelOptions]="{standalone: true}" (keydown.enter)="onAddTag(newTag, 'positive')">
-                                    <div class=" input-group-append">
-                                        <button class="btn ides-btn-yellow-tag" type="button" id="button-addon2" (click)="onAddTag(newTag, 'positive')">Enviar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-12 logo-contactos-tag">
-                            <div class="text-center">
-                                <img class="img-fluid" style="max-height: 150px;" [src]="'assets/logos/logo-color.svg'" />
-                            </div>
-                        </div>
-                        <div class="text-uppercase font-weight-bold ides-text-blue-dark text-center mt-4">
-                            <button class="btn ides-btn-blue-back btn-lg mr-5" type="button" (click)="changueStep()">
-                                <span class="ides-mr-80 font-weight-bold" translate>Regresar</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
-
-                <div class="ides-card-home ides-card-home-steps mb-3" *ngIf="step == 3">
-                    <div class="container mt-4 mb-4 pt-4">
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                <div class="circulo-o mr-3"></div>
-                                <div class="circulo"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center ides-text-yellow">
-                            <h5 class="font-weight-subtitle-home">
-                                La percepción general de {{selectCity.title}} es:
-                            </h5>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <!-- <angular-tag-cloud [config]="options" [data]="tagsData" class="mt-4 mb-4 tag-cloud-mt">
-                        </angular-tag-cloud> -->
-
-                        <!-- <section tagcloud id="tag-cloud-wrapper" [idElement]="'tag-cloud-wrapper'" [data]="dataTagCloud" [width]="500" [height]="270" [maxFont]="96">
-                        </section> -->
-
-                        <app-word-cloud [citySelectedId]="selectCity.id"></app-word-cloud>
+            </ng-template>
+        </p-carousel>
 
 
-                        <!-- <section id="tag-cloud-wrapper" class="mt-4">
-                        </section>-->
+    </div>
 
-                    </div>
-                    <div class="text-uppercase font-weight-bold ides-text-blue-dark text-center mt-4 pt-4">
-                        <button class="btn ides-btn-blue-back btn-lg mr-5" type="button" (click)="step = 1">
-                            <span class="ides-mr-80 font-weight-bold" translate>Regresar</span>
-                        </button>
-                        <button class="btn ides-btn-yellow-more btn-lg" type="button" (click)="goToCity(selectCity.id)" *ngIf="selectCity.hasPage">
-                            <span class="ides-mr-80 font-weight-bold" translate>Ver más</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+</div>
+<div class="row mb-4 ides-ml-analyse_topics">
+    <div class="col-md-12">
+        <!-- <div class="text-center text pb-2 pl-4" translate>statistical_charts</div>-->
+        <div class="text-center subtitle pb-2 pl-4" translate>analyse_topics</div>
+        <div class="text-center text pb-2 pl-4" translate>statistical_charts</div>
+        <app-ides-thematic>
+        </app-ides-thematic>
+    </div>
+</div>
 
-        </div>
-        <div class="row mb-4 ides-ml-analyse_topics">
-            <div class="col-12">
-                <!-- <div class="text-center text pb-2 pl-4" translate>statistical_charts</div>-->
-                <div class="text-center subtitle pb-2 pl-4" translate>analyse_topics</div>
-                <div class="text-center text pb-2 pl-4" translate>statistical_charts</div>
-                <app-ides-thematic>
-                </app-ides-thematic>
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-md-12 ides-height-100-about-us animate__animated animate__headShake">
-                <div class="text-center title" translate>about us
-                </div>
-            </div>
-        </div>
-
-        <div class="row ">
-            <div class="container contaniner-padding">
-                <div class="col-md-12 ides-about-text">
-
-                    <div class="row">
-                        <div class="col-md-6 text-center p-5 ">
-                            <div class="ides-little-tittle-text-about-us " translate>
-                                title-about-us</div>
-                            <p class="ides-little-text-about-us" translate>about us description
-                            </p>
-                            <p class="ides-little-text-about-us" translate>about us strategic
-                            </p>
-                            <p class="ides-little-text-about-us " translate>about us description complement
-                            </p>
-                            <p class="ides-little-text-about-us " translate>about us help
-                            </p>
-                            <p class="ides-little-text-about-us " translate>about us contact
-                            </p>
-                        </div>
-
-                        <div class="col-md-6 d-flex justify-content-center">
-
-                            <img src="assets/logos/logo-color.svg" alt="" style="width:370px ;height:320px;">
-
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-
-
-            </div>
-        </div>
-
-
-
-        <div class="row bg-twitter">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 p-4">
-                        <a class="twitter-timeline" data-width="500" data-height="640" href="https://twitter.com/escuelagob_ide">Tweets by escuelagob_ide</a>
-
-                    </div>
-
-                    <div class="col-md-6 d-flex justify-content-center">
-                        <img class="m-md-auto d-block" src="assets/twitter/zona-twitter.png" alt="" style="width:370px ;height:320px;">
-                    </div>
-                </div>
-            </div>
-
-
-
+<div class="row mb-4">
+    <div class="col-md-12 ides-height-100-about-us animate__animated animate__headShake">
+        <div class="text-center title" translate>about us
         </div>
     </div>
+</div>
+
+<div class="row ">
+    <div class="container ">
+        <div class="col-md-12 ides-about-text">
+
+            <div class="row">
+                <div class="col-md-6 text-center p-5 ">
+                    <div class="ides-little-tittle-text-about-us " translate>
+                        title-about-us</div>
+                    <p class="ides-little-text-about-us" translate>about us description
+                    </p>
+                    <p class="ides-little-text-about-us" translate>about us strategic
+                    </p>
+                    <p class="ides-little-text-about-us " translate>about us description complement
+                    </p>
+                    <p class="ides-little-text-about-us " translate>about us help
+                    </p>
+                    <p class="ides-little-text-about-us " translate>about us contact
+                    </p>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <img src="assets/logos/logo-color.svg" alt="" style="width:370px ;height:320px;">
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<div class="row bg-twitter">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <a class="twitter-timeline" data-width="500" data-height="640" href="https://twitter.com/escuelagob_ide">Tweets by escuelagob_ide</a>
+
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-center">
+                <img class="m-md-auto d-block" src="assets/twitter/zona-twitter.png" alt="" style="width:370px ;height:320px;">
+            </div>
+        </div>
+    </div>
+
+
+
+
 </div>

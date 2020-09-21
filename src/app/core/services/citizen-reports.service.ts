@@ -48,6 +48,7 @@ export class CitizenReportsService {
 
     const formData = new FormData();
     formData.append('name', profile.name);
+    formData.append('url', profile.url);
     formData.append('description', profile.description);
     formData.append('image', profile.images.image, profile.images.image.name);
     return this.httpClient.post(this.serverUrl + this.urlReports, formData);
@@ -55,9 +56,14 @@ export class CitizenReportsService {
 
   editReports(profile, id) {
 
+
+    console.log(profile);
+    
+
     const formData = new FormData();
     formData.append('name', profile.name);
     formData.append('description', profile.description);
+    formData.append('url', profile.url);
     if (profile.images.image && profile.images.image.name) {
       formData.append('image', profile.images.image, profile.images.image.name);
     }

@@ -77,6 +77,24 @@ export class IdesAuthorsComponent implements OnInit {
 
 
       },
+      {
+
+        image: 'assets/authors/andree.jpg',
+        name: 'Andree Silva',
+        work: 'Coordinación y seguimiento',
+        description: 'Es Licenciada en Comunicación Organizacional por la Universidad Internacional y participante del Programa de Liderazgo y Gerencia Pública para Mujeres, de la Escuela de Gobierno IDE - Universidad de Los Hemisferios.  Tiene amplia experiencia en manejo de comunicación política, y marketing para corporaciones públicas y privadas.'
+
+
+      },
+      {
+
+        image: 'assets/authors/pilar.jpg',
+        name: 'Pilar Asanza',
+        work: 'Coordinación y seguimiento',
+        description: 'Licenciada en Ciencias Políticas y alumni del Programa de Gobernanza y Liderazgo Político de la Escuela de Gobierno IDE-Universidad de Los Hemisferios.  En esta organización es coordinadora de programas y antes fue asistente técnica de la Corporación Líderes para Gobernar. Es Senior speaker en EducaTec, una organización que asesora sobre el uso sano de la tecnología. '
+
+
+      },
     ]
 
 

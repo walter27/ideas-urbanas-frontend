@@ -71,9 +71,6 @@ export class CardBasicStreamgraphComponent implements OnInit, OnChanges {
 
   createStreamGraph() {
 
-
-    console.log('STRWAMGRAP', this.data);
-
     this.chartOptions = {
       chart: {
         type: "streamgraph",

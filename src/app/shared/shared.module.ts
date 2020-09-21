@@ -53,6 +53,10 @@ import { IdesSocialMediaComponent } from './ides-social-media/ides-social-media.
 import { IdesAuthorsComponent } from './ides-authors/ides-authors.component';
 import { IdesDatatableValuesindiceComponent } from './ides-datatable-valuesindice/ides-datatable-valuesindice.component';
 import { DialogModule } from 'primeng/dialog';
+import {InputNumberModule} from 'primeng/inputnumber';
+import { IdesCitizenReportsInfoComponent } from './ides-citizen-reports-info/ides-citizen-reports-info.component';
+
+
 
 
 
@@ -90,7 +94,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     IdesVideosComponent,
     IdesSocialMediaComponent,
     IdesAuthorsComponent,
-    IdesDatatableValuesindiceComponent
+    IdesDatatableValuesindiceComponent,
+    IdesCitizenReportsInfoComponent
   ],
   exports: [
     HeaderComponent,
@@ -118,7 +123,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     IdesVideosComponent,
     IdesSocialMediaComponent,
     IdesAuthorsComponent,
-    IdesDatatableValuesindiceComponent
+    IdesDatatableValuesindiceComponent,
+    IdesCitizenReportsInfoComponent
   ],
   imports: [
     CommonModule,
@@ -141,6 +147,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TableModule,
     ToastModule,
     DialogModule,
+    InputNumberModule,
     LightboxModule,
     InputTextModule,
     GalleriaModule,

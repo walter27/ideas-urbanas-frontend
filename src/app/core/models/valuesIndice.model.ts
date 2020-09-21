@@ -1,5 +1,5 @@
 export interface Value {
     id: string;
-    year: string;
-    value: any;
+    year: number;
+    value: number;
 }

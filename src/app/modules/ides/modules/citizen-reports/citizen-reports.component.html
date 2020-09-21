@@ -1,4 +1,4 @@
-<div class="row mx-auto covid-header">
+<div class="row  covid-header">
     <div class="covid-header1 ">
         <h2 translate>citizen reports</h2>
     </div>
@@ -6,7 +6,7 @@
 
         <div class="row">
 
-            <div class="col-lg-12 text-right">
+            <div class="col-md-12 text-right">
                 <a class=" ides-text-white cursor-pointer" routerLink="/" translate>home_city</a>
             </div>
 
@@ -51,6 +51,24 @@
                     <app-ides-citizen-reports-card [items]="reports" [item]="item"></app-ides-citizen-reports-card>
                 </div>
             </div>-->
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="container">
+
+            <div class="anima-texto text-center">
+                <h2 class="subtitulo" translate>infografias</h2>
+            </div>
+
+            <div class="anima-texto text-center">
+                <p class="subtitulo2" translate>infografias_text</p>
+            </div>
+
+            <app-ides-citizen-reports-info></app-ides-citizen-reports-info>
         </div>
     </div>
 </div>

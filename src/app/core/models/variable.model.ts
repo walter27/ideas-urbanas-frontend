@@ -4,6 +4,7 @@ import { Origin } from './origin.model';
 export interface Variable {
     _id: string;
     name: string;
+    code: string;
     type: string;
     description: string;
     chart_type: string;

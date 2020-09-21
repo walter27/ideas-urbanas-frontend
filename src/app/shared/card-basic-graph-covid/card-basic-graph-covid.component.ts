@@ -56,7 +56,6 @@ export class CardBasicGraphCovidComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     if (changes["data"] && this.data.length > 0) {
       this.translate();
-      //console.log('BAR',this.data);
 
       //this.createBarChart();
     }

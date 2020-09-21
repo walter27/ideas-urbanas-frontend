@@ -121,7 +121,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "Se declara en emergencia en todo el territorio ecuatoriano."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">20 DE MARZO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.diariocorreo.com.ec/40321/ciudad/municipalidad-de-machala-desinfecta-hospital-y-centros-de-salud-de-la-ciudad" target="_blank"><img src = "assets/covid/marzo/3.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Las municipalidades realizan </br> tareas de desinfección de espacios </br> públicos usando productos </br> como amonio.</p>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.diariocorreo.com.ec/40321/ciudad/municipalidad-de-machala-desinfecta-hospital-y-centros-de-salud-de-la-ciudad" target="_blank"><img src = "assets/covid/marzo/3.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Las municipalidades </br> realizan tareas de </br> desinfección de espacios públicos..</p>',
           description: "Las municipalidades realizan tareas de desinfección de espacios públicos usando productos como amonio."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">23 DE MARZO</strong>',
@@ -161,7 +161,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "Coe Nacional solicita a las municipalidades regular el uso de mascarilla."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">8 DE ABRIL</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://elespectadorchimborazo.com/ordenanza-establece-uso-obligatorio-de-mascarilla-en-espacios-publicos-de-riobamba/" target="_blank"><img src = "assets/covid/abril/4.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Riobamba y Santo Domingo son las primeras ciudades </br> capitales en aprobar ordenanzas </br> para regular el uso de mascarilla.</p>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://elespectadorchimborazo.com/ordenanza-establece-uso-obligatorio-de-mascarilla-en-espacios-publicos-de-riobamba/" target="_blank"><img src = "assets/covid/abril/4.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Riobamba y Santo Domingo </br>  son las primeras ciudades capitales </br>  en aprobar ordenanzas..</p>',
           description: "Riobamba y Santo Domingo son las primeras ciudades capitales en aprobar ordenanzas para regular el uso de mascarilla."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">9 DE ABRIL</strong>',
@@ -193,7 +193,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "Alcaldes empiezan a recibir estadísticas de contagios en sus cantones por parte del MSP."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">3 DE MAYO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.eluniverso.com/noticias/2020/05/02/nota/7830372/115-funcionarios-municipales-fallecidos-18-alcaldes-contagiados" target="_blank"><img src = "assets/covid/mayo/2.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">115 funcionarios municipales </br> fallecidos  y 19 alcaldes contagiados </br> por COVID-19 a nivel </br> nacional, según AME.</p>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.eluniverso.com/noticias/2020/05/02/nota/7830372/115-funcionarios-municipales-fallecidos-18-alcaldes-contagiados" target="_blank"><img src = "assets/covid/mayo/2.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">115 funcionarios </br> municipales fallecidos </br>   y 19 alcaldes contagiados </br> por COVID-19..</p>',
           description: "115 funcionarios municipales fallecidos y 19 alcaldes contagiados por COVID-19 a nivel nacional, según AME."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">4 DE MAYO</strong>',
@@ -201,7 +201,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "El país empieza a volver gradualmente a una nueva normalidad."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">7 DE MAYO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.elcomercio.com/actualidad/moreno-alcades-economia-coronavirus-ecuador.html" target="_blank"><img src = "assets/covid/mayo/4.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">El Presidente de la República </br> hace un llamado  a los alcaldes a cambiar </br> de color de semáforos </br>  para reactivar la economía.</p>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.elcomercio.com/actualidad/moreno-alcades-economia-coronavirus-ecuador.html" target="_blank"><img src = "assets/covid/mayo/4.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">El Presidente de la</br>  República hace un llamado </br>  a los alcaldes a cambiar  de color de semáforos..</p>',
           description: "El Presidente de la República hace un llamado a los alcaldes a cambiar de color de semáforos para reactivar la economía."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">12 DE MAYO</strong>',
@@ -355,9 +355,39 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "Ambato lanza la campaña Un Pacto para Vivir que busca reducir los contagios del COVID-19."
         },
         {
-          name: ' <strong style="position: absolute; top:118px; right:10px;">31 DE AGOSTO</strong>',
-          label: '<div style="position: absolute; bottom:-8px; right:-25px;cursor: pointer;"><a href="https://www.eluniverso.com/guayaquil/2020/08/30/nota/7960996/personal-sanitario-acude-latacunga" target="_blank"><img src = "assets/covid/agosto/31-ago.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">Guayaquil envía brigadas </br> médicas a Latacunga, </br> antes lo hizo a Portoviejo y Quito</p>',
+          name: ' <strong style="position: absolute; top:118px;left:10px;">31 DE AGOSTO</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;cursor: pointer;"><a href="https://www.eluniverso.com/guayaquil/2020/08/30/nota/7960996/personal-sanitario-acude-latacunga" target="_blank"><img src = "assets/covid/agosto/31-ago.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Guayaquil envía brigadas </br> médicas a Latacunga, </br> antes lo hizo a Portoviejo y Quito</p>',
           description: "Guayaquil envía brigadas médicas a Latacunga , antes lo hizo a Portoviejo y Quito."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">8 DE SEPTIEMBRE</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.lahora.com.ec/tungurahua/noticia/1102327218/municipio-de-ambato-plantea-varias-restricciones-para-enfrentar-la-pandemia" target="_blank"><img src = "assets/covid/septiembre/8.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">Ambato aprueba ordenanza </br> con restricciones para </br> controlar la pandemia</p>',
+          description: "Ambato aprueba ordenanza con restricciones para controlar la pandemia."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">10 DE SEPTIEMBRE</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;cursor: pointer;"><a href="https://www.eluniverso.com/noticias/2020/09/10/nota/7972174/alcaldes-esmeraldas-anuncian-marcha-quito-si-gobierno-central-no" target="_blank"><img src = "assets/covid/septiembre/10.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Presidente de AME Esmeraldas </br> anuncia que los municipios..</p>',
+          description: "Presidente de AME Esmeraldas anuncia que los municipios no pueden funcionar por los atrasos en las transferencias gubernamentales."
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">10 DE SEPTIEMBRE</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.eltelegrafo.com.ec/noticias/sociedad/6/mascarillas-carchi-instituciones-publicas" target="_blank"><img src = "assets/covid/septiembre/10-1.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">El Gremio de Maestros, </br>  Sastres y Modistas de </br>  Carchi entregó 40 mil </br>  mascarillas..</p>',
+          description: "El Gremio de Maestros, Sastres y Modistas de Carchi entregó 40 mil mascarillas confeccionadas por sus asociados que podrán ser utilizadas por funcionarios de cinco instituciones públicas."
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px;left:10px;">11 DE SEPTIEMBRE</strong>',
+          label: '<div style="position: absolute; bottom:-8px;right:-25px;cursor: pointer;"><a href="https://lahora.com.ec/santodomingo/noticia/1102327453/vuelven-ferias-artesanales-presenciales-" target="_blank"><img src = "assets/covid/septiembre/11.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; top:30px;">Santo Domingo retoma </br> las ferias artesanales..</p>',
+          description: "Santo Domingo retoma las ferias artesanales presenciales para reactivar la economía local"
+        },
+        {
+          name: ' <strong style="position: absolute; bottom:118px;left:10px;">13 DE SEPTIEMBRE</strong>',
+          label: '<div style="position: absolute; top:-8px;right:-25px;cursor: pointer;"><a href="https://www.eluniverso.com/guayaquil/2020/09/11/nota/7973407/asi-sera-movilizacion-guayaquil-samborondon-daule-duran-partir-14" target="_blank"><img src = "assets/covid/septiembre/13.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:10px;">A partir de esta </br>fecha termina el estado  </br>de excepción por el COVID-19</p>',
+          description: "A partir de esta fecha termina el estado de excepción por el COVID-19 a nivel nacional. Los GAD que tienen competencia de tránsito, se encargarán de regular la movilización de la ciudadanía en transporte público y vehículos particulares. "
+        },
+        {
+          name: ' <strong style="position: absolute; top:118px; right:10px;">14 DE SEPTIEMBRE</strong>',
+          label: '<div style="position: absolute; bottom:-8px; right:-25px;cursor: pointer;"><a href="https://www.elcomercio.com/actualidad/movilidad-coe-vehiculos-emergencia-coronavirus.html." target="_blank"><img src = "assets/covid/septiembre/14.png" width="60px" height="60px " /></a></div> <p style="max-width:500px;position: absolute; right: 10px; top:30px;">Guayaquil, Cuenca, </br>  Azogues, Loja y Morona </br> anunciaron..</p>',
+          description: "Guayaquil, Cuenca, Azogues, Loja y Morona anunciaron que mantendrán durante septiembre la restricción de circulación vehicular por el último dígito de la placa, par e impar"
         }]
       }]
     };

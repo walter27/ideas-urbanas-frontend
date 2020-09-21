@@ -1,0 +1,26 @@
+<p-galleria [(value)]="images" [(visible)]="displayCustom" [(activeIndex)]="activeIndex" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '850px'}" [numVisible]="7" [circular]="true" [fullScreen]="true" [showItemNavigators]="true"
+    [showThumbnails]="false" [baseZIndex]="100000">
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item.previewImage" style="width: 100%; display: block;" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center">
+            <img [src]="item.tumbnailImage" style="width:50px; height:60px; display: block;" />
+        </div>
+    </ng-template>
+</p-galleria>
+
+
+<div class="card-columns  mt-5">
+    <div *ngFor="let item of images, let index = index;" class="card cursor-pointer  containe">
+        <img [src]="item.tumbnailImage" class="card-img-top " alt="..." />
+        <div class="overlay">
+            <div class="icon">
+                <img (click)="imageClick(index)" style="width:60px; height:60px;" src="assets/ICONOS/ampliar2.png " alt=" ">
+            </div>
+        </div>
+        <div class=" card-body text-center ">
+            <h4 class="card-title ides-text-blue ">{{item.text}}</h4>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,4 @@
 <app-header (showMore)="onShowMore($event)" (setLanguage)="onSetLanguage($event)" [items]="items" [language]="language"></app-header>
-<div>
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 <app-footer [language]="language"></app-footer>
 <!-- <ngx-spinner type="ball-spin-clockwise"></ngx-spinner>-->

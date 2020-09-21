@@ -28,6 +28,7 @@ export class CitizenReportsAdminComponent implements OnInit {
   columns = [
     { name: 'name', prop: 'name', width: '10%' },
     { name: 'description', prop: 'description', width: '60%' },
+    { name: 'url', prop: 'url', width: '30%' },
     { name: 'image', prop: 'image_route' }
   ];
   fields: FieldsForm[] = [
@@ -46,6 +47,13 @@ export class CitizenReportsAdminComponent implements OnInit {
       required: false
     },
     {
+      label: 'url',
+      type: 'text',
+      id: 'url',
+      formControlName: 'url',
+      required: true
+    },
+    {
       label: 'image',
       type: 'file',
       id: 'image',
@@ -59,6 +67,7 @@ export class CitizenReportsAdminComponent implements OnInit {
   // Forms
   addEditForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
+    url: new FormControl('', [Validators.required]),
     description: new FormControl(''),
     image: new FormControl('')
   });

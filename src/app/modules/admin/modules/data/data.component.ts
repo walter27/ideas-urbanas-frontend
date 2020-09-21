@@ -22,7 +22,7 @@ export class DataComponent implements OnInit {
   model = 'Datos';
   filters: Filters = {
     page: 0,
-    limit: 30,
+    limit: 100,
     ascending: true,
     sort: '_id'
   };

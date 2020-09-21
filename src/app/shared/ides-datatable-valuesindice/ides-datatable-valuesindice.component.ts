@@ -69,8 +69,8 @@ export class IdesDatatableValuesindiceComponent implements OnInit, ControlValueA
   addvalue() {
     this.value = {
       id: '',
-      year: '',
-      value: ''
+      year: 0,
+      value: 0
     };
     this.displayDialog = true;
 
@@ -102,13 +102,13 @@ export class IdesDatatableValuesindiceComponent implements OnInit, ControlValueA
       this.listValues.push(this.value);
 
     }
-
+ 
     this.listValues = [...this.listValues];
     this.displayDialog = false;
     this.value = {
       id: '',
-      year: '',
-      value: ''
+      year: 0,
+      value: 0
     };
     this.onTouched();
     this.onChange(this.listValues);

@@ -559,6 +559,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
         });
 
         this.resultData.forEach((d) => {
+
           if (d.year.toString() === this.yearSelected) {
             //console.log(formatLabel(d.obj_Canton.name));
 

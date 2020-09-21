@@ -1,9 +1,11 @@
-import { Clasification } from './clasification.model';
+import { Variable } from './variable.model';
+import { Region } from './regions.model';
 
 export interface Indicator {
     _id: string;
-    name: string;
-    description: string;
-    obj_Clasification: Clasification;
-    configs: any;
+    ridit: number;
+    ridit_normalize: number;
+    year: number;
+    obj_Variable: Variable;
+    obj_Canton: Region;
 }
