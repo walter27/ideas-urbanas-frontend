@@ -185,8 +185,7 @@
     "downloadSVG": "Descargar SVG",
     "downloadPDF": "Descargar PDF",
     "downloadCSV": "Descargar CSV",
-    "downloadXLS": "Descargar XLS",
-    "value": "Valor",
+    "downloadXLS": "Descargar XLSX",
     "year": "Año",
     "search_research": "Año, titulo o autores",
     "search": "Buscar:",
@@ -194,7 +193,24 @@
     "investigation_subtitle": "Te conectamos con los estudios académicos sobre esta ciudad",
     "shortly": "Próximamente",
     "infografias": "Infografías",
-    "infografias_text": "Datos complejos al alcance de todos"
+    "infografias_text": "Datos complejos al alcance de todos",
+    "value": "Valor",
+    "interpretation": "Interpretación",
+    "categorie": "Categoría",
+    "colorchart": "Evaluación semáforo",
+    "name": "Nombre",
+    "description": "Descripción",
+    "information": "Información",
+    "loadIMC": "Generando índice multivariable de ciudades",
+    "loadCovid": "Generando graficas",
+    "source": "Fuente:",
+    "indice": "Índice multivariado de ciudades"
+
+
+
+
+
+
 
 
 

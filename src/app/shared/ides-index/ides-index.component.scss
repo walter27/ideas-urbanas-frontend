@@ -72,10 +72,52 @@ h2.subtitulo {
 }
 
 //table
-:host ::ng-deep {
-    .p-datatable-responsive-demo .p-datatable-tbody>tr>td .p-column-title {
-        display: none;
-    }
+:host::ng-deep.ui-table .ui-table-tbody>tr>td {
+    background: #124ca6;
+    color: white;
+    border: none;
+}
+
+:host::ng-deep.ui-table .ui-table-thead>tr>th {
+    background: #124ca6;
+    color: white;
+    border: none;
+    display: none;
+}
+
+//treetable
+:host::ng-deep.ui-treetable .ui-treetable-tbody>tr>td {
+    padding: 0;
+}
+
+//ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-dialog-draggable ui-dialog-resizable
+//dialog
+:host::ng-deep.ui-dialog .ui-dialog-content {
+    background: #124ca6;
+    opacity: 0.9;
+    overflow: unset;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-titlebar {
+    background: #124ca6;
+    opacity: 0.9;
+    overflow: unset;
+}
+
+:host::ng-deep.ui-dialog-mask {
+    top: 40px;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-title {
+    color: white;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon span {
+    color: white;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon span:hover {
+    color: #F8A901;
 }
 
 @media screen and (max-width: 40rem) {
@@ -106,6 +148,30 @@ h2.subtitulo {
                 }
             }
         }
+    }
+}
+
+:host ::ng-deep .priority-2,
+ :host ::ng-deep .priority-3,
+ :host ::ng-deep .visibility-sm {
+    display: none;
+}
+
+@media screen and (max-width: 39.938em) {
+     :host ::ng-deep .visibility-sm {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 40em) {
+     :host ::ng-deep .priority-2 {
+        display: table-cell;
+    }
+}
+
+@media screen and (min-width: 64em) {
+     :host ::ng-deep .priority-3 {
+        display: table-cell;
     }
 }
 
@@ -141,4 +207,64 @@ p.subtitulo {
     height: 30px;
     width: 30px;
     background: url(../../../assets/social-media/twitter.svg);
+}
+
+.green {
+    background-color: green !important;
+    color: green !important;
+    border-radius: 10px;
+}
+
+.green-variable {
+    color: white !important;
+    background-color: green !important;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.yellow {
+    background-color: yellow !important;
+    color: yellow !important;
+    border-radius: 10px;
+}
+
+.yellow-variable {
+    background-color: yellow !important;
+    border-radius: 10px;
+    color: black !important;
+    padding: 5px;
+}
+
+.red {
+    background-color: red!important;
+    color: red !important;
+    border-radius: 10px;
+}
+
+.red-variable {
+    background-color: red!important;
+    color: white !important;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.table-cell {
+    font-size: .9em;
+}
+
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+
+.icon-info:hover {
+    color: #F8A901;
+}
+
+.excel:hover {
+    border-bottom: 1px solid #124ca6;
+}
+
+.excel {
+    color: #124ca6;
 }

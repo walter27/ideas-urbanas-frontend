@@ -35,29 +35,22 @@ import HC_accessibility from 'highcharts/modules/accessibility';
 import { OnChanges } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
+import { TriStateCheckbox } from 'primeng';
+import { TreeNode } from 'primeng/api';
+require('../../../assets/js/exportxlsx')(Highcharts);
 
+
+
+const roundTo = require('round-to');
 
 
 @Component({
   selector: "app-ides-index",
   templateUrl: "./ides-index.component.html",
-  animations: [
-    trigger('rowExpansionTrigger', [
-      state('void', style({
-        transform: 'translateX(-10%)',
-        opacity: 0
-      })),
-      state('active', style({
-        transform: 'translateX(0)',
-        opacity: 1
-      })),
-      transition('* <=> *', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
-    ])
-  ],
   styleUrls: ["./ides-index.component.scss"],
 })
 export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
-  console = console;
+  Array = Array;
 
 
 
@@ -68,8 +61,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     sort: "_id",
   };
 
-  value = 2010;
-  highValue = 2020;
+
   options: Options = {
     ceil: 2020,
     floor: 2010,
@@ -93,216 +85,17 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
   downloadXLS: string;
 
 
-  @Input() marginAuto = false;
-  @Input() title: string;
-  @Input() variableSelected: Variable;
-  @Input() citySelected: Region;
-  @Input() showDropCities = false;
-  @Input() showDropYears = false;
-  @Input('activeCities') activeCities: any;
-  @Input('yearsSelected') yearsSelected: any;
-  @Input() zone: string;
 
-  years: ItemDropdown[] = [];
+  items: any[] = [];
+  data: any[] = [];
+  display: boolean = false;
+  chartDetails: any;
 
-  public lineChartData: Chart.ChartDataSets[] = [];
-  public lineChartLabels: Label[] = [];
-  public lineChartColors: Color[] = [];
-  public lineChartLegend = true;
-  public lineChartType = "line";
-  public lineChartPlugins = [pluginAnnotations];
 
-  @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
-  resultData: Data;
+  @Input('indexes') indexes: any;
 
-  cities: ItemDropdown[] = [];
-  axes: ItemDropdown[] = [];
-  baseData: any;
-  //filterData: any;
-  loadData = false;
 
-  // Radar
-  public radarChartOptions: RadialChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scale: {
-      ticks: {
-        stepSize: 20,
-        min: 0,
-        max: 100,
-      },
-      pointLabels: {
-        fontSize: window.innerWidth < 575 ? 10 : 12,
-        fontColor: "black",
-        fontFamily: "Noto Sans TC",
-        lineHeight: 1,
-      },
-      gridLines: {
-        lineWidth: 2,
-        zeroLineColor: "#e4e9f2",
-        color: ["#e2e9f0", "#e3edf7", "#f4f8fd", "#fdf9e5", "#fcf4e2"],
-      },
-    },
-    legend: {
-      onClick(event, legendItem) {
-        const index = legendItem.datasetIndex;
-        const ci = this.chart;
-        const meta = ci.getDatasetMeta(index);
-
-        let t = [];
-        if (sessionStorage.getItem("citiesHidden")) {
-          t = JSON.parse(sessionStorage.getItem("citiesHidden"));
-          if (
-            ci.data.datasets.length - 1 ===
-            JSON.parse(sessionStorage.getItem("citiesHidden")).length &&
-            t.indexOf(legendItem.text) === -1
-          ) {
-            return;
-          }
-        }
-
-        // See controller.isDatasetVisible comment
-        meta.hidden =
-          meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-
-        if (meta.hidden) {
-          t.push(legendItem.text);
-        } else {
-          const idx = t.indexOf(legendItem.text);
-          t.splice(idx, 1);
-        }
-        sessionStorage.setItem("citiesHidden", JSON.stringify(t));
-
-        // We hid a dataset ... rerender the chart
-        ci.update();
-      },
-      labels: {
-        fontFamily: '"Noto Sans TC", serif',
-        fontSize: 10,
-        fontColor: "black",
-      },
-    },
-    tooltips: {
-      bodyFontSize: 16,
-      titleFontSize: 16,
-      bodyFontFamily: '"Noto Sans TC", serif',
-      titleFontFamily: '"Noto Sans TC", serif',
-      enabled: false,
-      custom(tooltip) {
-        // Tooltip Element
-        const t = document.getElementById("chartjs-tooltip");
-        if (t) {
-          t.remove();
-        }
-        let tooltipEl = document.getElementById("chartjs-tooltip");
-
-        if (!tooltipEl) {
-          tooltipEl = document.createElement("div");
-          tooltipEl.id = "chartjs-tooltip";
-          tooltipEl.innerHTML = "<table></table>";
-          this._chart.canvas.parentNode.appendChild(tooltipEl);
-        }
-
-        // Hide if no tooltip
-        if (tooltip.opacity === 0) {
-          tooltipEl.style.opacity = "0";
-          return;
-        }
-
-        // Set caret Position
-        tooltipEl.classList.remove("above", "below", "no-transform");
-        if (tooltip.yAlign) {
-          tooltipEl.classList.add(tooltip.yAlign);
-        } else {
-          tooltipEl.classList.add("no-transform");
-        }
-
-        function getBody(bodyItem) {
-          return bodyItem.lines;
-        }
-
-        // Set Text
-        if (tooltip.body) {
-          // tslint:disable-next-line:no-string-literal
-          const description = tooltip["afterBody"];
-          // tslint:disable-next-line:no-string-literal
-          const title = tooltip["title"];
-          const titleLines = [title];
-          const bodyLines = tooltip.body.map(getBody);
-
-          let innerHtml = '<thead style="color: rgba(7, 109, 205, 1)">';
-
-          titleLines.forEach(function (title) {
-            innerHtml += "<tr><th>" + title + "</th></tr>";
-          });
-          innerHtml += "</thead><tbody>";
-
-          bodyLines.forEach(function (body, i) {
-            const color = sessionStorage.getItem(
-              body[0].split(":")[0].toLocaleLowerCase()
-            );
-            const colors = { backgroundColor: color, borderColor: "white" };
-            let style = "background:" + colors.backgroundColor;
-            style += "; border-color:" + colors.borderColor;
-            style += "; border-width: 2px";
-            const span =
-              '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-            const span1 = '<span class="chartjs-tooltip-key1"></span>';
-            innerHtml +=
-              "<tr><td>" + span + body[0].split(":")[0] + "</td></tr>";
-            innerHtml +=
-              '<tr><td style="color: #8F8F8F; font: Regular 16px/30px Noto Sans TC;">' +
-              span1 +
-              body[0].split(":")[1] +
-              "</td></tr>";
-          });
-          if (description.length > 0) {
-            innerHtml += "<tr><td>" + description + "</td></tr>";
-          }
-          innerHtml += "</tbody>";
-
-          const tableRoot = tooltipEl.querySelector("table");
-          tableRoot.innerHTML = innerHtml;
-        }
-
-        const positionY = this._chart.canvas.offsetTop;
-        const positionX = this._chart.canvas.offsetLeft;
-
-        // Display, position, and set styles for font
-        tooltipEl.style.opacity = "1";
-        tooltipEl.style.left = positionX + tooltip.caretX + "px";
-        tooltipEl.style.top = positionY + tooltip.caretY + "px";
-        tooltipEl.style.fontFamily = tooltip._bodyFontFamily;
-        tooltipEl.style.fontSize = tooltip.bodyFontSize + "px";
-        tooltipEl.style.fontStyle = tooltip._bodyFontStyle;
-        tooltipEl.style.padding =
-          tooltip.yPadding + "px " + tooltip.xPadding + "px";
-      },
-      callbacks: {
-        title(item, data) {
-          return data.labels[item[0].index].toString();
-        },
-        label(tooltipItem, data) {
-          const datasetLabel =
-            data.datasets[tooltipItem.datasetIndex].label || "";
-          let value = tooltipItem.yLabel.toString();
-          // tslint:disable-next-line:radix
-          if (parseInt(value) >= 1000) {
-            value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-          }
-          return datasetLabel + ": " + value;
-        },
-      },
-    },
-  };
-  public radarChartLabels: Label[] = [];
-
-  public radarChartData: ChartDataSets[] = [];
-  public radarChartType: ChartType = "radar";
-
-  cantons: any[] = [];
-  cantonsSlected: any[] = [];
   marginSocial: string;
   imageBase64: any;
   socialMedia: any = [
@@ -336,361 +129,395 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     MO_Highcharts(this.highcharts);
   }
 
-  ngOnInit() {
-    this.loadData = true;
-    if (this.citySelected) {
-      this.getData();
-    }
-
-  }
+  ngOnInit() { }
 
   ngOnChanges(changes) {
-    if (changes['activeCities'] || changes["yearsSelected"] && this.activeCities.length > 0 && this.yearsSelected.length > 0) {
-      this.getData();
-    }
-  }
 
-  /* @HostListener('window:scroll', ['$event'])
-  onWindowIndexScroll($event) {
-    if (!this.loadData && this.router.url === '/home' && $event.srcElement.scrollingElement.scrollTop > 100) {
-      this.loadData = true;
-      this.getData();
-    }
-  }*/
+    if (changes["indexes"] || this.indexes.length > 0) {
 
-  updateChart(resp) {
-    this.radarChartData = [];
-    this.radarChartLabels = [];
-    Object.keys(resp).forEach((c) => {
-      Object.keys(resp[c]).forEach((cl) => {
-        if (this.radarChartLabels.indexOf(cl) === -1) {
-          this.radarChartLabels.push(cl);
-        }
-      });
-      this.radarChartLabels.sort();
-      let color = "";
-      if (!this.citySelected) {
-        let city = this.activeCities.find(
-          (x) => x.name.toLowerCase() === c.toLowerCase()
-        );
-        color = city.color;
-      } else {
-        color = this.citySelected.color;
-      }
+      this.translate()
+      console.log(this.indexes);
 
-      sessionStorage.setItem(c.toLowerCase(), color);
 
-      this.radarChartData.push({
-        data: [],
-        label: c,
-        borderColor: color,
-        pointBorderColor: "white",
-        pointBackgroundColor: color,
-        // backgroundColor: COLORS[idx].colorOpacity,
-        fill: false,
-      });
-    });
-
-    this.axes = [];
-    this.radarChartLabels.forEach((labels) => {
-      this.axes.push({
-        id: labels.toString(),
-        name: labels.toString(),
-        check: false,
-      });
-      this.radarChartData.forEach((ci) => {
-        ci.data.push(resp[ci.label][labels.toString()]);
-      });
-    });
-
-    let splitLabels = [];
-
-    if (window.innerWidth <= 768) {
-      this.radarChartLabels.forEach((label) => {
-        let elementsLabel = label.toString().split(" ");
-
-        if (elementsLabel.length == 2) {
-          splitLabels.push(elementsLabel);
-        } else if (elementsLabel.length > 2) {
-          let elementLabelResult = [];
-
-          if (elementsLabel.length > 2) {
-            elementLabelResult.push(elementsLabel[0] + " " + elementsLabel[1]);
-          }
-
-          let secondLine = " ";
-          for (let i = 2; i < elementsLabel.length; i++) {
-            secondLine = secondLine + elementsLabel[i];
-          }
-          elementLabelResult.push(secondLine.trimRight());
-          splitLabels.push(elementLabelResult);
-        } else {
-          splitLabels.push(elementsLabel[0]);
-        }
-
-        this.radarChartLabels = splitLabels;
-      });
     }
 
-    this.radarChartData.forEach((ci) => {
-      ci.label = capitalizeFirst(ci.label);
-    });
-
-    /*setTimeout(() => {
-      this.chartService.imageRadarBase24.then((value) => {
-        this.imageBase64 = {
-          name: 'chart',
-          data: value,
-          type: 'radar'
-        };
-      });
-    }, 3000);*/
   }
 
-  getData() {
-    if (this.citySelected) {
-      this.dataService
-        .listDataIndexes(this.citySelected._id)
-        .subscribe((resp) => {
-          this.baseData = resp;
-          this.updateChart(resp);
-          this.filterData();
-          this.marginSocial = 'mr-lg-5';
-        });
-    } else {
-      this.marginSocial = 'mr-lg-1';
 
-      let idCities = [];
-      this.activeCities.forEach(city => {
-        idCities.push(city.id);
-      });
-      this.dataService.listDataIndexes(idCities, this.yearsSelected).subscribe((resp) => {
-        this.baseData = resp;
-        this.updateChart(resp);
-        this.filterData();
-        //this.cantons = [];
-        /*Object.keys(resp).forEach((c) => {
-          this.cantons.push({
-            name: c,
-          });
-        });
-        this.getCantonsSelected();*/
-      });
-    }
-  }
 
-  /*getCantonsSelected() {
-    let selectedCantons = [];
 
-    if (this.cantonsSlected.length === 0) {
-      this.cantonsSlected.push(this.cantons[0]);
-    }
 
-    this.cantonsSlected.forEach((canton) => {
-      selectedCantons.push(canton.name);
-    });
 
-    this.filteredDataIndexes(selectedCantons);
-  }
 
-  filteredDataIndexes(cantonsSelected) {
-    let filtered = Object.keys(this.baseData)
-      .filter((key) => cantonsSelected.includes(key))
-      .reduce((obj, key) => {
-        obj[key] = this.baseData[key];
-        return obj;
-      }, {});
-
-    this.updateChart(filtered);
-  }*/
-
-  onCheckItemYear(e) {
-    const idx = this.years.findIndex((c) => c.id === e);
-    this.years[idx].check = !this.years[idx].check;
-    this.getData();
-  }
-
-  onCheckItemAxes(e) {
-    // this.filterData = this.baseData;
-    // Object.keys(this.filterData).forEach(c => {
-    //   let items = [];
-    //   Object.keys(this.filterData[c]).forEach(cl => {
-    //     if (cl == e)
-    //       delete this.filterData[c]
-    //   });
-    // });
-    // this.updateChart(this.filterData);
-  }
-
-  getTitle() {
-    if (this.title) {
-      return this.title;
-    } else {
-      return this.variableSelected.name;
-    }
-  }
-
-  // events
-  public chartClicked({
-    event,
-    active,
-  }: {
-    event: MouseEvent;
-    active: {}[];
-  }): void {
-    // console.log(event, active);
-  }
-
-  public chartHovered({
-    event,
-    active,
-  }: {
-    event: MouseEvent;
-    active: {}[];
-  }): void {
-    // console.log(event, active);
-  }
 
   filterData() {
 
-    //console.log(this.baseData);
-
-    this.cols = [];
-    this.subcols = [];
-
-    this.cols.push({ field: 'variable', header: 'variable' });
-    this.subcols.push({ field: 'indicator', header: 'indicator' });
 
     this.clasifications = [];
     this.series = [];
-    let firstData = Object.keys(this.baseData)[0];
-    let valuesData = this.baseData[firstData];
-    Object.keys(valuesData).forEach((c) => {
 
-      let indicators = [];
+    //load categories to radar
+    for (let i = 0; i < this.indexes[0].data.length; i++) {
 
-      valuesData[c].indicators.forEach(indicator => {
-
-        indicators.push({ indicator: indicator.name });
+      this.clasifications.push(this.indexes[0].data[i].clasification.name)
 
 
-
-      });
-
-      this.clasifications.push({ name: c, indicators });
+    }
 
 
-    });
+    for (let i = 0; i < this.indexes.length; i++) {
 
-    Object.keys(this.baseData).forEach((city) => {
       let data = [];
 
-      let clasificationName = this.baseData[city];
+      for (let j = 0; j < this.indexes[i].data.length; j++) {
+        data.push(this.indexes[i].data[j].acum)
+      }
 
-      Object.keys(clasificationName).forEach((clasification) => {
 
-        let value = clasificationName[clasification];
-
-        data.push(value.value);
-      });
 
       this.series.push({
-        name: city,
+        name: this.indexes[i].canton.name,
         data,
-        clasification: clasificationName,
         pointPlacement: 'on'
-      });
-      this.cols.push({ field: city, header: city });
-      this.subcols.push({ field: city, header: city });
+
+      })
+    }
 
 
-    });
-    this.translate();
-    //this.createRadar();
+    this.createRadar()
     this.createTable();
+    //this.createTabView();
+
+
   }
+
 
   createTable() {
 
-    //console.log(this.series);
-    let dataCity = {};
-    this.dataTable = [];
-    this.clasifications.forEach((clasification, i) => {
-
-      dataCity = { id: i, variable: clasification };
-      this.dataTable.push(dataCity);
-
-    });
 
 
-    this.series.forEach(serieCity => {
+    this.cols = [
+      { field: 'indice', header: 'indicator' },
+      { field: 'value', header: 'value' },
+      { field: 'interpretation', header: 'interpretation' },
+      //{ field: 'categorie', header: 'categorie' },
+      { field: 'color', header: 'colorchart' },
 
-      serieCity.data.forEach((value, i) => {
 
-        this.dataTable.forEach((data, j) => {
 
-          if (i === j) {
-            data[serieCity.name] = value;
+    ];
+
+
+
+
+
+    // console.log(this.indexes);
+
+
+    this.items = [];
+
+    for (let i = 0; i < this.indexes.length; i++) {
+      let clasification = {};
+      let variable = {};
+      this.data = [];
+      let rangoc = [{ min: 0, max: 49.9, color: 'red-variable', level: 'Bajo', simbolo: '%' },
+      { min: 50, max: 79.9, color: 'yellow-variable', level: 'Medio', simbolo: '%' },
+      { min: 80, max: 100, color: 'green-variable', level: 'Alto', simbolo: '%' }];
+
+
+      // console.log(this.indexes[i].canton.name);
+
+
+      for (let j = 0; j < this.indexes[i].data.length; j++) {
+
+
+
+
+
+
+        let interpretation = [];
+
+        let arrayInterpretation = this.indexes[i].data[j].clasification.interpretation.split('.');
+
+        interpretation.push(arrayInterpretation[0])
+
+        //console.log(arrayInterpretation[0]);
+        //console.log(arrayInterpretation[1]);
+
+
+
+
+
+
+
+
+
+
+
+
+        clasification = {
+          indice: this.indexes[i].data[j].clasification,
+          value: `${this.indexes[i].data[j].acum} %`,
+          interpretation,
+          categorie: rangoc,
+          year: this.indexes[i].data[j].year,
+          fuente: this.indexes[i].data[j].fuente,
+          color: this.indexes[i].data[j].color
+        }
+
+        let variables = [];
+
+
+
+        for (let k = 0; k < this.indexes[i].data[j].data.length; k++) {
+
+          let color = '';
+          let value;
+          let simbolo = '';
+          let rango = [];
+          let interpretation = [];
+
+
+
+
+
+          if (this.indexes[i].data[j].data[k].rango) {
+
+
+
+
+            simbolo = this.indexes[i].data[j].data[k].variable.measure_symbol;
+
+            color = this.indexes[i].data[j].data[k].intervalo.color;
+
+
+
+
+            if (this.indexes[i].data[j].data[k].variable.code === '0105') {
+              value = `${simbolo} ${this.indexes[i].data[j].data[k].origen} `;
+
+            } else {
+              value = `${this.indexes[i].data[j].data[k].origen} ${simbolo}`;
+
+            }
+
+
+
+
+
+
+
+
+
+
+            for (let w = 0; w < this.indexes[i].data[j].data[k].rango.length; w++) {
+
+
+              let min;
+              let max;
+              let color;
+              let level;
+
+              if (this.indexes[i].data[j].data[k].variable.code === '0801' ||
+                this.indexes[i].data[j].data[k].variable.code === '0802' ||
+                this.indexes[i].data[j].data[k].variable.code === '0803') {
+
+                min = this.indexes[i].data[j].data[k].rango[w].value;
+                max = '';
+                color = `${this.indexes[i].data[j].data[k].rango[w].color}-variable`;
+                level = this.indexes[i].data[j].data[k].rango[w].level;
+
+                rango.push({ min, max, color, level, simbolo });
+
+              } else {
+
+
+                min = roundTo(this.indexes[i].data[j].data[k].rango[w].min_intervalo, 2);
+                max = roundTo(this.indexes[i].data[j].data[k].rango[w].max_intervalo, 2)
+                color = `${this.indexes[i].data[j].data[k].rango[w].color}-variable`;
+                level = this.indexes[i].data[j].data[k].rango[w].level;
+
+                rango.push({ min, max, color, level, simbolo });
+              }
+
+            }
+
+
+
           }
 
-        });
-
-      });
-
-    });
-
-    this.series.forEach(serieCity => {
-
-      Object.keys(serieCity.clasification).forEach((keyClasification) => {
-        let indicators = serieCity.clasification[keyClasification];
-        Object.keys(indicators).forEach((key) => {
-          if (key === 'indicators') {
-            indicators[key].forEach((indicator, i) => {
-
-              this.dataTable.forEach(clasification => {
-                if (clasification.variable.name === keyClasification) {
 
 
-                  clasification.variable.indicators.forEach((indicatorDT, j) => {
+          let arrayInterpretation = this.indexes[i].data[j].data[k].variable.interpretation.split('.');
 
-                    if (i === j) {
-                      indicatorDT[serieCity.name] = indicator.data;
+          // console.log(arrayInterpretation[0]);
+          // console.log(arrayInterpretation[1]);
 
-                    }
-                  });
-
-                }
+          interpretation.push(arrayInterpretation[0])
+          interpretation.push(arrayInterpretation[1])
 
 
-
-              });
-
-            });
+          variable = {
+            indice: this.indexes[i].data[j].data[k].variable,
+            value,
+            interpretation,
+            categorie: rango,
+            color,
+            year: this.indexes[i].data[j].data[k].year,
+            fuente: this.indexes[i].data[j].fuente,
 
           }
+
+          variables.push({ data: variable, expanded: false, });
+
+        }
+
+        //console.log('-------------------------');
+
+
+
+        this.data.push({
+          data: clasification,
+          children: variables
 
         })
-        //console.log(serieCity.clasification[key]);
 
+
+
+
+
+      }
+
+
+
+      this.items.push({
+        header: this.indexes[i].canton.name,
+        table: this.data
       })
-    });
 
-    //console.log(this.dataTable);
+
+
+      //console.log(this.items);
+
+
+
+
+
+
+
+    }
+    //console.log(this.data);
+
+
+  }
+
+
+
+  showDialog(data) {
+
+    //console.log(data);
+
+
+    this.dataTable = [];
+
+    this.subcols = [
+
+      { field: 'name', header: 'name', width: '5px' },
+      { field: 'description', header: 'description', width: '90px' }
+
+    ]
+
+    this.display = true;
+    let dataRow1 = {
+
+      name: 'Categoría',
+      description: data.categorie
+
+    }
+
+    this.dataTable.push(dataRow1)
+
+    let name;
+
+
+
+    if (data.indice.is_indice) {
+      name = 'Variable';
+
+    } else {
+      name = 'Indicador'
+    }
+
+    let dataRow2 = {
+      name,
+      description: data.indice.name
+
+    }
+
+    this.dataTable.push(dataRow2)
+
+
+    let dataRow3 = {
+      name: 'Periodo',
+      description: data.year
+
+    }
+
+    this.dataTable.push(dataRow3)
+
+
+    let dataRow4 = {
+      name: 'Descripción',
+      description: data.indice.description
+    }
+
+    this.dataTable.push(dataRow4)
+
+    let dataRow5 = {};
+
+    if (data.indice.is_indice) {
+
+      let origins = [];
+      for (let i = 0; i < data.indice.origins.length; i++) {
+        origins.push(data.indice.origins[i].name)
+
+      }
+      dataRow5 = {
+        name: 'Fuente',
+        description: origins
+      }
+    } else {
+      dataRow5 = {
+        name: 'Fuente',
+        description: data.fuente
+      }
+    }
+
+
+
+    this.dataTable.push(dataRow5)
+
 
 
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   createRadar() {
 
-    let clasifications = [];
 
-    this.clasifications.forEach(clasification => {
-
-      clasifications.push(clasification.name);
-
-    });
 
     this.chartOptions = {
       chart: {
@@ -698,7 +525,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
         type: 'line'
       },
       title: {
-        text: '',
+        text: null,
       },
 
       pane: {
@@ -706,20 +533,29 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
       },
 
       xAxis: {
-        categories: clasifications,
+        categories: this.clasifications,
         tickmarkPlacement: 'on',
-        lineWidth: 0
+        lineWidth: 0,
+        labels: {
+          align: 'center',
+          distance: 30
+
+        }
+
       },
 
       yAxis: {
         gridLineInterpolation: 'polygon',
         lineWidth: 0,
-        min: 0
+        min: 0,
+        showLastLabel: true,
+        tickPositions: [0, 50, 100]
+
       },
 
       tooltip: {
-        shared: true,
-        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+        //shared: true,
+        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}%</b><br/>'
       },
 
       series: this.series,
@@ -743,59 +579,99 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
       },
 
       exporting: {
+        allowHTML: true,
+        sourceWidth: 1200,
+        sourceHeight: 600,
+        filename: `ideas_urbanas_indice_multivaribale_ciudades`,
+        chartOptions: {
+          title: {
+            useHTML: true,
+            text: `<span style="color:#124ca6;">Indice Multivariable de Ciudades<span/>`,
+            margin: 50
+
+          },
+
+          subtitle: {
+            useHTML: true,
+            text: `<span style="text-align: justify; text-align: justify">Indice Multivariable de Ciudades.</span>
+                   <span style="color:#124ca6;">[IDEAS Urbanas]<span/>`,
+            // text: '<span style="color:#00ff00;">1stline</span>' + '<br>' + '<span style="color:#ff0000;">2ndline</span>',
+            align: 'left',
+            verticalAlign: 'bottom',
+            y: 10,
+            x: 30
+          },
+          chart: {
+            events: {
+              load: function () {
+                var chart = this;
+                chart.renderer.image(
+                  'https://api-ideas-urbanas.uhemisferios.edu.ec/file/reportes/logo-color.svg',
+                  30,
+                  -210,
+                  200,
+                  500
+                )
+                  .add();
+              }
+            }
+          }
+        },
         buttons: {
           contextButton: {
+            enabled: true,
             menuItems: [
               {
-                text: this.downloadPNG, onclick() { this.exportChart({ type: 'image/png' }); }
+                text: 'Descargar PNG', onclick() { this.exportChart({ type: 'image/png' }); }
               },
               {
-                text: this.donwloadJPEG, onclick() { this.exportChart({ type: 'image/jpeg' }); }
+                text: 'Descargar JPEG', onclick() { this.exportChart({ type: 'image/jpeg' }); }
               },
               {
-                text: this.downloadSVG, onclick() { this.exportChart({ type: 'image/svg+xml' }); }
+                text: 'Descargar PDF', onclick() { this.exportChart({ type: 'application/pdf' }); }
               },
               {
-                text: this.downloadPDF, onclick() { this.exportChart({ type: 'application/pdf' }); }
+                text: 'Descargar CSV', onclick() { this.downloadCSV(); }
               },
               {
-                text: this.downloadCSV, onclick() { this.downloadCSV(); }
-              },
-              {
-                text: this.downloadXLS, onclick() { this.downloadXLS(); }
+                text: 'Descargar XLSX', onclick() { this.downloadXLSX(); }
               },
             ]
           }
+        },
+        csv: {
+          columnHeaderFormatter: function (item, key) {
+            if (!key) {
+              return 'Ciudad';
+            }
+            return false;
+          }
+        },
+        xlsx: {
+          worksheet: {
+            autoFitColumns: true,
+            categoryColumnTitle: 'Month',
+            dateFormat: 'yyyy-mm-dd',
+            name: 'data'
+          },
+          workbook: {
+            fileProperties: {
+              Author: "IDEAS Urbanas",
+              Company: "Universidad de los Hemisferios",
+              CreatedDate: new Date(Date.now())
+            }
+          }
         }
-      }
+      },
     };
     this.updateDemo = true;
-    this.getURLImage();
-
-  }
-
-  getURLImage() {
-    let chartsDetails = {
-      type: "png",
-      options: this.chartOptions,
+    this.chartDetails = {
+      type: 'png',
+      options: this.chartOptions
     };
-    this.chartService.generateImage(chartsDetails).subscribe((resp) => { });
-
   }
 
-  sharedImage(item) {
 
-    this.body = {
-      name: 'radar',
-      type: this.chartOptions.chart.type
-    }
-    this.chartService.shareImage(this.body).subscribe(async resp => {
-      this.socialMedia[0].link = await `https://www.facebook.com/sharer.php?u=${resp}`;
-      this.socialMedia[1].link = await `https://twitter.com/intent/tweet?url=${resp}&text=Plataforma de Ideas Urbanas`;
-    });
-
-    window.open(item.link, "blank");
-  }
 
   translate() {
 
@@ -826,7 +702,7 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
 
 
         });
-        this.createRadar();
+        this.filterData()
 
       });
 

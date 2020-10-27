@@ -28,7 +28,7 @@ export class ChartsService {
   constructor(
     private httpClient: HttpClient,
     private utilsService: UtilsService
-  ) {}
+  ) { }
 
   listCharts(): Observable<any> {
     return this.httpClient.get<any>(this.serverUrl + this.urlCharts).pipe(
@@ -50,39 +50,24 @@ export class ChartsService {
       );
   }
 
-  generateImage(options: any) {
-    return this.httpClient
-      .post(this.serverUrl + this.urlCharts + "/image", options, httpOptions)
-      .pipe(
-        map((resp) => {
-          return resp;
-        })
-      );
-  }
+  generateImage(options: any, variable: any) {
 
-  shareImage(varibale: string) {
+    let body = {
+      options,
+      variable
+    }
+
+
     return this.httpClient
-      .post(this.serverUrl + this.urlCharts + "/share", varibale, httpOptions)
+      .post(this.serverUrl + this.urlCharts + "/image", body, httpOptions)
       .pipe(
-        map((imageName: any) => {
-          let urlImage =
-            this.serverUrl + this.urlCharts + `/share/${imageName.img}`;            
+        map((resp: any) => {
+          let urlImage = this.serverUrl + this.urlCharts + `/share/${resp.name}`;
           return urlImage;
         })
       );
   }
 
-  saveImageBase64(imageBase64) {
-    return this.httpClient
-      .post(
-        this.serverUrl + this.urlCharts + "/sharing",
-        imageBase64,
-        httpOptions
-      )
-      .pipe(
-        map((resp) => {
-          return resp;
-        })
-      );
-  }
+
+
 }

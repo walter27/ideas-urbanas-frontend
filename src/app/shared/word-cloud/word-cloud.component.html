@@ -1,14 +1,14 @@
 <div class="row">
 
-    <div *ngIf="!citySelected && !citySelectedWordCloud" class=" col col-lg-12 col-xl-12 pl-4 pt-4 text-left">
+    <div *ngIf="!citySelected && !citySelectedWordCloud" class=" col-12 text-md-left text-center ">
         <h4 class="titulos-word" translate>describe_city</h4>
     </div>
 
 
     <div class="col-md-12  mt-4 ">
         <div class="input-group input-group-sm justify-content-center ">
-            <input type="text " pInputText [(ngModel)]="newTag " class="ides-text-blue " />
-            <div class=" ml-3 mt-3 mt-sm-0 ">
+            <input type="text " pInputText [(ngModel)]="newTag " class="ides-text-blue m-1 " />
+            <div class="  mt-sm-0 m-1">
                 <p-button label="{{ 'button.send' | translate}} " (onClick)="onAddTag(newTag, 'positive') "></p-button>
             </div>
         </div>

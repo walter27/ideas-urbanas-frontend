@@ -170,7 +170,7 @@
     "downloadSVG": "Download SVG",
     "downloadPDF": "Download PDF",
     "downloadCSV": "Download CSV",
-    "downloadXLS": "Download XLS",
+    "downloadXLS": "Download XLSX",
     "value": "Value",
     "year": "Year",
     "search_research": "Year, title or authors",
@@ -179,7 +179,19 @@
     "investigation_subtitle": "We connect you with academic studies about this city",
     "shortly": "Shortly",
     "infografias": "Infographs",
-    "infografias_text": "Complex data available to everyone"
+    "infografias_text": "Complex data available to everyone",
+    "interpretation": "Interpretation",
+    "categorie": " Category ",
+    "colorchart": "Color evaluation",
+    "name": "Name",
+    "description": "Description",
+    "information": "Information",
+    "loadIMC": "Generate multivarible indexes cities",
+    "loadCovid": "Generate charts",
+    "source": "Source:",
+    "indice": "Multivariate index of cities"
+
+
 
 
 

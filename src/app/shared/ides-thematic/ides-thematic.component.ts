@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ElementRef,
-  ViewChild,
-  OnDestroy,
-  HostListener,
-} from "@angular/core";
+import { Component, OnInit, Input, ElementRef, ViewChild, OnDestroy, HostListener, } from "@angular/core";
 import { Observable } from "rxjs";
 import { ResultList } from "src/app/core/models/resultList.model";
 import { Clasification } from "src/app/core/models/clasification.model";
@@ -70,12 +62,14 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   resultClasification$: any;
   resultVariables$: Observable<ResultList<Variable>>;
   resultData: Data;
+  resultData2: Data;
+
 
   ctx: any;
   myChart: Chart;
   years: ItemDropdown[] = [];
-  cities: ItemDropdown[] = [];
-  citiesSelected: ItemDropdown[] = [];
+  cities: any[] = [];
+  citiesSelected: any[] = [];
   yearSelected = "";
   imageBase64: any;
   downloadOptions: ItemDropdown[] = [
@@ -371,6 +365,16 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   public lineChartPlugins = [pluginAnnotations];
   loadCity = false;
 
+  //new
+  starPoint: number;
+  category: any[];
+  series: any[] = [];
+  yearsChart: any[];
+  yearsSelected: any[];
+
+
+
+
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
   constructor(
@@ -408,6 +412,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   }*/
 
   getCities() {
+
     this.regionService
       .listRegionsPublic(
         { page: 0, limit: 1000, ascending: true, sort: "_id" },
@@ -423,6 +428,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
               name: titleCase(c.name),
               check: true,
               color: c.color,
+              code: c.code
             });
             setCities.add(c._id);
           }
@@ -431,6 +437,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       });
   }
   getClasifications() {
+
     //let finalRes: any = [];
     this.resultClasification$ = this.clasificationService
       .listClasificationPublic(this.filters)
@@ -446,6 +453,9 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
           return resp.data;
         })
       );
+
+
+
   }
   getVariables() {
     this.resultVariables$ = this.variableService
@@ -465,14 +475,107 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
             "variableSelectedMeasureSymbol",
             this.variableSelected.measure_symbol
           );
+
+          if (this.citiesSelected.length === 0) {
+            this.citiesSelected.push(this.cities[0])
+
+          }
+
+
+
           this.getData();
+
+          this.getYears()
           return resp;
         })
       );
   }
 
+
+  getYearsMonth() {
+
+
+    let id_Cities = [];
+    this.yearsSelected = [];
+
+    for (let i = 0; i < this.citiesSelected.length; i++) {
+      id_Cities.push(this.citiesSelected[i].id);
+    }
+
+    this.dataService.listDatasPublic({ page: 0, limit: 2000, ascending: true, sort: "obj_Canton.name" },
+      this.variableSelected._id, id_Cities).subscribe(result => {
+
+        this.resultData2 = result.data;
+
+
+        if (this.resultData2.length > 0) {
+          let lastYear = this.resultData2[this.resultData2.length - 1].year;
+
+
+          this.yearsSelected.push(`${lastYear}`)
+          this.getdata();
+
+        } else {
+          this.series = [];
+        }
+
+
+
+
+      })
+
+  }
+
+
+  getYears() {
+
+    let id_Cities = [];
+    this.yearsSelected = [];
+
+    for (let i = 0; i < this.citiesSelected.length; i++) {
+      id_Cities.push(this.citiesSelected[i].id);
+    }
+
+
+
+
+
+
+
+
+
+    this.dataService.listDatasPublic(
+      { page: 0, limit: 2000, ascending: true, sort: "obj_Canton.name" },
+      this.variableSelected._id, id_Cities).subscribe(result => {
+
+        this.resultData2 = result.data;
+
+        let firstYear = this.resultData2[0].year;
+        let lastYear = this.resultData2[this.resultData2.length - 1].year;
+
+        if (this.variableSelected.chart_type === 'stacked bar chart') {
+
+          this.yearsSelected.push(lastYear)
+        } else {
+          for (let i = firstYear; i <= lastYear; i++) {
+            this.yearsSelected.push(i);
+          }
+        }
+
+
+
+
+
+        this.getdata();
+
+      })
+
+
+  }
+
   getYearsAndCities() {
     this.years = [];
+    this.yearSelected = '';
 
     const setYears = new Set();
 
@@ -491,6 +594,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
 
     for (let i = this.highValue; i <= this.value; i++) {
       this.yearSelected = i.toString();
+
       this.years.push({ id: i.toString(), name: i.toString(), check: true });
     }
   }
@@ -498,13 +602,239 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   getSelectCities() {
     //console.log(this.citiesSelected);
     this.loadData2();
+
+    if (this.variableSelected.code === '0203' || this.variableSelected.code === '0207') {
+      this.getYearsMonth();
+
+    } else {
+      this.getdata();
+    }
   }
 
   getVariableSelected() {
     //console.log(this.variableSelected);
     this.onSelectVariable(this.variableSelected);
+
+    if (this.variableSelected.code === '0203' || this.variableSelected.code === '0207') {
+      this.getYearsMonth();
+
+    } else {
+      this.getYears();
+    }
     //this.loadData2();
   }
+
+  getdata() {
+
+    let id_Cities = [];
+
+
+    for (let i = 0; i < this.citiesSelected.length; i++) {
+      id_Cities.push(this.citiesSelected[i].id);
+    }
+
+    this.dataService.listDatasPublic(
+      { page: 0, limit: 2000, ascending: true, sort: "obj_Canton.name" },
+      this.variableSelected._id, id_Cities, this.yearsSelected
+    ).subscribe(result => {
+
+
+      this.resultData2 = result.data;
+
+
+      if (this.variableSelected.code === '0203' || this.variableSelected.code === '0207') {
+        this.filterDataMonth();
+      } else {
+        this.filterData();
+
+      }
+
+
+
+      /*if (this.variableSelected.chart_type === 'stacked bar chart') {
+        this.filterDataStacked();
+
+      } else {
+        this.filterData();
+      }*/
+
+
+      //console.log(this.resultData2);
+
+
+    })
+
+    //console.log(this.citiesSelected);
+    //console.log(this.variableSelected);
+
+
+
+
+
+  }
+
+
+  filterDataMonth() {
+
+    this.yearsChart = [];
+    this.series = [];
+
+
+    if (this.resultData2.length > 0) {
+      for (let i = 0; i < this.citiesSelected.length; i++) {
+
+        let dataCity = this.resultData2.filter(data => data.obj_Canton.code === this.citiesSelected[i].code)
+          .sort((a, b) => {
+
+            let date = new Date(a.date);
+            let day = date.getUTCDate();
+            let year = date.getUTCFullYear();
+            let month = date.getUTCMonth();
+            let dateFinal = new Date(year, month, day);
+
+            let date2 = new Date(b.date);
+            let day2 = date2.getUTCDate();
+            let year2 = date2.getUTCFullYear();
+            let month2 = date2.getUTCMonth();
+            let dateFinal2 = new Date(year2, month2, day2);
+
+
+
+            return dateFinal.getTime() - dateFinal2.getTime();
+          })
+
+        if (dataCity.length > 0) {
+
+
+
+          let values = [];
+          for (let j = 0; j < dataCity.length; j++) {
+            let date = new Date(dataCity[j].date);
+            let day = date.getUTCDate();
+            let year = date.getUTCFullYear();
+            let month = date.getUTCMonth();
+            let dateFinal = new Date(year, month, day); //.toLocaleDateString(this.languajeDate, this.optionsDate);
+            this.yearsChart.push(dateFinal);
+
+            values.push(dataCity[j].value)
+
+
+          }
+
+          this.series.push({
+            name: this.citiesSelected[i].name,
+            data: values,
+            category: this.variableSelected
+          });
+        } else {
+
+          console.log();
+
+
+        }
+
+
+
+        //console.log(dataCity);
+
+      }
+    }
+
+
+
+  }
+
+
+  filterData() {
+
+    this.category = [];
+    this.series = [];
+    this.starPoint = this.highValue;
+    this.yearsChart = [];
+
+
+    let firstYear = this.resultData2[0].year;
+    let lastYear = this.resultData2[this.resultData2.length - 1].year;
+
+    for (let k = firstYear; k <= lastYear; k++) {
+
+      this.yearsChart.push(`${k}`);
+
+    }
+
+    for (let i = 0; i < this.citiesSelected.length; i++) {
+
+      let dataCity = this.resultData2.filter(data => data.obj_Canton.code === this.citiesSelected[i].code)
+        .sort((a, b) => a.value - b.value)
+      let valuesChart = [];
+
+
+      for (let k = firstYear; k <= lastYear; k++) {
+
+        let values = [];
+
+        let dataYear = dataCity.filter(data => data.year === k);
+        for (let h = 0; h < dataYear.length; h++) {
+
+          let date = new Date(dataYear[h].date);
+          let day = date.getUTCDate();
+          let year = date.getUTCFullYear();
+          let month = date.getUTCMonth();
+          let dateFinal = new Date(year, month, day);
+
+          values.push({
+
+            value: dataYear[h].value,
+            date: dateFinal
+
+          })
+
+        }
+
+        let data = values.sort((a, b) => b.date - a.date);
+        if (data[0]) {
+
+
+          valuesChart.push(data[0].value)
+        } else {
+
+          valuesChart.push(0)
+
+
+        }
+
+
+
+
+
+
+      }
+
+
+
+      this.series.push({
+        name: this.citiesSelected[i].name,
+        data: valuesChart,
+        category: this.variableSelected
+      });
+
+
+
+
+
+
+    }
+
+
+
+
+    //console.log(this.highValue);
+    //console.log(this.options);
+
+
+
+  }
+
 
   loadData2() {
     this.lineChartData = [];
@@ -664,7 +994,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
       });
     }
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.chartService.imageBase24.then((value) => {
         this.imageBase64 = {
           name: "chart",
@@ -672,7 +1002,7 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
           type: "chart",
         };
       });
-    }, 3000);
+    }, 3000);*/
   }
 
   loadData() {
@@ -927,6 +1257,18 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   }
 
   sliderChange(e) {
+
+
+    this.yearsSelected = [];
+
+    for (let i = e.value; i <= e.highValue; i++) {
+      this.yearsSelected.push(i);
+    }
+
+
+
+    this.getdata();
+
     for (let i = this.options.floor; i <= this.options.ceil; i++) {
       if (i < e.value || i > e.highValue) {
         const idx = this.years.findIndex((c) => +c.id === i);
@@ -978,7 +1320,11 @@ export class IdesThematicComponent implements OnInit, OnDestroy {
   }
 
   onCheckYear(e) {
+
+    this.yearsSelected = [];
     this.yearSelected = e;
+    this.yearsSelected.push(e);
+    this.getdata();
     this.loadData2();
     //this.loadData();
   }

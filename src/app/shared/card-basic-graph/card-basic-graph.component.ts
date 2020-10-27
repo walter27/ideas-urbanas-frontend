@@ -327,6 +327,14 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
   resultData: Data;
+  resultData2: Data;
+  yearsSelected: any[];
+  series: any[] = [];
+  yearsChart: any[];
+  optionsDate = { year: 'numeric', month: '2-digit', day: 'numeric' };
+  languajeDate = 'es-ES';
+  yearSelected: string;
+
 
   cities: ItemDropdown[] = [];
 
@@ -345,8 +353,280 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     if (changes["variableSelected"]) {
       this.getData();
+      // console.log(this.variableSelected);
+      this.series = [];
+
+      if (this.variableSelected.code === '0203' || this.variableSelected.code === '0207') {
+        this.getYearsMonth();
+
+      } else {
+        this.getYears2();
+      }
     }
   }
+
+
+
+  getYearsMonth() {
+
+
+    let id_Cities = [];
+    this.yearsSelected = [];
+
+    id_Cities.push(this.citySelected._id);
+
+    this.dataService.listDatasPublic({ page: 0, limit: 2000, ascending: true, sort: "obj_Canton.name" },
+      this.variableSelected._id, id_Cities).subscribe(result => {
+
+        this.resultData2 = result.data;
+
+
+        if (this.resultData2.length > 0) {
+          let lastYear = this.resultData2[this.resultData2.length - 1].year;
+
+
+          this.yearsSelected.push(`${lastYear}`)
+          this.getdata();
+
+        } else {
+          this.series = [];
+        }
+
+
+
+
+      })
+
+  }
+  getYears2() {
+
+    let id_Cities = [];
+    this.yearsSelected = [];
+
+    id_Cities.push(this.citySelected._id);
+
+    this.dataService.listDatasPublic(
+      { page: 0, limit: 2000, ascending: true, sort: "obj_Canton.name" },
+      this.variableSelected._id, id_Cities).subscribe(result => {
+
+        this.resultData2 = result.data;
+
+        let firstYear = this.resultData2[0].year;
+        let lastYear = this.resultData2[this.resultData2.length - 1].year;
+
+        if (this.variableSelected.chart_type === 'stacked bar chart') {
+          this.yearsSelected.push(lastYear);
+        } else {
+          for (let i = firstYear; i <= lastYear; i++) {
+            this.yearsSelected.push(i);
+          }
+        }
+
+        this.getdata();
+
+      })
+
+
+  }
+
+  getdata() {
+
+    let id_Cities = [];
+
+    id_Cities.push(this.citySelected._id);
+
+    this.dataService.listDatasPublic(
+      { page: 0, limit: 2000, ascending: true, sort: "obj_Canton.name" },
+      this.variableSelected._id, id_Cities, this.yearsSelected
+    ).subscribe(result => {
+
+
+      this.resultData2 = result.data;
+
+
+      if (this.variableSelected.code === '0203' || this.variableSelected.code === '0207') {
+        this.filterDataMonth();
+      } else {
+        this.filterData();
+
+      }
+
+
+
+      /*if (this.variableSelected.chart_type === 'stacked bar chart') {
+        this.filterDataStacked();
+
+      } else {
+        this.filterData();
+      }*/
+
+
+      //console.log(this.resultData2);
+
+
+    })
+
+    //console.log(this.citiesSelected);
+    //console.log(this.variableSelected);
+
+
+
+
+
+  }
+
+
+  filterData() {
+
+    this.series = [];
+    this.yearsChart = [];
+
+
+    let firstYear = this.resultData2[0].year;
+    let lastYear = this.resultData2[this.resultData2.length - 1].year;
+
+
+    let dataCity = this.resultData2.filter(data => data.obj_Canton.code === this.citySelected.code)
+      .sort((a, b) => a.value - b.value)
+    let valuesChart = [];
+
+    for (let k = firstYear; k <= lastYear; k++) {
+
+      this.yearsChart.push(`${k}`);
+
+
+      let values = [];
+
+      let dataYear = dataCity.filter(data2 => data2.year === k);
+      for (let h = 0; h < dataYear.length; h++) {
+
+        let date = new Date(dataYear[h].date);
+        let day = date.getUTCDate();
+        let year = date.getUTCFullYear();
+        let month = date.getUTCMonth();
+        let dateFinal = new Date(year, month, day);
+
+        values.push({
+
+          value: dataYear[h].value,
+          date: dateFinal
+
+        })
+
+      }
+
+      let data = values.sort((a, b) => b.date - a.date);
+      if (data[0]) {
+
+
+        valuesChart.push(data[0].value)
+      } else {
+
+        valuesChart.push(0)
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+    this.series.push({
+      name: this.citySelected.name,
+      data: valuesChart,
+      category: this.variableSelected
+    });
+    //console.log('SERIES', this.series);
+
+
+    //console.log(this.highValue);
+    //console.log(this.options);
+
+
+
+  }
+
+
+  filterDataMonth() {
+
+    this.yearsChart = [];
+    this.series = [];
+
+
+    if (this.resultData2.length > 0) {
+
+      let dataCity = this.resultData2.filter(data => data.obj_Canton.code === this.citySelected.code)
+        .sort((a, b) => {
+
+          let date = new Date(a.date);
+          let day = date.getUTCDate();
+          let year = date.getUTCFullYear();
+          let month = date.getUTCMonth();
+          let dateFinal = new Date(year, month, day);
+
+          let date2 = new Date(b.date);
+          let day2 = date2.getUTCDate();
+          let year2 = date2.getUTCFullYear();
+          let month2 = date2.getUTCMonth();
+          let dateFinal2 = new Date(year2, month2, day2);
+
+
+
+          return dateFinal.getTime() - dateFinal2.getTime();
+        })
+
+      if (dataCity.length > 0) {
+
+
+
+        let values = [];
+        for (let j = 0; j < dataCity.length; j++) {
+          let date = new Date(dataCity[j].date);
+          let day = date.getUTCDate();
+          let year = date.getUTCFullYear();
+          let month = date.getUTCMonth();
+          let dateFinal = new Date(year, month, day).toLocaleDateString(this.languajeDate, this.optionsDate);
+          this.yearsChart.push(dateFinal);
+
+          values.push(dataCity[j].value)
+
+
+        }
+
+        this.series.push({
+          name: this.citySelected.name,
+          data: values,
+          category: this.variableSelected
+        });
+      } else {
+
+        console.log();
+
+
+      }
+
+
+
+      //console.log(dataCity);
+
+    }
+
+
+
+  }
+
+
+
+
+
 
   getCities() {
     if (this.citySelected) {
@@ -376,6 +656,8 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
 
   getYears() {
     this.years = [];
+    this.yearSelected = '';
+
     const setYears = new Set();
 
     this.resultData.forEach((resp) => {
@@ -391,6 +673,8 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
     this.value = +yearsSorted[yearsSorted.length - 1];
 
     for (let i = this.highValue; i <= this.value; i++) {
+      this.yearSelected = i.toString();
+
       this.years.push({ id: i.toString(), name: i.toString(), check: true });
     }
   }
@@ -526,7 +810,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
       });
     }
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.chartService.imageBase24.then((value) => {
         this.imageBase64 = {
           name: "chart",
@@ -534,7 +818,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
           type: "chart",
         };
       });
-    }, 3000);
+    }, 3000);*/
   }
 
   getData() {
@@ -567,6 +851,7 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
         (data) => {
           this.loading = false;
           this.resultData = data.data;
+
           this.getYears();
           this.loadData();
         },
@@ -579,6 +864,11 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
   onCheckItemYear(e) {
     const idx = this.years.findIndex((c) => c.id === e);
     this.years[idx].check = !this.years[idx].check;
+
+    this.yearsSelected = [];
+    this.yearSelected = e;
+    this.yearsSelected.push(e);
+    this.getdata();
     this.loadData();
   }
 
@@ -591,6 +881,14 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
   }
 
   sliderChange(e) {
+
+    this.yearsSelected = [];
+    this.series = [];
+    for (let i = e.value; i <= e.highValue; i++) {
+      this.yearsSelected.push(i);
+    }
+    this.getdata();
+
     for (let i = this.options.floor; i <= this.options.ceil; i++) {
       if (i < e.value || i > e.highValue) {
         const idx = this.years.findIndex((c) => +c.id === i);
@@ -648,3 +946,4 @@ export class CardBasicGraphComponent implements OnInit, OnChanges {
     return color != undefined && color != "" ? color.replace(")", ", 08)") : "";
   }
 }
+ 

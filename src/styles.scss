@@ -373,6 +373,7 @@ a:hover {
 @media screen and (max-width: 575px) {
     body {
         font-size: 14px;
+        overflow-x: hidden;
     }
     .container-fluid {
         padding-right: 0 !important;
@@ -436,6 +437,7 @@ a:hover {
 @media screen and (min-width: 576px) and (max-width: 767px) {
     body {
         font-size: 14px;
+        overflow-x: hidden;
     }
     .ides-mr-5 {
         margin-right: 0rem !important;
@@ -465,6 +467,7 @@ a:hover {
 @media screen and (min-width: 768px) and (max-width: 991px) {
     body {
         font-size: 15px;
+        overflow-x: hidden;
     }
     .ides-mr-5 {
         margin-right: 0rem !important;
@@ -494,6 +497,7 @@ a:hover {
 @media screen and (min-width: 992px) and (max-width: 1280px) {
     body {
         font-size: 15px;
+        overflow-x: hidden;
     }
     .ides-mr-5 {
         margin-right: 0rem !important;
@@ -533,6 +537,7 @@ a:hover {
 @media screen and (min-width: 1281px) {
     body {
         font-size: 17px;
+        overflow-x: hidden;
     }
     .chart-size {
         height: 400px !important;
@@ -2172,7 +2177,4 @@ h4.card-title {
 .row.bg-twitter {
     padding-top: 75px;
     padding-bottom: 75px;
-}
-.col-md-12.ides-about-text {
-    margin-bottom: 50px;
 }

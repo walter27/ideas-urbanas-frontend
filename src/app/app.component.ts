@@ -1,5 +1,9 @@
 import { Component } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
+declare var gtag;
 
 @Component({
   selector: "app-root",
@@ -9,7 +13,19 @@ import { TranslateService } from "@ngx-translate/core";
 export class AppComponent {
   title = "ides-ui";
   device = "movil";
-  constructor(translate: TranslateService) {
+  constructor(translate: TranslateService, private router: Router) {
+
+    /*Google Analytics*/
+    const navEndEvents$ = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      );
+
+    navEndEvents$.subscribe((event: NavigationEnd) => {
+      gtag('config', 'G-3FDGYVP7JD', {
+        'page_path': event.urlAfterRedirects
+      });
+    });
 
     translate.addLangs(["en", "es"]);
     translate.setDefaultLang("es");

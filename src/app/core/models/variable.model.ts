@@ -14,8 +14,8 @@ export interface Variable {
     measure: string;
     measure_symbol: string;
     origins: Origin[];
-    active?: boolean;
-    is_indice?: boolean;
+    active: boolean;
+    is_indice: boolean;
     values_indice: any;
     image_route: string;
 

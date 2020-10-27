@@ -70,6 +70,15 @@
     transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
+.ides-thematic-description {
+    font: 13px 'Noto Sans TC', sans-serif;
+    font-weight: normal;
+}
+
+.submenu-tematic {
+    font: 16px 'Noto Sans TC' !important;
+}
+
 
 /*:host::ng-deep.ui-multiselect .ui-multiselect-panel .ui-widget-header .ui-chkbox {
     display: none !important;
@@ -79,6 +88,11 @@
 
 .haighmap {
     background: gray;
+}
+
+p.subtitulo2 {
+    font: 16px "Roboto", sans-serif;
+    color: #9195a4;
 }
 
 //dropdown

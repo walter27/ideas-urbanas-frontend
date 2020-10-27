@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 const catones: any = require('../../../assets/geojson/geojson_ecuador_cantones.json');
+const { exportCSV, exportXLSX, titleCase, lowerCase }: any = require('../../core/utils/utils');
+
 
 
 @Component({
@@ -43,7 +45,7 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    if (changes['data']) {
+    if (changes["data"]) {
       //this.createMap();
       this.translate();
     }
@@ -83,32 +85,92 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         minColor: '#ffeda0',
         maxColor: '#bd0026'
       },
+
+
       exporting: {
-        filename: `casos_${this.variable.name}_covid19_espacial`,
+        allowHTML: true,
+        sourceWidth: 1200,
+        sourceHeight: 600,
+        filename: `ideas_urbanas_casos_${lowerCase(this.variable.name)}_covid19_espacial`,
+        chartOptions: {
+          title: {
+            useHTML: true,
+            text: `<span style="color:#124ca6;">${this.variable.name}<span/>`,
+            margin: 50
+
+          },
+
+          subtitle: {
+            useHTML: true,
+            text: `<span style="text-align: justify; text-align: justify">${this.variable.description}.</span>
+                   <span style="color:#124ca6;">[${this.variable.origins[0].name}]<span/>`,
+            // text: '<span style="color:#00ff00;">1stline</span>' + '<br>' + '<span style="color:#ff0000;">2ndline</span>',
+            align: 'left',
+            verticalAlign: 'bottom',
+            y: 10,
+            x: 30
+          },
+          chart: {
+            events: {
+              load: function () {
+                var chart = this;
+                chart.renderer.image(
+                  'https://api-ideas-urbanas.uhemisferios.edu.ec/file/reportes/logo-color.svg',
+                  30,
+                  -210,
+                  200,
+                  500
+                )
+                  .add();
+              }
+            }
+          }
+        },
         buttons: {
           contextButton: {
+            enabled: true,
             menuItems: [
               {
-                text: this.downloadPNG, onclick() { this.exportChart({ type: 'image/png' }); }
+                text: 'Descargar PNG', onclick() { this.exportChart({ type: 'image/png' }); }
               },
               {
-                text: this.donwloadJPEG, onclick() { this.exportChart({ type: 'image/jpeg' }); }
+                text: 'Descargar JPEG', onclick() { this.exportChart({ type: 'image/jpeg' }); }
               },
               {
-                text: this.downloadSVG, onclick() { this.exportChart({ type: 'image/svg+xml' }); }
+                text: 'Descargar PDF', onclick() { this.exportChart({ type: 'application/pdf' }); }
+              },
+              /*{
+                text: 'Descargar CSV', onclick() { this.downloadCSV(); }
               },
               {
-                text: this.downloadPDF, onclick() { this.exportChart({ type: 'application/pdf' }); }
-              },
-              {
-                text: this.downloadCSV, onclick() { this.downloadCSV(); }
-              },
-              {
-                text: this.downloadXLS, onclick() { this.downloadXLS(); }
-              },
+                text: 'Descargar XLSX', onclick() { this.downloadXLSX(); }
+              },*/
             ]
           }
-        }
+        },
+        /* csv: {
+           columnHeaderFormatter: function (item, key) {
+             if (!key) {
+               return 'Fecha';
+             }
+             return false;
+           }
+         },*/
+        /* xlsx: {
+           worksheet: {
+             autoFitColumns: true,
+             categoryColumnTitle: 'Month',
+             dateFormat: 'yyyy-mm-dd',
+             name: 'data'
+           },
+           workbook: {
+             fileProperties: {
+               Author: "IDEAS Urbanas",
+               Company: "Universidad de los Hemisferios",
+               CreatedDate: new Date(Date.now())
+             }
+           }
+         }*/
       },
       series: [{
         data: this.data,
@@ -131,6 +193,9 @@ export class CardBasicMapCovidComponent implements OnInit, OnChanges {
         }
       }]
     };
+
+    this.updateDemo = true;
+
   }
 
 

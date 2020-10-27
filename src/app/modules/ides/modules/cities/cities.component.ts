@@ -17,6 +17,7 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 import { TagService } from 'src/app/core/services/tag.service';
 import { Tag } from 'src/app/core/models/tags.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { DataService } from 'src/app/core/services/data.service';
 let { tagCloud } = require('src/app/core/utils/utils');
 const accents = require('remove-accents');
 
@@ -58,6 +59,10 @@ export class CitiesComponent implements OnInit {
   tagsData: any[] = [];
   tagsResult: ResultList<Tag>;
 
+  indexes: any[] = [];
+  indexesCity: any[] = [];
+
+
   overVAB = false;
   overPoblacion = false;
   v: Variable;
@@ -70,6 +75,7 @@ export class CitiesComponent implements OnInit {
     private categoryService: CategoryService,
     private variableService: VariableService,
     private regionService: RegionService,
+    private dataService: DataService,
     private tagsService: TagService,
     private authService: AuthService,
     private router: Router
@@ -102,10 +108,34 @@ export class CitiesComponent implements OnInit {
         this.regionService.citySelectedCloud = this.citySelected;
         this.getResearch();
         this.listTags(this.idCity);
+        this.getIndexes(this.idCity);
         this.getClasifications();
         this.listCategories();
       });
     });
+
+  }
+
+
+  getIndexes(idCity) {
+
+
+    console.log(idCity);
+
+
+    this.dataService.listDataIndexes().subscribe((resp: any) => {
+
+      this.indexes = resp;
+
+
+
+      this.indexesCity = this.indexes.filter(indexe => indexe.canton._id === idCity);
+
+
+
+
+    })
+
 
   }
 

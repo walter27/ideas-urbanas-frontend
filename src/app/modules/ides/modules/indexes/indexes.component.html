@@ -27,24 +27,69 @@
         <p translate>index description</p>
     </div>
 
-    <div class="contiene-desempeno">
-        <div class="contiene-elementos">
-            <div class="anima-texto">
-                <div class="col-md-6 col-lx-12 text-left+">
-                    <p-multiSelect selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="cities" optionLabel="name" [(ngModel)]="citiesSelected" [defaultLabel]="'Ciudades'" [showHeader]=true name="citiesSelected">
-                    </p-multiSelect>
+    <div class="contiene-desempeno mb-5">
+
+        <div *ngIf="indexesSelected.length===0" class="col-md-12 alert alert-primary">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <i class="pi pi-spin pi-spinner" style="font-size: 2em"></i>
+
+                    </div>
+
+                    <div class="col-auto align-self-center">
+                        <span translate>loadIMC</span>
+
+                    </div>
                 </div>
-                <div class="col-lg-12 p-3">
-                    <ng5-slider (userChange)="getRangeYears($event)" [(value)]="minValue" [(highValue)]="maxValue" [options]="options">
-                    </ng5-slider>
-                </div>
-                <app-ides-index *ngIf="yearsSelected.length>0" [marginAuto]="true" [title]="'Desempeño por ciudad'" [showDropCities]="true" [showDropYears]="true" [variableSelected]="v" [activeCities]="citiesSelected" [yearsSelected]="yearsSelected">
-                </app-ides-index>
             </div>
+
+
+
+
+        </div>
+        <div *ngIf="indexesSelected.length>0" class="contiene-elementos">
+
+            <div class="col-md-6 col-lx-12 text-left+">
+                <p-multiSelect selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="indexes" optionLabel="canton.name" [(ngModel)]="indexesSelected" [defaultLabel]="'Ciudades'" [showHeader]=true name="indexesSelected">
+                </p-multiSelect>
+            </div>
+
+            <!--  <div class="col-md-6 col-lx-12 text-left+" *ngIf="years.length>0">
+                    <p-multiSelect selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="years" optionLabel="year" [(ngModel)]="yearSelected" [defaultLabel]="'Años'" [showHeader]=true name="yearSelected">
+                    </p-multiSelect>
+            </div>-->
+            <app-ides-index [indexes]="indexesSelected">
+            </app-ides-index>
         </div>
     </div>
+
+    <div class="col-md-12 col-12 backgroung-inforgrafica">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12 titulo text-center mt-4 mb-2">
+                    <h2 class="subtitulo" translate>indice</h2>
+                </div>
+
+                <div class="col-12">
+                    <img src="assets/indice/Infografia_indice.png" alt="" width="100%" height="650">
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
 </div>
-<div class="Definiciones">
+<!--<div class="Definiciones">
     <div class="col-12 ides-text-blue mb-4">
         <div class="contiene-desempeno">
             <div class="anima-texto">
@@ -67,4 +112,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->

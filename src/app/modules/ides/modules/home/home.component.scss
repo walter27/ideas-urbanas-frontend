@@ -1830,6 +1830,30 @@ div.ides-card-home {
     padding-left: 0em;
 }
 
+//dialog
+:host::ng-deep.ui-dialog .ui-dialog-content {
+    padding: 0px;
+    border: transparent;
+    background: transparent;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-titlebar {
+    display: none;
+}
+
+.video-fluid {
+    width: 50%;
+    height: auto;
+}
+
+main {
+    background: white;
+    height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
 //twitter
 .margins {
     margin-left: 250px;
@@ -1905,12 +1929,14 @@ div.ides-card-home {
         padding-left: 27px;
     }
 }
+
 .title {
     font: 30px "Noto Sans TC", sans-serif !important;
     padding-top: 2em !important;
     font-weight: bold !important;
     color: white;
 }
+
 .ides-about-text {
     background-color: #fff;
     margin-top: -80px;

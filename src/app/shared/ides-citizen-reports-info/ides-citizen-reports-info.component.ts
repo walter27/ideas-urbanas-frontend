@@ -12,7 +12,7 @@ export class IdesCitizenReportsInfoComponent implements OnInit {
   responsiveOptions: any[] = [
     {
       breakpoint: '1024px',
-      numVisible: 5
+      numVisible: 3
     },
     {
       breakpoint: '768px',
@@ -26,10 +26,7 @@ export class IdesCitizenReportsInfoComponent implements OnInit {
 
 
   responsiveOptions2: any[] = [
-    {
-      breakpoint: '1500px',
-      numVisible: 5
-    },
+
     {
       breakpoint: '1024px',
       numVisible: 3
@@ -57,21 +54,25 @@ export class IdesCitizenReportsInfoComponent implements OnInit {
       {
         previewImage: 'assets/reports/reporte.png',
         tumbnailImage: 'assets/reports/reporte.png',
-        text: 'Defunciones por género '
+        text: 'Defunciones por género ',
+        index: 0
       },
       {
         previewImage: 'assets/reports/reporte1.png',
         tumbnailImage: 'assets/reports/reporte1.png',
-        text: 'Contagios de personal de salud y seguridad'
+        text: 'Contagios de personal de salud y seguridad',
+        index: 1
       },
       {
         previewImage: 'assets/reports/reporte2.png',
         tumbnailImage: 'assets/reports/reporte2.png',
-        text: 'Defunciones por edad en ciudades del Ecuador'
+        text: 'Defunciones por edad en ciudades del Ecuador',
+        index: 2
       }, {
         previewImage: 'assets/reports/reporte3.png',
         tumbnailImage: 'assets/reports/reporte3.png',
-        text: 'Defunciones por nacionalidada'
+        text: 'Defunciones por nacionalidada',
+        index: 3
       }
     ]
   }

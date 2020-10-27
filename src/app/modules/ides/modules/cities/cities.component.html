@@ -23,12 +23,12 @@
 
     </div>
 </div>
-<div class="contiene-ciuades-todo">
+<div class="row">
 
-    <div class="fondo-blanco">
+    <div class="fondo-blanco col-md-6 col-12 p-0">
 
 
-        <div class="fondito-azul">
+        <div class=" fondito-azul m-5">
 
             <div class="row-azul">
 
@@ -46,83 +46,83 @@
             <div class="col-md-12">
                 <hr>
             </div>
-            <div class="row pl-4 pr-4 pt-4 city-resume">
-                <div class="col-12" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
-                    <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
-                    <div class="row" *ngIf="!overPoblacion">
-                        <div class="col-12 col-md-5">
-                            <h2 class="ides-text-yellow">
-                                {{citySelected?.extraData?.poblacionTotal | number:'1.0-0'}}
-                            </h2>
-                        </div>
-                        <div class="col-12 col-md-7 pr-0">
-                            <p class="mt-2 indicators">
-                                Población
-                            </p>
-                            <span class="indicators">
+            <div class="col-12" (mouseover)='overPoblacion = true' (mouseout)='overPoblacion = false'>
+                <img [src]="!overPoblacion ? '../../../../../assets/cities/iconos/icono_poblacion_urbana.png' : '../../../../../assets/cities/iconos/icono_poblacion_urbana_hover.png'" class="city-img" />
+                <div class="row" *ngIf="!overPoblacion">
+                    <div class="col-12 col-md-5">
+                        <h2 class="ides-text-yellow">
+                            {{citySelected?.extraData?.poblacionTotal | number:'1.0-0'}}
+                        </h2>
+                    </div>
+                    <div class="col-12 col-md-7 pr-0">
+                        <p class="mt-2 indicators">
+                            Población
+                        </p>
+                        <span class="indicators">
                                 (Proyección INEC)
                             </span>
-                        </div>
                     </div>
-                    <div class="row" *ngIf="overPoblacion">
-                        <div class="col-12 col-md-5">
-                            <h2 class="ides-text-yellow">
-                                {{citySelected?.extraData?.poblacionUrbana | number:'1.0-0'}}
-                            </h2>
-                        </div>
-                        <div class="col-12 col-md-7 pr-0">
-                            <p class="mt-2 indicators">
-                                Población Urbana
-                            </p>
-                            <span class="indicators">
+                </div>
+                <div class="row" *ngIf="overPoblacion">
+                    <div class="col-12 col-md-5">
+                        <h2 class="ides-text-yellow">
+                            {{citySelected?.extraData?.poblacionUrbana | number:'1.0-0'}}
+                        </h2>
+                    </div>
+                    <div class="col-12 col-md-7 pr-0">
+                        <p class="mt-2 indicators">
+                            Población Urbana
+                        </p>
+                        <span class="indicators">
                                 (Proyección Banco Mundial)
                             </span>
-                        </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <hr>
-                </div>
-                <div class="col-12" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
-                    <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
-                    <div class="row" *ngIf="!overVAB">
-                        <div class="col-6">
-                            <h2 class="ides-text-yellow">
-                                {{citySelected?.extraData?.vabCantonal | number:'1.0-0'}}
-                            </h2>
-                        </div>
-                        <div class="col-6 pr-0 pl-0">
-                            <p class="mt-2 indicators">
-                                Valor agregado bruto (VAB) cantonal
-                            </p>
-                            <span class="indicators">
-                                (Banco Central 2018)
-                            </span>
-                        </div>
+            </div>
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="col-12" (mouseover)='overVAB = true' (mouseout)='overVAB = false'>
+                <img [src]="!overVAB ? '../../../../../assets/cities/iconos/icono_valor_agregado.png' : '../../../../../assets/cities/iconos/icono_valor_agregado_hover.png'" class="city-img" />
+                <div class="row" *ngIf="!overVAB">
+                    <div class="col-md-6 col-12">
+                        <h2 class="ides-text-yellow">
+                            {{citySelected?.extraData?.vabCantonal | number:'1.0-0'}}
+                        </h2>
                     </div>
-                    <div class="row" *ngIf="overVAB">
-                        <div class="col-6">
-                            <h2 class="ides-text-yellow">
-                                {{citySelected?.extraData?.vabNacional | number:'1.2-2'}} %
-                            </h2>
-                        </div>
-                        <div class="col-6  pr-0 pl-0">
-                            <p class="mt-2 indicators">
-                                % Valor agregado bruto (VAB) nacional
-                            </p>
-                            <span class="indicators">
+                    <div class="col-md-6 col-12 pr-0 pl-0">
+                        <p class="mt-2 indicators">
+                            Valor agregado bruto (VAB) cantonal
+                        </p>
+                        <span class="indicators">
                                 (Banco Central 2018)
                             </span>
-                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="overVAB">
+                    <div class="col-md-6 col-12">
+                        <h2 class="ides-text-yellow">
+                            {{citySelected?.extraData?.vabNacional | number:'1.2-2'}} %
+                        </h2>
+                    </div>
+                    <div class="col-md-6 col-12  pr-0 pl-0">
+                        <p class="mt-2 indicators">
+                            % Valor agregado bruto (VAB) nacional
+                        </p>
+                        <span class="indicators">
+                                (Banco Central 2018)
+                            </span>
                     </div>
                 </div>
             </div>
 
+
             <div class="col-md-12">
                 <hr>
             </div>
-            <div class="row pl-4 pr-4 pt-4 city-resume">
-                <div class="col-sm-12 col-md-10">
+            <div class="col-12 ">
+
+                <div class="row">
 
                     <div class="col-12 text-center w-100 pb-3">
                         <h3 class="city-ides-subtitle">Actividades principales<span class="indicators">(Banco
@@ -130,29 +130,31 @@
                     </div>
 
 
-                    <div class="row  w-100 text-center">
+                    <div class="col-12 p-4 text-center">
 
-                        <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-2'">
-                            <div class="row">
+                        <div class="row justify-content-center">
 
-                                <div>
-                                    <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
-                                </div>
-                                <div class="ml-1" *ngIf="a.over">
-                                    <p class="mb-0 activity">
-                                        {{a.name}}
-                                    </p>
-                                    <p class="ides-text-yellow activity-value mb-0 ">
-                                        {{a.vab}} % <span class="ides-text-white">VAB</span>
-                                    </p>
+                            <div *ngFor="let a of citySelected?.extraData?.actividadesEconomicasPrincipales; let i = index" (mouseover)='a.over = true' (mouseout)='a.over = false' [ngClass]="a.over ? ( i + 1 == citySelected?.extraData?.actividadesEconomicasPrincipales.length ? 'col-8' : 'col-6'): 'col-auto'">
+                                <div class="row">
+
+                                    <div>
+                                        <img [src]="!a.over ? '../../../../../assets/cities/iconos/icono_' + a.type + '.png' : '../../../../../assets/cities/iconos/icono_' + a.type + '_hover.png'" class="city-img" />
+                                    </div>
+                                    <div class="ml-1" *ngIf="a.over">
+                                        <p class="mb-0 activity">
+                                            {{a.name}}
+                                        </p>
+                                        <p class="ides-text-yellow activity-value mb-0 ">
+                                            {{a.vab}} % <span class="ides-text-white">VAB</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
+
+
             </div>
 
 
@@ -161,11 +163,11 @@
     </div>
 
 
-    <div class="fondo2-gris">
+    <div class="fondo2-gris col-md-6 col-12 p-5">
 
-        <div *ngIf="citySelected" class="row p-t-4 p-b-4 p-l-0 p-r-0 city-resume">
+        <div *ngIf="citySelected" class="row">
 
-            <div class="col-md-12">
+            <div class="col-12">
                 <app-word-cloud [citySelectedId]="citySelected._id"></app-word-cloud>
             </div>
             <!--  <div class="col-md-12">
@@ -177,10 +179,10 @@
                 </div>
             </div>-->
         </div>
-        <!-- <div class="cuadro-grafico-ciudades" *ngIf="citySelected">
-            <app-ides-index [title]="'Desempeño por ciudad'" [showDropCities]="true" [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v" class="city-index">
+        <div class="col-12" *ngIf="citySelected">
+            <app-ides-index *ngIf="indexesCity.length>0" [indexes]="indexesCity">
             </app-ides-index>
-        </div>-->
+        </div>
     </div>
 </div>
 
@@ -202,13 +204,21 @@
 
         <div *ngIf="citySelected && v" class="ides-card ides-height-100">
 
+            <div class="row m-4">
+                <div class="col-md-12 text-center text-sm-left p-3">
+                    <p-dropdown class="block " [options]="resultVariables?.data" [(ngModel)]="v" name="v" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()" [filter]=true>
+                    </p-dropdown>
+                </div>
 
-            <div class="col-md-12 ml-2 mt-3">
-                <p-dropdown class="block " [options]="resultVariables?.data" [(ngModel)]="v" name="v" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getVariableSelected()" [filter]=true>
-                </p-dropdown>
+                <div class="col-md-12">
+
+                    <app-card-basic-graph [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v">
+                    </app-card-basic-graph>
+                </div>
             </div>
-            <app-card-basic-graph [citySelected]="citySelected" [showDropYears]="true" [variableSelected]="v">
-            </app-card-basic-graph>
+
+
+
         </div>
 
         <!--  <div class="col-lg-12 col-xl-6 mb-4" *ngFor="let v of resultVariables?.data">
@@ -247,7 +257,7 @@
                 </nav>
             </div>-->
             <div *ngIf="!isAuthenticated()" class="col text-right d-none d-sm-none d-md-block">
-                <a href="https://forms.gle/VkgtbTD11hPZXBEy6" target="_blank" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1oRUpa8l61vUQ-EqCtJeAcjn0VaagvF0P4OQG1gCYHpuAVA/viewform?usp=sf_link" target="_blank" class="btn ides-dropdown ides-text-blue-dark font-weight-bold" translate>about us add
                         information
                         <i-feather name="arrow-up"></i-feather>
                     </a>

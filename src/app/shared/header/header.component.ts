@@ -121,7 +121,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
   ngDoCheck() {
 
-    if (!this.regionService.citySelect && this.route.url === '/home') {
+    if (this.route.url === '/home') {
 
       this.background = 'mat-menu-content2';
       this.srcImage = 'assets/logos/logo-blanco.svg';
@@ -154,21 +154,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
 
 
-    if (this.regionService.citySelect && this.route.url === '/home') {
-
-      this.background = 'mat-menu-content-covid sticky-top';
-      this.srcImage = 'assets/logos/logo-color.svg';
-      this.logoUniversidad = 'assets/logos/color.png';
-      this.colorIcon = 'ides-text-icon2';
-      this.colorLanguaje = 'text-white2';
-      this.colorButton = 'ides-text-white2';
-      this.colorButton2 = 'ides-text-white3';
-      this.marginSpan = 'margin-span-color';
-      this.backgroundUniversidad = "universidad-internas";
-      this.utilService.span = true;
-
-
-    }
+  
 
     if (this.route.url !== '/home') {
 
@@ -186,7 +172,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     }
 
-    if ($('#IdButton').is(':visible')) {
+    /*if ($('#IdButton').is(':visible')) {
 
       this.utilService.buttonVisible = true;
       this.colorIcon = 'ides-text-icon2';
@@ -198,7 +184,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.buttonVisible = false;
       this.utilService.buttonVisible = false;
 
-    }
+    }*/
 
 
 

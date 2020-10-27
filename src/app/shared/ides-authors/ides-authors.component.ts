@@ -55,7 +55,7 @@ export class IdesAuthorsComponent implements OnInit {
         image: 'assets/authors/erick.png',
         name: 'Erick Cuenca',
         work: 'Investigador en gestión y visualización de datos',
-        description: 'Erick tiene un Ph.D. en Ciencias de la Computación de la Universidad de Montpellier y ha realizado un Postdoctorado en la Universidad UCLouvain, Bélgica. Se interesa principalmente en el análisis visual de los datos dinámicos presentes en las series temporales, así como también los datos complejos que pueden ser modelados en grafos. Actualmente, Erick propone varios enfoques basados en técnicas de Visualización de Información y Data-Mining para comprender los aspectos temporales y espaciales de los datos. Es investigador de la Escuela de Matemáticas de la Universidad Yachay Tech.'
+        description: 'Erick tiene un Ph.D. en Ciencias de la Computación de la Universidad de Montpellier y ha realizado un Postdoctorado en la Universidad UCLouvain, Bélgica. Se interesa principalmente en el análisis visual de los datos dinámicos presentes en las series temporales, así como también los datos complejos que pueden ser modelados en grafos. Actualmente, Erick propone varios enfoques basados en técnicas de Visualización de Información y Data-Mining para comprender los aspectos temporales y espaciales de los datos. Es investigador de la Escuela de Ciencias Matemáticas y Computacionales de la Universidad Yachay Tech.'
 
 
       },
@@ -63,7 +63,7 @@ export class IdesAuthorsComponent implements OnInit {
 
         image: 'assets/authors/wendy.png',
         name: 'Wendy Chávez',
-        work: 'Investigadora en análisis multivariable',
+        work: 'Investigadora interdisciplinaria',
         description: 'Wendy es economista de la Escuela Superior Politécnica del Litoral. Tiene una Maestría en Administración Pública del John Jay College of Criminal Justice de New York, y una Maestría en Asentamientos Humanos de la Katholieke Universiteit de Leuven en Bélgica. Conoce de cerca a los gobiernos municipales pues ha sido funcionaria en varios de ellos y además les ha brindado asistencia técnica desde entidades como el Banco de Desarrollo de Ecuador. Es fundadora del Observatorio de Políticas Públicas de Guayaquil, al cual representa en el Hub de Ordenamiento Territorial y Planes de Uso y Gestión del Suelo del Ministerio de Desarrollo Urbano y Vivienda. Realiza trabajo voluntario con comunidades del Golfo de Guayaquil a las que brinda asistencia técnica sobre el manejo sostenible de sus territorios.'
 
 
@@ -89,8 +89,8 @@ export class IdesAuthorsComponent implements OnInit {
       {
 
         image: 'assets/authors/pilar.jpg',
-        name: 'Pilar Asanza',
-        work: 'Coordinación y seguimiento',
+        name: 'Pilar Azanza',
+        work: 'Coordinación',
         description: 'Licenciada en Ciencias Políticas y alumni del Programa de Gobernanza y Liderazgo Político de la Escuela de Gobierno IDE-Universidad de Los Hemisferios.  En esta organización es coordinadora de programas y antes fue asistente técnica de la Corporación Líderes para Gobernar. Es Senior speaker en EducaTec, una organización que asesora sobre el uso sano de la tecnología. '
 
 

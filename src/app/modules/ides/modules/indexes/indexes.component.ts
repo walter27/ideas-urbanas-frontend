@@ -31,11 +31,19 @@ export class IndexesComponent implements OnInit {
   };
   minValue: number;
   maxValue: number;
-  years: any;
-  citiesSelected: any[] = [];
-  yearsSelected: any[] = [];
 
-  constructor(private clasificationService: ClasificationService,
+
+
+  years: any[] = [];
+  yearSelected: any;
+  indexes: any[] = [];
+  indexesSelected: any[] = [];
+
+
+
+
+  constructor(
+    private clasificationService: ClasificationService,
     private regionService: RegionService,
     private dataService: DataService) {
 
@@ -58,74 +66,54 @@ export class IndexesComponent implements OnInit {
     });*/
 
     this.getYears();
-    this.getClasifications();
-    this.getCities();
+    this.getIndexes();
+    //this.getClasifications();
+    //this.getCities();
   }
 
 
   getYears() {
 
-    this.years = this.dataService.listYears();
-    this.years.forEach(years => {
-      this.options = {
-        floor: years[0],
-        ceil: years[years.length - 1]
-      };
-      this.minValue = years[0];
-      this.maxValue = years[10];
-      for (let i = this.minValue; i <= this.maxValue; i++) {
-        this.yearsSelected.push(i);
-      }
+    this.dataService.listYears().subscribe((years) => {
+
+
+      years.forEach(year => {
+        this.years.push({ year });
+
+      });
+
     });
 
 
 
+
   }
 
-  getClasifications() {
-
-    let newRes;
-    let finalRes: any = [];
-    this.clasificationService.listClasification(this.filters).subscribe(resp => {
 
 
-      newRes = resp.data.filter(clasification => clasification.name !== 'Corona Virus');
+  getIndexes() {
+    this.dataService.listDataIndexes().subscribe((resp: any) => {
 
-      for (const thematic of newRes) {
-        thematic.image_active_route = `${accents.remove('assets/ICONOS/' + thematic.name)}-AZUL.png`;
-        thematic.image_route = `${accents.remove('assets/ICONOS/' + thematic.name)}-AZUL.png`;
-        finalRes.push(thematic);
+      this.indexes = resp;
+
+  
+      if (this.indexesSelected.length === 0) {
+
+        this.indexesSelected.push(this.indexes[0]);
+
+
+
       }
+    })
 
-      this.resultClasification = finalRes;
-    });
+
+
   }
 
-  getCities() {
-    this.regionService.listRegions({ page: 0, limit: 1000, ascending: true, sort: '_id' }, 'Canton').subscribe(
-      resp => {
-        this.cities = [];
-        resp.data.forEach(c => {
-          if (c.indexes) {
-            this.cities.push(
-              { id: c._id, name: c.name, check: true, color: c.color }
-            );
-          }
-        });
 
-        this.citiesSelected.push(this.cities[0]);
-        this.getClasifications();
-      }
-    );
-  }
 
-  getRangeYears(e) {
 
-    this.yearsSelected = [];
 
-    for (let i = e.value; i <= e.highValue; i++) {
-      this.yearsSelected.push(i);
-    }
-  }
+
 
 }

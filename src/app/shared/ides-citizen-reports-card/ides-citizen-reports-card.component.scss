@@ -5116,6 +5116,7 @@ h3.titulo-internas {
     font-weight: bold !important;
     line-height: 40px;
 }
+
 h4.card-title {
     color: #196af0;
     font-family: 30px "Karla", sans-serif !important;
@@ -5125,16 +5126,26 @@ h4.card-title {
     margin-top: 30px;
     font-size: 20px;
 }
+
 .ides-card.m-2.ng-star-inserted {
     padding: 15px;
 }
+
 @media (min-width: 320px) {
     .contiene-todo {
         padding: 30px 1% 30px 1%;
-        }
     }
+}
+
 @media (min-width: 1080px) {
-.contiene-todo {
-    padding: 30px 15% 30px 15%;
+    .contiene-todo {
+        padding: 30px 15% 30px 15%;
     }
+}
+
+//PRIMENG
+//carousel
+:host ::ng-deep.ui-carousel .ui-carousel-container .ui-carousel-items-content {
+    background: transparent;
+    border: transparent
 }

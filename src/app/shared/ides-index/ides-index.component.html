@@ -10,94 +10,225 @@
             </canvas>
         </div>-->
 
+
+
         <div class="col-md-12">
             <highcharts-chart id="grafica" [(update)]="updateDemo" [oneToOne]=true [Highcharts]="highcharts" [options]="chartOptions" style="width: 100%; height: 380px; display: block; margin-top: 13px;">
             </highcharts-chart>
         </div>
-        <div class="container ">
 
-            <div class="row justify-content-md-center">
+        <div *ngIf="data.length>0" class="col-12  align-self-center">
+            <app-ides-social-media [chartDetails]="chartDetails" [variable]="'Indice_multivariable_ciudades'"></app-ides-social-media>
+        </div>
+
+        <div class="col-md-12 text-right mt-5">
 
 
-                <div [ngClass]="marginSocial" class="col-md-1 col-1 share mt-lg-1">
-                    <span class="ides-text-blue" translate>share</span>
-                </div>
+            <div class="container">
+                <div class="row justify-content-md-end justify-content-center">
+                    <div class="col-sm-auto p-0 col-12 text-center">
+                        <img src="assets/ICONOS/excel.png" alt="" width="30" height="30">
 
-                <div class="ml-1 share-social" *ngFor="let item of socialMedia">
+                    </div>
 
-                    <a class="cursor-pointer" (click)="sharedImage(item)">
-                        <i [ngClass]="item.img"></i>
-                    </a>
+                    <div class="col-sm-auto p-0  align-self-center mr--md-2 col-12 text-center">
+                        <a class="excel" href="https://api-ideas-urbanas.uhemisferios.edu.ec/file/reportes/IndicadoresCanton.xlsx" download="IndicadoresCanton.xlsx">Indicadores por Cantón</a>
 
-                    <!--   <div class="col-md-6 col-lx-6 mt-1">
-                                    <span>{{item.name}}</span>
-                                    </div>-->
+                    </div>
+
+                    <div class="col-sm-auto p-0 col-12 text-center">
+                        <img src="assets/ICONOS/excel.png" alt="" width="30" height="30">
+
+                    </div>
+
+                    <div class="col-sm-auto p-0 align-self-center mr-md-2 col-12 text-center">
+                        <a class="excel" href="https://api-ideas-urbanas.uhemisferios.edu.ec/file/reportes/ESTADISTICAS_INDICES_CATEGORIAS.xlsx" download="ESTADISTICAS_INDICES_CATEGORIAS.xlsx">Estadísticas, índices y categorías</a>
+
+                    </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
         </div>
+
+
+
+
+
         <div class="col-md-12">
-            <p-table [columns]="cols" [value]="dataTable" dataKey="id" [responsive]="true" rowExpandMode="single">
-                <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th style="width: 3em">Ind</th>
-                        <th *ngFor="let col of columns">
-                            <span translate>{{col.header}}</span>
-                        </th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
-                    <tr>
-                        <td>
-                            <a href="#" pRipple [pRowToggler]="rowData">
-                                <i [ngClass]="expanded ? 'pi pi-fw pi-chevron-circle-down' : 'pi pi-fw pi-chevron-circle-right'"></i>
-                            </a>
-                        </td>
-                        <td *ngFor="let col of columns; let i=index">
-                            <span class="ui-column-title">{{col.header}}</span>
-                            <img *ngIf="i===0" alt="" src="assets/ICONOS/{{rowData[col.field].name}}-AZUL.png" width="32" style="vertical-align: middle" />
-                            <span *ngIf="i===0" class="p-ml-1"> {{rowData[col.field].name}}</span>
-                            <span *ngIf="i!==0" class="p-ml-1"> {{rowData[col.field]}}</span>
-                        </td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
-                    <tr>
-                        <td [attr.colspan]="columns.length+1">
-                            <div class="p-grid ui-fluid" style="font-size:16px;padding:20px" [@rowExpansionTrigger]="'active'">
-                                <p-table [columns]="subcols" [responsive]="true" [value]="rowData.variable.indicators" dataKey="indicator">
-                                    <ng-template pTemplate="header" let-columns>
-                                        <tr>
-                                            <th *ngFor="let col of columns">
-                                                <span translate>{{col.header}}</span>
-                                            </th>
-                                        </tr>
-                                    </ng-template>
-                                    <ng-template pTemplate="body" let-rowData let-columns="columns">
-                                        <tr>
-                                            <td *ngFor="let col of columns">
-                                                <span class="ui-column-title">{{col.header}}</span> {{rowData[col.field]}}
-                                            </td>
-                                        </tr>
-                                    </ng-template>
-                                </p-table>
 
-                            </div>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
+            <p-tabView>
+                <p-tabPanel [header]="item.header" *ngFor="let item of items; let i = index" [selected]="i == 0">
+                    <p-treeTable [autoLayout]="true" [value]="item.table" [columns]="cols">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns">
+                                    <span class="table-cell" translate>{{col.header}}</span>
+                                </th>
+                                <th><span class="table-cell">Info</span></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                            <tr>
+                                <td *ngFor="let col of cols; let i=index">
+
+                                    <div *ngIf="i===0" class="container-fluid pr-0 ">
+
+                                        <div class="row flex">
+
+
+                                            <div *ngIf="i===0" class="col-sm-1 p-0 align-self-center">
+                                                <p-treeTableToggler class=" mb-sm-5 " [rowNode]="rowNode"></p-treeTableToggler>
+
+                                            </div>
+
+
+
+                                            <div *ngIf="rowData[col.field].image_active_route " class="col-sm-2 pl-sm-1 align-self-center ">
+                                                <img alt=" " [src]=" 'https://api-ideas-urbanas.uhemisferios.edu.ec/'+rowData[col.field].image_active_route " width="32 " style="vertical-align: middle " />
+                                            </div>
+
+                                            <div *ngIf=" rowData[col.field].is_indice " class="col-sm-2 pl-sm-0 align-self-center">
+                                                <img alt=" " [src]=" 'https://api-ideas-urbanas.uhemisferios.edu.ec/'+rowData[col.field].image_route " width="32 " style="vertical-align: middle " />
+
+                                            </div>
+
+                                            <div class="col-sm-9 pl-sm-2 align-self-center text-justify ">
+                                                <span class="table-cell "> {{rowData[col.field].name}}</span><br>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div *ngIf="i!==0  && i!==4 && i!==3 && i!==2" class="col-sm-auto p-0 text-center">
+
+                                        <span class="table-cell"> {{rowData[col.field]}}</span>
+                                    </div>
+
+                                    <div *ngIf=" Array.isArray(rowData[col.field])" class="container-fluid ">
+
+                                        <div class="row flex">
+                                            <div class=" col-12 p-1 m-0" *ngIf="rowData[col.field][0]">
+                                                <span class="table-cell text-justify">{{rowData[col.field][0]}}</span><br>
+
+                                            </div>
+                                            <div class=" col-12 p-1 m-0" *ngIf="rowData[col.field][1]">
+
+                                                <span class="table-cell text-justify">{{rowData[col.field][1]}}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="i===3 " class="container-fluid">
+                                        <div class="row flex">
+                                            <div [ngClass]="rowData.color" class="col text-center m-2">
+                                                <span> {{rowData[col.field]}}</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                                <td>
+
+                                    <div class="container-fluid">
+                                        <div class="row flex">
+                                            <div class="col text-center">
+                                                <i (click)="showDialog(rowData) " class="pi pi-info-circle icon-info cursor-pointer"></i>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-treeTable>
+
+                </p-tabPanel>
+
+
+            </p-tabView>
+
+
+
+
+
         </div>
 
+        <!---      <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+            <div class="col " style="width: 100%; float: right; ">
 
-
-        <!---      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="col" style="width: 100%; float: right;">
-
-                <app-ides-social-media *ngIf="imageBase64" [imageBase64]="imageBase64"></app-ides-social-media>
-                <app-ides-download [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?._id" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
+                <app-ides-social-media *ngIf="imageBase64 " [imageBase64]="imageBase64 "></app-ides-social-media>
+                <app-ides-download [origins]="variableSelected?.origins " [titleExport]="variableSelected?.name " (downloadCSV)="onDownloadCSV($event) " [idElement]="variableSelected?._id " [nameFile]="variableSelected?.name + '_' + value + '_' + highValue
+                                        + '_ideas_urbanas' ">
             </app-ides-download>
             </div>
 
         </div>-->
     </div>
 </div>
+
+
+<p-dialog [responsive]="true" header="{{'information'|translate}}" [(visible)]="display " [resizable]="true" [focusOnShow]="false" showEffect="fade" [style]="{width: '800px'}">
+
+    <p-table [scrollable]="false" [columns]="subcols" [value]="dataTable" [resizableColumns]="true" [autoLayout]="true">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+
+                    <strong translate>{{col.header}}</strong>
+
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <span class="text-justify" *ngIf="!Array.isArray(rowData[col.field])">                    
+                                {{rowData[col.field]}}
+                            </span>
+
+
+                    <div class="row" *ngIf=" Array.isArray(rowData[col.field]) && rowData.name==='Categoría' ">
+                        <div class="col-sm-auto col-12 p-0 ml-sm-2 m-sm-2 m-2" *ngFor="let categorie of rowData[col.field]">
+                            <div *ngIf="categorie.simbolo==='$'">
+                                <span [ngClass]="categorie.color">{{categorie.simbolo}}{{categorie.min}}-{{categorie.simbolo}}{{categorie.max}} {{categorie.level}}</span>
+                            </div>
+                            <div *ngIf="categorie.simbolo!=='$'">
+                                <span [ngClass]="categorie.color">{{categorie.min}}{{categorie.simbolo}}-{{categorie.max}}{{categorie.simbolo}} {{categorie.level}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="Array.isArray(rowData[col.field]) && rowData.name==='Fuente'">
+                        <div class="col-12" *ngFor="let fuente of rowData[col.field]">
+                            <span>● {{fuente}}</span>
+                        </div>
+
+
+                    </div>
+
+
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+
+</p-dialog>

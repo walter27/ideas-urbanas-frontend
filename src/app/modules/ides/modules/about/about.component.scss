@@ -35,18 +35,50 @@
         padding-left: 27px;
     }
 }
+
 .ides-about-text[_ngcontent-ecm-c20] {
     background-color: #fff;
     margin-top: -100px;
     padding-top: 50px;
 }
-.ides-about-text{
+
+.ides-about-text {
     background-color: #fff;
     margin-top: -100px;
 }
+
 .title {
     font: 30px "Noto Sans TC", sans-serif !important;
     padding-top: 1em !important;
     font-weight: bold !important;
     color: white;
+}
+
+.about-info {
+    font-size: 12px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.about-info-url {
+    font-size: 12px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.about-info-url:hover {
+    border-bottom: solid 1px grey;
+}
+
+.margin-about {
+    margin-top: 10px;
+}
+
+.margin-about-url {
+    margin-top: 2px;
+}
+
+.about-info-background {
+    background: #f1f2f6;
+    margin-bottom: 50px;
 }

@@ -13,6 +13,8 @@ import { NgxTweetModule } from 'ngx-tweet';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+import { DialogModule } from 'primeng/dialog';
+
 
 
 
@@ -32,7 +34,8 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
     NgbModule,
     CarouselModule,
     ButtonModule,
-    NgxTwitterTimelineModule
+    NgxTwitterTimelineModule, 
+    DialogModule
   ],
 
 })

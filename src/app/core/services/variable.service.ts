@@ -48,15 +48,23 @@ export class VariableService {
 
   addVariable(profile) {
 
+    if (profile.active === null) {
+
+
+      profile.active = false;
+
+    }
 
     if (profile.is_indice === null) {
+
+
       profile.is_indice = false;
 
     }
-    if (profile.active === null) {
-      profile.is_indice = false;
 
-    }
+
+    console.log(profile);
+
 
     const formData = new FormData();
     formData.append('name', profile.name);
@@ -79,8 +87,6 @@ export class VariableService {
 
   editVariable(profile, id) {
 
-    console.log(profile.values_indice);
-
 
     const formData = new FormData();
     formData.append('name', profile.name);
@@ -96,8 +102,6 @@ export class VariableService {
     if (profile.images.image && profile.images.image.name) {
       formData.append('image', profile.images.image, profile.images.image.name);
     }
-
-    console.log(formData);
 
 
     return this.httpClient.put(this.serverUrl + this.urlVariable + '/' + id, formData);

@@ -39,22 +39,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardBasicStreamgraphComponent } from './card-basic-streamgraph/card-basic-streamgraph.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
-import {CarouselModule} from 'primeng/carousel';
-import {ButtonModule} from 'primeng/button';
-import {ToastModule} from 'primeng/toast';
-import {TableModule} from 'primeng/table';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
 import { IdesOriginComponent } from './ides-origin/ides-origin.component';
 import { WordCloudComponent } from './word-cloud/word-cloud.component';
 import { IdesVideosComponent } from './ides-videos/ides-videos.component';
-import {GalleriaModule} from 'primeng/galleria';
+import { GalleriaModule } from 'primeng/galleria';
 import { LightboxModule } from 'primeng/lightbox';
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
 import { IdesSocialMediaComponent } from './ides-social-media/ides-social-media.component';
 import { IdesAuthorsComponent } from './ides-authors/ides-authors.component';
 import { IdesDatatableValuesindiceComponent } from './ides-datatable-valuesindice/ides-datatable-valuesindice.component';
 import { DialogModule } from 'primeng/dialog';
-import {InputNumberModule} from 'primeng/inputnumber';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { IdesCitizenReportsInfoComponent } from './ides-citizen-reports-info/ides-citizen-reports-info.component';
+import { TabViewModule } from 'primeng/tabview';
+import {TreeTableModule} from 'primeng/treetable';
+import { CardBasicChartComponent } from './card-basic-chart/card-basic-chart.component';
+
 
 
 
@@ -89,13 +93,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardBasicGraphTimelineComponent,
     CardBasicNewsComponent,
     CardBasicStreamgraphComponent,
-    IdesOriginComponent,
     WordCloudComponent,
     IdesVideosComponent,
     IdesSocialMediaComponent,
     IdesAuthorsComponent,
     IdesDatatableValuesindiceComponent,
-    IdesCitizenReportsInfoComponent
+    IdesCitizenReportsInfoComponent,
+    CardBasicChartComponent,
+    IdesOriginComponent
   ],
   exports: [
     HeaderComponent,
@@ -124,7 +129,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     IdesSocialMediaComponent,
     IdesAuthorsComponent,
     IdesDatatableValuesindiceComponent,
-    IdesCitizenReportsInfoComponent
+    IdesCitizenReportsInfoComponent,
+    CardBasicChartComponent,
+    IdesOriginComponent
+
   ],
   imports: [
     CommonModule,
@@ -147,6 +155,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TableModule,
     ToastModule,
     DialogModule,
+    TabViewModule,
+    TreeTableModule,
     InputNumberModule,
     LightboxModule,
     InputTextModule,

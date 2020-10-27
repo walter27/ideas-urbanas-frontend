@@ -4,29 +4,7 @@
         </highcharts-chart>
     </div>
 
-    <div *ngIf="variable" class="mt-2 col-md-12 text-left">
-        <p class="subtitulo-covid">{{variable.origins[0].name }}</p>
-    </div>
-
-    <div class="container ">
-
-        <div class="row justify-content-md-center">
-
-
-            <div class="col-md-1 col-1 share mr-lg-1 mt-lg-1">
-                <span class="ides-text-blue" translate>share</span>
-            </div>
-
-            <div class="ml-1 share-social" *ngFor="let item of socialMedia">
-
-                <a class="cursor-pointer" (click)="sharedImage(item)">
-                    <i [ngClass]="item.img"></i>
-                </a>
-
-                <!--   <div class="col-md-6 col-lx-6 mt-1">
-                                <span>{{item.name}}</span>
-                                </div>-->
-            </div>
-        </div>
+    <div *ngIf="variable" class="col-12 m-0  align-self-center">
+        <app-ides-social-media [chartDetails]="chartDetails" [variable]="variable.name"></app-ides-social-media>
     </div>
 </div>

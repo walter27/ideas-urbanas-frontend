@@ -35,9 +35,9 @@ export class CovidComponent implements OnInit {
   selectVariable: Variable;
 
   selectDate: number;
-  dateString: string[] = [];
-  dateStringAll: string[] = [];
-  dataMapa: any = [];
+  dateString: any[] = [];
+  dateStringAll: any[] = [];
+  dataMapa: any[] = [];
 
 
   minStreamgraph: number;
@@ -46,8 +46,8 @@ export class CovidComponent implements OnInit {
 
   rangeValues: any = [];
 
-  dataHigcharts: any = [];
-  dataStreamGraphFinal: any = [];
+  dataHigcharts: any[] = [];
+  dataStreamGraphFinal: any[] = [];
 
   dateRange: Date[];
   value: number;
@@ -77,6 +77,9 @@ export class CovidComponent implements OnInit {
   languajeDate: string;
 
 
+  load= false;
+
+
 
 
   constructor(
@@ -98,10 +101,30 @@ export class CovidComponent implements OnInit {
 
   }
 
+  getCantons() {
+
+
+
+    this.regionService.listRegions(this.filters, this.model).subscribe((data) => {
+
+
+      this.cantons = data.data;
+
+      for (let i = 0; i < this.cantons.length; i++) {
+
+        if (this.cantons[i].name === 'Guayaquil' || this.cantons[i].name === 'Babahoyo' ||
+          this.cantons[i].name === 'Quito' || this.cantons[i].name === 'Lago Agrio') {
+
+          this.selectedCantons.push(this.cantons[i]);
+
+        }
+      }
 
 
 
 
+    });
+  }
 
 
   getClasification() {
@@ -124,178 +147,32 @@ export class CovidComponent implements OnInit {
 
   }
 
-  scrollLeft() {
-    /*console.log('Izuierda');
-    this.minScroll -= 6;
-    this.maxScroll -= 6;*/
-
-    this.result$.forEach(element => {
-      console.log(element.data);
-
-    });
-
-    //console.log('OBSERVABLE', this.result$.data);
-
-  }
-
-  scrollRigt() {
-    this.minScroll += 6;
-    this.maxScroll += 6;
-  }
+  getVariables(idClasification: string) {
 
 
-  getCantons() {
+    this.keysVariable = [];
 
 
-    /*this.dataService.getData().subscribe((data1) => {
-      this.dataCovid = data1;
-      console.log(data1);
-
-      //this.saveDataCovid(this.cantons, this.dataCovid);
-
-    });*/
+    this.variableService.getVariablesByClasification(idClasification).subscribe((data) => {
 
 
-    this.regionService.listRegions(this.filters, this.model).subscribe((data) => {
+      data.data.forEach(variable => {
+
+        this.keysVariable.push(variable.name);
+
+      });
 
 
-      this.cantons = data.data;
 
-      for (let i = 0; i < this.cantons.length; i++) {
 
-        if (this.cantons[i].name === 'Guayaquil' || this.cantons[i].name === 'Babahoyo' ||
-          this.cantons[i].name === 'Quito' || this.cantons[i].name === 'Lago Agrio') {
-
-          this.selectedCantons.push(this.cantons[i]);
-
-        }
-      }
-
-      /*let dataCovid: any;
-      this.dataService.getData().subscribe((data1) => {
-        dataCovid = data1;
-
-        //console.log(dataCovid);
-
-        this.saveDataCovid(this.cantons, dataCovid);
-
-      });*/
-
+      this.varibales2 = data.data;
+      this.selectVariable = this.varibales2[0];
+      this.traslate();
 
     });
-  }
-
-  saveDataCovid(cantons: Region[], dataCovid: any[]) {
-
-    for (const data of dataCovid) {
-
-      let dataF = {
-        description: 'Número diario de personas fallecidas',
-        value: '',
-        year: '2020',
-        id_Canton: '',
-        id_Variable: '5f2354627bce7c1b149c118e',
-        date: ''
-      };
-
-
-
-      for (const canton of cantons) {
-        //  console.log(canton.name);
-
-        if (canton.code === data.id_region) {
-          let date = data.date.split(' ');
-
-          //console.log(date);
-
-          dataF.id_Canton = canton._id;
-          dataF.value = data.value;
-          if (date[0].includes('/')) {
-            //console.log(data.date);
-            //let data = data.date.replace(/\//g, '-');
-            let dateg = date[0].split('/');
-            dataF.date = `${dateg[2]}-${dateg[1]}-${dateg[0]}`;
-            // console.log('SLAHS', dataF.date);
-          } else {
-            // console.log('sSIN SLAHS');
-
-            dataF.date = date[0];
-          }
-          /*this.dataService.addData(data).subscribe((data2) => {
-              console.log(data2); 
-            });*/
-
-        }
-
-
-      }
-      //console.log(dataF);
-      this.dataFinal.push(dataF);
-
-
-    }
-
-    //this.addData();
-
-    /*
-        for (const canton of cantons) {
-          if (canton.code === dataCovid.id_region) {
-    
-            data.id_Canton = canton._id;
-            data.value = dataCovid.value;
-            data.date = date[0];
-    
-          }
-    
-    
-    
-        }
-        */
-
-
-
-
-    //console.log(cantons);
-    //console.log(dataCovid.id_region);
-
 
   }
 
-
-  addData() {
-
-    console.log(this.dataFinal);
-
-
-    //this.dataPrueba.push(this.dataFinal[0]);
-    //this.dataPrueba.push(this.dataFinal[1]);
-    //this.dataPrueba.push(this.dataFinal[8]);
-
-    //console.log(this.dataPrueba);
-    /* this.dataService.addData(this.dataPrueba[0]).subscribe((data2) => {
-       console.log(data2);
-     });*/
-
-
-    for (let index = 0; index < this.dataFinal.length; index++) {
-
-      if (index > 28730 && index <= 30719) {
-        //console.log(this.dataFinal[index], index);
-
-        setTimeout(() => {
-          this.dataService.addData(this.dataFinal[index]).subscribe((data2) => {
-            console.log(data2, index);
-          });
-        }, 2000);
-
-      }
-
-
-    }
-
-    //console.log("terminado..");
-
-  }
 
   traslate() {
 
@@ -329,13 +206,13 @@ export class CovidComponent implements OnInit {
       if (lang === 'es') {
 
         this.languajeDate = 'es-ES';
-        this.getData(this.selectVariable._id);
+        this.getDate();
 
       }
 
       if (lang === 'en') {
         this.languajeDate = 'en-US';
-        this.getData(this.selectVariable._id);
+        this.getDate();
 
       }
 
@@ -347,38 +224,20 @@ export class CovidComponent implements OnInit {
 
   }
 
+  getData() {
 
-  getVariables(idClasification: string) {
-
-
-    this.keysVariable = [];
-
-
-
-    this.variableService.getVariablesByClasification(idClasification).subscribe((data) => {
-
-
-      data.data.forEach(variable => {
-
-        this.keysVariable.push(variable.name);
-
-      });
-
-
-
-
-      this.varibales2 = data.data;
-      this.selectVariable = this.varibales2[0];
-      this.traslate();
-      this.getData(this.selectVariable._id);
-
-    });
+    let idCantons = [];
+    for (let i = 0; i < this.selectedCantons.length; i++) {
+      idCantons.push(this.selectedCantons[i]._id);
+    }
+    this.result$ = this.dataService.listDatasCovid(this.filters, this.selectVariable._id, idCantons);
+    this.filterData();
+    this.filterDataStreamgraph();
 
   }
 
 
-
-  getData(idSelectVariable: string) {
+  getDate() {
 
     let dateRanges = [];
     let idCantons = [];
@@ -386,7 +245,7 @@ export class CovidComponent implements OnInit {
       idCantons.push(this.selectedCantons[i]._id);
     }
 
-    this.dataService.listDatasCovid(this.filters, idSelectVariable, idCantons).subscribe(data => {
+    this.dataService.listDatasCovid(this.filters, this.selectVariable._id, idCantons).subscribe(data => {
 
 
       for (const info of data.data) {
@@ -398,7 +257,7 @@ export class CovidComponent implements OnInit {
 
     });
 
-    this.result$ = this.dataService.listDatasCovid(this.filters, idSelectVariable, idCantons);
+    this.result$ = this.dataService.listDatasCovid(this.filters, this.selectVariable._id, idCantons);
 
     /* setTimeout(() => {
        
@@ -489,31 +348,35 @@ export class CovidComponent implements OnInit {
   filterData() {
 
 
+    //console.log(this.dateRange);
 
-    let datesString = [];
+
+    this.dateString = [];
+    this.dateStringAll = [];
+
     if (!this.selectDate || this.selectDate === 0) {
       this.selectDate = this.dateRange[0].getTime();
-
-      let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString(this.languajeDate, this.optionsDate));
-      datesString.push(selectDate);
-      this.dateString = datesString;
-
+      this.dateString.push(this.selectDate) /*toLocaleDateString(this.languajeDate, this.optionsDate)))*/
     }
+    this.dateString.push(this.selectDate) /*toLocaleDateString(this.languajeDate, this.optionsDate)))*/
 
-    let datesStringFinal = [];
-    datesStringFinal.push('');
+
+
+    //let datesStringFinal = [];
+    // datesStringFinal.push('');
 
     for (const dateString of this.dateRange) {
 
-      let dateStringFinal = dateString.getTime();
-      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString(this.languajeDate, this.optionsDate));
-      datesStringFinal.push(selectDate);
-    }
-    this.dateStringAll = datesStringFinal;
+      //let dateStringFinal = dateString.getTime();
+      //let selectDate = titleCase(new Date(dateString.getTime()).toLocaleDateString(this.languajeDate, this.optionsDate));
+      //datesStringFinal.push(titleCase(new Date(dateString.getTime()).toLocaleDateString(this.languajeDate, this.optionsDate)));
+      this.dateStringAll.push(dateString);/*.toLocaleDateString(this.languajeDate, this.optionsDate)));*/
 
-    let dataHigcharts = [];
-    let dataHighmap = [];
-    let dataStreangraph = [];
+    }
+    //this.dateStringAll = datesStringFinal;
+
+    let dataBarChart = [];
+    let dataMapChart = [];
 
     this.result$.forEach(element => {
       //console.log('DATAOBSERVABLE', dataCovidlocal);
@@ -530,13 +393,6 @@ export class CovidComponent implements OnInit {
         let month = date.getUTCMonth();
         let dateStr = new Date(year, month, day).getTime();
 
-        let dataCovid2 = {
-          data: [Number(dataCovid.value)],
-          name: dataCovid.obj_Canton.name
-
-        };
-
-        dataStreangraph.push(dataCovid2);
 
         //  console.log(dataCovid);
 
@@ -546,10 +402,10 @@ export class CovidComponent implements OnInit {
 
 
 
-          let dataCovi = {
+          let dataBar = {
             data: [Number(dataCovid.value)],
             name: dataCovid.obj_Canton.name,
-            date: titleCase(new Date(dateStr).toLocaleDateString(this.languajeDate, this.optionsDate))
+            //date: titleCase(new Date(dateStr).toLocaleDateString(this.languajeDate, this.optionsDate))
 
 
           };
@@ -561,9 +417,9 @@ export class CovidComponent implements OnInit {
           ];
 
 
+          dataBarChart.push(dataBar);
+          dataMapChart.push(dataMap);
 
-          dataHigcharts.push(dataCovi);
-          dataHighmap.push(dataMap);
 
 
 
@@ -573,248 +429,127 @@ export class CovidComponent implements OnInit {
       }
 
 
-      this.loadData(dataHigcharts, dataHighmap);
+
+
+
+
+      this.dataHigcharts = dataBarChart.sort((a, b) => b.data[0] - a.data[0]);
+      this.dataMapa = dataMapChart;
+
+
+      //this.loadData(dataHigcharts, dataHighmap);
     });
 
 
 
 
-  }
-
-  loadData(dataHigcharts: any, dataHighmap: any) {
-
-
-
-    if (!this.selectedCantons || this.selectedCantons.length === 0) {
-
-
-
-      let cantonSelectInicial = [];
-
-      for (const dataHih of dataHigcharts) {
-
-
-
-        for (const canton of this.cantons) {
-          if (canton.name === dataHih.name) {
-
-
-            cantonSelectInicial.push(canton);
-
-
-          }
-
-        }
-
-      }
-
-      this.selectedCantons = cantonSelectInicial;
-
-
-
-    }
-
-    if (this.selectedCantons) {
-
-
-
-
-      let dataHighchartsFinal = [];
-      let dataHighmapFinal = [];
-
-      for (const dataCovidHighcharts of dataHigcharts) {
-
-        for (const canton of this.selectedCantons) {
-
-          if (canton.name === dataCovidHighcharts.name) {
-
-
-
-            dataHighchartsFinal.push(dataCovidHighcharts);
-
-
-          }
-
-        }
-
-      }
-
-
-      for (const dataCovidHighmap of dataHighmap) {
-
-
-        for (const canton of this.selectedCantons) {
-
-
-          if (canton.code === dataCovidHighmap[0]) {
-
-
-            dataHighmapFinal.push(dataCovidHighmap);
-
-
-          }
-
-        }
-
-      }
-
-      this.dataHigcharts = dataHighchartsFinal.sort((a, b) => { return b.data[0] - a.data[0] });
-      this.dataMapa = dataHighmapFinal;
-    }
 
 
 
   }
+
+
 
 
   filterDataStreamgraph() {
 
-    let datesStringFinal = [];
     let dataStreamGraph = [];
-    let dataStreamGraphCopy = [];
-    datesStringFinal.push('');
+    let dates = [];
 
-    for (const dateString of this.dateRange) {
+    for (let i = 0; i < this.dateStringAll.length; i++) {
 
-      let dateStringFinal = dateString.getTime();
-      let selectDate = titleCase(new Date(dateStringFinal).toLocaleDateString(this.languajeDate, this.optionsDate));
-      datesStringFinal.push(selectDate);
-    }
-    this.dateStringAll = datesStringFinal;
-    if (this.selectDate === this.dateRange[0].getTime()) {
-      this.minStreamgraph = 0;
-      this.maxStreamgraph = this.dateRange.length;
-      this.maxExport = this.dateRange.length;
+      let date = new Date(this.dateStringAll[i]).toLocaleDateString(this.languajeDate, this.optionsDate);
+
+      dates.push(date);
+
     }
 
-    this.result$.forEach(element => {
-
-      for (const dataCovid of element.data) {
+    this.result$.forEach(data => {
 
 
-        let dataStregraph = {
-          name: '',
-          data: [],
-          date: [],
-          range: []
-        };
+      for (let j = 0; j < this.selectedCantons.length; j++) {
 
-        dataStregraph.name = dataCovid.obj_Canton.name;
+        let dataCanton = data.data.filter(data => data.obj_Canton.code === this.selectedCantons[j].code);
 
-        let date: Date = new Date(dataCovid.date);
-        let day = date.getUTCDate();
-        let year = date.getUTCFullYear();
-        let month = date.getUTCMonth();
-        let dateStr = titleCase(new Date(year, month, day).toLocaleDateString(this.languajeDate, this.optionsDate));
+        let values = [];
 
-        for (let index = 0; index < this.dateStringAll.length; index++) {
 
-          if (this.dateStringAll[index] === dateStr) {
+        for (let i = 0; i < dataCanton.length; i++) {
 
-            dataStregraph.data.push(Number(dataCovid.value));
-            dataStregraph.date.push(dateStr);
-            dataStregraph.range.push(index);
+
+
+          let date: Date = new Date(dataCanton[i].date);
+          let day = date.getUTCDate();
+          let year = date.getUTCFullYear();
+          let month = date.getUTCMonth();
+          let dateTime = new Date(year, month, day).toLocaleDateString(this.languajeDate, this.optionsDate);
+
+          //console.log(dateTime);
+
+
+          if (dates.includes(dateTime)) {
+
+            values.push(dataCanton[i].value)
+
+
 
           } else {
-            dataStregraph.data.push(0);
-            dataStregraph.date.push(this.dateStringAll[index]);
-            dataStregraph.range.push(index);
+            console.log(dates);
 
-
-          }
-
-
-        }
-
-        // console.log(dataStregraph);
-
-        if (!dataStreamGraph.some(dataStreamgraph => dataStreamgraph.name === dataStregraph.name)) {
-
-          dataStreamGraphCopy.push(dataStregraph);
-
-        } else {
-
-          for (let i = 0; i < dataStreamGraphCopy.length; i++) {
-
-            if (dataStreamGraphCopy[i].name === dataStregraph.name) {
-              //console.log(dataStreamGraphCopy[i], i);
-              // console.log(Object.assign({}, dataStreamGraphCopy[i], dataStregraph));
-
-              for (let j = 0; j < dataStreamGraphCopy[i].data.length; j++) {
-
-                //dataStreamGraphCopy[i].data[j];
-
-                if (dataStregraph.data[j] !== 0) {
-                  // console.log(dataStregraph.data[j]);
-                  // console.log(dataStreamGraphCopy[i].data[j], j);
-                  dataStreamGraphCopy[i].data[j] = dataStregraph.data[j];
-
-
-                }
-
-              }
-
-            }
-
+            values.push(0);
           }
 
         }
 
-        //console.log(dataStregraph);
-        //console.log(dataStreamGraphCopy);
-
-        dataStreamGraph.push(dataStregraph);
 
 
+        dataStreamGraph.push({
+          name: this.selectedCantons[j].name,
+          data: values
+        })
+        //console.log(dataCanton.length);
+        // console.log(this.dateRange);
       }
-      this.loadDataStreamGraph(dataStreamGraphCopy);
+
+
+
+      this.dataStreamGraphFinal = dataStreamGraph;
+
+
+
+
 
     });
 
 
+    this.load = true;
 
 
   }
 
-  loadDataStreamGraph(dataStreamGraphCopy: any) {
 
-    if (this.selectedCantons) {
-
-      let dataStreamGraphCanton = [];
-
-      for (const selectCanton of this.selectedCantons) {
-
-
-        for (const dataStreamgraphCanton of dataStreamGraphCopy) {
-          if (selectCanton.name === dataStreamgraphCanton.name) {
-
-            dataStreamGraphCanton.push(dataStreamgraphCanton);
-
-          }
-
-        }
-      }
-      this.dataStreamGraphFinal = dataStreamGraphCanton;
-    }
-
-  }
 
 
 
 
   getSelectVariable() {
 
-
+    //this.dataHigcharts = [];
+    //this.dataMapa = [];
+    //this.dataStreamGraphFinal = [];
     this.selectDate = 0;
     this.options = {
       ceil: 0,
       floor: 0
     };
-    this.getData(this.selectVariable._id);
+    this.getDate();
   }
 
   getSelects(e) {
 
+    //this.dataHigcharts = [];
+    //this.dataMapa = [];
+    //this.dataStreamGraphFinal = [];
     // console.log(e.itemValue);
     //console.log(this.selectedCantons);
 
@@ -875,7 +610,7 @@ export class CovidComponent implements OnInit {
 
       }*/
 
-      this.getData(this.selectVariable._id);
+      this.getData();
 
       /* let cantons = this.cantons.filter(canton => !this.selectedCantons.includes(canton));
        cantons.forEach(canton => {
@@ -904,15 +639,15 @@ export class CovidComponent implements OnInit {
 
   sliderChange(e) {
 
-    let datesString = [];
+    // let datesString = [];
     this.selectDate = e.value;
-    let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString(this.languajeDate, this.optionsDate));
-    datesString.push(selectDate);
-    this.dateString = datesString;
+    //let selectDate = titleCase(new Date(this.selectDate).toLocaleDateString(this.languajeDate, this.optionsDate));
+    //datesString.push(selectDate);
+    //this.dateString = datesString;
 
     this.filterData();
 
-    for (let index = 0; index < this.dateRange.length; index++) {
+    /*for (let index = 0; index < this.dateRange.length; index++) {
 
 
 
@@ -934,7 +669,7 @@ export class CovidComponent implements OnInit {
       }
 
 
-    }
+    }*/
     // console.log(this.selectDate);
 
     //OBTAIN DATE RANGE
@@ -993,8 +728,14 @@ export class CovidComponent implements OnInit {
 
     });
     this.selectedCantons = [];
-    this.getData(this.selectVariable._id);
+    this.getDate();
 
+
+  }
+
+  printData(data) {
+
+    console.log(data);
 
   }
 

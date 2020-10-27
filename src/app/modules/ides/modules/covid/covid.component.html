@@ -40,23 +40,26 @@
         </div>
     </div>
 
-    <div class="container container-covid mt-5">
 
-        <div class="row p-5">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 text-center align-self-center mt-5 mb-5 p-0 ">
+            <h3 class="titulos-covid" translate>evolution_covid</h3>
+        </div>
+    </div>
+</div>
+<div class="container">
 
-            <div class="col-md-6 text-center text-sm-left">
-                <div class="animate__animated animate__fadeInDown">
-                    <h3 class="titulos-covid" translate>evolution_covid</h3>
-                </div>
+
+    <div class="row  ides-card p-5">
 
 
-            </div>
+        <div class="col-12 col-md-auto  text-center text-md-left">
 
-            <div class="col-md-3  text-center text-sm-right mt-2">
-
-                <p-multiSelect #multiselect [showToggleAll]="false" [resetFilterOnHide]="true" selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Ciudades'" (onChange)="getSelects($event)"
-                    name="selectedCantons">
-                    <!-- <p-header>
+            <p-multiSelect #multiselect [showToggleAll]="false" [resetFilterOnHide]="true" selectedItemsLabel="{{'cities_selected'|translate}}" class="block" [options]="cantons" [(ngModel)]="selectedCantons" optionLabel="name" [defaultLabel]="'Ciudades'" (onChange)="getSelects($event)"
+                name="selectedCantons">
+                <!-- <p-header>
 
                         <div class="d-inline-block position-static mr-2 mt-2">
                             <span (click)="functionToClear()" class="pi pi-undo "></span>
@@ -64,67 +67,105 @@
                         </div>
 
 
-
-
                     </p-header>-->
-                </p-multiSelect>
+            </p-multiSelect>
 
-            </div>
-            <div class=" col-md-3 text-center text-sm-right mt-2">
+        </div>
+        <div class=" col-12 col-md-auto text-center text-md-left mt-3 mt-md-0">
 
 
-                <p-dropdown [autoDisplayFirst]="false" class="block" [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
-                </p-dropdown>
+            <p-dropdown [autoDisplayFirst]="false" class="block" [options]="varibales2" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
+            </p-dropdown>
 
-                <!--<p-dropdown *ngIf="values.length>0" [autoDisplayFirst]="false" class="block" [options]="values" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
+            <!--<p-dropdown *ngIf="values.length>0" [autoDisplayFirst]="false" class="block" [options]="values" [(ngModel)]="selectVariable" name="selectVariable" optionLabel="name" [placeholder]="'Casos'" (onChange)="getSelectVariable()">
                 </p-dropdown>-->
 
-            </div>
-
-
-            <div class="col-md-12 p-3">
-                <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [options]="options">
-                </ng5-slider>
-            </div>
-
-
-            <div class=" col-md-6 col-12">
-
-
-
-                <app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts " [variable]="selectVariable">
-                </app-card-basic-graph-covid>
-
-
-
-
-            </div>
-
-
-            <div class="col-md-6 col-12" *ngIf=" dataMapa && selectVariable ">
-
-                <app-card-basic-map-covid [data]="dataMapa" [variable]="selectVariable"></app-card-basic-map-covid>
-
-
-            </div>
-
-
-            <div class="col-md-12" *ngIf="dataStreamGraphFinal && selectVariable">
-
-
-                <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [min]="minStreamgraph " [max]="maxStreamgraph " [variable]="selectVariable" [maxExport]="maxExport">
-                </app-card-basic-streamgraph>
-
-
-
-
-
-            </div>
         </div>
+        <div class="col-12 ides-text-blue mt-4">
+            <h2 class="submenu-tematic ">{{ selectVariable?.name }}</h2>
+        </div>
+
+        <div class="col-md-12 ides-thematic-description ">
+            <p class="text-justify">{{ selectVariable?.description}}</p>
+        </div>
+
+        <div class="col-md-12 p-3">
+            <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [options]="options">
+            </ng5-slider>
+        </div>
+
+
+        <div *ngIf="dataHigcharts.length===0 && dataMapa.length===0 && dataStreamGraphFinal.length===0" class="col-md-12 alert alert-primary">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <i class="pi pi-spin pi-spinner" style="font-size: 2em"></i>
+
+                    </div>
+
+                    <div class="col-auto align-self-center">
+                        <span translate>loadCovid</span>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class=" col-md-6 col-12" *ngIf="dataHigcharts.length>0">
+
+
+
+            <app-card-basic-graph-covid [dates]="dateString " [data]="dataHigcharts " [variable]="selectVariable">
+            </app-card-basic-graph-covid>
+
+
+
+
+        </div>
+
+
+        <div class="col-md-6 col-12" *ngIf=" dataMapa.length>0 ">
+
+            <app-card-basic-map-covid [data]="dataMapa" [variable]="selectVariable"></app-card-basic-map-covid>
+
+
+        </div>
+
+
+        <div class="col-md-12" *ngIf="dataStreamGraphFinal.length>0">
+
+
+            <app-card-basic-streamgraph [dates]="dateStringAll " [data]="dataStreamGraphFinal" [variable]="selectVariable" [maxExport]="maxExport">
+            </app-card-basic-streamgraph>
+
+
+
+
+
+        </div>
+
+        <div class="col-12  ">
+
+
+
+            <app-ides-origin [origins]="selectVariable?.origins"></app-ides-origin>
+
+
+        </div>
+
+
+
 
     </div>
 
 </div>
+
 
 
 <div class="row">

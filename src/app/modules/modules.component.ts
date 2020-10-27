@@ -43,13 +43,6 @@ export class ModulesComponent implements OnInit {
       active: false
     },
     {
-      id: 'about',
-      title: 'about',
-      type: 'text',
-      url: '/about',
-      active: false
-    },
-    {
       id: 'intermediate_city',
       title: 'intermediate_city',
       type: 'drop',
@@ -59,11 +52,11 @@ export class ModulesComponent implements OnInit {
           text: 'say',
           url: '/intermediate-cities',
         },
-        /*{
+        {
           id: 'indexes',
           text: 'indexes',
           url: '/indexes',
-        },*/
+        },
         {
           id: 'thematics',
           text: 'thematics',
@@ -98,6 +91,13 @@ export class ModulesComponent implements OnInit {
       title: 'response_covid_start',
       type: 'text',
       url: '/covid',
+      active: false
+    },
+    {
+      id: 'about',
+      title: 'about',
+      type: 'text',
+      url: '/about',
       active: false
     },
     {

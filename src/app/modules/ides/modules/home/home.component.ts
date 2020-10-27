@@ -31,6 +31,10 @@ import { UtilsService } from '../../../../core/services/utils.service';
 
 export class HomeComponent implements OnInit, DoCheck {
 
+
+  display: boolean = true;
+
+
   cities = [
     {
       id: '5e41c9f6d82c451b6859e1ec',
@@ -585,7 +589,7 @@ export class HomeComponent implements OnInit, DoCheck {
         subtitle: 'compare_cities_description',
         grafico: 'grafico-home3',
         svg: 'assets/home/ciudades-comparacion.svg',
-        routerLink: '/thematic'
+        routerLink: '/indexes'
 
       },
 

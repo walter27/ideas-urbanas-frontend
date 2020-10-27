@@ -31,14 +31,12 @@ export class DataService {
 
   }
 
-  listDataIndexes(cities?, years?): Observable<ResponseApi<any>> {
+  listDataIndexes(years?): Observable<ResponseApi<any>> {
+
     const body = {
-      cities,
       years
     };
-    if (!years) {
-      body.cities = [cities];
-    }
+
     return this.httpClient.post<ResponseApi<any>>(this.serverUrl + 'api/' + this.urlDataIndexes, body).pipe(
       map(data => {
         return data.results.data;
@@ -54,22 +52,23 @@ export class DataService {
   }
 
   // tslint:disable-next-line:variable-name
-  listDatasPublic(filters: Filters, id_Variable?, cities?): Observable<ResultList<Data>> {
+  listDatasPublic(filters: Filters, id_Variable?, cities?, years?): Observable<ResultList<Data>> {
 
     const filtersB = this.utilsService.buildFilters(filters);
     const body = {
       id_Variable,
-      cities: null,
+      cities,
+      years
     };
 
-    if (cities) {
+   /* if (cities) {
       body.cities = cities.filter((c) => {
         if (c.check) {
           return true;
         }
         return false;
       }).map(c => c.id);
-    }
+    }*/
     return this.httpClient.post<ResponseApi<ResultList<Data>>>(this.serverUrl + 'api/' + this.urlData + filtersB, body).pipe(
       map(data => {
         /* data.results.data.forEach(element => {
