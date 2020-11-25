@@ -111,14 +111,10 @@
     </div>
 
 
-
+    <p-dialog class="mt-5" [(visible)]="display" [modal]=true [dismissableMask]=true>
+        <video #video width="800" height="500" controls>
+                <source src="https://api-ideas-urbanas.uhemisferios.edu.ec/file/reportes/VIDEOFINALCOMPLETONAVEGACION.mp4" type="video/mp4" />
+            </video>
+    </p-dialog>
 
 </div>
-
-
-<!-- <p-dialog class="mt-5" [(visible)]="display" [modal]=true [dismissableMask]=true>
-
-    <video autoplay loop>
-        <source src="https://api-ideas-urbanas.uhemisferios.edu.ec/file/reportes/video.mp4" type="video/mp4" />
-    </video>
-</p-dialog>-->

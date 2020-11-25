@@ -15,7 +15,7 @@ export class AppComponent {
   device = "movil";
   constructor(translate: TranslateService, private router: Router) {
 
-    /*Google Analytics*/
+    //Google Analytics
     const navEndEvents$ = this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd)

@@ -1,48 +1,47 @@
-<div id="test" class="anima-texto">
-    <div class="row " *ngIf="resultData?.length">
+<div class="row ">
 
-        <!--   <div class="col-12 mr-5">
+    <!--   <div class="col-12 mr-5">
             <app-ides-download [data]="lineChartData" [origins]="variableSelected?.origins" [titleExport]="variableSelected?.name" (downloadCSV)="onDownloadCSV($event)" [idElement]="variableSelected?.name" [nameFile]="variableSelected?.name + '_' + value + '_' + highValue + '_ideas_urbanas'">
             </app-ides-download>
         </div>-->
 
-        <div class="col-12 ides-text-blue">
-            <h2>{{ getTitle() }}</h2>
-        </div>
-        <div class="col-12 ">
-            <p class="ides-text-custom text-justify ">
-                {{ variableSelected?.description }}
-            </p>
-        </div>
-        <div class="ides-ml-charts mb-sm-3 m-3" *ngIf="variableSelected?.chart_type.split(' ')[0] === 'stacked'|| variableSelected?.code==='0203' || variableSelected?.code==='0207'">
-            <app-ides-dropdown [selectable]="false" (checkItem)="onCheckItemYear($event)" [items]="years" [title]="yearSelected">
-            </app-ides-dropdown>
-        </div>
-        <div class="col-12 p-0 m-0 " *ngIf="series.length>0; else Nothing">
-            <!-- <div style="display: block;">
+    <div class="col-12 ides-text-blue">
+        <h2>{{ getTitle() }}</h2>
+    </div>
+    <div class="col-12 ">
+        <p class="ides-text-custom text-justify ">
+            {{ variableSelected?.description }}
+        </p>
+    </div>
+    <div class="ides-ml-charts mb-sm-3 m-3" *ngIf="variableSelected?.chart_type.split(' ')[0] === 'stacked'|| variableSelected?.code==='0203' || variableSelected?.code==='0207'">
+        <app-ides-dropdown [selectable]="false" (checkItem)="onCheckItemYear($event)" [items]="years" [title]="yearSelected">
+        </app-ides-dropdown>
+    </div>
+    <div class="col-12 p-0 m-0 ">
+        <!-- <div style="display: block;">
                     <canvas *ngIf="!loading && lineChartData.length > 0" id="{{variableSelected.name}}" baseChart width="3600" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
                         [plugins]="lineChartPlugins" [ngClass]="lineChartData.length > 10 ? 'chart-size-plus' : 'chart-size'"></canvas>
                 </div>-->
-            <app-card-basic-chart [series]="series" [variable]="variableSelected" [years]="yearsChart"></app-card-basic-chart>
+        <app-card-basic-chart *ngIf="series.length>0; else Nothing" [series]="series" [variable]="variableSelected" [years]="yearsChart"></app-card-basic-chart>
 
-        </div>
-        <div class="col-12 custom-slider" *ngIf="variableSelected.chart_type.split(' ')[0] !== 'stacked'">
-            <div *ngIf=" variableSelected?.code!=='0207'">
-                <div *ngIf=" variableSelected?.code!=='0203'">
-                    <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
-                </div>
+    </div>
+    <div class="col-12 custom-slider" *ngIf="variableSelected.chart_type.split(' ')[0] !== 'stacked'">
+        <div *ngIf=" variableSelected?.code!=='0207'">
+            <div *ngIf=" variableSelected?.code!=='0203'">
+                <ng5-slider (userChange)="sliderChange($event)" [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
             </div>
         </div>
+    </div>
 
-        <ng-template #Nothing>
-            <div class="col-12">
-                <div class="alert alert-warning" role="alert">
-                    <span translate>nothing</span>
-                </div>
+    <ng-template #Nothing>
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                <span translate>nothing</span>
             </div>
-        </ng-template>
+        </div>
+    </ng-template>
 
-        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="col" style="width: 100%; float: right;">
 
                 <app-ides-social-media *ngIf="imageBase64" [imageBase64]="imageBase64"></app-ides-social-media>
@@ -50,5 +49,4 @@
             </div>
 
         </div>-->
-    </div>
 </div>

@@ -144,7 +144,7 @@ export class CardBasicGraphTimelineComponent implements OnInit {
     origin: ' https://www.eluniverso.com/noticias/2020/05/27/nota/7853670/coe-n-modifica-reglas-tres-semaforos-1-junio'
   }, {
     date: '01/06/2020',
-    news: 'Ecuador empieza una nueva etapa de desconfinamiento con flexibilización en los semáforos epidemiológicos para fomentar la producción. 32% de los cantones se encuentran en amarillo. Fiscalía anuncia cración de unidad especial para investigaciones por contrataciones de emergencia en municipios. ',
+    news: 'Ecuador empieza una nueva etapa de desconfinamiento con flexibilización en los semáforos epidemiológicos para fomentar la producción. 32% de los cantones se encuentran en amarillo. Fiscalía anuncia creación de unidad especial para investigaciones por contrataciones de emergencia en municipios. ',
     origin: 'https://www.sandiegouniontribune.com/en-espanol/noticias/story/2020-06-01/fiscalia-de-ecuador-crea-equipo-anticorrupcion-en-pandemia'
   }, {
     date: '02/06/2020',
@@ -503,8 +503,8 @@ export class CardBasicGraphTimelineComponent implements OnInit {
           description: "COE nacional modifica las restricciones de la semaforización."
         }, {
           name: ' <strong style="position: absolute; bottom:118px;left:10px;">1 DE JUNIO</strong>',
-          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/junio/1.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:40px;">Fiscalía anuncia cración </br> de unidad especial para investigaciones </br> por contrataciones de emergencia en municipios.</p></br><a style="max-width:500px;position: absolute;left: 10px; bottom:40px;" href="https://www.sandiegouniontribune.com/en-espanol/noticias/story/2020-06-01/fiscalia-de-ecuador-crea-equipo-anticorrupcion-en-pandemia" target="_blank">[Fuente]</a>',
-          description: "Ecuador empieza una nueva etapa de desconfinamiento con flexibilización en los semáforos epidemiológicos para fomentar la producción, 32% de los cantones se encuentran en amarillo. Fiscalía anuncia cración de unidad especial para investigaciones por contrataciones de emergencia en municipios."
+          label: '<div style="position: absolute; top:-8px;right:-25px;"><img src = "assets/covid/junio/1.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; bottom:40px;">Fiscalía anuncia creación </br> de unidad especial para investigaciones </br> por contrataciones de emergencia en municipios.</p></br><a style="max-width:500px;position: absolute;left: 10px; bottom:40px;" href="https://www.sandiegouniontribune.com/en-espanol/noticias/story/2020-06-01/fiscalia-de-ecuador-crea-equipo-anticorrupcion-en-pandemia" target="_blank">[Fuente]</a>',
+          description: "Ecuador empieza una nueva etapa de desconfinamiento con flexibilización en los semáforos epidemiológicos para fomentar la producción, 32% de los cantones se encuentran en amarillo. Fiscalía anuncia creación de unidad especial para investigaciones por contrataciones de emergencia en municipios."
         }, {
           name: ' <strong style="position: absolute; top:118px;left:10px;">2 DE JUNIO</strong>',
           label: '<div style="position: absolute; bottom:-8px;right:-25px;"><img src = "assets/covid/junio/2.png" width="60px" height="60px " /></div> <p style="max-width:500px;position: absolute;left: 10px; top:57px;">Daule es el segundo </br> cantón en cambiar </br> su semáforo a verde.</p></br><a style="max-width:500px;position: absolute;left: 10px; top:38px;" href="https://www.eltelegrafo.com.ec/noticias/politica/3/moreno-alcalde-daule-cambio-semaforo" target="_blank">[Fuente]</a>',

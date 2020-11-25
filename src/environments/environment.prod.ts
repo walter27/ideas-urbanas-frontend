@@ -64,5 +64,8 @@ export const environment = {
   },
   indicator: {
     base: 'indicator'
-  }
+  },
+  word: {
+    base: "word"
+  },
 };

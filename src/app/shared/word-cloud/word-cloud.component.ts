@@ -94,31 +94,45 @@ export class WordCloudComponent implements OnInit, OnChanges {
   onAddTag(value, type) {
     let words = this.parseStopword(value);
     for (let index = 0; index < words.length; index++) {
-      const element = words[index];
-      this.tagService
-        .addTag({
-          text: element.toLowerCase().trim(),
-          id_Canton: this.citySelectedId,
-          type,
-        })
-        .subscribe(
-          (data) => {
-            this.newTag = "";
-            //this.step = 3;
-            // if (index + 1 === words.length) {
-            this.listTags(this.citySelectedId);
-            // }
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+      const element = words[index].toLowerCase().trim();
+
+      this.tagService.addWord({ text: element }).subscribe();
+
+      setTimeout(() => {
+        this.tagService.getWord({ text: element }).subscribe((data: any) => {
+
+
+          this.tagService
+            .addTag({
+              id_Word: data.data._id,
+              id_Canton: this.citySelectedId,
+            })
+            .subscribe(
+              (data) => {
+                this.newTag = "";
+                //this.step = 3;
+                // if (index + 1 === words.length) {
+                this.listTags(this.citySelectedId);
+                // }
+              },
+              (err) => {
+                console.log(err);
+              }
+            );
+
+        });
+
+      }, 1000);
+
+
+
+
+
     }
   }
 
   listTags(cityId) {
 
-    const value = 1000;
     let weight: number;
     this.tagService
       .getTagsByCantByType(cityId)
@@ -133,10 +147,12 @@ export class WordCloudComponent implements OnInit, OnChanges {
         resp.data.forEach((word: any) => {
           if (word.positive > word.negative && word.positive > word.neutro) {
             //console.log('POSITIVA', word);
-            for (let index = 0; index < value; index++) {
-              if (word.positive > index && word.positive <= index + 1) {
-                weight = (index + 1) * 3;
-              }
+            if (word.positive <= 8) {
+
+              weight = word.positive;
+            } else {
+
+              weight = 8;
             }
 
             this.tagsData.push({
@@ -150,12 +166,12 @@ export class WordCloudComponent implements OnInit, OnChanges {
           if (word.negative > word.positive && word.negative > word.neutro) {
             //console.log('NEGATIVA', word);
 
-            for (let index = 0; index < value; index++) {
-              if (word.negative > index && word.negative <= index + 1) {
-                weight = (index + 1) * 3;
+            if (word.negative <= 8) {
 
-              }
+              weight = word.negative;
+            } else {
 
+              weight = 8;
             }
 
 
@@ -169,12 +185,12 @@ export class WordCloudComponent implements OnInit, OnChanges {
           if (word.neutro > word.positive && word.neutro > word.negative) {
             //console.log('NEUTRO', word);
 
-            for (let index = 0; index < value; index++) {
-              if (word.neutro > index && word.neutro <= index + 1) {
-                weight = (index + 1) * 3;
+            if (word.neutro <= 8) {
 
-              }
+              weight = word.neutro;
+            } else {
 
+              weight = 8;
             }
 
 
@@ -195,6 +211,9 @@ export class WordCloudComponent implements OnInit, OnChanges {
       chart: {
         plotBorderWidth: 0,
         animation: true,
+        marginRight: 0,
+        marginLeft: 0,
+        marginBottom: 0,
         backgroundColor: "transparent",
         plotBackgroundImage: this.background,
       },
@@ -204,7 +223,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
           type: "wordcloud",
           data: this.tagsData,
           name: "Value",
-          spiral: "rectangular",
+          spiral: "archimedean",
           placementStrategy: "center",
           rotation: {
             from: 0,

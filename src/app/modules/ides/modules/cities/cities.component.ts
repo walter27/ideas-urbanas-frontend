@@ -119,10 +119,6 @@ export class CitiesComponent implements OnInit {
 
   getIndexes(idCity) {
 
-
-    console.log(idCity);
-
-
     this.dataService.listDataIndexes().subscribe((resp: any) => {
 
       this.indexes = resp;
@@ -224,7 +220,6 @@ export class CitiesComponent implements OnInit {
         });
       });
 
-      this.newTagCloud();
     });
   }
 
@@ -232,48 +227,7 @@ export class CitiesComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
-  newTagCloud() {
 
-    let width = 450;
-    let height = 200;
-    let maxFont = 96;
-    if (window.innerWidth <= 575) {
-      width = 350;
-      height = 250;
-      maxFont = 46;
-    } else if (window.innerWidth > 575 && window.innerWidth <= 767) {
-      width = 540;
-      height = 340;
-      maxFont = 46;
-    }
-    else if (window.innerWidth >= 768 && window.innerWidth <= 991) {
-      width = 640;
-      height = 350;
-      maxFont = 46;
-    }
-    else if (window.innerWidth >= 992 && window.innerWidth <= 1199) {
-      width = 900;
-      height = 400;
-      maxFont = 96;
-    }
-    else if (window.innerWidth >= 1200 && window.innerWidth <= 1380) {
-      width = 580;
-      height = 265;
-      maxFont = 96;
-    }
-    else if (window.innerWidth >= 1381 && window.innerWidth <= 1600) {
-      width = 550;
-      height = 280;
-      maxFont = 96;
-    }
-    else if (window.innerWidth > 1600) {
-      width = 700;
-      height = 300;
-      maxFont = 96;
-    }
-
-    tagCloud(this.tagsData, width, height, maxFont, '#F8A901');
-  }
 
   goToHome() {
     this.router.navigate(['/home'], { queryParams: { city: this.citySelected._id } });

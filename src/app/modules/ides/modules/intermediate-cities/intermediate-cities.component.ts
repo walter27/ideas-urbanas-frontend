@@ -21,7 +21,7 @@ export class IntermediateCitiesComponent implements OnInit, DoCheck {
     page: 0,
     limit: 30,
     ascending: true,
-    sort: '_id'
+    sort: 'name'
   };
   step: number = 1;
   citySelected: any;

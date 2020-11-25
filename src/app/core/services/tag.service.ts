@@ -7,6 +7,8 @@ import { ResponseApi } from '../models/responseApi.model';
 import { ResultList } from '../models/resultList.model';
 import { Filters } from '../models/filters.model';
 import { Tag } from '../models/tags.model';
+import { Word } from '../models/wordTag.model';
+
 import { Stopword } from '../models/stopwords.model';
 import { UtilsService } from './utils.service';
 
@@ -22,6 +24,7 @@ export class TagService {
 
   serverUrl = environment.serverUrl;
   urlTag = environment.tag.base;
+  urlWord = environment.word.base;
   urlTagsByCantByType = environment.home.getTagsByCantByType;
   urlAddTag = environment.home.addTag;
   urlStopwords = environment.home.getStopwords;
@@ -33,9 +36,9 @@ export class TagService {
 
   }
 
-  listTags(filters: Filters, body: any = {}): Observable<ResultList<Tag>> {
+  listWords(filters: Filters, body: any = {}): Observable<ResultList<Word>> {
     const filtersB = this.utilsService.buildFilters(filters);
-    return this.httpClient.post<ResponseApi<ResultList<Tag>>>(this.serverUrl + this.urlTag + '/filter' + filtersB, body).pipe(
+    return this.httpClient.post<ResponseApi<ResultList<Word>>>(this.serverUrl + this.urlWord + '/filter' + filtersB, body).pipe(
       map(data => {
         return data.results;
       })
@@ -46,21 +49,24 @@ export class TagService {
     return this.httpClient.post(this.serverUrl + this.urlAddTag, tag, httpOptions);
   }
 
-  editTag(tag, id: string, model: string) {
+  addWord(profile) {
+    return this.httpClient.post(this.serverUrl + this.urlWord, profile, httpOptions);
 
-    return this.httpClient.put(this.serverUrl + this.urlTag + '/' + id, tag, httpOptions);
   }
 
-  deleteTag(id) {
-    return this.httpClient.delete(this.serverUrl + this.urlTag + '/' + id, httpOptions);
+  editWord(profile, id: string) {
+
+    return this.httpClient.put(this.serverUrl + this.urlWord + '/' + id, profile, httpOptions);
   }
 
-  getTag(id: string, model: string) {
-    return this.httpClient.get<any>(this.serverUrl + this.urlTag + '/' + id).pipe(
-      map(data => {
-        return data.results.data;
-      })
-    );
+  deleteWord(id) {
+    return this.httpClient.delete(this.serverUrl + this.urlWord + '/' + id, httpOptions);
+  }
+
+  getWord(body: any = {}): Observable<ResultList<Word>> {
+    return this.httpClient.post<ResponseApi<ResultList<Word>>>(this.serverUrl + this.urlWord + '/text', body).pipe(map(data => {
+      return data.results;
+    }));
   }
 
   getTagsByCantByType(id_Canton: string, type = 'all'): Observable<ResultList<Tag>> {

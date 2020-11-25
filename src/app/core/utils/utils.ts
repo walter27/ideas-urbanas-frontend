@@ -14,7 +14,7 @@ function exportCSV(variable, categories, series) {
     let csv = `Nombre del Indicador: ${variable.name}\n`;
     csv += `Definición: ${variable.description}\n`;
     csv += `Unidad de medida: ${variable.measure_symbol}\n`;
-    csv += `Fuente de datos: ${variable.origins[0].name}]\n`
+    csv += `Fuente de datos: ${variable.origins[0].name}\n`;
 
     if (variable.periodicity === 'anual' || variable.periodicity === 'trimestral') {
 
@@ -171,7 +171,6 @@ function exportXLSX(variable, categories, series) {
 
 
     ws_data = [...ws_data, column];
-
 
     if (variable.periodicity === 'anual' || variable.periodicity === 'trimestral') {
 

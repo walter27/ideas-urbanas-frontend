@@ -21,11 +21,15 @@ let { tagCloud } = require('src/app/core/utils/utils');
 import { trigger, style, transition, animate, state } from '@angular/animations';
 import { UtilsService } from '../../../../core/services/utils.service';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
+
 
 
 
@@ -486,6 +490,7 @@ export class HomeComponent implements OnInit, DoCheck {
   home: any = [];
   responsiveOptions;
 
+  @ViewChild('video', { static: true }) video: ElementRef;
 
   constructor(
     private clasificationService: ClasificationService,
@@ -559,6 +564,7 @@ export class HomeComponent implements OnInit, DoCheck {
       if (params.city) this.onClickCity(params.city)
     });
 
+
     /*let elem: HTMLElement = document.getElementById('navbarMenu');
     elem.style.setProperty("background-color", 'transparent');
     elem.classList.add("fixed-top");
@@ -618,9 +624,16 @@ export class HomeComponent implements OnInit, DoCheck {
 
 
 
+
+
+
   }
 
+
+
+
   ngDoCheck() {
+
 
   }
 

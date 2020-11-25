@@ -63,7 +63,6 @@ export class VariableService {
     }
 
 
-    console.log(profile);
 
 
     const formData = new FormData();

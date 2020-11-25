@@ -1835,10 +1835,26 @@ div.ides-card-home {
     padding: 0px;
     border: transparent;
     background: transparent;
+    overflow: unset;
 }
 
 :host::ng-deep.ui-dialog .ui-dialog-titlebar {
-    display: none;
+    padding: 0px;
+    border: transparent;
+    background: transparent;
+    overflow: unset;
+}
+
+:host::ng-deep.ui-dialog-mask {
+    top: 60px;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon span {
+    color: white;
+}
+
+:host::ng-deep.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon span:hover {
+    color: #F8A901;
 }
 
 .video-fluid {

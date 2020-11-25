@@ -136,7 +136,6 @@ export class IdesIndexComponent implements OnInit, OnDestroy, OnChanges {
     if (changes["indexes"] || this.indexes.length > 0) {
 
       this.translate()
-      console.log(this.indexes);
 
 
     }

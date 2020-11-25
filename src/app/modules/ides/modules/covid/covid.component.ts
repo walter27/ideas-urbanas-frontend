@@ -26,7 +26,7 @@ export class CovidComponent implements OnInit {
     page: 0,
     limit: 2000,
     ascending: true,
-    sort: 'value'
+    sort: 'name'
   };
   cantons: Region[] = [];
   selectedCantons: Region[] = [];
