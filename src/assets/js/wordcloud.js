@@ -24,9 +24,6 @@
         return Math.floor(maxFontSize * relativeWeight);
     };
 
-
-
-
 }));
 
 
