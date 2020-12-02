@@ -6,6 +6,9 @@ import Word_Cloud from "highcharts/modules/wordcloud";
 import { type } from "os";
 import { RegionService } from "src/app/core/services/region.service";
 import { Router } from "@angular/router";
+Word_Cloud(Highcharts);
+require('../../../assets/js/wordcloud')(Highcharts);
+
 
 @Component({
   selector: "app-word-cloud",
@@ -33,7 +36,6 @@ export class WordCloudComponent implements OnInit, OnChanges {
   ) {
     this.updateDemo = false;
     this.highcharts = Highcharts;
-    Word_Cloud(this.highcharts);
   }
 
   ngOnInit() {
@@ -209,11 +211,7 @@ export class WordCloudComponent implements OnInit, OnChanges {
   createWordCloud() {
     this.chartOptions = {
       chart: {
-        plotBorderWidth: 0,
         animation: true,
-        marginRight: 0,
-        marginLeft: 0,
-        marginBottom: 0,
         backgroundColor: "transparent",
         plotBackgroundImage: this.background,
       },
