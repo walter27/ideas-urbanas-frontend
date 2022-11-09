@@ -58,6 +58,8 @@ import { IdesCitizenReportsInfoComponent } from './ides-citizen-reports-info/ide
 import { TabViewModule } from 'primeng/tabview';
 import {TreeTableModule} from 'primeng/treetable';
 import { CardBasicChartComponent } from './card-basic-chart/card-basic-chart.component';
+import { TagCloudModule } from 'angular-tag-cloud-module';
+
 
 
 
@@ -161,6 +163,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LightboxModule,
     InputTextModule,
     GalleriaModule,
+    TagCloudModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

@@ -39,32 +39,30 @@
 
         <div *ngIf="step===2" class="row ides-card">
 
-            <div class="row m-3">
-                <div class="col-md-12 mt-4">
-                    <h2 class="subtitulo" translate>define_compare</h2>
-                </div>
-                <div class="col-md-12 mt-2">
-                    <p class="subtitulo2 text-justify" translate>difine_compare_description</p>
-                </div>
-
-
-                <div *ngIf="cantons.length>0" class="col-md-12  mt-2 text-center">
-                    <p-dropdown class="block" [options]="cantons" [(ngModel)]="citySelected" name="citySelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getCitySelected()" [filter]="true">
-                    </p-dropdown>
-                </div>
-
-                <div *ngIf="citySelected" class="col-md-12 text-center">
-
-                    <app-word-cloud [citySelectedId]="citySelected.id"></app-word-cloud>
-                </div>
-
-
-                <div class="col-md-12 mb-4">
-                    <p class="subtitulo2 text-justify alert alert-primary" translate>define_compare_footer</p>
-                </div>
+            <div class="col-md-12 mt-4">
+                <h2 class="subtitulo" translate>define_compare</h2>
+            </div>
+            <div class="col-md-12 mt-2">
+                <p class="subtitulo2 text-justify" translate>difine_compare_description</p>
             </div>
 
+
+            <div *ngIf="cantons.length>0" class="col-md-12  mt-2 text-center">
+                <p-dropdown class="block" [options]="cantons" [(ngModel)]="citySelected" name="citySelected" optionLabel="name" [placeholder]="'Seleccione'" (onChange)="getCitySelected()" [filter]="true">
+                </p-dropdown>
+            </div>
+
+            <div *ngIf="citySelected" class="col-md-12 text-center">
+
+                <app-word-cloud [citySelectedId]="citySelected.id"></app-word-cloud>
+            </div>
+
+
+            <div class="col-md-12 mb-4">
+                <p class="subtitulo2 text-justify alert alert-primary" translate>define_compare_footer</p>
+            </div>
         </div>
+
 
     </div>
 </div>

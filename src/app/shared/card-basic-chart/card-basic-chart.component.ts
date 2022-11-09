@@ -290,6 +290,8 @@ export class CardBasicChartComponent implements OnInit, OnChanges {
     let categories = this.years;
     let variable = this.variable;
 
+    console.log(categories);
+    console.log(this.series);
 
     this.chartOptionsBar = {
 

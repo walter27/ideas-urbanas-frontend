@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { TagService } from "src/app/core/services/tag.service";
 import { map } from "rxjs/operators";
-import * as Highcharts from "highcharts";
-import Word_Cloud from "highcharts/modules/wordcloud";
-import { type } from "os";
 import { RegionService } from "src/app/core/services/region.service";
 import { Router } from "@angular/router";
-Word_Cloud(Highcharts);
-require('../../../assets/js/wordcloud')(Highcharts);
+import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
+import { Observable } from 'rxjs';
+
+
+//require('../../../assets/js/wordcloud')(Highcharts);
 
 
 @Component({
@@ -18,14 +18,16 @@ require('../../../assets/js/wordcloud')(Highcharts);
 export class WordCloudComponent implements OnInit, OnChanges {
   stopwords: string[] = [];
   newTag = "";
-  updateDemo: boolean;
-  chartOptions: any = {};
-  data: any = [];
-  highcharts: any;
-  tagsData: any[] = [];
   citySelected: any;
   citySelectedWordCloud: any;
   background: string;
+
+
+  options: CloudOptions = {};
+
+  dataCloud: Observable<CloudData[]>
+
+  dataWord: any = [];
 
   @Input("citySelectedId") citySelectedId: any;
 
@@ -33,19 +35,16 @@ export class WordCloudComponent implements OnInit, OnChanges {
     private tagService: TagService,
     private regionService: RegionService,
     private route: Router
-  ) {
-    this.updateDemo = false;
-    this.highcharts = Highcharts;
-  }
+  ) { }
 
   ngOnInit() {
     this.citySelected = this.regionService.citySelect;
     this.citySelectedWordCloud = this.regionService.citySelectedWordCloud;
-    if (this.citySelectedId) {
-      this.getStopwords();
-      this.listTags(this.citySelectedId);
-      //this.createWordCloud();
-    }
+    /* if (this.citySelectedId) {
+       this.getStopwords();
+       this.listTags(this.citySelectedId);
+       //this.createWordCloud();
+     }*/
   }
 
   ngOnChanges(changes) {
@@ -135,6 +134,9 @@ export class WordCloudComponent implements OnInit, OnChanges {
 
   listTags(cityId) {
 
+    this.dataWord = [];
+
+
     let weight: number;
     this.tagService
       .getTagsByCantByType(cityId)
@@ -144,21 +146,25 @@ export class WordCloudComponent implements OnInit, OnChanges {
         })
       )
       .subscribe((resp) => {
-        this.tagsData = [];
+        // console.log(resp.data);
+        let count = 0;
 
         resp.data.forEach((word: any) => {
+          let weight = 0;
           if (word.positive > word.negative && word.positive > word.neutro) {
-            //console.log('POSITIVA', word);
-            if (word.positive <= 8) {
 
-              weight = word.positive;
+            if (word._id.length >= 26 && word.positive >= 1000) {
+
+              weight = 250;
+              count = count + word.positive;
+
             } else {
-
-              weight = 8;
+              weight = word.positive
+              count = count + word.positive;
             }
 
-            this.tagsData.push({
-              name: word._id,
+            this.dataWord.push({
+              text: word._id,
               weight,
               color: "#008000",
             });
@@ -166,79 +172,75 @@ export class WordCloudComponent implements OnInit, OnChanges {
 
 
           if (word.negative > word.positive && word.negative > word.neutro) {
-            //console.log('NEGATIVA', word);
 
-            if (word.negative <= 8) {
+            if (word._id.length >= 26 && word.negative >= 1000) {
 
-              weight = word.negative;
+              weight = 250;
+              count = count + word.negative;
+
             } else {
-
-              weight = 8;
+              weight = word.negative
+              count = count + word.negative;
             }
 
-
-            this.tagsData.push({
-              name: word._id,
+            this.dataWord.push({
+              text: word._id,
               weight,
               color: "#ff6633",
             });
           }
 
           if (word.neutro > word.positive && word.neutro > word.negative) {
-            //console.log('NEUTRO', word);
 
-            if (word.neutro <= 8) {
+            if (word._id.length >= 26 && word.neutro >= 1000) {
 
-              weight = word.neutro;
+              weight = 250;
+              count = count + word.neutro;
+
             } else {
-
-              weight = 8;
+              weight = word.neutro
+              count = count + word.neutro;
             }
 
-
-            this.tagsData.push({
-              name: word._id,
+            this.dataWord.push({
+              text: word._id,
               weight,
               color: "#696969",
             });
+
+
           }
         });
 
-        this.createWordCloud();
+        this.createWordCloud(count);
       });
   }
 
-  createWordCloud() {
-    this.chartOptions = {
-      chart: {
-        animation: true,
-        backgroundColor: "transparent",
-        plotBackgroundImage: this.background,
-      },
 
-      series: [
-        {
-          type: "wordcloud",
-          data: this.tagsData,
-          name: "Value",
-          spiral: "archimedean",
-          placementStrategy: "center",
-          rotation: {
-            from: 0,
-            to: 0,
-          },
-        },
-      ],
-      title: {
-        text: "",
-      },
-      tooltip: {
-        enabled: false,
-      },
 
-      exporting: {
-        enabled: false,
-      },
-    };
+
+  createWordCloud(count) {
+
+    let height = 0
+
+    if (count === 15) {
+      height = 200
+    } else {
+      height = 500
+    }
+
+    console.log(count);
+
+    this.options = {
+      width: 0.98,
+      height,
+      overflow: false,
+      realignOnResize: true,
+      randomizeAngle: true,
+      step: 5,
+
+    }
+    this.dataCloud = this.dataWord
+
   }
 }

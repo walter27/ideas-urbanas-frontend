@@ -111,11 +111,11 @@ export class ModulesComponent implements OnInit {
           text: 'models.user',
           url: '/admin/users'
         },
-        {
+        /*{
           id: 'config',
           text: 'models.configuration',
           url: '/admin/config'
-        },
+        },*/
         {
           id: 'province',
           text: 'models.province',
@@ -156,12 +156,11 @@ export class ModulesComponent implements OnInit {
           text: 'models.reports',
           url: '/admin/citizen-reports'
         },
-        {
+       /* {
           id: 'indicator',
           text: 'models.indicators',
           url: '/admin/indicator'
-        }
-        ,
+        },*/
         {
           id: 'tag',
           text: 'models.tag',

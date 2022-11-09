@@ -1,5 +1,4 @@
-<div class="row">
-
+<div class="container-fluid">
     <div *ngIf="!citySelected && !citySelectedWordCloud" class=" col-12 text-md-left text-center ">
         <h4 class="titulos-word" translate>describe_city</h4>
     </div>
@@ -15,8 +14,8 @@
 
     </div>
 
-    <div class="col-md-12 text-center ">
-        <highcharts-chart [(update)]="updateDemo " [oneToOne]=true [Highcharts]="highcharts " [options]="chartOptions " style="width: 100%; height: 300px; display: block; ">
-        </highcharts-chart>
+    <div class="col-md-12 text center">
+        <angular-tag-cloud [data]="dataCloud" [width]="options.width" [height]="options.height" [overflow]="options.overflow">
+        </angular-tag-cloud>
     </div>
 </div>
